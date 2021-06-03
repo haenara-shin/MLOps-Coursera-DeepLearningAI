@@ -1,0 +1,492 @@
+WEBVTT
+
+1
+00:00:00.979 --> 00:00:03.568
+Now let's put this all together and
+
+2
+00:00:03.568 --> 00:00:07.800
+look at a Hello world example
+with tensorflow Transform.
+
+3
+00:00:07.800 --> 00:00:09.435
+So here's what we're going to do.
+
+4
+00:00:09.435 --> 00:00:13.065
+We're going to collect some raw data and
+
+5
+00:00:13.065 --> 00:00:17.986
+we're going to define
+the metadata around that data.
+
+6
+00:00:17.986 --> 00:00:23.483
+Then we're going to run transform to
+transform the that raw data into features
+
+7
+00:00:23.483 --> 00:00:28.561
+and that's going to produce a graph and
+we're going to in the background,
+
+8
+00:00:28.561 --> 00:00:33.080
+we're going to be running analyzers and
+using tf.Transform.
+
+9
+00:00:33.080 --> 00:00:38.417
+So we start with collecting our raw
+data which in this case is very simple,
+
+10
+00:00:38.417 --> 00:00:43.169
+it's just some static data that
+we've created for the example.
+
+11
+00:00:43.169 --> 00:00:50.124
+So we have three different features here,
+x, y and s.
+
+12
+00:00:50.124 --> 00:00:57.628
+So we express the types of those features
+and information about them as metadata.
+
+13
+00:00:57.628 --> 00:01:04.166
+So we're going to import the metadata
+module with intensive transform and
+
+14
+00:01:04.166 --> 00:01:09.366
+we're going to express that
+metadata using a feature spe.
+
+15
+00:01:09.366 --> 00:01:11.934
+So we can create a feature spec that
+
+16
+00:01:11.934 --> 00:01:15.841
+expresses some information
+about our our feature.
+
+17
+00:01:15.841 --> 00:01:20.582
+So this is telling us that,
+why is afloat feature first of all,
+
+18
+00:01:20.582 --> 00:01:23.544
+and then it's a fixed length feature.
+
+19
+00:01:23.544 --> 00:01:27.637
+So this is not a for
+example a sparse feature or
+
+20
+00:01:27.637 --> 00:01:31.857
+ragged tensor, it's fixed length feature.
+
+21
+00:01:31.857 --> 00:01:35.814
+So both y and x, or
+fixed length float features and
+
+22
+00:01:35.814 --> 00:01:39.594
+then s,
+is a string feature also fixed length.
+
+23
+00:01:39.594 --> 00:01:43.540
+So now we go this is our
+preprocessing function.
+
+24
+00:01:43.540 --> 00:01:46.701
+This is where our user
+code is going to go.
+
+25
+00:01:46.701 --> 00:01:50.050
+It's the entry point for
+our user code anyway, so
+
+26
+00:01:50.050 --> 00:01:53.478
+you can see here we're pulling
+the values for x y and
+
+27
+00:01:53.478 --> 00:01:58.042
+s from our inputs and then we're
+going to do some transformations.
+
+28
+00:01:58.042 --> 00:01:59.969
+These are very simple transformation.
+
+29
+00:01:59.969 --> 00:02:05.159
+So going to center x and
+that's going to require the mean.
+
+30
+00:02:05.159 --> 00:02:10.086
+So that in the background without us
+thinking about it really is going to
+
+31
+00:02:10.086 --> 00:02:13.367
+make a pass over the data or
+as it makes the pass,
+
+32
+00:02:13.367 --> 00:02:17.161
+it's going to collect that means so
+we can use it here.
+
+33
+00:02:17.161 --> 00:02:22.124
+We're also going to do a normalization
+using very simple scale to between
+
+34
+00:02:22.124 --> 00:02:23.123
+zero and one.
+
+35
+00:02:23.123 --> 00:02:29.789
+So that's our y normalize again going to
+need a pass over the data to do that.
+
+36
+00:02:29.789 --> 00:02:33.035
+That's going to be the same pass,
+it only does one pass.
+
+37
+00:02:33.035 --> 00:02:38.111
+And then we're going to take that
+string feature that we have s and
+
+38
+00:02:38.111 --> 00:02:42.449
+we're going to create a vocabulary for
+it and apply it so
+
+39
+00:02:42.449 --> 00:02:46.624
+that we get an integer value for
+for s, a vocabulary.
+
+40
+00:02:46.624 --> 00:02:51.002
+And then we create a feature cross,
+so this is purely synthetic feature.
+
+41
+00:02:51.002 --> 00:02:53.499
+So we're using our value for x,
+
+42
+00:02:53.499 --> 00:02:58.506
+that we've centered in our value for
+y that we've normalized.
+
+43
+00:02:58.506 --> 00:03:04.589
+And we're creating a synthetic
+feature called appropriately x
+
+44
+00:03:04.589 --> 00:03:10.343
+centered times y normalized
+which is verbose but accurate.
+
+45
+00:03:10.343 --> 00:03:14.609
+Okay, and then that's going to return
+well, the values that we just created so
+
+46
+00:03:14.609 --> 00:03:16.527
+that's our feature engineering.
+
+47
+00:03:16.527 --> 00:03:22.593
+We took in raw data and here are
+transformed features that we've created.
+
+48
+00:03:22.593 --> 00:03:25.957
+We've engineered these features.
+
+49
+00:03:25.957 --> 00:03:30.119
+So again we took tensors in, so for
+
+50
+00:03:30.119 --> 00:03:36.288
+x we took integer values and
+for s we took strings and
+
+51
+00:03:36.288 --> 00:03:40.467
+for y we also took integer values.
+
+52
+00:03:40.467 --> 00:03:46.304
+Those passed through the code that we
+wrote to express our feature engineering.
+
+53
+00:03:46.304 --> 00:03:50.411
+The entry point of that was
+the pre processing function.
+
+54
+00:03:50.411 --> 00:03:54.569
+And coming out of that we
+get our engineered features
+
+55
+00:03:54.569 --> 00:03:59.012
+including the vocabulary
+version of our string feature
+
+56
+00:03:59.012 --> 00:04:02.054
+that we have created vocabulary for.
+
+57
+00:04:02.054 --> 00:04:07.041
+So now we're going to run our code
+to do the processing that requires
+
+58
+00:04:07.041 --> 00:04:11.504
+us to create a main in this case
+because we're just using pure
+
+59
+00:04:11.504 --> 00:04:16.510
+tensorflow transform as a library
+to run our feature engineering.
+
+60
+00:04:16.510 --> 00:04:21.334
+I want to point out though typically
+you would often be doing this
+
+61
+00:04:21.334 --> 00:04:24.922
+in a TFX pipeline using
+a transform component.
+
+62
+00:04:24.922 --> 00:04:29.798
+The code is really the same in
+the preprocessing function that we just
+
+63
+00:04:29.798 --> 00:04:30.646
+looked at.
+
+64
+00:04:30.646 --> 00:04:35.337
+But here it's a little bit
+different because we're running in
+
+65
+00:04:35.337 --> 00:04:40.838
+tensorflow transform and not in
+a transform component in a TFX pipeline.
+
+66
+00:04:40.838 --> 00:04:44.120
+So this is one of the ways
+that you can run transform.
+
+67
+00:04:44.120 --> 00:04:48.904
+I just want to make you aware that this
+part that we're looking at here is
+
+68
+00:04:48.904 --> 00:04:51.638
+not how it looks, when you run it in TFX.
+
+69
+00:04:51.638 --> 00:04:56.370
+So here we're using we're just
+running it inside a main function and
+
+70
+00:04:56.370 --> 00:04:59.318
+we're going to do that using Apache beam.
+
+71
+00:04:59.318 --> 00:05:03.521
+That's going to require us to
+establish a context for Apache beam.
+
+72
+00:05:03.521 --> 00:05:09.401
+And then we're going to define a beam
+pipeline using the beam python syntax,
+
+73
+00:05:09.401 --> 00:05:13.573
+which is a little bit different
+than you might expect.
+
+74
+00:05:13.573 --> 00:05:17.802
+One of the things to get used
+to here is the pipe operator.
+
+75
+00:05:17.802 --> 00:05:22.622
+So what that says is I'm
+going to run tft beam.
+
+76
+00:05:22.622 --> 00:05:27.563
+I've established that in the context,
+I'm going to use the analyze and
+
+77
+00:05:27.563 --> 00:05:31.297
+transform data set to run
+my preprocessing function.
+
+78
+00:05:31.297 --> 00:05:36.536
+That's going to return a result actually
+in this case is a tuple result.
+
+79
+00:05:36.536 --> 00:05:41.918
+So it's going to return both the raw
+data and the raw data metadata.
+
+80
+00:05:41.918 --> 00:05:46.782
+So this python syntax is a little
+bit different than what you
+
+81
+00:05:46.782 --> 00:05:51.461
+might be used to for
+python that is specific to Apache be.
+
+82
+00:05:51.461 --> 00:05:55.821
+So we have our transformed data,
+we have our transform metadata and
+
+83
+00:05:55.821 --> 00:05:58.583
+we get that from our transformed data set.
+
+84
+00:05:58.583 --> 00:06:03.913
+So we can print out the raw data and
+the transform data and
+
+85
+00:06:03.913 --> 00:06:10.840
+run our main so before we ran
+transform we had features like this.
+
+86
+00:06:10.840 --> 00:06:15.621
+After running transform we
+have features like this.
+
+87
+00:06:21.317 --> 00:06:23.313
+So that's our transformation,
+
+88
+00:06:23.313 --> 00:06:27.602
+we've we've transformed between our
+raw data and our engineer data.
+
+89
+00:06:27.602 --> 00:06:32.594
+Yeah so, key points on this Hello
+world example of using tensorflow
+
+90
+00:06:32.594 --> 00:06:35.310
+transform actually outside of tfx,
+
+91
+00:06:35.310 --> 00:06:41.267
+although you would often be running this
+as part of the tfx transform component,
+
+92
+00:06:41.267 --> 00:06:46.454
+it allows preprocessing on the input
+data and creating the features.
+
+93
+00:06:46.454 --> 00:06:48.959
+Well, that's what transform is for.
+
+94
+00:06:48.959 --> 00:06:52.503
+It's the feature engineering
+that we're going to do.
+
+95
+00:06:52.503 --> 00:06:58.166
+It allows defining preprocessing
+pipelines that are going to run and
+
+96
+00:06:58.166 --> 00:07:05.203
+and do their execution on large scale data
+processing frameworks using Apache beam.
+
+97
+00:07:05.203 --> 00:07:09.631
+Apache beam runs on top of other
+frameworks like spark or flank or
+
+98
+00:07:09.631 --> 00:07:13.485
+google cloud data flow or
+actually just on your laptop,
+
+99
+00:07:13.485 --> 00:07:16.365
+using what's called the direct runner.
+
+100
+00:07:16.365 --> 00:07:21.237
+In a tfx pipeline the transform
+component implements feature engineering
+
+101
+00:07:21.237 --> 00:07:23.254
+using tensorflow transform.
+
+102
+00:07:23.254 --> 00:07:27.008
+So the transform component is built
+using the transformed library,
+
+103
+00:07:27.008 --> 00:07:29.151
+the tensorflow transformed library.

@@ -1,0 +1,481 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.100
+Welcome back. You're now in
+
+2
+00:00:02.100 --> 00:00:04.285
+the 3rd and final
+week of this course,
+
+3
+00:00:04.285 --> 00:00:05.640
+just one more week,
+
+4
+00:00:05.640 --> 00:00:07.050
+and then you'll be done with
+
+5
+00:00:07.050 --> 00:00:09.555
+this 1st course of
+the specialization.
+
+6
+00:00:09.555 --> 00:00:12.115
+In this week we dive into data.
+
+7
+00:00:12.115 --> 00:00:16.020
+How do you get data that
+sets up your training,
+
+8
+00:00:16.020 --> 00:00:18.165
+your modeling for success?
+
+9
+00:00:18.165 --> 00:00:22.350
+But first, why is defining
+what data to use even hard?
+
+10
+00:00:22.350 --> 00:00:23.695
+Let's look at an example.
+
+11
+00:00:23.695 --> 00:00:27.930
+I'm going to use the example
+of detecting Iguanas.
+
+12
+00:00:27.930 --> 00:00:30.570
+One of my friends, [inaudible]
+really likes Iguanas,
+
+13
+00:00:30.570 --> 00:00:33.280
+so I have a bunch of iguana
+pictures floating around.
+
+14
+00:00:33.280 --> 00:00:35.190
+Let's say that you've gone into
+
+15
+00:00:35.190 --> 00:00:37.440
+the forest and
+collected hundreds of
+
+16
+00:00:37.440 --> 00:00:39.870
+pictures like these and you send
+
+17
+00:00:39.870 --> 00:00:42.374
+these pictures to laborers
+with the instructions,
+
+18
+00:00:42.374 --> 00:00:43.770
+"Please use bounding boxes to
+
+19
+00:00:43.770 --> 00:00:45.810
+indicate the position
+of Iguanas.''
+
+20
+00:00:45.810 --> 00:00:48.900
+One laborer, may label
+it like this and say,
+
+21
+00:00:48.900 --> 00:00:50.790
+one iguana, two Iguanas.
+
+22
+00:00:50.790 --> 00:00:52.170
+This laborer did a good job.
+
+23
+00:00:52.170 --> 00:00:54.630
+A 2nd laborer that is
+equally hard working,
+
+24
+00:00:54.630 --> 00:00:56.505
+equally diligent may say,
+
+25
+00:00:56.505 --> 00:00:58.740
+look, the iguana on the left has
+
+26
+00:00:58.740 --> 00:01:01.590
+a tail that goes all the way
+to the right to this image.
+
+27
+00:01:01.590 --> 00:01:05.955
+The 2nd laborer may say
+one iguana, two iguana's.
+
+28
+00:01:05.955 --> 00:01:08.925
+Good job, laborer. Hard to
+follow this labor either.
+
+29
+00:01:08.925 --> 00:01:10.830
+A 3rd laborer may say, well,
+
+30
+00:01:10.830 --> 00:01:12.480
+I'm going to look
+through all hundreds of
+
+31
+00:01:12.480 --> 00:01:14.325
+images and label them all,
+
+32
+00:01:14.325 --> 00:01:16.980
+and I'm going to
+use bounding boxes,
+
+33
+00:01:16.980 --> 00:01:18.870
+and so let me indicate
+
+34
+00:01:18.870 --> 00:01:21.450
+the position iguanas and draw
+a bounding box like that.
+
+35
+00:01:21.450 --> 00:01:24.450
+Three diligent, hard
+working laborers can
+
+36
+00:01:24.450 --> 00:01:26.670
+come up with these three
+very different ways
+
+37
+00:01:26.670 --> 00:01:28.290
+of labeling iguana's,
+
+38
+00:01:28.290 --> 00:01:30.900
+and maybe any of these
+is actually fine.
+
+39
+00:01:30.900 --> 00:01:34.020
+I would prefer the top two
+rather than the 3rd one.
+
+40
+00:01:34.020 --> 00:01:36.390
+But any of these
+labeling conventions
+
+41
+00:01:36.390 --> 00:01:38.445
+could result in you
+learning algorithm,
+
+42
+00:01:38.445 --> 00:01:41.115
+learning a pretty
+good iguana detector.
+
+43
+00:01:41.115 --> 00:01:43.500
+But what is not fine is if 1/3 of
+
+44
+00:01:43.500 --> 00:01:46.710
+your laborers use the 1st
+and 1/3 the 2nd, and 1/3,
+
+45
+00:01:46.710 --> 00:01:48.300
+the 3rd labeling convention,
+
+46
+00:01:48.300 --> 00:01:51.120
+because then your labels
+are inconsistent,
+
+47
+00:01:51.120 --> 00:01:53.460
+and this is confusing to
+the learning algorithm.
+
+48
+00:01:53.460 --> 00:01:56.220
+While, the iguana
+example was a fun one.
+
+49
+00:01:56.220 --> 00:01:58.080
+You see this type of effect in
+
+50
+00:01:58.080 --> 00:02:01.170
+many practical computer
+vision problems as well.
+
+51
+00:02:01.170 --> 00:02:04.270
+Let's use the phone
+defect detection example.
+
+52
+00:02:04.270 --> 00:02:06.060
+If you ask a laborer to use
+
+53
+00:02:06.060 --> 00:02:09.195
+bounding boxes to indicate
+significant defects,
+
+54
+00:02:09.195 --> 00:02:11.625
+maybe one laborer will
+look and then go, ''Well,
+
+55
+00:02:11.625 --> 00:02:13.920
+clearly the scratch is the
+most significant defect.
+
+56
+00:02:13.920 --> 00:02:16.365
+Let me draw a bounding
+box on that.''
+
+57
+00:02:16.365 --> 00:02:18.960
+A 2nd laborer may look
+at his phone and say,
+
+58
+00:02:18.960 --> 00:02:21.090
+"There are actually two
+significant defects.
+
+59
+00:02:21.090 --> 00:02:22.530
+There's a big scratch,
+
+60
+00:02:22.530 --> 00:02:24.300
+and then there's that small mark
+
+61
+00:02:24.300 --> 00:02:26.010
+there,'' it's called a pit mark,
+
+62
+00:02:26.010 --> 00:02:29.910
+like if someone poked a phone
+with a sharp screwdriver.
+
+63
+00:02:29.910 --> 00:02:33.180
+I think the 2nd laborer
+probably did a better job.
+
+64
+00:02:33.180 --> 00:02:36.360
+But then a 3rd laborer
+may look at this and say,
+
+65
+00:02:36.360 --> 00:02:38.010
+well, here's a bounding box
+
+66
+00:02:38.010 --> 00:02:40.095
+that shows you where
+the defects are.
+
+67
+00:02:40.095 --> 00:02:42.360
+Between these three labels,
+
+68
+00:02:42.360 --> 00:02:45.540
+probably the one in the
+middle would work the best.
+
+69
+00:02:45.540 --> 00:02:48.060
+But this is a very
+typical example
+
+70
+00:02:48.060 --> 00:02:51.090
+of inconsistence labeling
+that you will get
+
+71
+00:02:51.090 --> 00:02:53.820
+back from a labeling process with
+
+72
+00:02:53.820 --> 00:02:57.375
+even slightly ambiguous
+labeling instructions,
+
+73
+00:02:57.375 --> 00:02:59.160
+and if you can
+
+74
+00:02:59.160 --> 00:03:02.430
+consistently label the
+data with one convention,
+
+75
+00:03:02.430 --> 00:03:03.660
+maybe the one in middle,
+
+76
+00:03:03.660 --> 00:03:05.640
+you're learning algorithm
+will do better.
+
+77
+00:03:05.640 --> 00:03:10.620
+What we would do in this week
+is dive into best practices
+
+78
+00:03:10.620 --> 00:03:12.389
+for the data stage
+
+79
+00:03:12.389 --> 00:03:16.170
+of the full cycle of a
+machine learning project.
+
+80
+00:03:16.170 --> 00:03:18.930
+Specifically, we'll
+talk about how
+
+81
+00:03:18.930 --> 00:03:21.900
+to define what is the data,
+
+82
+00:03:21.900 --> 00:03:23.970
+what should be x
+and what should be
+
+83
+00:03:23.970 --> 00:03:26.715
+y and establish a baseline
+
+84
+00:03:26.715 --> 00:03:30.090
+and doing that well will set you
+
+85
+00:03:30.090 --> 00:03:33.420
+up to label and
+organize the data well,
+
+86
+00:03:33.420 --> 00:03:35.775
+which would give
+you a good data set
+
+87
+00:03:35.775 --> 00:03:38.955
+for when you move into
+the modeling phase,
+
+88
+00:03:38.955 --> 00:03:40.530
+which you already saw last week.
+
+89
+00:03:40.530 --> 00:03:42.540
+Many machine learning
+researchers and
+
+90
+00:03:42.540 --> 00:03:44.850
+many machine learning
+engineers had started
+
+91
+00:03:44.850 --> 00:03:46.890
+off downloading data off
+
+92
+00:03:46.890 --> 00:03:49.230
+the Internet to
+experiment with models,
+
+93
+00:03:49.230 --> 00:03:52.230
+so using data prepared
+by someone else.
+
+94
+00:03:52.230 --> 00:03:53.955
+Nothing at all wrong with that,
+
+95
+00:03:53.955 --> 00:03:57.180
+and for many practical
+applications,
+
+96
+00:03:57.180 --> 00:03:59.520
+the way you prepare your
+data sets will have
+
+97
+00:03:59.520 --> 00:04:00.540
+a huge impact on
+
+98
+00:04:00.540 --> 00:04:02.940
+the success of your
+machine learning projects.
+
+99
+00:04:02.940 --> 00:04:04.560
+In the next video,
+
+100
+00:04:04.560 --> 00:04:06.840
+we'll take a look at
+some more examples
+
+101
+00:04:06.840 --> 00:04:09.315
+of how data can be ambiguous,
+
+102
+00:04:09.315 --> 00:04:11.790
+so that this will set us
+up later this week for
+
+103
+00:04:11.790 --> 00:04:15.060
+some techniques for improving
+the quality of your data.
+
+104
+00:04:15.060 --> 00:04:17.890
+Let's go on to the next video.

@@ -1,0 +1,58 @@
+What are the important aspects
+of shaping your data is to consider the feature
+space that your data covers? Let's take a look. So here's what we're
+going to be talking about. First of all just an introduction
+to feature spaces and then an introduction to
+feature selection as well. We'll talk about filter methods and
+wrapper methods and embedded methods. Those are methods of feature selection. In this first section, we're really
+just looking at feature spaces. So what are feature spaces? Well, a feature space is
+defined by the n dimensional space that your features defined. So if you have two features,
+a feature space is two dimensional. If you have three features,
+its three dimensional and so forth, it does not include the target label. So that we're just talking
+about your features. So if this is your feature factor,
+you have future vector X. And it has values from zero to D. Here. That's the dimensionality of that vector. And that defines a space. So in this case that's a three D space. We have three features. We have a 3D. Space, or if we're looking at it in
+a 2D space with with a two dimensional feature vector, we could express it
+as a scatter plot with a 2D space. Those are fairly easy for
+us as humans to imagine. So looking at it a little differently. Here's an example using features
+that you might have for a house, so the number of rooms for the house or
+actually any kind of building really the square footage of it
+where it's located in a price. So maybe we're trying to
+figure out how sales. So in this case,
+the F is your model and it's acting in your feature space and
+it's going to produce a result Y, looking at a classification situation or
+problem we have again. So this is going to be
+a two dimensional space. We have different distributions of
+the examples within our feature space. In an ideal case, they're easy separable, ideally with a linear
+function in a realistic case. Well, maybe we can do that with
+a linear function if we sort of fudge around some of the some of
+the examples and then we have, poor examples where it's difficult
+to do with a linear function. We're working in a non linear
+feature space and and, maybe we can use a projection
+to help with that. Or maybe we just have to use
+a non-linear model, but we're, what we're going to try to do is draw
+a boundary within that feature space. So, here's a case where we're drawing,
+maybe a parametric boundary. But the model is going to try
+to learn that decision boundary. The boundary is used to
+classify the data points. So that's what our model is learning as a
+result of knowing where that boundary is. It can take an example
+that is given to it and decide in this case which
+class it falls into. So feature space coverage is important. The examples that you give to your
+data to your model rather to train and for evaluation have to
+be representative of the examples that you're going to
+see when you serve your model. In other words, the requests that
+are going to be given to your model and where they fall in your feature space,
+that region of your feature space has to be covered when you train and
+evaluate your model as well. So that means the same numerical ranges
+were for classes the same classes and you need similar characteristics for
+image data as well. So it's not quite so, numerical but it's still expressing a space and
+similarly for vocabulary. In this case we have syntax and semantics
+that we have to consider as well for natural language problems. So we need to ensure that
+we covered the same space. If we're doing time series problem, we need to consider seasonality trend and
+drift. And that includes for the serving data, we may have new values that we
+find in new labels that's going to influence the concept drift as as
+we've talked about previously, so we need to be aware of that and
+design processes to deal with that. That means we need continuous monitoring,
+which is going to be a key for success in these situations. Remember as we've talked about before,
+the world changes and our model only learns one
+version of the world. So when the world has changed, we need
+to update our model to the new world.

@@ -1,0 +1,867 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.000
+I think the use of HLP had
+
+2
+00:00:03.000 --> 00:00:05.700
+taken off first in academia
+when people figured
+
+3
+00:00:05.700 --> 00:00:08.220
+out it was a useful thing
+
+4
+00:00:08.220 --> 00:00:10.845
+to include to help
+get papers published,
+
+5
+00:00:10.845 --> 00:00:13.770
+but there's also
+been a bit misuse
+
+6
+00:00:13.770 --> 00:00:17.830
+in terms of building
+useful applications.
+
+7
+00:00:23.120 --> 00:00:26.190
+I think the use of HLP in
+
+8
+00:00:26.190 --> 00:00:28.380
+machine learning has
+taken off partly
+
+9
+00:00:28.380 --> 00:00:30.060
+because it helped people get
+
+10
+00:00:30.060 --> 00:00:33.405
+papers published to
+show they can be HLP.
+
+11
+00:00:33.405 --> 00:00:36.600
+There's also been a bit
+misused in settings where
+
+12
+00:00:36.600 --> 00:00:39.930
+the goal was to build a
+valuable application,
+
+13
+00:00:39.930 --> 00:00:42.360
+not just to publish a paper.
+
+14
+00:00:42.360 --> 00:00:46.155
+When the ground truth
+is externally defined,
+
+15
+00:00:46.155 --> 00:00:49.020
+then there are
+fewer problems with
+
+16
+00:00:49.020 --> 00:00:53.160
+HLP when the drought really
+is some real drought-proof.
+
+17
+00:00:53.160 --> 00:00:57.630
+For example, I've done a lot
+of work on medical imaging,
+
+18
+00:00:57.630 --> 00:01:00.210
+working on your AI for
+
+19
+00:01:00.210 --> 00:01:03.195
+diagnosing from X-rays
+or things like these.
+
+20
+00:01:03.195 --> 00:01:05.340
+Given an X-ray image,
+
+21
+00:01:05.340 --> 00:01:08.130
+if you want to
+predict a diagnosis,
+
+22
+00:01:08.130 --> 00:01:13.200
+if the diagnosis is defined
+according to, say, a biopsy,
+
+23
+00:01:13.200 --> 00:01:16.035
+so your biological
+or medical tests,
+
+24
+00:01:16.035 --> 00:01:20.490
+then HLP helps you measure
+how well does a doctor versus
+
+25
+00:01:20.490 --> 00:01:23.580
+a learning algorithm
+predict the outcome
+
+26
+00:01:23.580 --> 00:01:27.240
+of a biopsy or a
+biological medical tests.
+
+27
+00:01:27.240 --> 00:01:29.745
+I find that to be really useful.
+
+28
+00:01:29.745 --> 00:01:33.330
+But when the ground truth
+is defined by a human,
+
+29
+00:01:33.330 --> 00:01:35.715
+maybe even a doctor
+labeled an X-ray image,
+
+30
+00:01:35.715 --> 00:01:38.205
+then HLP is just measuring
+
+31
+00:01:38.205 --> 00:01:40.620
+how well can one doctor predict
+
+32
+00:01:40.620 --> 00:01:43.320
+another doctor's label
+versus how well can
+
+33
+00:01:43.320 --> 00:01:47.220
+one learning algorithm predict
+another doctor's label.
+
+34
+00:01:47.220 --> 00:01:49.304
+That too is useful,
+
+35
+00:01:49.304 --> 00:01:51.360
+but it's different than if you're
+
+36
+00:01:51.360 --> 00:01:53.730
+measuring how well you versus
+
+37
+00:01:53.730 --> 00:01:55.560
+a doctor are predicting
+
+38
+00:01:55.560 --> 00:01:58.965
+some ground truth outcome
+from a medical biopsy.
+
+39
+00:01:58.965 --> 00:02:00.340
+To summarize, when
+
+40
+00:02:00.340 --> 00:02:03.299
+the ground truth label
+is externally defined,
+
+41
+00:02:03.299 --> 00:02:06.405
+such as the medical biopsy,
+
+42
+00:02:06.405 --> 00:02:09.840
+then HLP gives an estimate
+for base error and
+
+43
+00:02:09.840 --> 00:02:12.210
+irreducible error in
+terms of predicting
+
+44
+00:02:12.210 --> 00:02:15.475
+the outcome of that
+medical test, the biopsy.
+
+45
+00:02:15.475 --> 00:02:17.760
+But there are also a
+lot of problems with
+
+46
+00:02:17.760 --> 00:02:20.490
+the ground truth is just
+another human label.
+
+47
+00:02:20.490 --> 00:02:23.520
+The visual inspection
+example we had from
+
+48
+00:02:23.520 --> 00:02:26.865
+the previous video showed this,
+
+49
+00:02:26.865 --> 00:02:32.790
+where the inspector had
+66.7 percent accuracy.
+
+50
+00:02:32.790 --> 00:02:39.375
+Rather than just aspiring to
+beat the human inspector,
+
+51
+00:02:39.375 --> 00:02:44.310
+it may be more useful to
+see why the ground truth,
+
+52
+00:02:44.310 --> 00:02:46.740
+which is just some other
+inspector compared
+
+53
+00:02:46.740 --> 00:02:49.655
+to this inspector don't agree.
+
+54
+00:02:49.655 --> 00:02:51.960
+For example, if we look at
+
+55
+00:02:51.960 --> 00:02:55.050
+the length of the different
+scratches that they labeled,
+
+56
+00:02:55.050 --> 00:02:57.180
+say, on these six examples,
+
+57
+00:02:57.180 --> 00:03:00.405
+these were the length
+of the scratches.
+
+58
+00:03:00.405 --> 00:03:05.100
+If we speak of the inspectors
+and have them agree that
+
+59
+00:03:05.100 --> 00:03:09.525
+0.3 mm is the threshold
+
+60
+00:03:09.525 --> 00:03:12.449
+above which a stretch
+becomes a defect,
+
+61
+00:03:12.449 --> 00:03:17.130
+then what we realize is
+that for the first example,
+
+62
+00:03:17.130 --> 00:03:20.280
+both label that one
+totally appropriately.
+
+63
+00:03:20.280 --> 00:03:22.140
+For the second example,
+
+64
+00:03:22.140 --> 00:03:26.280
+the ground truth here is
+one but is less than 0.3,
+
+65
+00:03:26.280 --> 00:03:29.790
+so we really should
+change this to zero,
+
+66
+00:03:29.790 --> 00:03:34.080
+then 0.5 guess 1 1, 0.2 000.1.
+
+67
+00:03:34.080 --> 00:03:37.620
+This example has
+a stretch of 0.1,
+
+68
+00:03:37.620 --> 00:03:41.445
+but really this should
+have been a zero.
+
+69
+00:03:41.445 --> 00:03:44.715
+If we go through this
+exercise of getting
+
+70
+00:03:44.715 --> 00:03:49.875
+the ground truth label and
+this inspector to agree,
+
+71
+00:03:49.875 --> 00:03:53.520
+then we actually just raise
+human-level performance
+
+72
+00:03:53.520 --> 00:03:57.210
+from 66.7 percent to 100 percent,
+
+73
+00:03:57.210 --> 00:03:59.925
+at least as measured
+on these six examples.
+
+74
+00:03:59.925 --> 00:04:02.940
+But notice what we've done,
+
+75
+00:04:02.940 --> 00:04:06.780
+by raising HLP to 100
+percent we've made
+
+76
+00:04:06.780 --> 00:04:08.485
+it pretty much impossible for
+
+77
+00:04:08.485 --> 00:04:10.815
+learning algorithm to beat HLP,
+
+78
+00:04:10.815 --> 00:04:12.270
+so that seems terrible.
+
+79
+00:04:12.270 --> 00:04:14.700
+You can't tell the
+business owner anymore,
+
+80
+00:04:14.700 --> 00:04:17.850
+you beat HLP, and thus
+they must use your system.
+
+81
+00:04:17.850 --> 00:04:21.600
+But the benefit of this is
+you now have much cleaner,
+
+82
+00:04:21.600 --> 00:04:24.180
+more consistent data, and that
+
+83
+00:04:24.180 --> 00:04:25.620
+ultimately will allow
+
+84
+00:04:25.620 --> 00:04:27.810
+your learning algorithm
+to do better.
+
+85
+00:04:27.810 --> 00:04:29.970
+When you go is to come up with
+
+86
+00:04:29.970 --> 00:04:32.805
+a learning algorithm
+that actually generates
+
+87
+00:04:32.805 --> 00:04:35.100
+accurate predictions rather than
+
+88
+00:04:35.100 --> 00:04:38.915
+just proof for some reason
+that you can beat HLP.
+
+89
+00:04:38.915 --> 00:04:41.910
+I find this approach
+of working to
+
+90
+00:04:41.910 --> 00:04:45.165
+raise HLP to be more useful.
+
+91
+00:04:45.165 --> 00:04:46.575
+To summarize,
+
+92
+00:04:46.575 --> 00:04:50.430
+when the ground truth label
+y comes from a human,
+
+93
+00:04:50.430 --> 00:04:52.275
+HLP being
+
+94
+00:04:52.275 --> 00:04:55.590
+quite a bit less than 100
+percent may just indicate
+
+95
+00:04:55.590 --> 00:04:57.720
+that the labeling instructions or
+
+96
+00:04:57.720 --> 00:05:01.215
+labeling convention is ambiguous.
+
+97
+00:05:01.215 --> 00:05:03.510
+On the last slide,
+you saw an example of
+
+98
+00:05:03.510 --> 00:05:05.835
+this in visual inspection.
+
+99
+00:05:05.835 --> 00:05:09.085
+You also see this in
+speech recognition where
+
+100
+00:05:09.085 --> 00:05:14.150
+the camera versus ellipses...,
+
+101
+00:05:14.690 --> 00:05:18.730
+that type of ambiguous
+labeling convention will
+
+102
+00:05:18.730 --> 00:05:22.045
+also cause HLP to be less
+than 100 hundred percent.
+
+103
+00:05:22.045 --> 00:05:24.565
+Improving label consistency
+
+104
+00:05:24.565 --> 00:05:28.200
+will raise human-level
+performance.
+
+105
+00:05:28.200 --> 00:05:29.950
+This makes it harder,
+
+106
+00:05:29.950 --> 00:05:32.650
+unfortunately for your
+learning algorithm to beat
+
+107
+00:05:32.650 --> 00:05:35.350
+HLP by the more consistent labels
+
+108
+00:05:35.350 --> 00:05:37.870
+who raise your machine
+learning album performance,
+
+109
+00:05:37.870 --> 00:05:39.550
+which is ultimately likely to
+
+110
+00:05:39.550 --> 00:05:41.885
+benefit the actual application.
+
+111
+00:05:41.885 --> 00:05:46.285
+Far we've been discussing
+HLP on unstructured data,
+
+112
+00:05:46.285 --> 00:05:50.600
+but some of these issues apply
+to structure data as well.
+
+113
+00:05:50.600 --> 00:05:55.390
+You already know that
+structured data problems are
+
+114
+00:05:55.390 --> 00:05:57.670
+less likely to
+involve human labors
+
+115
+00:05:57.670 --> 00:06:00.220
+and thus HLP is less
+frequently use.
+
+116
+00:06:00.220 --> 00:06:01.950
+But there are exceptions.
+
+117
+00:06:01.950 --> 00:06:05.860
+You saw previously the
+user ID emerging example,
+
+118
+00:06:05.860 --> 00:06:08.140
+where you might
+have a human label,
+
+119
+00:06:08.140 --> 00:06:11.500
+where the two records
+belong to the same person.
+
+120
+00:06:11.520 --> 00:06:15.040
+I've worked on projects
+where we will look at
+
+121
+00:06:15.040 --> 00:06:17.665
+network traffic into a computer
+
+122
+00:06:17.665 --> 00:06:20.125
+to try to figure out if
+the computer was hacked,
+
+123
+00:06:20.125 --> 00:06:23.785
+and we as human IT experts
+to provide labels for us.
+
+124
+00:06:23.785 --> 00:06:26.470
+Sometimes it's hard to
+know if a transaction is
+
+125
+00:06:26.470 --> 00:06:30.035
+fraudulent and you just
+ask a human to label that.
+
+126
+00:06:30.035 --> 00:06:35.130
+Or is this a spam account or
+a bot-generated accounts?
+
+127
+00:06:35.130 --> 00:06:37.665
+Or from GPS,
+
+128
+00:06:37.665 --> 00:06:39.945
+what is the mode
+of transportation
+
+129
+00:06:39.945 --> 00:06:41.300
+is this person on foot,
+
+130
+00:06:41.300 --> 00:06:45.210
+or on a bike, or in
+the car, or the bus.
+
+131
+00:06:45.210 --> 00:06:47.885
+It turns out buses
+stop at bus stops,
+
+132
+00:06:47.885 --> 00:06:50.585
+and so you can actually
+tell if someone is
+
+133
+00:06:50.585 --> 00:06:53.525
+in a bus or in a car
+based on the GPS trace.
+
+134
+00:06:53.525 --> 00:06:55.935
+For problems like these,
+
+135
+00:06:55.935 --> 00:06:58.160
+it would be quite
+reasonable to ask
+
+136
+00:06:58.160 --> 00:07:01.354
+a human to label the data,
+
+137
+00:07:01.354 --> 00:07:03.020
+at least on the first pass for
+
+138
+00:07:03.020 --> 00:07:06.260
+a learning algorithm to make
+such predictions as these.
+
+139
+00:07:06.260 --> 00:07:08.330
+When the ground truth
+label you're trying
+
+140
+00:07:08.330 --> 00:07:10.460
+to predict comes from one human,
+
+141
+00:07:10.460 --> 00:07:14.610
+the same questions of
+what does HLP mean?
+
+142
+00:07:14.610 --> 00:07:18.560
+It is a useful baseline to
+figure out what is possible.
+
+143
+00:07:18.560 --> 00:07:21.740
+But sometimes when measuring HLP,
+
+144
+00:07:21.740 --> 00:07:27.665
+you realize that low HLP stems
+from inconsistent labels,
+
+145
+00:07:27.665 --> 00:07:32.270
+and working to improve
+HLP by coming up with
+
+146
+00:07:32.270 --> 00:07:36.440
+a more consistent labeling
+standard will both raise
+
+147
+00:07:36.440 --> 00:07:37.970
+HLP and give you
+
+148
+00:07:37.970 --> 00:07:39.830
+cleaner data with which to
+
+149
+00:07:39.830 --> 00:07:41.900
+improve your learning
+experience performance.
+
+150
+00:07:41.900 --> 00:07:44.420
+Here's what I hope you
+take away from this video.
+
+151
+00:07:44.420 --> 00:07:48.320
+First, HLP is
+important for problems
+
+152
+00:07:48.320 --> 00:07:50.450
+where human-level performance can
+
+153
+00:07:50.450 --> 00:07:52.040
+provide a useful reference.
+
+154
+00:07:52.040 --> 00:07:55.790
+I do measure it and use it as
+a reference for what might
+
+155
+00:07:55.790 --> 00:08:00.005
+be possible and to drive air
+analysis and prioritization.
+
+156
+00:08:00.005 --> 00:08:03.475
+Having said that, when
+you're measuring HLP,
+
+157
+00:08:03.475 --> 00:08:07.420
+if you find the HLP is much
+less than 100 percent,
+
+158
+00:08:07.420 --> 00:08:12.380
+also ask yourself if some
+of the gap between HLP and
+
+159
+00:08:12.380 --> 00:08:14.600
+complete consistency is due
+
+160
+00:08:14.600 --> 00:08:17.660
+to inconsistent
+labeling instructions.
+
+161
+00:08:17.660 --> 00:08:19.865
+Because if that turns
+out to be the case,
+
+162
+00:08:19.865 --> 00:08:23.595
+then improving labeling
+consistency will raise
+
+163
+00:08:23.595 --> 00:08:25.730
+HLP and also give
+
+164
+00:08:25.730 --> 00:08:28.205
+cleaner data for your
+learning algorithm,
+
+165
+00:08:28.205 --> 00:08:29.900
+which will ultimately result in
+
+166
+00:08:29.900 --> 00:08:33.005
+better machine-learning
+algorithm performance.
+
+167
+00:08:33.005 --> 00:08:35.785
+Guess what I hope you take
+away from this video.
+
+168
+00:08:35.785 --> 00:08:39.925
+HLP is useful and important
+for many applications.
+
+169
+00:08:39.925 --> 00:08:42.190
+For problems where
+I think how well
+
+170
+00:08:42.190 --> 00:08:44.610
+humans perform is a
+useful reference,
+
+171
+00:08:44.610 --> 00:08:46.930
+I do measure HLP and I use
+
+172
+00:08:46.930 --> 00:08:49.510
+that to get a sense of
+what might be possible,
+
+173
+00:08:49.510 --> 00:08:51.490
+and also use HLP to
+
+174
+00:08:51.490 --> 00:08:54.655
+drive error analysis
+and preservation.
+
+175
+00:08:54.655 --> 00:08:56.410
+Having said that, if,
+
+176
+00:08:56.410 --> 00:08:58.465
+in the process of measuring HLP,
+
+177
+00:08:58.465 --> 00:09:02.095
+you find that HLP is much less
+than perfect performance,
+
+178
+00:09:02.095 --> 00:09:03.630
+much lower than 100 percent.
+
+179
+00:09:03.630 --> 00:09:05.580
+This is also worth
+asking yourself,
+
+180
+00:09:05.580 --> 00:09:08.550
+if that gap between HLP and
+
+181
+00:09:08.550 --> 00:09:10.900
+100 percent accuracy may be due
+
+182
+00:09:10.900 --> 00:09:13.765
+to inconsistent
+labeling instructions.
+
+183
+00:09:13.765 --> 00:09:15.040
+Because if that's the case,
+
+184
+00:09:15.040 --> 00:09:19.510
+then improving labeling
+consistency will both raise HLP,
+
+185
+00:09:19.510 --> 00:09:21.910
+but more importantly help you get
+
+186
+00:09:21.910 --> 00:09:24.310
+cleaner and more
+consistent labels which
+
+187
+00:09:24.310 --> 00:09:27.850
+would improve your learning
+algorithm's performance.

@@ -1,0 +1,276 @@
+WEBVTT
+
+1
+00:00:00.440 --> 00:00:03.330
+Many of us are used to
+taking a data set and
+
+2
+00:00:03.330 --> 00:00:06.830
+randomly splitting it into train dev and
+tests.
+
+3
+00:00:06.830 --> 00:00:11.248
+It turns out when your data set is
+small having balanced train dev and
+
+4
+00:00:11.248 --> 00:00:16.620
+test set can significantly improve your
+machine learning development process.
+
+5
+00:00:16.620 --> 00:00:17.640
+Let's take a look.
+
+6
+00:00:17.640 --> 00:00:21.240
+Let's use our manufacturing
+visual inspection example.
+
+7
+00:00:21.240 --> 00:00:25.938
+Say your training set has 100 images,
+so pretty small data set and
+
+8
+00:00:25.938 --> 00:00:31.840
+with 30 positive examples, so
+30 defective phones and 70 non defective.
+
+9
+00:00:31.840 --> 00:00:38.960
+If you were to use a train dev test split
+of 60% of the data in the training set,
+
+10
+00:00:38.960 --> 00:00:44.933
+20% in the dev or a validation set and
+20% in the test set say.
+
+11
+00:00:44.933 --> 00:00:49.689
+Then if you were to use
+a random split just by chance
+
+12
+00:00:49.689 --> 00:00:54.334
+is not inconceivable that
+you may end up with 21
+
+13
+00:00:54.334 --> 00:01:00.540
+positive examples in train,
+2 in dev and 7 in tests.
+
+14
+00:01:00.540 --> 00:01:07.950
+This would be quite likely
+just by random chance.
+
+15
+00:01:07.950 --> 00:01:14.550
+And this means the training
+set is 35% positive,
+
+16
+00:01:14.550 --> 00:01:21.900
+not that far from 30% positive
+in the overall dataset,
+
+17
+00:01:21.900 --> 00:01:26.700
+but your dev set is 10% positive and
+
+18
+00:01:26.700 --> 00:01:31.051
+your test set is 35% positive.
+
+19
+00:01:31.051 --> 00:01:37.040
+So 2 out of 20 is 10%, 7 out of 20 is 35%.
+
+20
+00:01:37.040 --> 00:01:42.232
+And this makes your dev set
+quite non representative
+
+21
+00:01:42.232 --> 00:01:46.244
+because in your dev set you have only 2 or
+
+22
+00:01:46.244 --> 00:01:53.640
+10% positive examples rather
+than 30% positive examples.
+
+23
+00:01:53.640 --> 00:01:58.470
+But when your data set is small than
+all of your 20 dev set examples,
+
+24
+00:01:58.470 --> 00:02:03.830
+it's just a higher chance of this,
+slightly less representative split.
+
+25
+00:02:03.830 --> 00:02:09.163
+So what we would really want is for
+the training
+
+26
+00:02:09.163 --> 00:02:14.361
+set to have exactly 18 positive examples,
+
+27
+00:02:14.361 --> 00:02:19.832
+dev set to have exactly
+6 positive examples and
+
+28
+00:02:19.832 --> 00:02:25.747
+the test set to have exactly
+6 positive examples.
+
+29
+00:02:25.747 --> 00:02:29.840
+And this would be 30%, 30% 30%.
+
+30
+00:02:29.840 --> 00:02:36.061
+And if you could get this type of split,
+this would be called a balanced split.
+
+31
+00:02:37.440 --> 00:02:43.560
+Where each of your train, dev and tests
+has exactly 30% positive examples and this
+
+32
+00:02:43.560 --> 00:02:48.751
+makes your data set more representative
+of the true data distribution.
+
+33
+00:02:50.140 --> 00:02:55.055
+There's no need to worry about this
+effect when you have a large data set.
+
+34
+00:02:55.055 --> 00:02:57.252
+If you have a very large data set,
+
+35
+00:02:57.252 --> 00:03:01.572
+a random split will very likely
+be representative, meaning that
+
+36
+00:03:01.572 --> 00:03:07.020
+the percentage of positive examples will
+be quite close to your overall data set.
+
+37
+00:03:07.020 --> 00:03:12.635
+But when you have a small data set
+with just 20 dev set examples and
+
+38
+00:03:12.635 --> 00:03:17.448
+20 test set examples,
+then explicitly making sure you
+
+39
+00:03:17.448 --> 00:03:21.258
+have a balanced split can
+make your dev set and
+
+40
+00:03:21.258 --> 00:03:27.700
+test set more reliable measures of
+your learning algorithms performance.
+
+41
+00:03:27.700 --> 00:03:32.254
+This is one of those little techniques
+that turns out to make a big difference to
+
+42
+00:03:32.254 --> 00:03:35.981
+your performance when you're
+working on a small data problem,
+
+43
+00:03:35.981 --> 00:03:40.740
+but that you don't really need to worry
+about if you have a very large data set.
+
+44
+00:03:40.740 --> 00:03:45.400
+So when you have a smaller data set,
+I hope you consider using a balanced
+
+45
+00:03:45.400 --> 00:03:50.340
+train dev test split as well in terms
+of how you set up your data set.
+
+46
+00:03:50.340 --> 00:03:54.756
+So when you're working on a smaller data
+problem I hope that using a balanced
+
+47
+00:03:54.756 --> 00:03:58.430
+change test split will help you
+with your learning algorithm.
+
+48
+00:03:58.430 --> 00:03:59.950
+And so that's it.
+
+49
+00:03:59.950 --> 00:04:04.248
+Congratulations on getting to
+this point in this course.
+
+50
+00:04:04.248 --> 00:04:07.748
+You've finished the data
+section of videos and
+
+51
+00:04:07.748 --> 00:04:12.930
+in the last two weeks you also
+learned about modeling and deployment.
+
+52
+00:04:12.930 --> 00:04:18.660
+There's just one last optional section
+that you can watch if you want on scoping.
+
+53
+00:04:18.660 --> 00:04:22.520
+I hope you come with me to watch
+the optional scoping videos as well.
+
+54
+00:04:22.520 --> 00:04:26.050
+We'll talk about how to
+select a project to work on.
+
+55
+00:04:26.050 --> 00:04:30.840
+But either way congrats on finishing
+all the required videos of this course.
+
+56
+00:04:30.840 --> 00:04:33.831
+I hope you learned a lot and
+that these ideas will be useful for
+
+57
+00:04:33.831 --> 00:04:35.661
+all the machine learning projects.

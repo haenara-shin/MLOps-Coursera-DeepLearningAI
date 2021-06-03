@@ -1,0 +1,535 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:05.071
+Even when you're learning algorithm is
+doing well On accuracy or F one score or
+
+2
+00:00:05.071 --> 00:00:09.829
+some appropriate metric is often worth
+one last performance audit before you
+
+3
+00:00:09.829 --> 00:00:11.320
+push it to production.
+
+4
+00:00:11.320 --> 00:00:16.680
+And this can sometimes save you from
+significant post deployment problems.
+
+5
+00:00:16.680 --> 00:00:18.640
+Let's take a look.
+
+6
+00:00:18.640 --> 00:00:20.340
+You've seen this diagram before.
+
+7
+00:00:20.340 --> 00:00:24.797
+After you've gone around this move
+multiple times to develop a good learning
+
+8
+00:00:24.797 --> 00:00:26.040
+algorithm.
+
+9
+00:00:26.040 --> 00:00:30.340
+It's worthwhile Auditing this
+performance one last time.
+
+10
+00:00:30.340 --> 00:00:31.440
+Yeah.
+
+11
+00:00:31.440 --> 00:00:36.603
+Here's a framework for
+how you can double check your system for
+
+12
+00:00:36.603 --> 00:00:41.690
+accuracy for fairness bias and
+for other possible problems.
+
+13
+00:00:41.690 --> 00:00:46.760
+Step one is brainstorm the different
+ways the system might go wrong.
+
+14
+00:00:46.760 --> 00:00:47.733
+For example,
+
+15
+00:00:47.733 --> 00:00:53.270
+does the algorithm perform sufficiently
+well on different subsets of the data?
+
+16
+00:00:53.270 --> 00:00:58.460
+Such as individuals of a certain ethnicity
+or individuals of different genders?
+
+17
+00:00:58.460 --> 00:01:03.274
+Or does the algorithm make certain
+errors such as false positives and
+
+18
+00:01:03.274 --> 00:01:07.922
+false negatives which you might
+worry about institute datasets or
+
+19
+00:01:07.922 --> 00:01:12.010
+how does it perform on certain rare and
+important causes.
+
+20
+00:01:12.010 --> 00:01:16.607
+So the types of issues we talked
+about in the key challenges video
+
+21
+00:01:16.607 --> 00:01:18.070
+earlier this week.
+
+22
+00:01:18.070 --> 00:01:22.173
+Any of them that concern you,
+You might include them in this
+
+23
+00:01:22.173 --> 00:01:25.786
+brainstormed ways that
+the system might go wrong for
+
+24
+00:01:25.786 --> 00:01:30.250
+all the ways that you're worried
+about the system going wrong.
+
+25
+00:01:30.250 --> 00:01:35.008
+You might then establish metrics to
+assess the performance of your algorithm
+
+26
+00:01:35.008 --> 00:01:36.490
+against these issues.
+
+27
+00:01:36.490 --> 00:01:41.405
+One very common design patterns
+you see is that you often be
+
+28
+00:01:41.405 --> 00:01:45.440
+evaluating performance
+on slices of the data.
+
+29
+00:01:45.440 --> 00:01:50.449
+So rather than evaluating performance
+on your entire death set,
+
+30
+00:01:50.449 --> 00:01:55.640
+you may be taking out all of
+the individuals of a certain ethnicity,
+
+31
+00:01:55.640 --> 00:02:01.195
+all the individuals of a certain gender or
+all of the examples where there
+
+32
+00:02:01.195 --> 00:02:06.510
+is a scratch defect on the smartphone but
+to take a subset of the data.
+
+33
+00:02:06.510 --> 00:02:11.608
+Also called a slice of the data
+to analyze performance on
+
+34
+00:02:11.608 --> 00:02:18.460
+those slices in order to check against
+these things that may the problems.
+
+35
+00:02:18.460 --> 00:02:23.355
+>> After establishing appropriate metrics,
+MLOps tools can also help trigger
+
+36
+00:02:23.355 --> 00:02:27.540
+an automatic evaluation for
+each model to audit this performance.
+
+37
+00:02:27.540 --> 00:02:32.508
+For instance, tensorflow has a package for
+tensorflow model analysis or
+
+38
+00:02:32.508 --> 00:02:37.234
+TFM A that computes detailed metrics
+on new machine learning models,
+
+39
+00:02:37.234 --> 00:02:39.260
+on different slices of data.
+
+40
+00:02:39.260 --> 00:02:43.140
+You learn more about this
+too in the next course.
+
+41
+00:02:43.140 --> 00:02:48.014
+>> And as part of this process,
+I would also advise you to get buy
+
+42
+00:02:48.014 --> 00:02:52.124
+in from the business of
+the product owner that these
+
+43
+00:02:52.124 --> 00:02:56.809
+are the most appropriate set
+of problems to worry about and
+
+44
+00:02:56.809 --> 00:03:03.140
+a reasonable set of metrics to assess
+against these possible problems.
+
+45
+00:03:03.140 --> 00:03:07.973
+And if you do find a problem,
+then it is great that you discovered
+
+46
+00:03:07.973 --> 00:03:12.360
+this problem before pushing
+your system to production and
+
+47
+00:03:12.360 --> 00:03:16.834
+you can then go back to update
+the system to address it before
+
+48
+00:03:16.834 --> 00:03:21.540
+deploying a system that may
+cause problems downstream.
+
+49
+00:03:21.540 --> 00:03:24.885
+Let's walk through this
+framework with an example,
+
+50
+00:03:24.885 --> 00:03:30.386
+I'm going to use speech recognition again,
+if you build a speech recognition system,
+
+51
+00:03:30.386 --> 00:03:34.210
+you might then brainstorm the way
+the system might go wrong.
+
+52
+00:03:34.210 --> 00:03:38.277
+So one thing I've looked at the fall for
+systems I worked on
+
+53
+00:03:38.277 --> 00:03:43.040
+was accuracy on different genders and
+different ethnicities.
+
+54
+00:03:43.040 --> 00:03:47.940
+For example, a speech system that
+does poorly on certain genders may be
+
+55
+00:03:47.940 --> 00:03:50.410
+problematic or also ethnicities.
+
+56
+00:03:50.410 --> 00:03:55.232
+One type of analysis I've done before
+is to carry out analysis of our
+
+57
+00:03:55.232 --> 00:04:00.478
+accuracy depending on the perceived
+accent of the speaker because we want
+
+58
+00:04:00.478 --> 00:04:05.469
+to understand if the speech systems
+performance was a huge function of
+
+59
+00:04:05.469 --> 00:04:10.800
+the accent of the speaker or you might
+worry about the accuracy on different
+
+60
+00:04:10.800 --> 00:04:15.820
+devices because different devices
+may have different microphones.
+
+61
+00:04:15.820 --> 00:04:20.867
+And so if you do much worse on one
+brand of cell phones so that if there
+
+62
+00:04:20.867 --> 00:04:27.011
+is a problem, you can proactively fix it.
+Or finally, this might not be an example
+
+63
+00:04:27.011 --> 00:04:31.320
+you would have thought of but
+prevalence of rude mis-transcriptions.
+
+64
+00:04:31.320 --> 00:04:35.792
+Here's one example of something that
+actually happened to some of deep
+
+65
+00:04:35.792 --> 00:04:37.710
+learning.ai's courses.
+
+66
+00:04:37.710 --> 00:04:42.903
+One of our instructors, Laurence Maroney
+was talking about GANs, generative
+
+67
+00:04:42.903 --> 00:04:48.403
+adversarial networks, but because the
+transcription system was mistranscribing
+
+68
+00:04:48.403 --> 00:04:53.320
+GANs because this unfortunately is
+not a common word in english language.
+
+69
+00:04:53.320 --> 00:04:58.156
+And so, the subtitles had a lot
+of references to gun and gang,
+
+70
+00:04:58.156 --> 00:05:05.160
+which were mistranscriptions of what the
+instructor actually said, which is GAN.
+
+71
+00:05:05.160 --> 00:05:09.409
+So it made it look like there's
+a lot of gun violence in that deep
+
+72
+00:05:09.409 --> 00:05:12.934
+learning.ai course and
+we actually had to go in to fix it
+
+73
+00:05:12.934 --> 00:05:17.700
+because we didn't want that much
+gun gang violence in the subtitles.
+
+74
+00:05:17.700 --> 00:05:22.369
+It turns out more generally
+that mistranscribing someone's
+
+75
+00:05:22.369 --> 00:05:27.036
+speech into a root word or
+a swear word that's perceived much
+
+76
+00:05:27.036 --> 00:05:31.450
+more negatively than a more
+neutral mis transcription.
+
+77
+00:05:31.450 --> 00:05:36.046
+And so are built speech systems as
+well where we pay special attention to
+
+78
+00:05:36.046 --> 00:05:40.797
+avoiding mis transcriptions that
+resulted in the speech system thinking
+
+79
+00:05:40.797 --> 00:05:45.773
+someone said a swear word when maybe
+they didn't actually say that swear word
+
+80
+00:05:45.773 --> 00:05:50.710
+based on this list of brainstorm ways
+that the speech system might go wrong.
+
+81
+00:05:50.710 --> 00:05:55.149
+You can then establish metrics to assess
+performance against these issues on
+
+82
+00:05:55.149 --> 00:05:57.080
+the appropriate slices of data.
+
+83
+00:05:57.080 --> 00:06:02.281
+For example, you can measure the mean
+accuracy of the speech system for
+
+84
+00:06:02.281 --> 00:06:07.831
+different genders and for different
+accents represented in the data set and
+
+85
+00:06:07.831 --> 00:06:11.387
+also check for
+accuracy on different devices and
+
+86
+00:06:11.387 --> 00:06:15.060
+check for offensive or
+roots words in the output.
+
+87
+00:06:15.060 --> 00:06:19.705
+I find that the ways a system
+might go wrong turns out to
+
+88
+00:06:19.705 --> 00:06:22.200
+be very problem dependent.
+
+89
+00:06:22.200 --> 00:06:28.094
+Different industries, different tasks
+will have very different standards and
+
+90
+00:06:28.094 --> 00:06:31.906
+in fact today our standards in A I for
+what to consider
+
+91
+00:06:31.906 --> 00:06:36.870
+an unacceptable level of bias or
+what is there and what is not there.
+
+92
+00:06:36.870 --> 00:06:40.651
+Those standards are still
+continuing to evolve in A I and
+
+93
+00:06:40.651 --> 00:06:42.760
+in many specific industries.
+
+94
+00:06:42.760 --> 00:06:45.819
+So I would advise you to do a search for
+
+95
+00:06:45.819 --> 00:06:50.657
+your industry to see what is
+acceptable and to keep current
+
+96
+00:06:50.657 --> 00:06:55.890
+with standards of fairness and
+all of our growing awareness for
+
+97
+00:06:55.890 --> 00:07:00.740
+how to make our systems more fair and
+less biased.
+
+98
+00:07:00.740 --> 00:07:05.603
+One last tip, I find that rather than
+just one person trying to brainstorm what
+
+99
+00:07:05.603 --> 00:07:09.728
+could go wrong for high stakes
+applications if you can have a team or
+
+100
+00:07:09.728 --> 00:07:14.373
+sometimes even external advisors help
+you brainstorm things that you want
+
+101
+00:07:14.373 --> 00:07:17.319
+to watch out for
+that can reduce the risk of you or
+
+102
+00:07:17.319 --> 00:07:21.780
+your team being caught later by
+something that you hadn't thought of.
+
+103
+00:07:21.780 --> 00:07:24.746
+I know that if standards
+are still evolving for
+
+104
+00:07:24.746 --> 00:07:29.310
+what we consider fair and sufficient
+unbiased in many industries, but
+
+105
+00:07:29.310 --> 00:07:33.642
+this is one of the topics I think would
+be good for us to get ahead of and
+
+106
+00:07:33.642 --> 00:07:38.813
+to proactively try to identify, measure
+against and solve problems rather than
+
+107
+00:07:38.813 --> 00:07:43.790
+deploy a system to be surprised much
+later by some unexpected consequences.
+
+108
+00:07:43.790 --> 00:07:49.410
+So that's it for
+performance auditing with this.
+
+109
+00:07:49.410 --> 00:07:54.185
+I hope you have higher confidence in your
+learning algorithm when you go out to
+
+110
+00:07:54.185 --> 00:07:55.661
+push it to production.

@@ -1,0 +1,834 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.340
+In the last video, you saw how
+
+2
+00:00:02.340 --> 00:00:05.835
+the right bounding boxes for
+an image can be ambiguous.
+
+3
+00:00:05.835 --> 00:00:10.665
+Let's take a look at some more
+label ambiguity examples.
+
+4
+00:00:10.665 --> 00:00:13.170
+We briefly touched on
+
+5
+00:00:13.170 --> 00:00:16.530
+speech recognition in the
+first week of this course.
+
+6
+00:00:16.530 --> 00:00:18.345
+Here's another example.
+
+7
+00:00:18.345 --> 00:00:21.340
+Given this audio clip,
+
+8
+00:00:24.460 --> 00:00:26.960
+sounds like someone
+was standing on
+
+9
+00:00:26.960 --> 00:00:28.820
+a busy road side asking for
+
+10
+00:00:28.820 --> 00:00:32.520
+the nearest gas station
+and then a car drove past.
+
+11
+00:00:32.520 --> 00:00:34.415
+Did they say something
+right after that?
+
+12
+00:00:34.415 --> 00:00:37.020
+I don't know. One way to
+
+13
+00:00:37.020 --> 00:00:40.590
+transcribe this would be
+"Um, nearest gas station."
+
+14
+00:00:40.590 --> 00:00:45.120
+In some places, people
+spell "um" with two m's.
+
+15
+00:00:45.120 --> 00:00:47.395
+That would be a different
+way to spell it.
+
+16
+00:00:47.395 --> 00:00:49.820
+We could have used dot-dot-dot or
+
+17
+00:00:49.820 --> 00:00:52.040
+ellipses instead of
+the comma as well,
+
+18
+00:00:52.040 --> 00:00:53.920
+which would be another ambiguity.
+
+19
+00:00:53.920 --> 00:00:58.715
+Or given the audio had
+noise after the last words.
+
+20
+00:00:58.715 --> 00:01:00.990
+Nearest gas station.
+
+21
+00:01:01.780 --> 00:01:05.315
+Did they say something
+after nearest gas station?
+
+22
+00:01:05.315 --> 00:01:07.280
+I'm not sure actually.
+
+23
+00:01:07.280 --> 00:01:11.090
+Would you transcribe
+it like this instead?
+
+24
+00:01:11.090 --> 00:01:15.380
+There are combinatorially
+many ways to transcribe this.
+
+25
+00:01:15.380 --> 00:01:18.604
+With one M or two M's,
+comma or ellipses,
+
+26
+00:01:18.604 --> 00:01:22.360
+whether to write unintelligible
+at the end of this.
+
+27
+00:01:22.360 --> 00:01:25.460
+Being able to standardize
+on one convention will
+
+28
+00:01:25.460 --> 00:01:28.340
+help your speech
+recognition algorithm.
+
+29
+00:01:28.340 --> 00:01:32.075
+Let's also look an example
+of structured data.
+
+30
+00:01:32.075 --> 00:01:35.495
+A common application in
+
+31
+00:01:35.495 --> 00:01:39.255
+many large companies
+is user ID merge.
+
+32
+00:01:39.255 --> 00:01:40.625
+That's when you have
+
+33
+00:01:40.625 --> 00:01:44.900
+multiple data records that
+you think correspond to
+
+34
+00:01:44.900 --> 00:01:47.150
+the same person and you want to
+
+35
+00:01:47.150 --> 00:01:50.310
+merge these user data
+records together.
+
+36
+00:01:50.310 --> 00:01:53.090
+For example, say you
+run a website that
+
+37
+00:01:53.090 --> 00:01:56.270
+offers online listings of jobs.
+
+38
+00:01:56.270 --> 00:01:59.585
+This may be one data record that
+
+39
+00:01:59.585 --> 00:02:00.620
+you have from one of
+
+40
+00:02:00.620 --> 00:02:03.110
+your registered users
+with the email,
+
+41
+00:02:03.110 --> 00:02:05.705
+first name, last
+name and address.
+
+42
+00:02:05.705 --> 00:02:09.050
+Now, say your company acquires
+
+43
+00:02:09.050 --> 00:02:11.870
+a second company that runs
+
+44
+00:02:11.870 --> 00:02:15.035
+a mobile app that
+allows people to login,
+
+45
+00:02:15.035 --> 00:02:16.790
+to chat and get advice from each
+
+46
+00:02:16.790 --> 00:02:19.205
+other about their resumes.
+
+47
+00:02:19.205 --> 00:02:21.560
+It seems synergistic
+for your business.
+
+48
+00:02:21.560 --> 00:02:24.185
+If you run a listing
+of online jobs,
+
+49
+00:02:24.185 --> 00:02:27.890
+maybe you merge or acquire
+a second company that runs
+
+50
+00:02:27.890 --> 00:02:30.470
+a mobile app that lets
+people chat about
+
+51
+00:02:30.470 --> 00:02:34.220
+their resumes and
+from this mobile app,
+
+52
+00:02:34.220 --> 00:02:37.760
+you have a different
+database of users.
+
+53
+00:02:37.760 --> 00:02:44.725
+Given this data
+record and this one,
+
+54
+00:02:44.725 --> 00:02:48.490
+do you think these two
+are the same person?
+
+55
+00:02:48.490 --> 00:02:52.550
+One approach to the
+User ID merge problem,
+
+56
+00:02:52.550 --> 00:02:55.790
+is the use of supervised
+learning algorithm that takes as
+
+57
+00:02:55.790 --> 00:02:59.600
+inputs to user data
+records and tries to
+
+58
+00:02:59.600 --> 00:03:03.500
+outputs either one or
+zero based on whether it
+
+59
+00:03:03.500 --> 00:03:05.330
+thinks these two are actually
+
+60
+00:03:05.330 --> 00:03:07.885
+the same physical human being.
+
+61
+00:03:07.885 --> 00:03:11.030
+If you have a way to get
+ground true data records,
+
+62
+00:03:11.030 --> 00:03:12.920
+such as if a handful
+of users are willing
+
+63
+00:03:12.920 --> 00:03:14.975
+to explicitly link
+the two accounts,
+
+64
+00:03:14.975 --> 00:03:17.600
+then that could be a good set of
+
+65
+00:03:17.600 --> 00:03:20.720
+labeled examples to
+train an algorithm.
+
+66
+00:03:20.720 --> 00:03:24.545
+But if you don't have such
+a ground true set of data,
+
+67
+00:03:24.545 --> 00:03:30.050
+what many companies have
+done is ask human labors,
+
+68
+00:03:30.050 --> 00:03:31.880
+sometimes a product
+management team
+
+69
+00:03:31.880 --> 00:03:34.190
+to just manually look
+at some pairs of
+
+70
+00:03:34.190 --> 00:03:36.440
+records that have
+been filtered to have
+
+71
+00:03:36.440 --> 00:03:40.790
+maybe similar names
+or similar ZIP codes,
+
+72
+00:03:40.790 --> 00:03:43.895
+and then to just use human
+judgment to determine
+
+73
+00:03:43.895 --> 00:03:48.235
+if these two records appear
+to be the same person.
+
+74
+00:03:48.235 --> 00:03:51.190
+Because whether these
+two records really
+
+75
+00:03:51.190 --> 00:03:54.220
+is the same person, is
+genuinely ambiguous.
+
+76
+00:03:54.220 --> 00:03:56.440
+They may and they may not be
+
+77
+00:03:56.440 --> 00:04:01.655
+different people will label
+these records inconsistently.
+
+78
+00:04:01.655 --> 00:04:05.005
+If there's a way to just get them
+
+79
+00:04:05.005 --> 00:04:08.245
+to label the data a
+little more consistently,
+
+80
+00:04:08.245 --> 00:04:11.260
+you see some examples
+of how to do this later
+
+81
+00:04:11.260 --> 00:04:14.455
+even when the ground
+truth is ambiguous,
+
+82
+00:04:14.455 --> 00:04:15.940
+then that can help
+
+83
+00:04:15.940 --> 00:04:18.130
+the performance of your
+learning algorithm.
+
+84
+00:04:18.130 --> 00:04:19.960
+User ID merging is
+
+85
+00:04:19.960 --> 00:04:22.335
+a very common function
+in many companies.
+
+86
+00:04:22.335 --> 00:04:24.190
+Let me just ask you to please do
+
+87
+00:04:24.190 --> 00:04:28.820
+this only in ways
+that are respectful
+
+88
+00:04:28.820 --> 00:04:31.070
+of the users data and
+
+89
+00:04:31.070 --> 00:04:35.780
+their privacy and only if
+you're using the data in a way,
+
+90
+00:04:35.780 --> 00:04:39.520
+consistence with what they
+have given you permission for.
+
+91
+00:04:39.520 --> 00:04:42.535
+User privacy is really important.
+
+92
+00:04:42.535 --> 00:04:46.645
+A few other examples
+from structured data.
+
+93
+00:04:46.645 --> 00:04:48.710
+If you are trying to use
+
+94
+00:04:48.710 --> 00:04:52.760
+the learning algorithm to
+look at the user account like
+
+95
+00:04:52.760 --> 00:05:02.790
+this and predict is it a
+bot or a spam account?
+
+96
+00:05:04.970 --> 00:05:08.820
+Sometimes that can be ambiguous.
+
+97
+00:05:08.820 --> 00:05:13.145
+Or if you look at
+a online purchase,
+
+98
+00:05:13.145 --> 00:05:17.890
+is this a 40-length transaction?
+
+99
+00:05:17.890 --> 00:05:21.290
+Has someone stolen
+accounts and is using
+
+100
+00:05:21.290 --> 00:05:23.270
+stolen accounts to interact
+
+101
+00:05:23.270 --> 00:05:25.895
+with your websites or
+to make purchases?
+
+102
+00:05:25.895 --> 00:05:29.530
+Sometimes that too is ambiguous.
+
+103
+00:05:29.530 --> 00:05:32.225
+Or if you look at
+
+104
+00:05:32.225 --> 00:05:34.895
+someone's interactions
+with your website
+
+105
+00:05:34.895 --> 00:05:36.725
+and you want to know,
+
+106
+00:05:36.725 --> 00:05:38.750
+are they looking for a new job at
+
+107
+00:05:38.750 --> 00:05:40.850
+this moment in time based on
+
+108
+00:05:40.850 --> 00:05:42.200
+how someone behaves on
+
+109
+00:05:42.200 --> 00:05:44.935
+a job board website
+or a resume chat app,
+
+110
+00:05:44.935 --> 00:05:47.840
+you can sometimes guess if
+they're looking for a job,
+
+111
+00:05:47.840 --> 00:05:49.295
+but it's hard to be sure.
+
+112
+00:05:49.295 --> 00:05:52.100
+That's also a little
+bit ambiguous.
+
+113
+00:05:52.100 --> 00:05:53.720
+In the face of
+
+114
+00:05:53.720 --> 00:05:55.910
+potentially very important and
+
+115
+00:05:55.910 --> 00:05:58.205
+valuable prediction
+tasks like these,
+
+116
+00:05:58.205 --> 00:06:01.200
+the ground truth
+can be ambiguous.
+
+117
+00:06:01.200 --> 00:06:03.920
+If you ask people to take
+
+118
+00:06:03.920 --> 00:06:05.240
+their best guess at
+
+119
+00:06:05.240 --> 00:06:08.305
+the ground truth label
+for tasks like these,
+
+120
+00:06:08.305 --> 00:06:11.420
+giving labeling instructions
+that results in
+
+121
+00:06:11.420 --> 00:06:16.220
+more consistent and less
+noisy and less random labels
+
+122
+00:06:16.220 --> 00:06:19.220
+will improve the performance
+of your learning algorithm.
+
+123
+00:06:19.220 --> 00:06:24.769
+When defining the data for
+your learning algorithm,
+
+124
+00:06:24.769 --> 00:06:29.385
+here are some
+important questions.
+
+125
+00:06:29.385 --> 00:06:32.295
+First, what is the input x?
+
+126
+00:06:32.295 --> 00:06:34.460
+For example, if you are trying to
+
+127
+00:06:34.460 --> 00:06:36.875
+detect defects on smart phones,
+
+128
+00:06:36.875 --> 00:06:38.900
+for the pictures you're taking,
+
+129
+00:06:38.900 --> 00:06:40.505
+is the lighting good enough?
+
+130
+00:06:40.505 --> 00:06:42.605
+Is the camera
+contrast good enough?
+
+131
+00:06:42.605 --> 00:06:45.140
+Is the camera
+resolution good enough?
+
+132
+00:06:45.140 --> 00:06:49.235
+If you find that you have a
+bunch of pictures like these,
+
+133
+00:06:49.235 --> 00:06:50.360
+which are so dark,
+
+134
+00:06:50.360 --> 00:06:54.110
+it's hard even for a person
+to see what's going on.
+
+135
+00:06:54.110 --> 00:06:56.780
+The right thing to
+do may not be to
+
+136
+00:06:56.780 --> 00:06:59.570
+take this input x
+and just label it.
+
+137
+00:06:59.570 --> 00:07:02.600
+It may be to go to
+the factory and
+
+138
+00:07:02.600 --> 00:07:06.000
+politely request
+improving the lighting
+
+139
+00:07:06.000 --> 00:07:07.370
+because it is only with
+
+140
+00:07:07.370 --> 00:07:11.075
+this better image quality
+that the labor can then
+
+141
+00:07:11.075 --> 00:07:16.900
+more easily see scratches
+like this and label them.
+
+142
+00:07:16.900 --> 00:07:21.050
+Sometimes if your sensor or
+
+143
+00:07:21.050 --> 00:07:22.550
+your imaging solution or
+
+144
+00:07:22.550 --> 00:07:26.255
+your audio recording
+solution is not good enough,
+
+145
+00:07:26.255 --> 00:07:30.320
+the best thing you
+could do is recognize
+
+146
+00:07:30.320 --> 00:07:32.470
+that if even a person can't
+
+147
+00:07:32.470 --> 00:07:35.330
+look at the input and
+tell us what's going on,
+
+148
+00:07:35.330 --> 00:07:39.065
+then improving the quality of
+
+149
+00:07:39.065 --> 00:07:45.945
+your sensor or improving
+the quality of the input x,
+
+150
+00:07:45.945 --> 00:07:49.315
+that can be an
+important first step
+
+151
+00:07:49.315 --> 00:07:51.160
+to ensuring your
+learning algorithm
+
+152
+00:07:51.160 --> 00:07:53.315
+can have reasonable performance.
+
+153
+00:07:53.315 --> 00:07:56.215
+For structured data problems,
+
+154
+00:07:56.215 --> 00:07:58.990
+defining whether the
+features to include can
+
+155
+00:07:58.990 --> 00:08:00.070
+have a huge impact on
+
+156
+00:08:00.070 --> 00:08:01.825
+your learning
+algorithm's performance.
+
+157
+00:08:01.825 --> 00:08:04.600
+For example, for user ID merge,
+
+158
+00:08:04.600 --> 00:08:08.065
+if you have a way of getting
+the user's location,
+
+159
+00:08:08.065 --> 00:08:10.190
+even a rough GPS location.
+
+160
+00:08:10.190 --> 00:08:13.150
+If you have permission
+from the user to use that,
+
+161
+00:08:13.150 --> 00:08:15.940
+can be a very useful tool
+for deciding whether
+
+162
+00:08:15.940 --> 00:08:19.745
+two user accounts actually
+belong to the same person.
+
+163
+00:08:19.745 --> 00:08:22.690
+Of course, please do this type
+of thing only if you have
+
+164
+00:08:22.690 --> 00:08:26.260
+permission from the user to
+use their data this way.
+
+165
+00:08:26.260 --> 00:08:29.720
+In addition to
+defining the input x,
+
+166
+00:08:29.720 --> 00:08:31.730
+you also have to figure out what
+
+167
+00:08:31.730 --> 00:08:34.070
+should be the target label y.
+
+168
+00:08:34.070 --> 00:08:37.220
+As you've seen from the
+preceding examples,
+
+169
+00:08:37.220 --> 00:08:39.185
+one key question is,
+
+170
+00:08:39.185 --> 00:08:43.150
+how can we ensure labels
+give consistent labels?
+
+171
+00:08:43.150 --> 00:08:44.810
+In the last video and this video,
+
+172
+00:08:44.810 --> 00:08:47.180
+you saw a variety
+of problems with
+
+173
+00:08:47.180 --> 00:08:49.820
+the labels being ambiguous
+or in some cases,
+
+174
+00:08:49.820 --> 00:08:53.705
+the input x not being
+sufficiently informative,
+
+175
+00:08:53.705 --> 00:08:55.715
+such as an image is too dark.
+
+176
+00:08:55.715 --> 00:08:57.890
+Let's take these
+data issues and put
+
+177
+00:08:57.890 --> 00:09:00.275
+them into more
+systematic framework.
+
+178
+00:09:00.275 --> 00:09:02.210
+That will allow us to devise
+
+179
+00:09:02.210 --> 00:09:04.295
+solutions in a more
+systematic way.
+
+180
+00:09:04.295 --> 00:09:07.830
+Let's go on to the next
+video to take a look.

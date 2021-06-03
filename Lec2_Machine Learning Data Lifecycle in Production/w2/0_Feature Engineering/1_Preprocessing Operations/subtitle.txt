@@ -1,0 +1,79 @@
+Now let's talk
+specifically about some of the preprocessing Operations that are used for Feature Engineering. Let me tell you a story. Once when I was
+first starting out, I was in a hurry
+and I got the idea, well, I can just skip
+normalizing my data. I did that. I trained my Model and gosh, it wasn't converging. I tried like adjusting
+hyperparameters and changing the layers of the Model and looking for
+issues with the data. It took me a while to remember. Oh yeah, I didn't normalize. Meaning that had an impact. Well, I haven't made that
+particular mistake again, but, I've made other mistakes instead. Let's hope you don't. First, let's go over what we're going to be talking about. We're going to be going into the main Preprocessing
+Operations. Obviously this is not going
+to be an exhaustive list. There's a lot of things
+you can do to data, but we'll cover some of
+the main ones anyway. It's going to start, of course, with Mapping raw
+data into features. Then we're going to look
+at different features like numerical features and
+categorical feature. Trying to understand how our
+knowledge of the data helps guide the way that we transform our features and
+Engineer better features. Here's some of the main
+Preprocessing Operation. One of the most important
+Preprocessing Operations is Data cleansing, which in broad terms consists in eliminating or correcting
+erroneous data. You'll often need to perform transformations on your data, so scaling or normalizing your numeric values, for example. Since models, especially
+neural networks, are sensitive to the amplitude or range of numerical features, data preprocessing
+helps Machine Learning build better predictive Models. Dimensionality reduction
+involves reducing the number of features by creating
+lower dimension and more robust data represents. Feature construction
+can be used to create new features by using several
+different techniques, which we'll talk
+about some of them. This is an example of
+data that we have. We're looking at a house. This is data from a house, but this is only what we
+start with. The raw data. Feature Engineering
+because it's in performing an analysis of the raw data and then creating a
+feature vector from it. For example, integer data
+can be mapped to floats, and numerical data
+can be normalized. One-hot vectors can be created
+from categorical values. Feature Engineering
+creates features from raw data and you're
+probably familiar with this. In this example,
+we're going to take a categorical feature
+called Street name. We're going to one-hot encoded as a way to make it better
+for a Model to learn from. We're going to take
+that string feature, one-hot encoded through
+Feature Engineering and we get that feature of our Feature Vector
+through one-hot encoding. But creating a vocabulary
+is another way to do that. There's a couple
+of different ways. Tensorflow provides three
+different functions for creating columns of categorical vocabulary
+and other frameworks do very similar things. Categorical column with
+vocabulary lists maps each string to an integer based on an explicit
+vocabulary lists. Feature name is a string which corresponds to the
+categorical feature and vocabulary list is an ordered list that
+defines vocabulary. Feature or categorical
+column with vocabulary file very similar from a file is used when
+you have two long list and this function
+allows you to put the words in a separate file. In this case, vocabulary
+list is defined as a file that will you
+define the list of words. This is very typical for
+working with vocabularies. But you also know
+some things about your data and part of that might be domain knowledge of the
+domain you're working in, or just knowledge of how to
+work with different data. There's very different operations and preprocessing
+techniques that can help you increase the
+predictive information in say, text data. For text, we have things
+like stemming and lemmatization and
+normalization techniques like TF-IDF and n-grams, embeddings and that really focuses on the semantic
+value of the words. That's something we
+know as data scientists or Machine Learning Engineers
+about working with data. Images are similar. There's things that we
+will know about how we can improve the predictive
+qualities of images. Things like clipping them, resizing them, cropping them, blurring them can often
+help using filters like Canny filters or Sobel filters or other photometric distortions. All these things
+can really help us work with image data to improve its predictive
+quality. Key points. Data preprocessing is a
+technique that's used to transform raw data into useful data for
+training the Model. Feature Engineering consists in mapping raw input
+data and creating a feature vector from it using different techniques with
+different kinds of data. It can also include things
+like mapping data from one space into a different space, which depending on the
+characteristics of a Model, say a linear Model
+versus a neural network can have a big difference in how well the Model
+can learn from it.

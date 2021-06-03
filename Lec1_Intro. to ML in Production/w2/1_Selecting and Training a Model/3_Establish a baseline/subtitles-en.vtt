@@ -1,0 +1,825 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.880
+When starting work on a
+machine learning project,
+
+2
+00:00:02.880 --> 00:00:05.670
+one of the most useful
+first step to take is to
+
+3
+00:00:05.670 --> 00:00:08.760
+establish a baseline
+and is usually
+
+4
+00:00:08.760 --> 00:00:10.350
+only after you've established
+
+5
+00:00:10.350 --> 00:00:12.810
+a baseline level of
+performance that you
+
+6
+00:00:12.810 --> 00:00:14.550
+can then have tools
+to efficiently
+
+7
+00:00:14.550 --> 00:00:17.270
+improve on that baseline level.
+
+8
+00:00:17.270 --> 00:00:19.679
+Let's dive into
+some best practices
+
+9
+00:00:19.679 --> 00:00:21.855
+for quickly
+establishing that base.
+
+10
+00:00:21.855 --> 00:00:24.075
+Let me use the speech
+recognition example.
+
+11
+00:00:24.075 --> 00:00:26.040
+Let's say you've
+established that there are
+
+12
+00:00:26.040 --> 00:00:29.205
+four major categories
+of speech in your data.
+
+13
+00:00:29.205 --> 00:00:31.140
+Clear speech, which
+is when someone
+
+14
+00:00:31.140 --> 00:00:33.075
+speaks without much
+background noise.
+
+15
+00:00:33.075 --> 00:00:34.440
+Speech with car noise in
+
+16
+00:00:34.440 --> 00:00:36.085
+the background as if they were in
+
+17
+00:00:36.085 --> 00:00:39.525
+a car when they use your
+speech recognition system.
+
+18
+00:00:39.525 --> 00:00:41.070
+Speech with people noise in
+
+19
+00:00:41.070 --> 00:00:43.440
+the background so that
+they're outdoors with other
+
+20
+00:00:43.440 --> 00:00:45.240
+people's out in the background or
+
+21
+00:00:45.240 --> 00:00:47.340
+speech on a low
+bandwidth connection,
+
+22
+00:00:47.340 --> 00:00:49.680
+what it sounds like
+if you're using
+
+23
+00:00:49.680 --> 00:00:52.170
+a cell phone with a very
+bad cell phone connection.
+
+24
+00:00:52.170 --> 00:00:53.550
+If you accuracy on
+
+25
+00:00:53.550 --> 00:00:57.270
+these four categories of
+speeches, 94, 89, 87,
+
+26
+00:00:57.270 --> 00:00:58.635
+and 70 percent accuracy,
+
+27
+00:00:58.635 --> 00:01:00.930
+you might be tempted
+to say, well,
+
+28
+00:01:00.930 --> 00:01:03.345
+it does worse on low
+bandwidth audio,
+
+29
+00:01:03.345 --> 00:01:05.715
+so let's focus our
+attention on that.
+
+30
+00:01:05.715 --> 00:01:08.280
+But before leaping
+to that conclusion,
+
+31
+00:01:08.280 --> 00:01:11.250
+it'd be useful to
+establish a baseline level
+
+32
+00:01:11.250 --> 00:01:14.580
+of performance on all
+four of these categories.
+
+33
+00:01:14.580 --> 00:01:18.450
+You can do that by asking
+some human transcriptionists
+
+34
+00:01:18.450 --> 00:01:22.290
+to label your data and
+measuring their accuracy.
+
+35
+00:01:22.290 --> 00:01:24.029
+What is human level performance
+
+36
+00:01:24.029 --> 00:01:26.310
+on these four
+categories of speech?
+
+37
+00:01:26.310 --> 00:01:30.000
+In this example, we find
+that if we can improve
+
+38
+00:01:30.000 --> 00:01:31.920
+our performance on clear speech
+
+39
+00:01:31.920 --> 00:01:33.750
+up to human level performance,
+
+40
+00:01:33.750 --> 00:01:35.669
+looks like there's a potential
+
+41
+00:01:35.669 --> 00:01:37.765
+for a one percent
+improvement there.
+
+42
+00:01:37.765 --> 00:01:40.725
+If we can raise our
+performance up to
+
+43
+00:01:40.725 --> 00:01:42.170
+human level performance on
+
+44
+00:01:42.170 --> 00:01:44.495
+audio of car noise
+in the background,
+
+45
+00:01:44.495 --> 00:01:47.015
+maybe four percent improvement,
+
+46
+00:01:47.015 --> 00:01:50.440
+two percent improvement and
+
+47
+00:01:50.440 --> 00:01:55.665
+slightly zero percent improvement
+on low bandwidth audio.
+
+48
+00:01:55.665 --> 00:01:57.920
+Whereas we had previously
+
+49
+00:01:57.920 --> 00:02:00.350
+said without the human
+level of performance,
+
+50
+00:02:00.350 --> 00:02:02.480
+we may have thought working on
+
+51
+00:02:02.480 --> 00:02:04.640
+low bandwidth audio
+was most promising.
+
+52
+00:02:04.640 --> 00:02:06.590
+With this analysis,
+we realized that
+
+53
+00:02:06.590 --> 00:02:08.960
+maybe the low bandwidth
+audio was so garbled.
+
+54
+00:02:08.960 --> 00:02:11.930
+Even people, humans
+can't recognize what was
+
+55
+00:02:11.930 --> 00:02:15.845
+said and it may not be that
+fruitful to work on that.
+
+56
+00:02:15.845 --> 00:02:18.980
+Instead, it may be more
+fruitful to focus our attention
+
+57
+00:02:18.980 --> 00:02:20.870
+on improving speech recognition
+
+58
+00:02:20.870 --> 00:02:22.900
+with car noise in the background.
+
+59
+00:02:22.900 --> 00:02:27.440
+In this example, using
+human level performance,
+
+60
+00:02:27.440 --> 00:02:29.370
+which are sometimes
+abbreviated to
+
+61
+00:02:29.370 --> 00:02:31.520
+HLP, Human Level Performance,
+
+62
+00:02:31.520 --> 00:02:33.530
+gives you a point of
+
+63
+00:02:33.530 --> 00:02:37.130
+comparison or a
+baseline that helps you
+
+64
+00:02:37.130 --> 00:02:39.860
+decide where to
+focus your efforts
+
+65
+00:02:39.860 --> 00:02:43.620
+on car noise data rather
+than on low bandwidth data.
+
+66
+00:02:43.620 --> 00:02:46.010
+It turns out the
+best practices for
+
+67
+00:02:46.010 --> 00:02:48.395
+establishing a baseline
+are quite different,
+
+68
+00:02:48.395 --> 00:02:50.270
+depending on whether
+you're working on
+
+69
+00:02:50.270 --> 00:02:53.500
+unstructured or structured data.
+
+70
+00:02:53.500 --> 00:02:57.605
+Unstructured data refers
+to data sets like images,
+
+71
+00:02:57.605 --> 00:03:00.070
+maybe pictures of cats or audio,
+
+72
+00:03:00.070 --> 00:03:03.800
+like our speech recognition
+example or natural language,
+
+73
+00:03:03.800 --> 00:03:05.810
+like text from
+restaurant reviews.
+
+74
+00:03:05.810 --> 00:03:08.900
+Unstructured data
+tends to be data
+
+75
+00:03:08.900 --> 00:03:12.155
+that humans are very
+good at interpreting.
+
+76
+00:03:12.155 --> 00:03:15.830
+In fact, humans evolve
+to be very good at
+
+77
+00:03:15.830 --> 00:03:18.355
+understanding images and audio
+
+78
+00:03:18.355 --> 00:03:20.700
+and maybe language as well.
+
+79
+00:03:20.700 --> 00:03:24.450
+Because humans are so good
+at unstructured data tasks,
+
+80
+00:03:24.450 --> 00:03:28.199
+measuring human level
+performance or HLP,
+
+81
+00:03:28.199 --> 00:03:31.770
+is often a good way to
+establish a baseline
+
+82
+00:03:31.770 --> 00:03:35.580
+if you are working on
+unstructured data.
+
+83
+00:03:35.580 --> 00:03:38.490
+In contrast, structured data are
+
+84
+00:03:38.490 --> 00:03:40.740
+the giant databases or
+
+85
+00:03:40.740 --> 00:03:43.890
+the giant Excel spreadsheets
+you might have,
+
+86
+00:03:43.890 --> 00:03:48.085
+such as if you run
+an eCom website,
+
+87
+00:03:48.085 --> 00:03:50.535
+the data showing which user
+
+88
+00:03:50.535 --> 00:03:53.670
+purchased at what time
+and for what price,
+
+89
+00:03:53.670 --> 00:03:56.415
+that will be stored
+in a giant database.
+
+90
+00:03:56.415 --> 00:04:00.270
+This type of data stored in
+a giant Excel spreadsheet
+
+91
+00:04:00.270 --> 00:04:04.800
+or some more robust database
+would be an example
+
+92
+00:04:04.800 --> 00:04:06.630
+of structured data or
+
+93
+00:04:06.630 --> 00:04:08.835
+your product and inventory data
+
+94
+00:04:08.835 --> 00:04:11.460
+that would also be stored as
+
+95
+00:04:11.460 --> 00:04:14.820
+structured data
+because humans are not
+
+96
+00:04:14.820 --> 00:04:18.830
+as good at looking at data
+like this to make predictions.
+
+97
+00:04:18.830 --> 00:04:22.545
+We certainly didn't evolve to
+look at giant spreadsheets.
+
+98
+00:04:22.545 --> 00:04:25.170
+Human level
+performance is usually
+
+99
+00:04:25.170 --> 00:04:29.795
+a less useful baseline for
+structured data applications.
+
+100
+00:04:29.795 --> 00:04:31.500
+I find that machine learning
+
+101
+00:04:31.500 --> 00:04:34.300
+developments best practice
+is quite different,
+
+102
+00:04:34.300 --> 00:04:35.860
+depending on whether
+you're working on
+
+103
+00:04:35.860 --> 00:04:39.460
+an unstructured data or
+structured data problem.
+
+104
+00:04:39.460 --> 00:04:41.305
+Keeping in mind this difference,
+
+105
+00:04:41.305 --> 00:04:43.180
+let's take a look at some ways to
+
+106
+00:04:43.180 --> 00:04:46.615
+establish baselines for both
+of these types of problems.
+
+107
+00:04:46.615 --> 00:04:48.530
+We've already talked about
+
+108
+00:04:48.530 --> 00:04:50.450
+human level performance
+as a baseline,
+
+109
+00:04:50.450 --> 00:04:54.275
+particularly for
+unstructured data problems.
+
+110
+00:04:54.275 --> 00:04:57.140
+Another way to establish
+a baseline is to do
+
+111
+00:04:57.140 --> 00:05:00.485
+a literature search
+for state-of-the-art or
+
+112
+00:05:00.485 --> 00:05:03.080
+look at open source
+results to see
+
+113
+00:05:03.080 --> 00:05:04.850
+what other's reports they are
+
+114
+00:05:04.850 --> 00:05:07.415
+able to accomplish on
+this type of problem.
+
+115
+00:05:07.415 --> 00:05:09.170
+For example, if you're building
+
+116
+00:05:09.170 --> 00:05:11.390
+a speech recognition system and
+
+117
+00:05:11.390 --> 00:05:13.610
+others report a certain level
+
+118
+00:05:13.610 --> 00:05:15.910
+of accuracy on data
+that's similar to yours,
+
+119
+00:05:15.910 --> 00:05:17.890
+then that may give
+you a starting point.
+
+120
+00:05:17.890 --> 00:05:20.389
+Using open-source, you may also
+
+121
+00:05:20.389 --> 00:05:22.280
+consider coming out
+
+122
+00:05:22.280 --> 00:05:24.275
+with a quick-and-dirty
+implementation.
+
+123
+00:05:24.275 --> 00:05:25.610
+Now, this is going to the system,
+
+124
+00:05:25.610 --> 00:05:28.040
+but just a quick-and-dirty
+implementation that could
+
+125
+00:05:28.040 --> 00:05:30.980
+start to give you a sense
+of what may be possible.
+
+126
+00:05:30.980 --> 00:05:33.830
+Finally, if you
+already have a machine
+
+127
+00:05:33.830 --> 00:05:37.130
+learning system running
+for your application,
+
+128
+00:05:37.130 --> 00:05:40.490
+then the performance of
+your previous system,
+
+129
+00:05:40.490 --> 00:05:43.760
+performance of your older
+system can also help you
+
+130
+00:05:43.760 --> 00:05:46.160
+establish a baseline that
+
+131
+00:05:46.160 --> 00:05:48.450
+you can then aspire
+to improve on.
+
+132
+00:05:48.450 --> 00:05:51.200
+What a baseline system
+or a baseline level of
+
+133
+00:05:51.200 --> 00:05:52.940
+performance does is it helps to
+
+134
+00:05:52.940 --> 00:05:55.070
+indicate what might be possible.
+
+135
+00:05:55.070 --> 00:05:56.975
+In some cases, such as
+
+136
+00:05:56.975 --> 00:05:59.375
+if you're using human
+level performance,
+
+137
+00:05:59.375 --> 00:06:01.695
+especially on unstructured
+data problems,
+
+138
+00:06:01.695 --> 00:06:04.550
+this baseline can also
+give you a sense of what
+
+139
+00:06:04.550 --> 00:06:07.550
+is the irreducible error
+or what is Bayes error.
+
+140
+00:06:07.550 --> 00:06:09.740
+In other words, what is
+the best that anyone could
+
+141
+00:06:09.740 --> 00:06:11.090
+possibly hope for in
+
+142
+00:06:11.090 --> 00:06:13.100
+terms of performance
+on this problem,
+
+143
+00:06:13.100 --> 00:06:15.260
+such as helping us realize that
+
+144
+00:06:15.260 --> 00:06:17.930
+maybe the low bandwidth audio is
+
+145
+00:06:17.930 --> 00:06:19.880
+so bad that is just not
+
+146
+00:06:19.880 --> 00:06:22.710
+possible to have more
+than 70 percent accuracy,
+
+147
+00:06:22.710 --> 00:06:24.650
+as in our earlier example.
+
+148
+00:06:24.650 --> 00:06:26.480
+By helping us to get
+
+149
+00:06:26.480 --> 00:06:29.239
+a very rough sense of
+what might be possible,
+
+150
+00:06:29.239 --> 00:06:31.970
+it can help us be much more
+
+151
+00:06:31.970 --> 00:06:35.865
+efficient in terms of
+prioritizing what to work on.
+
+152
+00:06:35.865 --> 00:06:39.110
+Sometimes I've seen some
+business teams push
+
+153
+00:06:39.110 --> 00:06:41.255
+a machine learning team to
+
+154
+00:06:41.255 --> 00:06:44.090
+guarantee that the
+learning algorithm will be
+
+155
+00:06:44.090 --> 00:06:46.130
+80 percent accurate or 90 percent
+
+156
+00:06:46.130 --> 00:06:48.080
+or 99 percent accurate before
+
+157
+00:06:48.080 --> 00:06:50.300
+the machine learning team
+has even had a chance
+
+158
+00:06:50.300 --> 00:06:52.765
+to establish a rough baseline.
+
+159
+00:06:52.765 --> 00:06:54.020
+This, unfortunately,
+
+160
+00:06:54.020 --> 00:06:55.340
+puts the machine learning team
+
+161
+00:06:55.340 --> 00:06:56.990
+in a very difficult position.
+
+162
+00:06:56.990 --> 00:06:58.860
+If you are in that position,
+
+163
+00:06:58.860 --> 00:07:00.770
+I would urge you to
+consider pushing
+
+164
+00:07:00.770 --> 00:07:03.770
+back and asking for
+time to establish
+
+165
+00:07:03.770 --> 00:07:06.890
+a rough baseline level of
+performance before giving
+
+166
+00:07:06.890 --> 00:07:09.140
+a more firm prediction
+about how accurate
+
+167
+00:07:09.140 --> 00:07:12.440
+the machine learning system
+can eventually get to be.
+
+168
+00:07:12.440 --> 00:07:14.150
+It helps you to make your case,
+
+169
+00:07:14.150 --> 00:07:17.620
+feel free to tell them
+that I asked you to do so.
+
+170
+00:07:17.620 --> 00:07:20.810
+I think establishing that
+baseline first will help
+
+171
+00:07:20.810 --> 00:07:24.610
+set you and your team up
+better for long-term success.
+
+172
+00:07:24.610 --> 00:07:27.379
+Now to tell us about the
+importance of baseline,
+
+173
+00:07:27.379 --> 00:07:28.730
+there are few additional tips
+
+174
+00:07:28.730 --> 00:07:30.260
+I want to share with you about
+
+175
+00:07:30.260 --> 00:07:31.310
+how to get started
+
+176
+00:07:31.310 --> 00:07:33.515
+quickly on the machine
+learning project.
+
+177
+00:07:33.515 --> 00:07:35.300
+Let's go on to the next video
+
+178
+00:07:35.300 --> 00:07:38.160
+to take a look at
+some of these tips.

@@ -1,0 +1,132 @@
+I'd like to share with you
+a useful framework for thinking about different major
+types of machine learning projects. It turns out that the best practices for
+organizing data for one type can be quite different than the best practices for
+totally different types. Let's take a look at whether these major
+types of machine learning projects. Let's fall in this two by two grid. One axis will be whether your machine
+learning problem uses unstructured data or structured data. I found that the best practices for these
+are very different, mainly because humans are great at processing unstructured data,
+the images and audio and text, and not as good at processing
+structured data like database records. The second axis is
+the size of your data set. Do you have a relatively small data set? Do you have a relatively small datasets or
+do you have a very large data set? There is no precise definition of what
+exactly is small and what is large? But I'm going to use as
+a slightly arbitrary threshold, whether you have over 10,000 examples or
+not. And clearly this boundary
+is a little bit fuzzy and the transitions from small to
+big data sets is a gradual one. But I found that best practices if
+you have, say 100 or 1000 examples, smaller data sets is pretty different
+than we have a very large data set. And the reason I chose the number 10,000
+is that's roughly the size beyond which it becomes quite painful to
+examine every single example yourself. If you have 1000 examples, you could
+probably examine every example yourself. But when you have, 10,000,
+100,000, million examples, it becomes very time consuming for
+you as an individual or maybe a couple of machinery and engineers
+to manually look at every example. So that affects the best
+practices as well. Let's look at some examples. If you are training a manufacturing
+visual inspection from just 100 examples of stretch phones, that's unstructured
+data because this is image data and it's pretty small data set. If you are trying to predict housing
+prices based on the size of the halls and other features of the house,
+from just 52 examples, then there's a structured data set. We've just real value features and
+a relatively small data sets. If you are carrying out speech recognition
+from 50 million train examples, that's unstructured data. But you have a lot of data or
+if you are trying to recommend products. So online shopping recommendations and
+you have a million users in your database, then that's a structured problem with
+relatively large amount of data. For a lot of unstructured data problems, people, Can help you to label data and data augmentation such as synthesizing
+new images or synthesizing new audio. And there's some emerging techniques for
+synthesizing new text as well, but data augmentation can help. So for manufacturing vision inspection,
+you can use data augmentation to maybe generate more pictures of
+smart films or for speech recognition. Data augmentation can help
+you synthesize audio clips with different background noise. In contrast for structured data problems, it can be harder to obtain more data and
+also harder to use data augmentation, if only 50 houses have been so
+recently in that geography. Well, it's hard to synthesize
+new houses that don't exist or if you have a million users
+in your database, again, it's hard to synthesize new
+users that don't really exist. And it's also harder not impossible,
+still worth trying, but it may or may not be possible to get
+humans to label the data. So I find that the best practices for unstructured versus structured
+data are quite different. The second axis is
+the size of your data set. When you have a relatively small data set,
+having clean labels is critical. If you have 100 training examples, then if just one of the examples is
+mislabeled, that's 1% of your data set. And because the data set is small enough
+for you or a small team to go through it efficiently, it may well be aware of your
+while to go through that 100 examples. And make sure that every one of those
+examples is labelled in a clean and consistent way, meaning according
+to a consistent labeling standard. In contrast, if you have a million
+data points, it can be harder. Maybe impossible for a small machine learning team to
+manually go through every example. Having clean labels is still very helpful,
+don't get me wrong. Even when you have a lot of data, clean
+labels is better than non clean ones. But because of the difficulty of
+having the machine learning and jointly go through every example,
+the emphasis is on data processes. In terms of how you collect,
+install the data, the labeling instructions you may write
+for a large team of crowdsource labelers. And once you have executed some
+data process, such as asked a large team of laborers to label a large set
+of audio clips, it can also be much harder to go back and change your mind and
+get everything relabeled. So let's summarize or
+unstructured data problems. You may or may not have a huge
+collection of unlabeled examples x. Maybe in your factory, you actually took
+many thousands of images of smartphones, but you just haven't bothered
+to label all of them yet. This is also common in
+the self driving car industry, where many self driving car companies
+have collected tons of images of cars driving around, but just have not yet
+caught in that data labeled. For these structured data problems,
+you can sometimes get more data by taking your unlabeled data x, and
+asking humans to just label more of it. This doesn't apply to every problem,
+but for the problems where you do have tons of
+unlabeled data, this can be very helpful. And as we have already mentioned,
+data augmentation can also be helpful. For structured data problems, is usually harder to obtain more data
+because you only have so many users or only so many houses were so
+that you can collect data from. And human labeling on average is
+also harder, although there are some exceptions, such as in the Lost Video
+where you saw that we could try to ask people to label examples for
+the user ID merge problem. But in many cases where we ask
+humans to label structure data, even when there's a completely worthwhile
+to ask people to try to label if two records are the same person, there's more
+likely to be a little bit more ambiguity. But even the human labor sometimes
+finds it hard to be sure what is the correct label. Lastly, let's look at small
+versus big data where I used to slightly arbitrary threshold
+of whether you have more or less than say 10,000,
+they put training examples. For small data sets,
+clean labels are critical and the data set may be small enough for you to manually look through the entire
+data set and fix any inconsistent labels. Further, the labeling team is probably
+not that large, it maybe one or two or just a handful of people
+that created all the labels. So if you discover an inconsistency
+in the labels, say one person label Iguanas one way and the different
+person labeled Iguanas a different way. You can just get the two or
+three labels together and have them talk to each other and hash out
+and agree on one labeling convention. For the very large data sets,
+the emphasis has to be on data process. And if you have a 100 labelers or
+even more, it's just harder to get 100 people into a room to all talk
+to each other and hash out the process. And so you might have to rely on
+a smaller team to establish a consistent label definition and then share that
+definition with all, say 100 or more labelers and ask them to
+all implement the same process. I want to leave you with one last thought,
+which is that I found this categorization of problems into unstructured versus
+structured, small versus big data. I found this to be helpful for
+predicting not just whether data processes generalize from
+one to another problem, but also whether other machine learning
+idea is generalized from one to another. So one tip, if you are working on a
+problem from one of these four quadrants, then on average advice from someone
+that has worked on problems in the same quadrants will probably
+be more useful than advice from someone that's worked in
+a different quadrant. I found also in hiring machine learning
+engineers, someone that's worked in the same quadrant as the problem
+I'm trying to solve will usually be able to adapt more quickly to working
+on other problems in that quadrant. Because the instincts and decisions
+are more similar within one quadrant than if you shift to a totally
+different quadrants in discharge. I've sometimes heard people give advice
+like if you are building a computer vision system always get at
+least 1000 labor examples. And I think people that give advice
+like that are well meaning and I appreciate that they're
+trying to give good advice, but I found that advice to not really
+be useful for all problems. Machine learning is very diverse and it's hard to find one size
+fits all advice like that. I've seen computer vision problems
+built with 100 examples or 100 examples for a class, screen systems
+built with 100 million examples. And so if you are looking for advice on
+a machine learning project, try to find someone that's worked in the same quadrant
+as the problem you are trying to solve. Now we talked about one
+formulation of different types of machine learning problems. There's one aspect I would like to
+dive into with you in the next video, which is how for small data problems,
+having clean data is especially important. Let's take a look at the next
+video of why it is true.

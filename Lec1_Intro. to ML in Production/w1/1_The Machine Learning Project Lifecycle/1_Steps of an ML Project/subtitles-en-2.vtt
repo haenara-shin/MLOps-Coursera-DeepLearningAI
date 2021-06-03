@@ -1,0 +1,417 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.620
+When I'm building a machine
+
+2
+00:00:01.620 --> 00:00:03.645
+learning system, I've found that,
+
+3
+00:00:03.645 --> 00:00:06.090
+thinking through the
+Machine Learning project
+
+4
+00:00:06.090 --> 00:00:07.770
+lifecycle is
+
+5
+00:00:07.770 --> 00:00:09.915
+a effective way
+for me to plan out
+
+6
+00:00:09.915 --> 00:00:12.825
+all the steps that
+I need to work on.
+
+7
+00:00:12.825 --> 00:00:15.435
+When you are working on
+Machine Learning system,
+
+8
+00:00:15.435 --> 00:00:17.970
+I think you'll find too
+that this framework allows
+
+9
+00:00:17.970 --> 00:00:20.460
+you to plan out all the
+important things you
+
+10
+00:00:20.460 --> 00:00:22.950
+need to do in order
+to get the system to
+
+11
+00:00:22.950 --> 00:00:25.965
+work and also to
+minimize surprises.
+
+12
+00:00:25.965 --> 00:00:28.140
+Let's dive in. These are
+
+13
+00:00:28.140 --> 00:00:30.795
+the major steps of a
+Machine Learning project.
+
+14
+00:00:30.795 --> 00:00:33.420
+First is scoping,
+in which you have
+
+15
+00:00:33.420 --> 00:00:36.310
+to define the project or
+decide what to work on.
+
+16
+00:00:36.310 --> 00:00:39.050
+What exactly do you want to
+apply Machine Learning to,
+
+17
+00:00:39.050 --> 00:00:42.930
+and what is X and what is Y.
+
+18
+00:00:42.930 --> 00:00:45.980
+After having chosen the project,
+
+19
+00:00:45.980 --> 00:00:49.220
+you then have to collect data or
+
+20
+00:00:49.220 --> 00:00:52.885
+acquire the data you
+need for your algorithm.
+
+21
+00:00:52.885 --> 00:00:55.490
+This includes defining the data
+
+22
+00:00:55.490 --> 00:00:57.214
+and establishing a baseline,
+
+23
+00:00:57.214 --> 00:01:00.605
+and then also labeling
+and organizing the data.
+
+24
+00:01:00.605 --> 00:01:02.240
+There are some best practices for
+
+25
+00:01:02.240 --> 00:01:03.710
+this that are non-intuitive
+
+26
+00:01:03.710 --> 00:01:07.205
+that you learn more about
+later in this week.
+
+27
+00:01:07.205 --> 00:01:08.945
+After you have your data,
+
+28
+00:01:08.945 --> 00:01:11.540
+you then have to train the model.
+
+29
+00:01:11.540 --> 00:01:12.875
+During the model phase,
+
+30
+00:01:12.875 --> 00:01:14.420
+you have to select and train
+
+31
+00:01:14.420 --> 00:01:18.420
+the model and also
+perform error analysis.
+
+32
+00:01:18.420 --> 00:01:20.540
+You might know that
+Machine Learning
+
+33
+00:01:20.540 --> 00:01:23.135
+is often a highly iterative task.
+
+34
+00:01:23.135 --> 00:01:25.235
+During the process
+of error analysis,
+
+35
+00:01:25.235 --> 00:01:27.650
+you may go back and
+update the model,
+
+36
+00:01:27.650 --> 00:01:30.185
+or you may also go back
+to the earlier phase
+
+37
+00:01:30.185 --> 00:01:33.205
+and decide you need to
+collect more data as well.
+
+38
+00:01:33.205 --> 00:01:35.495
+As part of error analysis
+
+39
+00:01:35.495 --> 00:01:37.624
+before taking a system
+to deployments,
+
+40
+00:01:37.624 --> 00:01:41.330
+I'll often also carry
+out a final check,
+
+41
+00:01:41.330 --> 00:01:42.830
+maybe a final audit,
+
+42
+00:01:42.830 --> 00:01:45.830
+to make sure that the system's
+performance is good enough
+
+43
+00:01:45.830 --> 00:01:49.675
+and that it's sufficiently
+reliable for the application.
+
+44
+00:01:49.675 --> 00:01:51.890
+Sometimes, an engineer
+thinks that when you
+
+45
+00:01:51.890 --> 00:01:54.220
+deploy a system, you're done.
+
+46
+00:01:54.220 --> 00:01:55.985
+I now tell most people,
+
+47
+00:01:55.985 --> 00:01:58.145
+when you deploy a system
+for the first time,
+
+48
+00:01:58.145 --> 00:02:00.830
+you are maybe about halfway
+to the finish line,
+
+49
+00:02:00.830 --> 00:02:03.140
+because it's often only after you
+
+50
+00:02:03.140 --> 00:02:05.840
+turn on live traffic
+that you then
+
+51
+00:02:05.840 --> 00:02:08.300
+learn the second half of
+the important lessons
+
+52
+00:02:08.300 --> 00:02:11.720
+needed in order to get the
+system to perform well.
+
+53
+00:02:11.720 --> 00:02:13.685
+To carry out the deployment step,
+
+54
+00:02:13.685 --> 00:02:15.880
+you have to deploy
+it in production,
+
+55
+00:02:15.880 --> 00:02:18.655
+write the software needed to
+put into production,
+
+56
+00:02:18.655 --> 00:02:20.975
+Then also monitor the system,
+
+57
+00:02:20.975 --> 00:02:23.255
+track the data that
+continues to come in,
+
+58
+00:02:23.255 --> 00:02:25.775
+and maintain the system.
+
+59
+00:02:25.775 --> 00:02:28.805
+For example, if the data
+distribution changes,
+
+60
+00:02:28.805 --> 00:02:32.090
+you may need to update the model.
+
+61
+00:02:32.090 --> 00:02:34.805
+After the initial deployment,
+
+62
+00:02:34.805 --> 00:02:38.120
+maintenance will often
+mean going back to
+
+63
+00:02:38.120 --> 00:02:41.420
+perform more error analysis
+and maybe retrain the model,
+
+64
+00:02:41.420 --> 00:02:45.200
+or it might mean taking
+the data you get back.
+
+65
+00:02:45.200 --> 00:02:46.580
+Now that the system is deployed
+
+66
+00:02:46.580 --> 00:02:48.290
+and is running on live data,
+
+67
+00:02:48.290 --> 00:02:50.090
+and feeding that back into
+
+68
+00:02:50.090 --> 00:02:54.935
+your dataset to then
+potentially update your data,
+
+69
+00:02:54.935 --> 00:02:57.980
+retrain the model, and
+so on until you can put
+
+70
+00:02:57.980 --> 00:03:01.375
+an updated model into deployment.
+
+71
+00:03:01.375 --> 00:03:03.980
+I found this framework useful for
+
+72
+00:03:03.980 --> 00:03:07.055
+a very large variety of
+Machine Learning projects.
+
+73
+00:03:07.055 --> 00:03:09.755
+From computer vision,
+to audio data,
+
+74
+00:03:09.755 --> 00:03:13.515
+to structure data, to
+many other applications.
+
+75
+00:03:13.515 --> 00:03:15.260
+Feel free to take a screenshot of
+
+76
+00:03:15.260 --> 00:03:17.150
+this image and use it with
+
+77
+00:03:17.150 --> 00:03:19.160
+your friends or by yourself to
+
+78
+00:03:19.160 --> 00:03:21.910
+plan out your Machine
+Learning project as well.
+
+79
+00:03:21.910 --> 00:03:23.755
+Thanks also to learning AIs,
+
+80
+00:03:23.755 --> 00:03:25.930
+Steven Layett and
+Daniel Pipryata,
+
+81
+00:03:25.930 --> 00:03:28.690
+who were instrumental to
+developing this diagram.
+
+82
+00:03:28.690 --> 00:03:31.685
+In this video, we
+quickly went through
+
+83
+00:03:31.685 --> 00:03:35.120
+the machine learning
+project lifecycle in order
+
+84
+00:03:35.120 --> 00:03:36.770
+to deepen our understanding of
+
+85
+00:03:36.770 --> 00:03:38.750
+this project lifecycle or be
+
+86
+00:03:38.750 --> 00:03:41.900
+useful to walk through
+a concrete example.
+
+87
+00:03:41.900 --> 00:03:43.505
+In the next video,
+
+88
+00:03:43.505 --> 00:03:46.070
+let's step through what
+these different steps of
+
+89
+00:03:46.070 --> 00:03:48.890
+machine learning project
+lifecycle look like in
+
+90
+00:03:48.890 --> 00:03:52.190
+the context of a speech
+recognition application.
+
+91
+00:03:52.190 --> 00:03:54.720
+Let's go on to the next video.

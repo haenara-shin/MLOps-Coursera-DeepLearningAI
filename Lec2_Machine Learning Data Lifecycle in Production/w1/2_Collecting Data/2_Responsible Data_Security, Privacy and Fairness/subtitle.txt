@@ -1,0 +1,125 @@
+One of the key aspects of collecting data
+is to make sure that you're collecting it responsibly and paying attention to things
+like security, privacy and fairness. Let's talk about that now. So we're going to be looking at how
+to responsibly sourced data and ensure that our data is secure and that
+we're managing user privacy correctly. We need to know how to check for
+and ensure fairness and we need to design labelling
+systems that will mitigate bias. So here's an example. These images here show one standard
+open source image classifier trained on the open images data set that does
+not properly apply wedding related labels to images of wedding traditions
+from different parts of the world. On the far left, the classifiers,
+label prediction is recorded as ceremony, Wedding, bride, man, group, woman, dress. So that's pretty correct. The next one is bride ceremony,
+wedding, dress and woman. Again we know that's correct
+at least in the west, that's what a bride typically looks like. The next one over is good as well. So it's ceremony and bride and
+wedding, man, groom, woman, dress again, gets it right. But the one on the end,
+the one on the right. Well, that's for
+an African wedding ceremony, but it's incorrectly labeled
+as simply person or people. Well, it is person your people, but it's
+also a ceremony and there's a bride and a groom and address and so forth. So this is a classic
+case it's an example it's often cited of a problem
+with bias in the data set. So an ML system, the data may
+come from different sources and you need to think about those sources
+as well in your day to say it's not just the data that you have but
+where did you get it from? So you might be building synthetic data,
+you might be doing web scraping your often collecting live data,
+especially when you're running inference. You're often almost always really going
+to be building your own data set, although sometimes you can be
+using an open source data set. It just depends on what's available and
+what you need. But data security and privacy or key,
+they're always going to be important. Data security that really refers
+to the policies and methods and means to secure personal data or
+what's often referred to as PII, Personally Identifiable Information. Data privacy is about proper usage, collection retention, deletion and
+storage of that data. So data collection is not
+just about your model. You need to think about your users and
+treat that data as something that has been given
+to you to be a steward of your taking care of that data you
+need to manage it responsibly. Users really should have control
+over which data is being collected. And it's important to establish
+mechanisms to prevent your system revealing a user's data inadvertently or
+even through a tax. So how you handle your data privacy and
+data security depends on the nature of your data as well
+as the operating conditions and regulations and policies,
+things like GDP are very important here. Users privacy is also really key. So you need to protect personally
+identifiable information or data. Well, there's different ways to do that. Aggregation really helps with that
+if you can aggregate the data so that you can identify individual people
+within it, anonymous, rising it and giving users control over
+what data they share. Also, a good good way to deal with that. You need to consider any laws or regulations regarding user privacy
+that might be affecting in the places where you're going to
+be using your model and redaction. So in a lot of cases you need to give
+users a way to remove some of the data, which will create a less
+complete picture but is part of being
+responsible with your data. So ML Systems can fail users
+in a lot of different ways and we need to strike a balance
+between being fair and accurate and transparent and explainable. Some of the ways that ML Systems
+can fail are through things like representational harm. So representational harm is
+where a system will amplify or reflect a negative stereotype
+about particular groups. Opportunity denial is when a system
+makes predictions that have negative real life consequences that
+could result in lasting impacts. Disproportionate product failure
+is where the effectiveness of your model is really skewed so that
+the outputs happen more frequently for particular groups of users,
+you get skewed outputs more frequently essentially can think
+of as errors more frequently. Harm by disadvantage is where
+a system will infer disadvantageous associations between different
+demographic characteristics and the user behaviors around that. So fairness is important and you should
+really commit to it from the beginning. So what does it mean? Well, being fair means that you're
+going to identify if some groups of people get a different experience
+than others in a problematic way. So for instance, let's assume
+particular gender or occupation or age fields or part of your data and
+that you use it to train a model that predicts whether someone
+would be a reliable new employee. So it's involved in hiring. You need to really check to make
+sure that your model does not consistently predict
+different experiences for some groups in a problematic
+way by ensuring group fairness. So what that means is
+demographic parody and that things are equalized
+across different groups. And you need to make sure
+the accuracy as well is equal or or as close as you can get it. The data collected and labeled by
+humans will reflect their biases in many cases and their personal experiences
+so you have to account for that. Diversifying your user base is
+a good way to move towards fairness, but it's not a guarantee. So ML Systems can amplify biases. You need to be aware of that and
+be careful about it and you really what you want to
+do is deploy fair models. Biases can also arise when you have
+disproportionate representation of some groups within your data or
+no representation at all. So looking at the graphic here,
+what we're trying to show is that part of the people that
+are shown here are in your data, but there's a whole lot of
+other people who are not. So those groups might be stereotyped
+the ones that are not in your data or they might just be presented
+in a less positive way, or they may just get a bad
+experience a lot more often. So to reduce bias for supervised learning, you need accurate labels to train
+your model and serve predictions. The labels are usually coming
+from two broad sources. It depends there's other sources as well,
+but most of the time they're going to be coming from automated systems or
+human Raters, and we'll talk about both. Humans are able to label
+data in different ways. And the more complicated the data is,
+the more you may require an expert to look at that data and
+we'll talk about that in a bit. So humans that label data
+are referred to as Rater's. So who are raters? Well, they could be generalists and
+these are people who just pretty average people who are going to be adding labels
+through a variety of crowdsourcing tools. And these are cases where it's fairly easy
+for people to recognize the correct label. So for example, if you want a human to
+recognize the difference between a cat and a dog, that's something most people
+can do by looking at the image. But in some cases you really
+need a subject matter expert. So in those cases you're often
+using specialized tools and an example of that is is looking
+at X rays for diagnosis. It's not something that
+just anyone can do. You need to make sure that you're
+working with an expert and that labelling tends to
+get pretty expensive. So a subject matter expert or
+domain expert, this is something that you
+need in certain cases. You can also use your users. So this sort of feedback that we
+looked at for our running app. This can often be very valuable if you
+can find a way to work without in your application and it's going to give
+you this ongoing stream of labels for your data if you can make that work. So key points, first of all,
+always account for fair Raters and fair representation in your data
+set to avoid potential biases. And take into account who those labelers
+are and what their incentives are, because if you design
+the incentives incorrectly, you could get a lot of
+garbage in your data. The cost is certainly always going
+to be an important consideration. So if you can find a way to do it
+with a high level of quality but at less cost, that's great. But you need enough data. You need to find a way to do that. It's one of the challenges of
+production applications and finally data freshness too. You're going to be working with data and
+depending on how the world changes around the application and the data
+that you have, you're going to need to refresh that data on some regular basis
+and detect when you need to do that. So those are all issues you need to think
+about to really manage collection of data and to do it in a responsible way.

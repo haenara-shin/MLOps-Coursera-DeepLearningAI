@@ -1,0 +1,607 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.390
+Now let's talk
+specifically about some of
+
+2
+00:00:03.390 --> 00:00:06.120
+the preprocessing Operations that
+
+3
+00:00:06.120 --> 00:00:08.580
+are used for Feature Engineering.
+
+4
+00:00:08.580 --> 00:00:10.815
+Let me tell you a story.
+
+5
+00:00:10.815 --> 00:00:13.665
+Once when I was
+first starting out,
+
+6
+00:00:13.665 --> 00:00:16.620
+I was in a hurry
+and I got the idea,
+
+7
+00:00:16.620 --> 00:00:19.995
+well, I can just skip
+normalizing my data.
+
+8
+00:00:19.995 --> 00:00:23.340
+I did that. I trained my Model
+
+9
+00:00:23.340 --> 00:00:26.925
+and gosh, it wasn't converging.
+
+10
+00:00:26.925 --> 00:00:31.310
+I tried like adjusting
+hyperparameters and
+
+11
+00:00:31.310 --> 00:00:32.660
+changing the layers of
+
+12
+00:00:32.660 --> 00:00:36.020
+the Model and looking for
+issues with the data.
+
+13
+00:00:36.020 --> 00:00:38.675
+It took me a while to remember.
+
+14
+00:00:38.675 --> 00:00:41.570
+Oh yeah, I didn't normalize.
+
+15
+00:00:41.570 --> 00:00:44.170
+Meaning that had an impact.
+
+16
+00:00:44.170 --> 00:00:48.590
+Well, I haven't made that
+particular mistake again,
+
+17
+00:00:48.590 --> 00:00:50.930
+but, I've made other mistakes
+
+18
+00:00:50.930 --> 00:00:53.910
+instead. Let's hope you don't.
+
+19
+00:00:54.560 --> 00:00:56.640
+First, let's go over what
+
+20
+00:00:56.640 --> 00:00:57.915
+we're going to be talking about.
+
+21
+00:00:57.915 --> 00:00:59.220
+We're going to be going into
+
+22
+00:00:59.220 --> 00:01:02.130
+the main Preprocessing
+Operations.
+
+23
+00:01:02.130 --> 00:01:05.200
+Obviously this is not going
+to be an exhaustive list.
+
+24
+00:01:05.200 --> 00:01:07.910
+There's a lot of things
+you can do to data,
+
+25
+00:01:07.910 --> 00:01:10.495
+but we'll cover some of
+the main ones anyway.
+
+26
+00:01:10.495 --> 00:01:12.315
+It's going to start, of course,
+
+27
+00:01:12.315 --> 00:01:15.540
+with Mapping raw
+data into features.
+
+28
+00:01:15.540 --> 00:01:18.830
+Then we're going to look
+at different features like
+
+29
+00:01:18.830 --> 00:01:22.970
+numerical features and
+categorical feature.
+
+30
+00:01:22.970 --> 00:01:28.010
+Trying to understand how our
+knowledge of the data helps
+
+31
+00:01:28.010 --> 00:01:29.600
+guide the way that we
+
+32
+00:01:29.600 --> 00:01:34.590
+transform our features and
+Engineer better features.
+
+33
+00:01:35.300 --> 00:01:39.525
+Here's some of the main
+Preprocessing Operation.
+
+34
+00:01:39.525 --> 00:01:42.180
+One of the most important
+Preprocessing Operations
+
+35
+00:01:42.180 --> 00:01:43.790
+is Data cleansing,
+
+36
+00:01:43.790 --> 00:01:46.670
+which in broad terms consists in
+
+37
+00:01:46.670 --> 00:01:50.480
+eliminating or correcting
+erroneous data.
+
+38
+00:01:50.480 --> 00:01:51.920
+You'll often need to perform
+
+39
+00:01:51.920 --> 00:01:53.615
+transformations on your data,
+
+40
+00:01:53.615 --> 00:01:56.750
+so scaling or normalizing
+
+41
+00:01:56.750 --> 00:01:59.300
+your numeric values, for example.
+
+42
+00:01:59.300 --> 00:02:02.840
+Since models, especially
+neural networks,
+
+43
+00:02:02.840 --> 00:02:05.030
+are sensitive to the amplitude
+
+44
+00:02:05.030 --> 00:02:07.415
+or range of numerical features,
+
+45
+00:02:07.415 --> 00:02:10.475
+data preprocessing
+helps Machine Learning
+
+46
+00:02:10.475 --> 00:02:13.410
+build better predictive Models.
+
+47
+00:02:13.410 --> 00:02:18.110
+Dimensionality reduction
+involves reducing the number of
+
+48
+00:02:18.110 --> 00:02:21.260
+features by creating
+lower dimension
+
+49
+00:02:21.260 --> 00:02:24.355
+and more robust data represents.
+
+50
+00:02:24.355 --> 00:02:27.770
+Feature construction
+can be used to create
+
+51
+00:02:27.770 --> 00:02:31.880
+new features by using several
+different techniques,
+
+52
+00:02:31.880 --> 00:02:34.315
+which we'll talk
+about some of them.
+
+53
+00:02:34.315 --> 00:02:37.610
+This is an example of
+data that we have.
+
+54
+00:02:37.610 --> 00:02:38.795
+We're looking at a house.
+
+55
+00:02:38.795 --> 00:02:40.400
+This is data from a house,
+
+56
+00:02:40.400 --> 00:02:44.580
+but this is only what we
+start with. The raw data.
+
+57
+00:02:44.660 --> 00:02:47.930
+Feature Engineering
+because it's in performing
+
+58
+00:02:47.930 --> 00:02:51.185
+an analysis of the raw data
+
+59
+00:02:51.185 --> 00:02:53.970
+and then creating a
+feature vector from it.
+
+60
+00:02:53.970 --> 00:02:56.930
+For example, integer data
+can be mapped to floats,
+
+61
+00:02:56.930 --> 00:03:00.125
+and numerical data
+can be normalized.
+
+62
+00:03:00.125 --> 00:03:04.114
+One-hot vectors can be created
+from categorical values.
+
+63
+00:03:04.114 --> 00:03:07.300
+Feature Engineering
+creates features
+
+64
+00:03:07.300 --> 00:03:11.860
+from raw data and you're
+probably familiar with this.
+
+65
+00:03:11.900 --> 00:03:15.080
+In this example,
+we're going to take
+
+66
+00:03:15.080 --> 00:03:18.800
+a categorical feature
+called Street name.
+
+67
+00:03:18.800 --> 00:03:22.130
+We're going to one-hot encoded as
+
+68
+00:03:22.130 --> 00:03:26.280
+a way to make it better
+for a Model to learn from.
+
+69
+00:03:26.280 --> 00:03:28.895
+We're going to take
+that string feature,
+
+70
+00:03:28.895 --> 00:03:31.970
+one-hot encoded through
+Feature Engineering and we
+
+71
+00:03:31.970 --> 00:03:33.540
+get that feature of
+
+72
+00:03:33.540 --> 00:03:35.480
+our Feature Vector
+through one-hot encoding.
+
+73
+00:03:35.480 --> 00:03:38.270
+But creating a vocabulary
+is another way to do that.
+
+74
+00:03:38.270 --> 00:03:39.710
+There's a couple
+of different ways.
+
+75
+00:03:39.710 --> 00:03:42.020
+Tensorflow provides three
+different functions
+
+76
+00:03:42.020 --> 00:03:44.060
+for creating columns of
+
+77
+00:03:44.060 --> 00:03:46.970
+categorical vocabulary
+and other frameworks
+
+78
+00:03:46.970 --> 00:03:49.235
+do very similar things.
+
+79
+00:03:49.235 --> 00:03:54.110
+Categorical column with
+vocabulary lists maps
+
+80
+00:03:54.110 --> 00:03:56.510
+each string to an integer
+
+81
+00:03:56.510 --> 00:03:59.895
+based on an explicit
+vocabulary lists.
+
+82
+00:03:59.895 --> 00:04:02.750
+Feature name is a string
+
+83
+00:04:02.750 --> 00:04:05.330
+which corresponds to the
+categorical feature and
+
+84
+00:04:05.330 --> 00:04:07.370
+vocabulary list is
+
+85
+00:04:07.370 --> 00:04:10.855
+an ordered list that
+defines vocabulary.
+
+86
+00:04:10.855 --> 00:04:15.070
+Feature or categorical
+column with vocabulary file
+
+87
+00:04:15.070 --> 00:04:16.580
+very similar from
+
+88
+00:04:16.580 --> 00:04:20.090
+a file is used when
+you have two long list
+
+89
+00:04:20.090 --> 00:04:21.620
+and this function
+allows you to put
+
+90
+00:04:21.620 --> 00:04:24.170
+the words in a separate file.
+
+91
+00:04:24.170 --> 00:04:27.290
+In this case, vocabulary
+list is defined as
+
+92
+00:04:27.290 --> 00:04:31.100
+a file that will you
+define the list of words.
+
+93
+00:04:31.100 --> 00:04:35.490
+This is very typical for
+working with vocabularies.
+
+94
+00:04:36.550 --> 00:04:39.860
+But you also know
+some things about
+
+95
+00:04:39.860 --> 00:04:41.990
+your data and part of that might
+
+96
+00:04:41.990 --> 00:04:44.615
+be domain knowledge of the
+domain you're working in,
+
+97
+00:04:44.615 --> 00:04:49.640
+or just knowledge of how to
+work with different data.
+
+98
+00:04:49.640 --> 00:04:52.100
+There's very different operations
+
+99
+00:04:52.100 --> 00:04:54.290
+and preprocessing
+techniques that can help
+
+100
+00:04:54.290 --> 00:04:57.740
+you increase the
+predictive information
+
+101
+00:04:57.740 --> 00:04:59.745
+in say, text data.
+
+102
+00:04:59.745 --> 00:05:03.530
+For text, we have things
+like stemming and
+
+103
+00:05:03.530 --> 00:05:06.890
+lemmatization and
+normalization techniques
+
+104
+00:05:06.890 --> 00:05:09.320
+like TF-IDF and n-grams,
+
+105
+00:05:09.320 --> 00:05:12.725
+embeddings and that really
+
+106
+00:05:12.725 --> 00:05:16.205
+focuses on the semantic
+value of the words.
+
+107
+00:05:16.205 --> 00:05:19.909
+That's something we
+know as data scientists
+
+108
+00:05:19.909 --> 00:05:23.830
+or Machine Learning Engineers
+about working with data.
+
+109
+00:05:23.830 --> 00:05:25.855
+Images are similar.
+
+110
+00:05:25.855 --> 00:05:28.490
+There's things that we
+will know about how we can
+
+111
+00:05:28.490 --> 00:05:33.170
+improve the predictive
+qualities of images.
+
+112
+00:05:33.170 --> 00:05:34.835
+Things like clipping them,
+
+113
+00:05:34.835 --> 00:05:37.070
+resizing them, cropping them,
+
+114
+00:05:37.070 --> 00:05:40.790
+blurring them can often
+help using filters like
+
+115
+00:05:40.790 --> 00:05:43.070
+Canny filters or Sobel filters
+
+116
+00:05:43.070 --> 00:05:45.605
+or other photometric distortions.
+
+117
+00:05:45.605 --> 00:05:47.720
+All these things
+can really help us
+
+118
+00:05:47.720 --> 00:05:50.060
+work with image data to improve
+
+119
+00:05:50.060 --> 00:05:55.489
+its predictive
+quality. Key points.
+
+120
+00:05:55.489 --> 00:05:58.840
+Data preprocessing is a
+technique that's used to
+
+121
+00:05:58.840 --> 00:06:01.990
+transform raw data into
+
+122
+00:06:01.990 --> 00:06:04.985
+useful data for
+training the Model.
+
+123
+00:06:04.985 --> 00:06:07.930
+Feature Engineering consists in
+
+124
+00:06:07.930 --> 00:06:11.125
+mapping raw input
+data and creating
+
+125
+00:06:11.125 --> 00:06:14.050
+a feature vector from it using
+
+126
+00:06:14.050 --> 00:06:18.145
+different techniques with
+different kinds of data.
+
+127
+00:06:18.145 --> 00:06:21.220
+It can also include things
+like mapping data from
+
+128
+00:06:21.220 --> 00:06:24.355
+one space into a different space,
+
+129
+00:06:24.355 --> 00:06:27.610
+which depending on the
+characteristics of a Model,
+
+130
+00:06:27.610 --> 00:06:30.805
+say a linear Model
+versus a neural network
+
+131
+00:06:30.805 --> 00:06:32.560
+can have a big difference in
+
+132
+00:06:32.560 --> 00:06:35.300
+how well the Model
+can learn from it.

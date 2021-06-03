@@ -1,0 +1,40 @@
+Let's say that era analysis has caused you to decide to focus on improving your outcome learning performance on data with
+a certain audio tag, say speech with car
+noise in the background. Let's take a look
+at how you can take a data centric approach to improving your learning
+outcomes performance. You've heard me speak before about model centric versus
+data centric AI developments. Here's a little more
+detail on what I mean. With a model centric
+view of AI developments, you would take the
+data you have and then try to work really hard to develop a model that does as
+well as possible on the data because a lot of
+academic research on AI was driven by researchers, downloading a benchmark data set and trying to do well
+on that benchmark. Most academic research
+on AI is model centric, because the benchmark data
+set is a fixed quantity. In this view, model
+centric development, you would hold the data fixed
+and iterative the improve. In this model centric view, you would hold the data fixed and iteratively improve
+the code or the model. There's still an
+important role to play in trying to come up
+with better models, but that's a different
+view of AI developments which I think is more useful
+for many applications. Which is to shift a data from a model centric to what
+a data centric view. In this view, we think of the quality of the
+data as paramount, and you can use tools
+such as era analysis or data augmentation
+to systematically improve the data quality. For many applications, I find that if your
+data is good enough, there are multiple models
+that will do just fine. In this view, you can
+instead hold the code fixed and iteratively
+improve the data. There's a role for model
+centric development, and there's a role for
+data centric development. If you've been used
+to model centric thinking for most of your experience with
+machine learning, I would urge you to consider taking a data
+centric view as well, where when you're trying to improve your learning
+outcomes performance, try asking how can you make
+your data set even better? One of the most important
+ways to improve the quality of a data set
+is data augmentation. Let's go on to the next
+video where we'll start to take a look at
+data augmentation.

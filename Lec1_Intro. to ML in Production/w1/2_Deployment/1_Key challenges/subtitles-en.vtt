@@ -1,0 +1,1489 @@
+WEBVTT
+
+1
+00:00:00.150 --> 00:00:03.220
+One of the most
+exciting moments of
+
+2
+00:00:03.220 --> 00:00:05.200
+any machine learning
+project is when you
+
+3
+00:00:05.200 --> 00:00:07.610
+get to deploy your model,
+
+4
+00:00:07.610 --> 00:00:09.825
+but what makes deployment hard?
+
+5
+00:00:09.825 --> 00:00:12.670
+I think there are
+two major categories
+
+6
+00:00:12.670 --> 00:00:15.250
+of challenges in deploying
+a machine learning model.
+
+7
+00:00:15.250 --> 00:00:17.380
+First, are the machine learning
+
+8
+00:00:17.380 --> 00:00:19.030
+or the statistical issues,
+
+9
+00:00:19.030 --> 00:00:22.135
+and second, are the
+software engine issues.
+
+10
+00:00:22.135 --> 00:00:23.770
+Let's start with both of
+these so that you can
+
+11
+00:00:23.770 --> 00:00:25.330
+understand what you need to do to
+
+12
+00:00:25.330 --> 00:00:26.530
+make sure that you have
+
+13
+00:00:26.530 --> 00:00:29.020
+a successful deployment
+of your system.
+
+14
+00:00:29.020 --> 00:00:33.370
+One of the challenges of
+a lot of deployments is,
+
+15
+00:00:33.370 --> 00:00:36.220
+concept drift and, data drift.
+
+16
+00:00:36.220 --> 00:00:38.110
+Loosely, this means what if
+
+17
+00:00:38.110 --> 00:00:39.610
+your data changes after
+
+18
+00:00:39.610 --> 00:00:41.550
+your system has
+already been deployed?
+
+19
+00:00:41.550 --> 00:00:43.900
+I had previously given an example
+
+20
+00:00:43.900 --> 00:00:46.060
+from manufacturing
+where you might have
+
+21
+00:00:46.060 --> 00:00:48.670
+trained a learning
+algorithm to detect
+
+22
+00:00:48.670 --> 00:00:50.560
+scratches on smartphones under
+
+23
+00:00:50.560 --> 00:00:52.284
+one set of lighting conditions,
+
+24
+00:00:52.284 --> 00:00:55.680
+and then maybe the lighting
+in the factory changes.
+
+25
+00:00:55.680 --> 00:00:59.810
+That's one example of the
+distribution of data changers.
+
+26
+00:00:59.810 --> 00:01:02.050
+Let's walk through
+a second example
+
+27
+00:01:02.050 --> 00:01:03.680
+using speech recognition.
+
+28
+00:01:03.680 --> 00:01:05.950
+I train a few speech
+recognition systems,
+
+29
+00:01:05.950 --> 00:01:08.710
+and when I built speech systems,
+
+30
+00:01:08.710 --> 00:01:12.030
+quite often I would have
+some purchased data.
+
+31
+00:01:12.030 --> 00:01:14.200
+This would be some
+purchased or licensed data,
+
+32
+00:01:14.200 --> 00:01:16.900
+which includes both the input x,
+
+33
+00:01:16.900 --> 00:01:19.479
+the audio, as well
+as the transcript
+
+34
+00:01:19.479 --> 00:01:23.195
+y that the speech system
+supports it's output.
+
+35
+00:01:23.195 --> 00:01:25.620
+In addition to data
+
+36
+00:01:25.620 --> 00:01:27.495
+that you might purchase
+from a vendor,
+
+37
+00:01:27.495 --> 00:01:28.800
+you might also have
+
+38
+00:01:28.800 --> 00:01:32.370
+historical user data
+of user speaking to
+
+39
+00:01:32.370 --> 00:01:35.130
+your application together with
+
+40
+00:01:35.130 --> 00:01:38.055
+transcripts of that
+raw user data.
+
+41
+00:01:38.055 --> 00:01:39.630
+Such user data, of course,
+
+42
+00:01:39.630 --> 00:01:40.650
+should be collected with
+
+43
+00:01:40.650 --> 00:01:42.840
+very clear user opt-in
+
+44
+00:01:42.840 --> 00:01:46.725
+permission and clear
+safeguards for user privacy.
+
+45
+00:01:46.725 --> 00:01:49.860
+After you've trained your
+speech recognition system
+
+46
+00:01:49.860 --> 00:01:51.360
+on a data set like this,
+
+47
+00:01:51.360 --> 00:01:54.060
+you might then evaluate
+it on a test set,
+
+48
+00:01:54.060 --> 00:01:56.520
+but because speech data
+does change over time,
+
+49
+00:01:56.520 --> 00:01:58.230
+when I build speech
+recognition systems,
+
+50
+00:01:58.230 --> 00:01:59.490
+sometimes I would collect
+
+51
+00:01:59.490 --> 00:02:02.670
+a dev set or hold
+out validation set
+
+52
+00:02:02.670 --> 00:02:04.485
+as well as test set
+
+53
+00:02:04.485 --> 00:02:07.460
+comprising data from just
+the last few months.
+
+54
+00:02:07.460 --> 00:02:08.850
+You can test it on
+
+55
+00:02:08.850 --> 00:02:11.460
+fairly recent data to make
+sure your system works,
+
+56
+00:02:11.460 --> 00:02:13.800
+even on relatively recent data.
+
+57
+00:02:13.800 --> 00:02:15.660
+After you push the system to
+
+58
+00:02:15.660 --> 00:02:17.595
+deployments, the question is,
+
+59
+00:02:17.595 --> 00:02:19.680
+will the data change
+or after you've
+
+60
+00:02:19.680 --> 00:02:22.425
+run it for a few weeks
+or a few months,
+
+61
+00:02:22.425 --> 00:02:25.650
+has the data changed yet again?
+
+62
+00:02:25.650 --> 00:02:27.880
+The data has changed,
+
+63
+00:02:27.880 --> 00:02:32.170
+such as the language
+changes or maybe people
+
+64
+00:02:32.170 --> 00:02:33.940
+are using a brand new model of
+
+65
+00:02:33.940 --> 00:02:36.420
+smartphone which has a
+different microphone,
+
+66
+00:02:36.420 --> 00:02:37.995
+so the audio sounds different,
+
+67
+00:02:37.995 --> 00:02:39.130
+then the performance of
+
+68
+00:02:39.130 --> 00:02:41.560
+a speech recognition
+system can degrade.
+
+69
+00:02:41.560 --> 00:02:43.465
+It's important for you to
+
+70
+00:02:43.465 --> 00:02:46.420
+recognize how the
+data has changed,
+
+71
+00:02:46.420 --> 00:02:48.280
+and if you need to update
+
+72
+00:02:48.280 --> 00:02:50.680
+your learning
+algorithm as a result.
+
+73
+00:02:50.680 --> 00:02:56.135
+When data changes, sometimes
+it is a gradual change,
+
+74
+00:02:56.135 --> 00:02:59.560
+such as the English
+language which does change,
+
+75
+00:02:59.560 --> 00:03:02.465
+but changes very slowly
+with new vocabulary
+
+76
+00:03:02.465 --> 00:03:06.145
+introduced at a
+relatively slow rate.
+
+77
+00:03:06.145 --> 00:03:11.085
+Sometimes data changes very
+
+78
+00:03:11.085 --> 00:03:15.015
+suddenly where there's a
+sudden shock to a system.
+
+79
+00:03:15.015 --> 00:03:19.445
+For example, when COVID-19
+the pandemic hit,
+
+80
+00:03:19.445 --> 00:03:23.715
+a lot of credit card fraud
+systems started to not work
+
+81
+00:03:23.715 --> 00:03:26.190
+because the purchase patterns
+
+82
+00:03:26.190 --> 00:03:28.950
+of individuals suddenly changed.
+
+83
+00:03:28.950 --> 00:03:31.890
+Many people that did relatively
+little online shopping
+
+84
+00:03:31.890 --> 00:03:36.240
+suddenly started to use
+much more online shopping.
+
+85
+00:03:36.240 --> 00:03:38.460
+The way that people were using
+
+86
+00:03:38.460 --> 00:03:40.980
+credit cards changed
+very suddenly,
+
+87
+00:03:40.980 --> 00:03:45.120
+and his actually tripped up
+a lot of anti fraud systems.
+
+88
+00:03:45.120 --> 00:03:47.310
+This very sudden shift to
+
+89
+00:03:47.310 --> 00:03:49.710
+the data distribution meant
+
+90
+00:03:49.710 --> 00:03:52.170
+that many machine learning
+teams were scrambling
+
+91
+00:03:52.170 --> 00:03:53.400
+a little bit at the start of
+
+92
+00:03:53.400 --> 00:03:56.160
+COVID to collect new
+data and retrain
+
+93
+00:03:56.160 --> 00:03:58.020
+systems in order to make them
+
+94
+00:03:58.020 --> 00:04:01.455
+adapt to this very new
+data distribution.
+
+95
+00:04:01.455 --> 00:04:04.739
+Sometimes the terminology
+of how to describe
+
+96
+00:04:04.739 --> 00:04:09.195
+these data changes is not
+used completely consistently,
+
+97
+00:04:09.195 --> 00:04:12.750
+but sometimes the term
+data drift is used to
+
+98
+00:04:12.750 --> 00:04:16.890
+describe if the input
+distribution x changes,
+
+99
+00:04:16.890 --> 00:04:19.980
+such as if a new politician or
+
+100
+00:04:19.980 --> 00:04:22.350
+celebrity suddenly becomes well
+
+101
+00:04:22.350 --> 00:04:24.915
+known and he's mentioned
+much more than before.
+
+102
+00:04:24.915 --> 00:04:31.720
+The term concept drift refers
+to if the desired mapping.
+
+103
+00:04:31.720 --> 00:04:38.445
+From x to y changes such
+as if, before COVID-19.
+
+104
+00:04:38.445 --> 00:04:40.695
+Perhaps for a given user,
+
+105
+00:04:40.695 --> 00:04:44.135
+a lot of surprising
+online purchases,
+
+106
+00:04:44.135 --> 00:04:47.645
+should have flagged
+that account for fraud.
+
+107
+00:04:47.645 --> 00:04:51.045
+After the start of COVID-19,
+
+108
+00:04:51.045 --> 00:04:52.775
+maybe those same purchases,
+
+109
+00:04:52.775 --> 00:04:55.925
+would not have really
+been any cause for alarm,
+
+110
+00:04:55.925 --> 00:04:57.320
+in terms of flagging.
+
+111
+00:04:57.320 --> 00:05:00.215
+That the credit card
+may have been stolen.
+
+112
+00:05:00.215 --> 00:05:02.465
+Another example of Concept drift,
+
+113
+00:05:02.465 --> 00:05:05.175
+let's say that x is
+the size of a house,
+
+114
+00:05:05.175 --> 00:05:07.130
+and y is the price of a house,
+
+115
+00:05:07.130 --> 00:05:10.110
+because you're trying to
+estimate housing prices.
+
+116
+00:05:10.110 --> 00:05:13.025
+If because of inflation
+or changes in the market,
+
+117
+00:05:13.025 --> 00:05:16.220
+houses may become more
+expensive over time.
+
+118
+00:05:16.220 --> 00:05:17.930
+The same size house,
+
+119
+00:05:17.930 --> 00:05:20.660
+will end up with a higher price.
+
+120
+00:05:20.660 --> 00:05:22.415
+That would be Concept drift.
+
+121
+00:05:22.415 --> 00:05:24.950
+Maybe the size of
+houses haven't changed,
+
+122
+00:05:24.950 --> 00:05:27.875
+but the price of a
+given house changes.
+
+123
+00:05:27.875 --> 00:05:29.765
+Whereas data drift would be if,
+
+124
+00:05:29.765 --> 00:05:32.175
+say, people start
+building larger houses,
+
+125
+00:05:32.175 --> 00:05:34.610
+or start building
+smaller houses and
+
+126
+00:05:34.610 --> 00:05:36.710
+thus the input distribution of
+
+127
+00:05:36.710 --> 00:05:39.435
+the sizes of houses
+actually changes over time.
+
+128
+00:05:39.435 --> 00:05:42.275
+When you deploy a
+machine learning system,
+
+129
+00:05:42.275 --> 00:05:44.310
+one of the most important tasks,
+
+130
+00:05:44.310 --> 00:05:46.820
+will often be to
+make sure you can
+
+131
+00:05:46.820 --> 00:05:49.755
+detect and manage any changes.
+
+132
+00:05:49.755 --> 00:05:51.545
+Including both Concept drift,
+
+133
+00:05:51.545 --> 00:05:53.870
+which is when the definition of
+
+134
+00:05:53.870 --> 00:05:56.430
+what is y given x changes.
+
+135
+00:05:56.430 --> 00:05:57.990
+As well as Data drift,
+
+136
+00:05:57.990 --> 00:06:01.100
+which is if the
+distribution of x changes,
+
+137
+00:06:01.100 --> 00:06:04.610
+even if the mapping from
+x or y does not change.
+
+138
+00:06:04.610 --> 00:06:07.984
+In addition to managing
+these changes to the data,
+
+139
+00:06:07.984 --> 00:06:09.860
+a second set of issues,
+
+140
+00:06:09.860 --> 00:06:11.240
+that you will have to
+
+141
+00:06:11.240 --> 00:06:14.010
+manage to deploy a
+system successfully,
+
+142
+00:06:14.010 --> 00:06:17.940
+are Software engineering issues.
+
+143
+00:06:17.980 --> 00:06:21.575
+You are implementing
+a prediction service
+
+144
+00:06:21.575 --> 00:06:23.430
+whose job it is to
+
+145
+00:06:23.430 --> 00:06:28.970
+take queries x and
+output prediction y,
+
+146
+00:06:28.970 --> 00:06:31.935
+you have a lot of
+design choices as
+
+147
+00:06:31.935 --> 00:06:34.820
+to how to implement
+this piece of software.
+
+148
+00:06:34.820 --> 00:06:36.320
+Here's a checklist of questions,
+
+149
+00:06:36.320 --> 00:06:37.740
+that might help you with making
+
+150
+00:06:37.740 --> 00:06:39.130
+the appropriate decisions for
+
+151
+00:06:39.130 --> 00:06:42.120
+managing the software
+engineering issues.
+
+152
+00:06:42.120 --> 00:06:45.055
+One decision you have to make
+for your application is,
+
+153
+00:06:45.055 --> 00:06:46.985
+do you need Real time predictions
+
+154
+00:06:46.985 --> 00:06:49.310
+or are Batch predictions?
+
+155
+00:06:49.310 --> 00:06:51.265
+For example, if you are
+
+156
+00:06:51.265 --> 00:06:53.275
+building a speech
+recognition system,
+
+157
+00:06:53.275 --> 00:06:54.730
+where the user speaks
+
+158
+00:06:54.730 --> 00:06:56.545
+and you need to get
+a response back,
+
+159
+00:06:56.545 --> 00:06:58.090
+in half a second,
+
+160
+00:06:58.090 --> 00:07:01.025
+then clearly you need
+real time predictions.
+
+161
+00:07:01.025 --> 00:07:04.405
+In contrast, I have
+also built systems,
+
+162
+00:07:04.405 --> 00:07:08.260
+for hospitals that
+take patient records.
+
+163
+00:07:08.260 --> 00:07:10.730
+Take electronic health
+records and run
+
+164
+00:07:10.730 --> 00:07:13.310
+an overnight batch
+process to see if there's
+
+165
+00:07:13.310 --> 00:07:17.060
+something associated with the
+patients, that we can spot.
+
+166
+00:07:17.060 --> 00:07:18.625
+In that type of system,
+
+167
+00:07:18.625 --> 00:07:20.120
+it was fine if we just ran it,
+
+168
+00:07:20.120 --> 00:07:24.740
+in a batch of patient
+records once per night.
+
+169
+00:07:24.740 --> 00:07:27.615
+Whether you need to write
+real time software,
+
+170
+00:07:27.615 --> 00:07:31.250
+they can respond within
+hundreds of milliseconds or
+
+171
+00:07:31.250 --> 00:07:33.020
+whether you can
+write software that
+
+172
+00:07:33.020 --> 00:07:35.265
+just does a lot of
+computation overnight,
+
+173
+00:07:35.265 --> 00:07:39.530
+that will affect how you
+implement your software.
+
+174
+00:07:39.530 --> 00:07:42.260
+By the way, later this week,
+
+175
+00:07:42.260 --> 00:07:44.180
+you also get to step
+
+176
+00:07:44.180 --> 00:07:46.850
+through an optional
+programming exercise,
+
+177
+00:07:46.850 --> 00:07:48.829
+where you get to implement
+
+178
+00:07:48.829 --> 00:07:50.870
+a real time prediction service,
+
+179
+00:07:50.870 --> 00:07:52.925
+on your own computer.
+
+180
+00:07:52.925 --> 00:07:54.620
+You see that at the optional
+
+181
+00:07:54.620 --> 00:07:56.205
+exercise at the end of this week.
+
+182
+00:07:56.205 --> 00:07:58.375
+Second question you
+need to ask is,
+
+183
+00:07:58.375 --> 00:08:01.700
+does your prediction
+service run into clouds or
+
+184
+00:08:01.700 --> 00:08:05.375
+does it run at the edge or
+maybe even in a Web browser?
+
+185
+00:08:05.375 --> 00:08:07.790
+Today there are many
+speech recognition systems
+
+186
+00:08:07.790 --> 00:08:08.850
+that run in the cloud,
+
+187
+00:08:08.850 --> 00:08:12.765
+because having the compute
+resources of the cloud,
+
+188
+00:08:12.765 --> 00:08:15.950
+allows for more accurate
+speech recognition.
+
+189
+00:08:15.950 --> 00:08:19.460
+There are also some speech
+systems, for example,
+
+190
+00:08:19.460 --> 00:08:21.710
+a lot of speech
+systems within cars,
+
+191
+00:08:21.710 --> 00:08:23.675
+actually run at the edge.
+
+192
+00:08:23.675 --> 00:08:25.310
+There are also some mobile speech
+
+193
+00:08:25.310 --> 00:08:26.705
+recognition systems that work,
+
+194
+00:08:26.705 --> 00:08:30.060
+even if your Wi-Fi is turned off.
+
+195
+00:08:30.060 --> 00:08:32.210
+Those would be examples of
+
+196
+00:08:32.210 --> 00:08:34.340
+speech systems that
+run at the edge.
+
+197
+00:08:34.340 --> 00:08:35.704
+When I am deploying
+
+198
+00:08:35.704 --> 00:08:37.970
+visual inspection
+systems in factories,
+
+199
+00:08:37.970 --> 00:08:42.945
+I pretty much almost always
+run that at the edge as well.
+
+200
+00:08:42.945 --> 00:08:45.135
+Because sometimes unavoidably,
+
+201
+00:08:45.135 --> 00:08:47.494
+the Internet connection
+between the factory,
+
+202
+00:08:47.494 --> 00:08:49.790
+and the rest of the
+Internet may go down.
+
+203
+00:08:49.790 --> 00:08:52.115
+You just can't afford to
+shut down the factory,
+
+204
+00:08:52.115 --> 00:08:55.035
+whenever its Internet
+connection goes down,
+
+205
+00:08:55.035 --> 00:08:56.480
+which happens very rarely
+
+206
+00:08:56.480 --> 00:08:58.200
+but maybe sometimes does happen.
+
+207
+00:08:58.200 --> 00:09:00.420
+With the rise of
+modern Web browsers,
+
+208
+00:09:00.420 --> 00:09:01.875
+there are better tools,
+
+209
+00:09:01.875 --> 00:09:04.444
+for deploying
+learning algorithms,
+
+210
+00:09:04.444 --> 00:09:07.800
+right there within a
+Web browser as well.
+
+211
+00:09:07.800 --> 00:09:10.275
+When building a
+prediction service,
+
+212
+00:09:10.275 --> 00:09:13.110
+it's also useful to
+take into account,
+
+213
+00:09:13.110 --> 00:09:16.295
+how much computer
+resources you have.
+
+214
+00:09:16.295 --> 00:09:18.630
+There have been quite a few
+times where I trained a
+
+215
+00:09:18.630 --> 00:09:21.620
+neural network on a
+very powerful GPU,
+
+216
+00:09:21.620 --> 00:09:24.510
+only to realize that
+I couldn't afford
+
+217
+00:09:24.510 --> 00:09:28.170
+an equally powerful set
+of GPUs for deployments,
+
+218
+00:09:28.170 --> 00:09:30.370
+and wound up having to
+do something else to
+
+219
+00:09:30.370 --> 00:09:33.055
+compress or reduce
+the model complexity.
+
+220
+00:09:33.055 --> 00:09:36.310
+If you know how much CPU or
+
+221
+00:09:36.310 --> 00:09:38.160
+GPU resources and maybe also
+
+222
+00:09:38.160 --> 00:09:39.580
+how much memory resources you
+
+223
+00:09:39.580 --> 00:09:41.744
+have for your prediction service,
+
+224
+00:09:41.744 --> 00:09:43.540
+then that could help you choose
+
+225
+00:09:43.540 --> 00:09:46.490
+the right software architecture.
+
+226
+00:09:46.490 --> 00:09:48.845
+Depending on your application
+
+227
+00:09:48.845 --> 00:09:51.110
+especially if it's
+real-time application,
+
+228
+00:09:51.110 --> 00:09:55.745
+latency and throughputs such
+as measured in terms of QPS,
+
+229
+00:09:55.745 --> 00:09:57.770
+queries per second, will be
+
+230
+00:09:57.770 --> 00:10:00.380
+other software engineering metrics
+you may need to hit.
+
+231
+00:10:00.380 --> 00:10:03.180
+In speech recognition
+is not uncommon to
+
+232
+00:10:03.180 --> 00:10:06.120
+want to get an answer
+back to the user,
+
+233
+00:10:06.120 --> 00:10:08.945
+within half a second
+or 500 milliseconds.
+
+234
+00:10:08.945 --> 00:10:11.190
+Of this 500
+millisecond budget you
+
+235
+00:10:11.190 --> 00:10:13.440
+may be able to allocate only say,
+
+236
+00:10:13.440 --> 00:10:17.055
+300 milliseconds to your
+speech recognition.
+
+237
+00:10:17.055 --> 00:10:21.825
+That gives a latency
+requirement for your system.
+
+238
+00:10:21.825 --> 00:10:25.600
+Throughput refers to
+how many queries per
+
+239
+00:10:25.600 --> 00:10:27.420
+second do you need to
+
+240
+00:10:27.420 --> 00:10:30.695
+handle given your
+compute resources,
+
+241
+00:10:30.695 --> 00:10:33.865
+maybe given a certain
+number of Cloud Service.
+
+242
+00:10:33.865 --> 00:10:36.995
+For example, if you're building
+a system that needs to
+
+243
+00:10:36.995 --> 00:10:40.095
+handle 1000 queries per second,
+
+244
+00:10:40.095 --> 00:10:43.200
+it would be useful to
+make sure to check out
+
+245
+00:10:43.200 --> 00:10:47.420
+your system so that you have
+enough computer resources,
+
+246
+00:10:47.420 --> 00:10:50.420
+to hit the QPS requirement.
+
+247
+00:10:50.420 --> 00:10:52.800
+Next is logging, when building
+
+248
+00:10:52.800 --> 00:10:55.440
+your system it may
+be useful to log as
+
+249
+00:10:55.440 --> 00:10:57.239
+much of the data as possible
+
+250
+00:10:57.239 --> 00:10:59.345
+for analysis and review as well
+
+251
+00:10:59.345 --> 00:11:01.165
+as to provide more data
+
+252
+00:11:01.165 --> 00:11:03.920
+for retraining your learning
+algorithm in the future.
+
+253
+00:11:03.920 --> 00:11:07.005
+Finally, security and privacy,
+
+254
+00:11:07.005 --> 00:11:09.120
+I find it for
+different applications
+
+255
+00:11:09.120 --> 00:11:10.380
+the required levels of
+
+256
+00:11:10.380 --> 00:11:12.900
+security and privacy
+can be very different.
+
+257
+00:11:12.900 --> 00:11:14.990
+For example, when I was working
+
+258
+00:11:14.990 --> 00:11:17.700
+on electronic health
+records, patient records,
+
+259
+00:11:17.700 --> 00:11:19.240
+clearly the requirements for
+
+260
+00:11:19.240 --> 00:11:21.335
+security and privacy
+were very high
+
+261
+00:11:21.335 --> 00:11:23.630
+because patient records are
+
+262
+00:11:23.630 --> 00:11:26.330
+very highly sensitive
+information.
+
+263
+00:11:26.330 --> 00:11:29.735
+Depending on your application
+you might want to design
+
+264
+00:11:29.735 --> 00:11:33.780
+in the appropriate level
+of security and privacy,
+
+265
+00:11:33.780 --> 00:11:37.430
+based on how sensitive
+that data is
+
+266
+00:11:37.430 --> 00:11:41.715
+and also sometimes based on
+regulatory requirements.
+
+267
+00:11:41.715 --> 00:11:44.810
+If you save this
+checklist somewhere,
+
+268
+00:11:44.810 --> 00:11:46.750
+going through this
+when you're designing
+
+269
+00:11:46.750 --> 00:11:49.290
+your software might
+help you to make
+
+270
+00:11:49.290 --> 00:11:51.549
+the appropriate
+software engine choices
+
+271
+00:11:51.549 --> 00:11:54.600
+when implementing your
+prediction service.
+
+272
+00:11:54.600 --> 00:11:57.880
+To summarize, deploying a system
+
+273
+00:11:57.880 --> 00:12:01.330
+requires two broad sets
+of tasks: there is
+
+274
+00:12:01.330 --> 00:12:05.105
+writing the software to
+
+275
+00:12:05.105 --> 00:12:07.895
+enable you to deploy the
+system in production.
+
+276
+00:12:07.895 --> 00:12:11.105
+There is what you
+need to do to monitor
+
+277
+00:12:11.105 --> 00:12:15.550
+the system performance and
+to continue to maintain it,
+
+278
+00:12:15.550 --> 00:12:20.140
+especially in the
+face of concepts
+
+279
+00:12:20.140 --> 00:12:26.625
+drift as well as data drift.
+
+280
+00:12:26.625 --> 00:12:28.745
+One of the things
+you see when you're
+
+281
+00:12:28.745 --> 00:12:30.780
+building machine
+learning systems is that
+
+282
+00:12:30.780 --> 00:12:34.170
+the practices for the
+very first deployments
+
+283
+00:12:34.170 --> 00:12:36.725
+will be quite different compared
+
+284
+00:12:36.725 --> 00:12:39.550
+to when you are
+updating or maintaining
+
+285
+00:12:39.550 --> 00:12:43.220
+a system that has already
+previously been deployed.
+
+286
+00:12:43.220 --> 00:12:45.900
+I know that to some engineers
+that view deploying
+
+287
+00:12:45.900 --> 00:12:49.190
+the machine learning model as
+getting to the finish line.
+
+288
+00:12:49.190 --> 00:12:52.425
+Unfortunately, I think
+the first deployment
+
+289
+00:12:52.425 --> 00:12:55.325
+means you may be only
+about halfway there,
+
+290
+00:12:55.325 --> 00:12:57.880
+and the second half
+of your work is just
+
+291
+00:12:57.880 --> 00:13:01.305
+starting only after
+your first deployment,
+
+292
+00:13:01.305 --> 00:13:05.310
+because even after you've
+deployed there's a lot of work
+
+293
+00:13:05.310 --> 00:13:09.839
+to feed the data back and
+maybe to update the model,
+
+294
+00:13:09.839 --> 00:13:13.115
+to keep on maintaining the model
+
+295
+00:13:13.115 --> 00:13:16.550
+even in the face of
+changes to the data.
+
+296
+00:13:16.550 --> 00:13:19.060
+One of the things we touch on
+the later videos is some of
+
+297
+00:13:19.060 --> 00:13:21.745
+the differences between
+the first deployment,
+
+298
+00:13:21.745 --> 00:13:23.350
+such as if your product
+
+299
+00:13:23.350 --> 00:13:25.280
+never had the speech
+recognition system.
+
+300
+00:13:25.280 --> 00:13:27.985
+But you've trained the
+speech recognition system
+
+301
+00:13:27.985 --> 00:13:30.255
+and you're deploying
+for the first time,
+
+302
+00:13:30.255 --> 00:13:32.225
+versus you already have had
+
+303
+00:13:32.225 --> 00:13:34.140
+the learning of running
+for some time and
+
+304
+00:13:34.140 --> 00:13:38.140
+you want to maintain or
+update that implementation.
+
+305
+00:13:38.140 --> 00:13:39.660
+To summarize, in this video,
+
+306
+00:13:39.660 --> 00:13:42.030
+you saw some of the
+machine learning or
+
+307
+00:13:42.030 --> 00:13:44.030
+statistical related issues such
+
+308
+00:13:44.030 --> 00:13:45.610
+as concept drift and data drift.
+
+309
+00:13:45.610 --> 00:13:47.549
+As well as some of the software
+
+310
+00:13:47.549 --> 00:13:49.880
+engineering-related
+issues such as,
+
+311
+00:13:49.880 --> 00:13:53.630
+whether you need a batch or
+real-time prediction service,
+
+312
+00:13:53.630 --> 00:13:56.429
+and whether the compute
+and memory requirements
+
+313
+00:13:56.429 --> 00:13:58.375
+you have to take into account.
+
+314
+00:13:58.375 --> 00:14:00.485
+Now, it turns out that when
+
+315
+00:14:00.485 --> 00:14:02.700
+you're deploying a
+machine learning model,
+
+316
+00:14:02.700 --> 00:14:05.280
+there are a number of
+common design patterns,
+
+317
+00:14:05.280 --> 00:14:08.260
+a common deployment
+patterns that are used
+
+318
+00:14:08.260 --> 00:14:11.630
+in many applications across
+many different industries.
+
+319
+00:14:11.630 --> 00:14:13.255
+In the next video,
+
+320
+00:14:13.255 --> 00:14:14.495
+you'll see what are some of
+
+321
+00:14:14.495 --> 00:14:17.025
+the most common
+deployment patterns,
+
+322
+00:14:17.025 --> 00:14:18.660
+so that you can
+hopefully pick the
+
+323
+00:14:18.660 --> 00:14:20.665
+right one for your application.
+
+324
+00:14:20.665 --> 00:14:23.370
+Let's go on to the next video.

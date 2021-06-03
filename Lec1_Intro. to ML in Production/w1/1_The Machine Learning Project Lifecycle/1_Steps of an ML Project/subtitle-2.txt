@@ -1,0 +1,53 @@
+When I'm building a machine learning system, I've found that, thinking through the
+Machine Learning project lifecycle is a effective way
+for me to plan out all the steps that
+I need to work on. When you are working on
+Machine Learning system, I think you'll find too
+that this framework allows you to plan out all the
+important things you need to do in order
+to get the system to work and also to
+minimize surprises. Let's dive in. These are the major steps of a
+Machine Learning project. First is scoping,
+in which you have to define the project or
+decide what to work on. What exactly do you want to
+apply Machine Learning to, and what is X and what is Y. After having chosen the project, you then have to collect data or acquire the data you
+need for your algorithm. This includes defining the data and establishing a baseline, and then also labeling
+and organizing the data. There are some best practices for this that are non-intuitive that you learn more about
+later in this week. After you have your data, you then have to train the model. During the model phase, you have to select and train the model and also
+perform error analysis. You might know that
+Machine Learning is often a highly iterative task. During the process
+of error analysis, you may go back and
+update the model, or you may also go back
+to the earlier phase and decide you need to
+collect more data as well. As part of error analysis before taking a system
+to deployments, I'll often also carry
+out a final check, maybe a final audit, to make sure that the system's
+performance is good enough and that it's sufficiently
+reliable for the application. Sometimes, an engineer
+thinks that when you deploy a system, you're done. I now tell most people, when you deploy a system
+for the first time, you are maybe about halfway
+to the finish line, because it's often only after you turn on live traffic
+that you then learn the second half of
+the important lessons needed in order to get the
+system to perform well. To carry out the deployment step, you have to deploy
+it in production, write the software needed to
+put into production, Then also monitor the system, track the data that
+continues to come in, and maintain the system. For example, if the data
+distribution changes, you may need to update the model. After the initial deployment, maintenance will often
+mean going back to perform more error analysis
+and maybe retrain the model, or it might mean taking
+the data you get back. Now that the system is deployed and is running on live data, and feeding that back into your dataset to then
+potentially update your data, retrain the model, and
+so on until you can put an updated model into deployment. I found this framework useful for a very large variety of
+Machine Learning projects. From computer vision,
+to audio data, to structure data, to
+many other applications. Feel free to take a screenshot of this image and use it with your friends or by yourself to plan out your Machine
+Learning project as well. Thanks also to learning AIs, Steven Layett and
+Daniel Pipryata, who were instrumental to
+developing this diagram. In this video, we
+quickly went through the machine learning
+project lifecycle in order to deepen our understanding of this project lifecycle or be useful to walk through
+a concrete example. In the next video, let's step through what
+these different steps of machine learning project
+lifecycle look like in the context of a speech
+recognition application. Let's go on to the next video.

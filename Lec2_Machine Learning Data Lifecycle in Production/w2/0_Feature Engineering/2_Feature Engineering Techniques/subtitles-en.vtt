@@ -1,0 +1,988 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.510
+Now let's review some Feature
+Engineering techniques.
+
+2
+00:00:04.600 --> 00:00:07.205
+Here's what we're
+going to talk about.
+
+3
+00:00:07.205 --> 00:00:10.230
+There's basic feature
+scaling, usually,
+
+4
+00:00:10.230 --> 00:00:12.000
+especially with numerical data,
+
+5
+00:00:12.000 --> 00:00:13.889
+where you're really
+doing is scaling
+
+6
+00:00:13.889 --> 00:00:16.770
+the numerical features
+in different ways.
+
+7
+00:00:16.770 --> 00:00:18.990
+We'll talk about some
+of the basics of these
+
+8
+00:00:18.990 --> 00:00:21.870
+like normalization
+and standardization.
+
+9
+00:00:21.870 --> 00:00:24.105
+You can also do bucketizing
+
+10
+00:00:24.105 --> 00:00:26.625
+or binning and we'll
+talk about that.
+
+11
+00:00:26.625 --> 00:00:28.740
+That's a useful
+technique as well.
+
+12
+00:00:28.740 --> 00:00:30.780
+Then some other techniques like
+
+13
+00:00:30.780 --> 00:00:35.100
+dimensionality reduction for
+example. Let's get started.
+
+14
+00:00:35.100 --> 00:00:38.955
+Feature Engineering takes
+a variety of forms,
+
+15
+00:00:38.955 --> 00:00:40.635
+normalizing,
+
+16
+00:00:40.635 --> 00:00:42.710
+and scaling features, and
+
+17
+00:00:42.710 --> 00:00:46.960
+coding categorical
+values and so forth.
+
+18
+00:00:46.960 --> 00:00:50.675
+We have scaling and
+normalizing and standardizing.
+
+19
+00:00:50.675 --> 00:00:52.250
+We can also do groupings,
+
+20
+00:00:52.250 --> 00:00:54.395
+so that could be bucketizing.
+
+21
+00:00:54.395 --> 00:00:56.180
+Where things like for text,
+
+22
+00:00:56.180 --> 00:00:58.460
+we could do a bag of words.
+
+23
+00:00:58.460 --> 00:01:01.190
+This is going to
+be very dependent
+
+24
+00:01:01.190 --> 00:01:04.265
+on the particular algorithm
+that you're going to use.
+
+25
+00:01:04.265 --> 00:01:06.350
+You have to understand
+the connection between
+
+26
+00:01:06.350 --> 00:01:08.690
+the kinds of scaling or
+
+27
+00:01:08.690 --> 00:01:10.835
+grouping that you do
+
+28
+00:01:10.835 --> 00:01:15.290
+and the algorithms that are
+going to be using with it.
+
+29
+00:01:16.670 --> 00:01:20.314
+Scaling converts
+to standard range
+
+30
+00:01:20.314 --> 00:01:22.950
+and different techniques
+to it differently.
+
+31
+00:01:22.950 --> 00:01:26.450
+For example, a gray-scale
+image pixel intensity
+
+32
+00:01:26.450 --> 00:01:27.740
+is typically
+
+33
+00:01:27.740 --> 00:01:33.785
+expressed in the raw data
+as a number between 0-255,
+
+34
+00:01:33.785 --> 00:01:38.080
+and then that's usually re-scale
+to negative one to one.
+
+35
+00:01:38.080 --> 00:01:42.370
+Here's some Python, for
+example, for doing that.
+
+36
+00:01:42.370 --> 00:01:44.850
+The benefits of that are,
+
+37
+00:01:44.850 --> 00:01:46.850
+it helps the neural
+network to converge
+
+38
+00:01:46.850 --> 00:01:49.430
+faster or maybe converge at all.
+
+39
+00:01:49.430 --> 00:01:53.330
+It does away with
+
+40
+00:01:53.330 --> 00:01:54.620
+a lot of the problems with
+
+41
+00:01:54.620 --> 00:01:57.095
+not a number errors
+during training.
+
+42
+00:01:57.095 --> 00:01:59.360
+For each feature the model
+
+43
+00:01:59.360 --> 00:02:01.940
+is really trying to
+learn the right way,
+
+44
+00:02:01.940 --> 00:02:04.445
+and having them in the
+right numerical range,
+
+45
+00:02:04.445 --> 00:02:07.050
+helps a lot with that.
+
+46
+00:02:07.790 --> 00:02:11.930
+Here's the standard formula
+for normalizing something.
+
+47
+00:02:11.930 --> 00:02:13.885
+It's also called min-max.
+
+48
+00:02:13.885 --> 00:02:16.575
+You're taking your X,
+
+49
+00:02:16.575 --> 00:02:20.220
+you're subtracting the minimum
+value of that feature.
+
+50
+00:02:20.220 --> 00:02:22.400
+You have to make a full pass over
+
+51
+00:02:22.400 --> 00:02:24.990
+your data set to get
+that minimum value,
+
+52
+00:02:24.990 --> 00:02:27.380
+and then you subtract that
+and then you divide by
+
+53
+00:02:27.380 --> 00:02:30.485
+the maximum value minus
+the minimum value.
+
+54
+00:02:30.485 --> 00:02:32.330
+You're going to need
+to make a full pass
+
+55
+00:02:32.330 --> 00:02:33.595
+to get those numbers.
+
+56
+00:02:33.595 --> 00:02:39.115
+Then it gives you a number
+that is between 0-1.
+
+57
+00:02:39.115 --> 00:02:43.100
+Normalizations are
+usually good if
+
+58
+00:02:43.100 --> 00:02:44.780
+you know that the distribution of
+
+59
+00:02:44.780 --> 00:02:47.090
+your data is not Gaussian.
+
+60
+00:02:47.090 --> 00:02:49.070
+Doesn't always have to be true,
+
+61
+00:02:49.070 --> 00:02:53.910
+but typically that's a good
+assumption to start with.
+
+62
+00:02:53.910 --> 00:02:55.215
+A good rule of thumb.
+
+63
+00:02:55.215 --> 00:02:56.540
+If you're working
+with data that you
+
+64
+00:02:56.540 --> 00:02:58.220
+know is not Gaussian,
+
+65
+00:02:58.220 --> 00:02:59.810
+or a normal distribution,
+
+66
+00:02:59.810 --> 00:03:03.995
+then normalization is a good
+technique to start with.
+
+67
+00:03:03.995 --> 00:03:07.710
+Normalization is widely
+used for scaling,
+
+68
+00:03:07.710 --> 00:03:09.950
+you have a numerical feature
+
+69
+00:03:09.950 --> 00:03:11.780
+that might start out like this,
+
+70
+00:03:11.780 --> 00:03:16.010
+where numbers are falling and
+there is a kind of a range.
+
+71
+00:03:16.010 --> 00:03:18.110
+You're going to transform that to
+
+72
+00:03:18.110 --> 00:03:19.880
+the normalized version of that,
+
+73
+00:03:19.880 --> 00:03:24.540
+which is bounded in
+a range between 0-1.
+
+74
+00:03:24.680 --> 00:03:26.880
+That's normalization.
+
+75
+00:03:26.880 --> 00:03:28.350
+You're probably familiar with
+
+76
+00:03:28.350 --> 00:03:30.890
+this although you may not
+have thought of some of
+
+77
+00:03:30.890 --> 00:03:32.450
+the production implications like
+
+78
+00:03:32.450 --> 00:03:35.840
+the fact that you need to
+make a full past career data
+
+79
+00:03:35.840 --> 00:03:38.330
+set in order to get the
+numbers that you're
+
+80
+00:03:38.330 --> 00:03:41.470
+going to need to
+perform normalization.
+
+81
+00:03:41.470 --> 00:03:44.235
+The scales here are again,
+
+82
+00:03:44.235 --> 00:03:47.110
+between 0-1 and whatever
+the original was.
+
+83
+00:03:47.110 --> 00:03:52.460
+Standardization, which is
+often using a Z-score,
+
+84
+00:03:52.460 --> 00:03:54.385
+is a different technique.
+
+85
+00:03:54.385 --> 00:03:58.595
+It's a way of scaling using
+the standard deviation.
+
+86
+00:03:58.595 --> 00:04:00.829
+It's looking at the distribution
+
+87
+00:04:00.829 --> 00:04:03.895
+itself and trying to
+scale relative to that.
+
+88
+00:04:03.895 --> 00:04:06.390
+The example here is using,
+
+89
+00:04:06.390 --> 00:04:09.245
+, and you're going to
+
+90
+00:04:09.245 --> 00:04:12.395
+subtract the mean and divide
+by the standard deviation.
+
+91
+00:04:12.395 --> 00:04:14.030
+That gives you the Z- score
+
+92
+00:04:14.030 --> 00:04:15.935
+or the standardized value of X.
+
+93
+00:04:15.935 --> 00:04:18.140
+Which is somewhere between
+
+94
+00:04:18.140 --> 00:04:19.930
+zero and the standard deviation.
+
+95
+00:04:19.930 --> 00:04:22.115
+This is how that's expressed,
+
+96
+00:04:22.115 --> 00:04:25.160
+actually between some multiple
+of the standard deviation.
+
+97
+00:04:25.160 --> 00:04:28.690
+But it's centered around
+the mean of the data.
+
+98
+00:04:28.690 --> 00:04:31.805
+If the original looked
+like this, again,
+
+99
+00:04:31.805 --> 00:04:35.030
+a standardized value of
+that might look like this.
+
+100
+00:04:35.030 --> 00:04:40.180
+Notice that this score
+is centered on zero,
+
+101
+00:04:40.180 --> 00:04:43.080
+so the mean is
+translated to zero.
+
+102
+00:04:43.080 --> 00:04:45.500
+But you can have
+negative values and
+
+103
+00:04:45.500 --> 00:04:48.295
+positive values that
+are beyond one.
+
+104
+00:04:48.295 --> 00:04:52.565
+It's a little bit less
+bounded transformation
+
+105
+00:04:52.565 --> 00:04:54.845
+than a normalization is.
+
+106
+00:04:54.845 --> 00:04:57.620
+But there are some
+advantages to it,
+
+107
+00:04:57.620 --> 00:05:01.085
+that your data is a
+normal distribution,
+
+108
+00:05:01.085 --> 00:05:03.740
+then a standardization technique
+
+109
+00:05:03.740 --> 00:05:05.420
+is a good place to start,
+
+110
+00:05:05.420 --> 00:05:07.160
+it's a good rule of
+thumb to start with
+
+111
+00:05:07.160 --> 00:05:09.850
+for your numerical features.
+
+112
+00:05:09.850 --> 00:05:11.970
+But I encourage you to try
+
+113
+00:05:11.970 --> 00:05:15.755
+both standardization
+and normalization
+
+114
+00:05:15.755 --> 00:05:18.050
+and compare the results.
+
+115
+00:05:18.050 --> 00:05:22.530
+Because sometimes it doesn't
+make much of a difference.
+
+116
+00:05:22.530 --> 00:05:25.235
+Sometimes it can make a
+substantial difference.
+
+117
+00:05:25.235 --> 00:05:27.830
+It's good to try both.
+
+118
+00:05:27.930 --> 00:05:31.970
+Moving on into
+bucketizing and binning.
+
+119
+00:05:31.970 --> 00:05:34.700
+We're going to take
+a look at an example
+
+120
+00:05:34.700 --> 00:05:37.150
+where we have a house that
+
+121
+00:05:37.150 --> 00:05:39.989
+was built in a particular year
+
+122
+00:05:39.989 --> 00:05:42.720
+and we're going to
+bucketize that.
+
+123
+00:05:42.720 --> 00:05:43.990
+Often you don't want to enter
+
+124
+00:05:43.990 --> 00:05:45.835
+a number directly into a model.
+
+125
+00:05:45.835 --> 00:05:47.970
+Instead, you want to encode it as
+
+126
+00:05:47.970 --> 00:05:52.595
+a category by grouping
+it into buckets.
+
+127
+00:05:52.595 --> 00:05:56.865
+You notice how we've taken
+our number, our year,
+
+128
+00:05:56.865 --> 00:06:01.115
+and we've created a one-hot
+encoding of that that helps
+
+129
+00:06:01.115 --> 00:06:05.410
+us learn from that number in
+a more really relevant way
+
+130
+00:06:05.410 --> 00:06:08.750
+because the difference
+between 1960 and 61
+
+131
+00:06:08.750 --> 00:06:11.010
+isn't nearly as important
+as the difference
+
+132
+00:06:11.010 --> 00:06:14.280
+between 1960 and 1970 in
+
+133
+00:06:14.280 --> 00:06:18.970
+terms of the value that
+this feature contained.
+
+134
+00:06:19.160 --> 00:06:21.815
+Looking at how it gets binned
+
+135
+00:06:21.815 --> 00:06:24.365
+into one-hot encoded vector,
+
+136
+00:06:24.365 --> 00:06:28.730
+you can see it's put it
+into different buckets.
+
+137
+00:06:28.730 --> 00:06:31.320
+We can also look at
+that using facets,
+
+138
+00:06:31.320 --> 00:06:33.120
+which is a nice
+visualization tool
+
+139
+00:06:33.120 --> 00:06:35.355
+to help us look at that.
+
+140
+00:06:35.355 --> 00:06:39.090
+This really demonstrates some of
+
+141
+00:06:39.090 --> 00:06:41.890
+the value of bucketizing
+and binning,
+
+142
+00:06:41.890 --> 00:06:44.020
+but it also is
+
+143
+00:06:44.020 --> 00:06:47.270
+a good way to look at your
+data and try to understand it.
+
+144
+00:06:47.270 --> 00:06:49.140
+Which is an important part
+
+145
+00:06:49.140 --> 00:06:50.460
+anytime you're working with data,
+
+146
+00:06:50.460 --> 00:06:53.160
+is making sure that
+you really have
+
+147
+00:06:53.160 --> 00:06:55.500
+a good solid understanding
+of what's happening in
+
+148
+00:06:55.500 --> 00:06:58.490
+your data and develop an
+intuitive sense for it.
+
+149
+00:06:58.490 --> 00:07:02.440
+This kind of visualization
+can really help you do that.
+
+150
+00:07:02.570 --> 00:07:05.025
+Some other techniques.
+
+151
+00:07:05.025 --> 00:07:08.160
+There's dimensionality
+reduction techniques,
+
+152
+00:07:08.160 --> 00:07:11.975
+for example, that you can do.
+
+153
+00:07:11.975 --> 00:07:16.650
+There's PCA, which is
+going to project your data
+
+154
+00:07:16.650 --> 00:07:18.650
+along the principal components
+
+155
+00:07:18.650 --> 00:07:21.650
+in order to reduce the
+dimensionality of it.
+
+156
+00:07:21.650 --> 00:07:25.380
+There's t-SNE, which is
+
+157
+00:07:25.380 --> 00:07:29.405
+an important technique for
+embeddings, often very useful.
+
+158
+00:07:29.405 --> 00:07:32.130
+Uniform manifold approximation
+and projection is
+
+159
+00:07:32.130 --> 00:07:34.790
+a less well-known technique,
+
+160
+00:07:34.790 --> 00:07:37.575
+but interesting and has
+some interesting aspects.
+
+161
+00:07:37.575 --> 00:07:40.025
+We won't really go
+into that in detail.
+
+162
+00:07:40.025 --> 00:07:42.670
+Then feature crossing as well.
+
+163
+00:07:42.670 --> 00:07:45.200
+One of the things that
+you can use when you're
+
+164
+00:07:45.200 --> 00:07:48.440
+working with embeddings is
+an embedding projector,
+
+165
+00:07:48.440 --> 00:07:50.820
+like the TensorFlow
+embedding projector
+
+166
+00:07:50.820 --> 00:07:52.615
+that we're looking at here.
+
+167
+00:07:52.615 --> 00:07:55.345
+You can quickly get an idea of
+
+168
+00:07:55.345 --> 00:07:59.150
+what your data looks like
+at a particular space.
+
+169
+00:07:59.150 --> 00:08:01.710
+That again, is helping
+you to develop
+
+170
+00:08:01.710 --> 00:08:04.080
+that intuitive
+sense of your data.
+
+171
+00:08:04.080 --> 00:08:06.370
+You can already see
+just looking at it,
+
+172
+00:08:06.370 --> 00:08:09.300
+you can get a feel for
+how it's clustered.
+
+173
+00:08:09.300 --> 00:08:11.040
+You can see where different
+
+174
+00:08:11.040 --> 00:08:13.780
+types of data land in that space.
+
+175
+00:08:13.780 --> 00:08:15.875
+That understanding is very
+
+176
+00:08:15.875 --> 00:08:18.455
+important to help you
+work with your data.
+
+177
+00:08:18.455 --> 00:08:19.830
+This is really where some of
+
+178
+00:08:19.830 --> 00:08:23.020
+the art of feature
+engineering comes into play,
+
+179
+00:08:23.020 --> 00:08:25.065
+where you as a developer
+
+180
+00:08:25.065 --> 00:08:28.145
+developed this
+understanding of your data.
+
+181
+00:08:28.145 --> 00:08:31.155
+As an intuitive exploration,
+
+182
+00:08:31.155 --> 00:08:33.805
+really important for
+high-dimensional data
+
+183
+00:08:33.805 --> 00:08:36.300
+because we as humans
+
+184
+00:08:36.300 --> 00:08:39.330
+can visualize maybe
+three dimensions
+
+185
+00:08:39.330 --> 00:08:41.705
+and then it gets really weird.
+
+186
+00:08:41.705 --> 00:08:46.820
+Even four is hard and
+20 is impossible.
+
+187
+00:08:46.820 --> 00:08:50.915
+Visualizing it and
+analyzing it is important.
+
+188
+00:08:50.915 --> 00:08:54.000
+There's different techniques
+for doing that or for
+
+189
+00:08:54.000 --> 00:08:56.940
+doing dimensionality
+reduction along
+
+190
+00:08:56.940 --> 00:08:58.970
+that to help you understand that.
+
+191
+00:08:58.970 --> 00:09:01.330
+PCA that you're
+probably familiar with
+
+192
+00:09:01.330 --> 00:09:03.000
+principal component analysis and
+
+193
+00:09:03.000 --> 00:09:06.890
+t-SNE and UMAP that we just
+talked about a little bit.
+
+194
+00:09:06.890 --> 00:09:10.810
+Then there's other custom
+linear projections as well.
+
+195
+00:09:11.780 --> 00:09:15.245
+That TensorFlow embedding
+projector is available.
+
+196
+00:09:15.245 --> 00:09:17.385
+It's free, you can
+go play with it.
+
+197
+00:09:17.385 --> 00:09:19.565
+It's actually a lot of fun,
+
+198
+00:09:19.565 --> 00:09:21.820
+but it's also a great
+tool to really help
+
+199
+00:09:21.820 --> 00:09:24.540
+you understand your data.
+
+200
+00:09:24.540 --> 00:09:30.040
+There's the address for it
+if you want to learn more.
+
+201
+00:09:30.500 --> 00:09:33.450
+Key points for this
+particular section,
+
+202
+00:09:33.450 --> 00:09:34.835
+feature engineering.
+
+203
+00:09:34.835 --> 00:09:36.730
+It's going to
+prepare and tune and
+
+204
+00:09:36.730 --> 00:09:39.000
+transform and extract
+and construct
+
+205
+00:09:39.000 --> 00:09:40.620
+features where we're going to
+
+206
+00:09:40.620 --> 00:09:42.770
+work with features
+and change them
+
+207
+00:09:42.770 --> 00:09:44.900
+starting with our raw data
+
+208
+00:09:44.900 --> 00:09:46.355
+through to the data that
+
+209
+00:09:46.355 --> 00:09:48.520
+we're going to give to our model.
+
+210
+00:09:48.520 --> 00:09:51.010
+Feature engineering is very
+
+211
+00:09:51.010 --> 00:09:52.955
+important for model refinement.
+
+212
+00:09:52.955 --> 00:09:54.730
+Really, it can make
+the difference
+
+213
+00:09:54.730 --> 00:09:59.210
+between successfully
+modeling something and not.
+
+214
+00:09:59.210 --> 00:10:03.155
+Feature engineering really
+helps with ML Analysis
+
+215
+00:10:03.155 --> 00:10:04.354
+and really developing
+
+216
+00:10:04.354 --> 00:10:07.780
+that intuitive
+understanding of our data.

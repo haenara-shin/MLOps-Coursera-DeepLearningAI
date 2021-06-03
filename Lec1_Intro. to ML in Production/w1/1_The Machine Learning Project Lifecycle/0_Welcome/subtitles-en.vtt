@@ -1,0 +1,711 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:04.650
+Hi and welcome to machine learning
+engineering for production.
+
+2
+00:00:04.650 --> 00:00:07.268
+A lot of learners have asked, Hey Andrew,
+
+3
+00:00:07.268 --> 00:00:11.940
+I've learned to train a machine
+learning model now, what do I do?
+
+4
+00:00:11.940 --> 00:00:14.017
+Machine learning models are great,
+
+5
+00:00:14.017 --> 00:00:16.966
+but unless you know how to
+put them into production,
+
+6
+00:00:16.966 --> 00:00:20.933
+it's hard to get them to create
+the maximum amount of possible value.
+
+7
+00:00:20.933 --> 00:00:22.905
+Or for
+those of you that may be looking for
+
+8
+00:00:22.905 --> 00:00:25.650
+a position in machine learning
+many interview as well.
+
+9
+00:00:25.650 --> 00:00:29.643
+Have you ever deployed a machine
+learning algorithm production.
+
+10
+00:00:29.643 --> 00:00:33.636
+In this four course specialization,
+the first course taught by me, the 2nd,
+
+11
+00:00:33.636 --> 00:00:35.611
+3rd and 4th causes taught by Robert.
+
+12
+00:00:35.611 --> 00:00:37.940
+Crow is an expert at this from google.
+
+13
+00:00:37.940 --> 00:00:41.991
+We hope to share with you to practical
+hands on skills and techniques.
+
+14
+00:00:41.991 --> 00:00:45.430
+You need to not just build
+a machine learning model, but
+
+15
+00:00:45.430 --> 00:00:47.740
+also to put them into production.
+
+16
+00:00:47.740 --> 00:00:51.915
+And so by the end of this first course and
+by the end of this specialization,
+
+17
+00:00:51.915 --> 00:00:56.450
+I hope you have a good sense of the entire
+life cycle of machine learning project.
+
+18
+00:00:56.450 --> 00:00:59.051
+From training model to
+put into production and
+
+19
+00:00:59.051 --> 00:01:02.400
+really how to manage the entire
+machine learning project.
+
+20
+00:01:02.400 --> 00:01:03.840
+Let's jump in.
+
+21
+00:01:03.840 --> 00:01:08.834
+Let's start with an example, let's say
+you're using computer vision to inspect
+
+22
+00:01:08.834 --> 00:01:13.350
+phones coming off a manufacturing line
+to see if there are defects on them.
+
+23
+00:01:13.350 --> 00:01:16.941
+So this phone shown on the left
+doesn't have any stretches on it.
+
+24
+00:01:16.941 --> 00:01:21.869
+But if there was a stretch of crack or
+something, a computer vision
+
+25
+00:01:21.869 --> 00:01:27.503
+algorithm would hopefully be able to
+find this type of stretch, or defect.
+
+26
+00:01:27.503 --> 00:01:33.340
+And maybe put the bounding box around
+it as part of quality control.
+
+27
+00:01:33.340 --> 00:01:37.519
+If you get a data set of scratched
+phones you can train a computer vision
+
+28
+00:01:37.519 --> 00:01:41.650
+algorithm maybe in your network
+to detect these types of defects.
+
+29
+00:01:41.650 --> 00:01:47.240
+But what do you now need to do in order
+to put this into production deployment?
+
+30
+00:01:47.240 --> 00:01:52.100
+This would be an example of how you
+could deploy a system like this.
+
+31
+00:01:52.100 --> 00:01:54.524
+You might have an edge device.
+
+32
+00:01:54.524 --> 00:01:59.111
+By edge device, I mean a device that is
+living inside the factory that is
+
+33
+00:01:59.111 --> 00:02:01.620
+manufacturing these smartphones.
+
+34
+00:02:01.620 --> 00:02:06.084
+And that edge device would have a piece
+of inspection software whose job it
+
+35
+00:02:06.084 --> 00:02:09.828
+is to take a picture of the phone,
+see if there's a stretch and
+
+36
+00:02:09.828 --> 00:02:13.880
+then make a decision on whether
+this phone is acceptable, or not.
+
+37
+00:02:13.880 --> 00:02:18.520
+This is actually commonly done in
+factories is called automated visual
+
+38
+00:02:18.520 --> 00:02:19.930
+defect inspection.
+
+39
+00:02:19.930 --> 00:02:24.101
+What the inspection software does is
+it will control camera that will take
+
+40
+00:02:24.101 --> 00:02:27.948
+a picture of the smartphone as it
+rolls off the manufacturing line.
+
+41
+00:02:27.948 --> 00:02:35.480
+And it then has to make an API call to
+pass this picture to a prediction server.
+
+42
+00:02:35.480 --> 00:02:40.224
+And the job of the prediction server
+is to accept these API calls,
+
+43
+00:02:40.224 --> 00:02:43.845
+receive an image,
+make a decision as to whether or
+
+44
+00:02:43.845 --> 00:02:48.005
+not this phone is defective and
+return this prediction.
+
+45
+00:02:48.005 --> 00:02:51.714
+And then the inspection software it can
+make the appropriate control decision
+
+46
+00:02:51.714 --> 00:02:54.479
+whether to let it still move
+on in the manufacturing line.
+
+47
+00:02:54.479 --> 00:02:59.740
+Or whether to shove it to a side, because
+it was defective and not acceptable.
+
+48
+00:02:59.740 --> 00:03:03.366
+So after you have trained
+a learning algorithm,
+
+49
+00:03:03.366 --> 00:03:08.237
+maybe train the neural network to take
+as input X pictures of phones.
+
+50
+00:03:08.237 --> 00:03:13.910
+And map down to y predictions about
+whether the phone is defective or not.
+
+51
+00:03:13.910 --> 00:03:19.040
+You still have to take this
+machine learning model.
+
+52
+00:03:19.040 --> 00:03:22.054
+Put it in a production server,
+setup API interfaces and
+
+53
+00:03:22.054 --> 00:03:24.501
+really write all of
+the rest of the software.
+
+54
+00:03:24.501 --> 00:03:29.940
+In order to deploy this learning
+algorithm into production.
+
+55
+00:03:29.940 --> 00:03:33.615
+This prediction server is
+sometimes in the cloud and
+
+56
+00:03:33.615 --> 00:03:38.230
+sometimes the prediction server
+is actually at the edge as well.
+
+57
+00:03:38.230 --> 00:03:42.867
+In fact in manufacturing we use edge
+deployments a lot, because you can't have
+
+58
+00:03:42.867 --> 00:03:46.680
+your factory go down every time
+your internet access goes down.
+
+59
+00:03:46.680 --> 00:03:51.192
+But cloud deployments with prediction
+server, is a server in the cloud,
+
+60
+00:03:51.192 --> 00:03:53.840
+is also used for many applications.
+
+61
+00:03:53.840 --> 00:03:56.000
+Let's say you write all the software.
+
+62
+00:03:56.000 --> 00:03:58.640
+What could possibly go wrong?
+
+63
+00:03:58.640 --> 00:04:03.093
+It turns out that just because
+you've trained a learning algorithm
+
+64
+00:04:03.093 --> 00:04:07.011
+that does well on your test set,
+which is to be celebrated.
+
+65
+00:04:07.011 --> 00:04:10.140
+It's great when you do well
+when you hold a test set.
+
+66
+00:04:10.140 --> 00:04:14.120
+Unfortunately reaching that
+milestone doesn't mean you're done.
+
+67
+00:04:14.120 --> 00:04:17.103
+There can still be quite a lot of work and
+
+68
+00:04:17.103 --> 00:04:23.240
+challenges ahead to get a valuable
+production deployment running.
+
+69
+00:04:23.240 --> 00:04:29.140
+For example, let's say your training
+sets has images that look like this.
+
+70
+00:04:29.140 --> 00:04:32.746
+There's a good phone on the left,
+the one in the middle,
+
+71
+00:04:32.746 --> 00:04:37.555
+it has a big scratch across it and
+you've trained your learning algorithm to
+
+72
+00:04:37.555 --> 00:04:40.955
+recognize that things like
+this on the left are okay.
+
+73
+00:04:40.955 --> 00:04:46.721
+Meaning that no defects and maybe draw
+bounding boxes around scratches or
+
+74
+00:04:46.721 --> 00:04:49.604
+other defects that finds and films.
+
+75
+00:04:49.604 --> 00:04:53.871
+When you deploy it in the factory,
+you may find that the real life
+
+76
+00:04:53.871 --> 00:04:58.786
+production deployment gives you back
+images like this much darker ones.
+
+77
+00:04:58.786 --> 00:05:02.875
+Because the lighting factory, because the
+lighting conditions in the factory have
+
+78
+00:05:02.875 --> 00:05:07.340
+changed for some reason compared to the
+time when the training set was collected.
+
+79
+00:05:07.340 --> 00:05:11.480
+This problem is sometimes called
+concept drift or data drift.
+
+80
+00:05:11.480 --> 00:05:15.477
+You learn more about these
+terms later in this week.
+
+81
+00:05:15.477 --> 00:05:20.155
+But this is one example of the many
+practical problems that we,
+
+82
+00:05:20.155 --> 00:05:25.009
+as machine learning engineers should
+step up to solve if we want to
+
+83
+00:05:25.009 --> 00:05:29.534
+make sure that we don't just do
+well on the holdout test set.
+
+84
+00:05:29.534 --> 00:05:34.226
+But that our systems actually
+create value in a practical
+
+85
+00:05:34.226 --> 00:05:37.840
+production deployment environment.
+
+86
+00:05:37.840 --> 00:05:42.370
+I've worked on quite a few projects
+where my machine learning team and
+
+87
+00:05:42.370 --> 00:05:45.304
+I would successfully
+new a proof of concept.
+
+88
+00:05:45.304 --> 00:05:48.661
+And by that I mean we train
+a model in Jupiter notebook and
+
+89
+00:05:48.661 --> 00:05:51.456
+it will work great and
+we will celebrate that.
+
+90
+00:05:51.456 --> 00:05:54.147
+You should celebrate it
+when you have a learning,
+
+91
+00:05:54.147 --> 00:05:58.340
+algorithm worked well in Jupiter
+notebook in a development environment.
+
+92
+00:05:58.340 --> 00:06:03.424
+But it turns out that sometimes I'll
+see many projects where that success,
+
+93
+00:06:03.424 --> 00:06:07.078
+which is a great success to
+the practical deployment is
+
+94
+00:06:07.078 --> 00:06:09.791
+still maybe another six months of work.
+
+95
+00:06:09.791 --> 00:06:15.623
+And this is just one of many of the
+practical things that a machine learning
+
+96
+00:06:15.623 --> 00:06:21.860
+team has to watch out for and handle in
+order to actually deploy these systems.
+
+97
+00:06:21.860 --> 00:06:25.530
+Some machine learning engineers will say
+is not a machine learning problem to
+
+98
+00:06:25.530 --> 00:06:26.790
+address these problems.
+
+99
+00:06:26.790 --> 00:06:28.400
+The dataset changes.
+
+100
+00:06:28.400 --> 00:06:32.440
+Some machine engineers think well,
+is that the machine learning problem?
+
+101
+00:06:32.440 --> 00:06:37.040
+My point of view is that our job
+is to make these things work.
+
+102
+00:06:37.040 --> 00:06:41.723
+And so if the data set has changed is
+I think of it as my responsibility
+
+103
+00:06:41.723 --> 00:06:45.110
+when I work on a project to step in and
+do what I can to
+
+104
+00:06:45.110 --> 00:06:49.440
+access the data distribution as it
+is rather than as I wish it is.
+
+105
+00:06:49.440 --> 00:06:53.436
+So this specialization will teach you
+about a lot of these important practical
+
+106
+00:06:53.436 --> 00:06:57.310
+things for building machine learning
+systems that work not just in the lab,
+
+107
+00:06:57.310 --> 00:07:02.040
+not just in the Jupiter notebook, but
+in a production deployment environment.
+
+108
+00:07:02.040 --> 00:07:05.721
+A second challenge of deploying
+machine learning models and
+
+109
+00:07:05.721 --> 00:07:09.780
+production is that it takes a lot
+more than machine learning code.
+
+110
+00:07:09.780 --> 00:07:14.671
+Over the last decade there's been a lot
+of attention on machine learning models.
+
+111
+00:07:14.671 --> 00:07:18.810
+So your neural network or
+other algorithm that learns
+
+112
+00:07:18.810 --> 00:07:22.970
+a function mapping from
+some input to some output.
+
+113
+00:07:22.970 --> 00:07:28.240
+And that's been amazing progress
+in machine learning models.
+
+114
+00:07:28.240 --> 00:07:32.991
+But it turns out that if you look at
+a machine learning system in production,
+
+115
+00:07:32.991 --> 00:07:37.451
+if this little orange rectangle
+represents the machine learning code,
+
+116
+00:07:37.451 --> 00:07:39.587
+the machine learning model code.
+
+117
+00:07:39.587 --> 00:07:45.040
+Then this is all the codes you need for
+the entire machine learning project.
+
+118
+00:07:45.040 --> 00:07:48.668
+I feel like for
+many machine learning projects,
+
+119
+00:07:48.668 --> 00:07:52.670
+maybe only 5-10%,
+maybe even less of the code.
+
+120
+00:07:52.670 --> 00:07:54.130
+Machine learning code.
+
+121
+00:07:54.130 --> 00:07:58.139
+And I think this is one of
+the reasons why when you have
+
+122
+00:07:58.139 --> 00:08:02.619
+a proof of concept model
+working maybe Jupiter notebook.
+
+123
+00:08:02.619 --> 00:08:07.011
+It can still be a lot of work
+to go from that initial proof of
+
+124
+00:08:07.011 --> 00:08:10.140
+concept to the production deployment.
+
+125
+00:08:10.140 --> 00:08:13.430
+So sometimes people refer to the POC.
+
+126
+00:08:13.430 --> 00:08:17.240
+Or the proof of concept to production gap.
+
+127
+00:08:17.240 --> 00:08:23.722
+And a lot of that gap is sometimes just
+the sheer amount of work it is to also
+
+128
+00:08:23.722 --> 00:08:30.880
+write all of this code out here beyond
+the initial machine learning model code.
+
+129
+00:08:30.880 --> 00:08:33.970
+So what is all this other stuff?
+
+130
+00:08:33.970 --> 00:08:40.867
+This is a diagram that have adapted
+from a paper by D Scully and others.
+
+131
+00:08:40.867 --> 00:08:45.541
+Beyond the machine learning codes
+there are also many components,
+
+132
+00:08:45.541 --> 00:08:48.821
+especially components for
+managing the data,
+
+133
+00:08:48.821 --> 00:08:53.663
+such as data collection,
+data verification, feature extraction.
+
+134
+00:08:53.663 --> 00:08:55.566
+And after you are serving it,
+
+135
+00:08:55.566 --> 00:09:00.840
+how to monitor the system will monitor
+the data comes back, help you analyze it.
+
+136
+00:09:00.840 --> 00:09:05.752
+But there are often many other components
+that need to be built to enable a working
+
+137
+00:09:05.752 --> 00:09:07.360
+production deployment.
+
+138
+00:09:07.360 --> 00:09:11.759
+So in this course you learn what
+are all of these other pieces of
+
+139
+00:09:11.759 --> 00:09:15.840
+software needed for
+a valuable production deployment.
+
+140
+00:09:15.840 --> 00:09:20.016
+But rather than looking at all of these
+complex piece is one of the most useful
+
+141
+00:09:20.016 --> 00:09:22.181
+frameworks are found for organizing.
+
+142
+00:09:22.181 --> 00:09:26.641
+The workflow of a machine learning project
+is to systematically plan out the life
+
+143
+00:09:26.641 --> 00:09:29.140
+cycle of a machine learning project.
+
+144
+00:09:29.140 --> 00:09:33.765
+Let's go to the next video to dive into
+what is the full life cycle of a machine
+
+145
+00:09:33.765 --> 00:09:35.020
+learning project.
+
+146
+00:09:35.020 --> 00:09:37.672
+And I hope this framework
+will be very useful for
+
+147
+00:09:37.672 --> 00:09:41.810
+all of your machine learning projects
+that you plan to deploy in the future.
+
+148
+00:09:41.810 --> 00:09:43.061
+Let's go to the next video.

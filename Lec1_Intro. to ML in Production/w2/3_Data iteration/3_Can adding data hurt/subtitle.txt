@@ -1,0 +1,68 @@
+For a lot of machine learning problems,
+training sets and death and test set distribution
+start at being reasonably similar. But, if you're using data augmentation,
+you're adding to specific parts of the training set such as
+adding lots of data with cafe noise. So now you're training set may come
+from a very different distribution than the death set and the test set. Is this going to hurt your
+learning album's performance? Usually the answer is no with some caveats
+when you're working on unstructured data problems. But let's take a deeper look
+at what that really means. If you are working on
+an unstructured data problem and if your model is large, such as a neural
+network that is quite large and has a large capacity and does low bias. And if the mapping from x to y is clear
+and by that I mean given only the input x, humans can make accurate predictions. Then it turns out adding accurately
+labeled data rarely hurts accuracy. This is an important observation
+because adding data through data augmentation or
+collecting more of one type of data, can really change your input dated
+distribution to probability of x. Let's say at the start of your problem,
+20% of your data had cafe noise. But using augmentation,
+you added a lot of cafe noise. So now this is 50 of your data is
+data of cafe noise in the background. It turns out that so
+long as your model is sufficiently large, then it won't stop it from doing
+a good job on the cafe noise data as well as doing a good job
+on non cafe noise data. In contrast, if your model was small, then
+changing your input data distribution this way may cause it to spend too much of its
+resources modeling cafe noise settings. And this could hurt this
+performance on non cafe noise data. But if your model is large enough,
+then this isn't really an issue. The second problem that could arise is
+if the mapping from x to y is not clear, meaning given x,
+the true label of y is very ambiguous. This doesn't really happen much
+in speech recognition, but let me illustrate this with
+an example from computer vision. This is very rare, so it's not
+something I would worry about the most practical problems, but
+let's see why this is important. One of the systems I had worked
+on many years ago use Google street view images to read
+host numbers in order to more accurately clear locate buildings and
+houses in Google maps. So one of the things that
+system did was take us input pictures like this and
+figure out what is this digit. So clearly this is a one and
+this is a alphabet I. You don't see a lot of I's in street view
+images, but there are some building. You may see a sign that says
+navigate to house number 42 I, but house numbers really rarely
+have an alphabet I in it. Now, if you find that your
+algorithm has very high accuracy on recognizing ones, but
+low accuracy on recognizing Is, one thing you might do is add a lot more
+examples of Is in your training set. And the problem, and
+this is a rare problem is there are some images that are truly ambiguous. Is this a one or is this an I? And if you were to add a lot of
+new Is to your training set, especially ambiguous examples like these, then that may skew the data sets to
+have a lot more Is and hurt performance. Because we know that there are a lot
+more ones than Is on house numbers. If the Sees a picture like this, it would be safer to guess that this
+is a one rather than that this is an I. But if data augmentation skews
+the data set in the direction of having a lot more Is
+rather than a lot of ones, that may cause the [INAUDIBLE] To guess
+poorly on an ambiguous example like this. So this is one rare example where adding
+more data could hurt performance and this example of one versus I is one that
+contradicts the second bullet because for some images the mapping
+from x to y is not clear. In particular given only
+an image like this on the right, even a human can't really
+tell what this is. Just to be clear, the example that we just
+went through together is a pretty rare almost corner case and it's quite
+unusual for data augmentation or adding more data to hurt the performance
+of your learning algorithm. So long as your model is big enough, maybe a neural network is big enough to
+learn from diverse set of data sources. But I hope that understanding this rare
+case where it could hypothetically hurt gives you more comfort with using data
+augmentation or collecting more data to improve the performance of your algorithm,
+even if it causes your training set distribution to become different from
+your death set and test set distribution. So far, our discussion has focused
+on unstructured data problems. How about structured data problems? It turns out there's a different
+set of techniques that's useful for structured data. Let's take a look at
+that in the next video.

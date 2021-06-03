@@ -1,0 +1,738 @@
+WEBVTT
+
+1
+00:00:02.130 --> 00:00:05.620
+Hi, welcome to this
+specialization on
+
+2
+00:00:05.620 --> 00:00:08.960
+Machine Learning Engine
+for production, MLOps.
+
+3
+00:00:08.960 --> 00:00:11.650
+Say you've trained an accurate
+machine learning model
+
+4
+00:00:11.650 --> 00:00:12.955
+in the Jupiter Notebook,
+
+5
+00:00:12.955 --> 00:00:16.630
+you celebrate that and you
+might now be wondering,
+
+6
+00:00:16.630 --> 00:00:18.380
+now what do I do.
+
+7
+00:00:18.380 --> 00:00:22.345
+After reaching the milestone
+of developing a good model,
+
+8
+00:00:22.345 --> 00:00:24.775
+actually putting your
+model into production.
+
+9
+00:00:24.775 --> 00:00:26.260
+They have a working system
+
+10
+00:00:26.260 --> 00:00:27.895
+that is making
+useful predictions.
+
+11
+00:00:27.895 --> 00:00:30.025
+That's still requires much more.
+
+12
+00:00:30.025 --> 00:00:33.550
+This specialization will teach
+you the skills you need to
+
+13
+00:00:33.550 --> 00:00:37.299
+build and deploy production
+machine learning systems.
+
+14
+00:00:37.299 --> 00:00:38.560
+You learned about
+the full machine
+
+15
+00:00:38.560 --> 00:00:39.955
+learning process lifecycle
+
+16
+00:00:39.955 --> 00:00:41.610
+from scoping out your project,
+
+17
+00:00:41.610 --> 00:00:45.345
+to data, to modeling
+through deployment.
+
+18
+00:00:45.345 --> 00:00:46.730
+You're better execute the machine
+
+19
+00:00:46.730 --> 00:00:47.780
+learning project all the
+
+20
+00:00:47.780 --> 00:00:50.045
+way from start to finish.
+
+21
+00:00:50.045 --> 00:00:52.400
+One common misconception is that
+
+22
+00:00:52.400 --> 00:00:55.210
+the only difference between
+developing model that you fit
+
+23
+00:00:55.210 --> 00:00:58.460
+the notebook on your local
+machine and deploy that model
+
+24
+00:00:58.460 --> 00:01:01.895
+into production is literally
+just the deployment piece,
+
+25
+00:01:01.895 --> 00:01:03.890
+maybe just a bunch of
+software engineering.
+
+26
+00:01:03.890 --> 00:01:05.360
+But that's not true, it's not
+
+27
+00:01:05.360 --> 00:01:07.235
+just a bunch of
+software engineering.
+
+28
+00:01:07.235 --> 00:01:09.020
+There are machine
+learning challenges to
+
+29
+00:01:09.020 --> 00:01:11.120
+production as well that on edges
+
+30
+00:01:11.120 --> 00:01:12.590
+in the process of
+
+31
+00:01:12.590 --> 00:01:15.070
+developing a model
+into Jupiter notebook.
+
+32
+00:01:15.070 --> 00:01:16.820
+This discipline of building
+
+33
+00:01:16.820 --> 00:01:18.905
+and maintaining
+production systems,
+
+34
+00:01:18.905 --> 00:01:20.210
+that is the processes in
+
+35
+00:01:20.210 --> 00:01:21.830
+tools for doing all
+this is sometimes
+
+36
+00:01:21.830 --> 00:01:25.345
+called MLOps or machine
+learning operations.
+
+37
+00:01:25.345 --> 00:01:26.795
+You'll learn about that too.
+
+38
+00:01:26.795 --> 00:01:28.235
+I'm thrilled to be bringing you
+
+39
+00:01:28.235 --> 00:01:29.960
+this new specialization with
+
+40
+00:01:29.960 --> 00:01:32.255
+two fantastic instructors from
+
+41
+00:01:32.255 --> 00:01:33.905
+the google TensorFlow team,
+
+42
+00:01:33.905 --> 00:01:36.595
+Robert Crowe and
+Lawrence Moroney.
+
+43
+00:01:36.595 --> 00:01:38.990
+Robert Crowe is it
+TensorFlow developer,
+
+44
+00:01:38.990 --> 00:01:40.545
+Engineer at Google, a
+
+45
+00:01:40.545 --> 00:01:42.965
+Data Scientists and
+TensorFlow advocate.
+
+46
+00:01:42.965 --> 00:01:44.915
+Robert has a passion for helping
+
+47
+00:01:44.915 --> 00:01:47.525
+developers quickly
+learn what they need,
+
+48
+00:01:47.525 --> 00:01:50.125
+hopefully what you
+need to be productive.
+
+49
+00:01:50.125 --> 00:01:54.950
+Lawrence Moroney, these AI
+advocacy at google and is also
+
+50
+00:01:54.950 --> 00:01:58.070
+instructor of three other
+TensorFlow specializations
+
+51
+00:01:58.070 --> 00:02:00.500
+with deep learning AI
+and is also the book,
+
+52
+00:02:00.500 --> 00:02:02.795
+AI and machine learning,
+if we call this.
+
+53
+00:02:02.795 --> 00:02:05.675
+Glad to have both of you with
+us for the specialization.
+
+54
+00:02:05.675 --> 00:02:07.640
+I'm delighted to
+work with you again,
+
+55
+00:02:07.640 --> 00:02:08.975
+it's always a pleasure.
+
+56
+00:02:08.975 --> 00:02:10.880
+As you said Andrew,
+in addition to
+
+57
+00:02:10.880 --> 00:02:13.010
+building a first working model,
+
+58
+00:02:13.010 --> 00:02:14.270
+in a production system,
+
+59
+00:02:14.270 --> 00:02:16.700
+you need to handle a
+whole range of issues,
+
+60
+00:02:16.700 --> 00:02:18.725
+including things like data drift,
+
+61
+00:02:18.725 --> 00:02:20.600
+where the distribution
+of the data you
+
+62
+00:02:20.600 --> 00:02:23.090
+trained on maybe
+eventually become
+
+63
+00:02:23.090 --> 00:02:25.790
+very different from
+the distribution
+
+64
+00:02:25.790 --> 00:02:28.115
+of the data that you're
+running inference on.
+
+65
+00:02:28.115 --> 00:02:31.565
+A key topic that we'll
+discuss is change.
+
+66
+00:02:31.565 --> 00:02:33.320
+The world changes and
+
+67
+00:02:33.320 --> 00:02:36.335
+your model needs to be
+aware of that change.
+
+68
+00:02:36.335 --> 00:02:39.560
+In this specialization,
+we'll also introduce you to
+
+69
+00:02:39.560 --> 00:02:43.070
+several related topics
+outside of machine learning.
+
+70
+00:02:43.070 --> 00:02:45.740
+You can look at Production
+Machine Learning
+
+71
+00:02:45.740 --> 00:02:47.300
+as both machine learning
+
+72
+00:02:47.300 --> 00:02:49.805
+itself and the
+knowledge and skills
+
+73
+00:02:49.805 --> 00:02:52.670
+required in modern
+software development.
+
+74
+00:02:52.670 --> 00:02:54.050
+If you're working on
+
+75
+00:02:54.050 --> 00:02:56.224
+a machine Learning
+Team and industry,
+
+76
+00:02:56.224 --> 00:02:57.980
+you really need expertise in
+
+77
+00:02:57.980 --> 00:03:01.820
+both machine learning and
+software to be successful.
+
+78
+00:03:01.820 --> 00:03:03.770
+This is because
+your team will not
+
+79
+00:03:03.770 --> 00:03:05.900
+just be producing
+a single result.
+
+80
+00:03:05.900 --> 00:03:07.820
+You'll be developing a product or
+
+81
+00:03:07.820 --> 00:03:09.830
+service that will operate
+
+82
+00:03:09.830 --> 00:03:13.145
+continuously and maybe
+a mission critical part
+
+83
+00:03:13.145 --> 00:03:14.435
+of your company's work.
+
+84
+00:03:14.435 --> 00:03:16.280
+That's right. I can say from
+
+85
+00:03:16.280 --> 00:03:18.380
+my own experience that oftentimes
+
+86
+00:03:18.380 --> 00:03:20.510
+the most challenging
+aspects of building
+
+87
+00:03:20.510 --> 00:03:22.700
+machine learning
+systems turn out to be
+
+88
+00:03:22.700 --> 00:03:25.640
+the things that you least
+expected like deployment.
+
+89
+00:03:25.640 --> 00:03:28.385
+It's all very well being
+able to build a model,
+
+90
+00:03:28.385 --> 00:03:30.830
+but getting that into
+people's hands and seeing how
+
+91
+00:03:30.830 --> 00:03:33.725
+they use it can be
+very eye-opening.
+
+92
+00:03:33.725 --> 00:03:35.540
+You might think you
+have the perfect model
+
+93
+00:03:35.540 --> 00:03:36.710
+for the perfect scenario,
+
+94
+00:03:36.710 --> 00:03:37.910
+but your users could have
+
+95
+00:03:37.910 --> 00:03:39.515
+different opinions and it's
+
+96
+00:03:39.515 --> 00:03:41.330
+always really good
+to learn from them.
+
+97
+00:03:41.330 --> 00:03:43.250
+They might be, for example, okay,
+
+98
+00:03:43.250 --> 00:03:44.480
+with a round robin trip to
+
+99
+00:03:44.480 --> 00:03:47.060
+a server for a frequently
+updated model.
+
+100
+00:03:47.060 --> 00:03:48.740
+Or they might insist
+that their data
+
+101
+00:03:48.740 --> 00:03:50.030
+never leaves their device.
+
+102
+00:03:50.030 --> 00:03:51.770
+So you need to know
+the best ways to keep
+
+103
+00:03:51.770 --> 00:03:53.690
+their on-device
+models really fresh.
+
+104
+00:03:53.690 --> 00:03:56.150
+This specialization
+contains four causes
+
+105
+00:03:56.150 --> 00:03:57.890
+that provide you with
+the knowledge and
+
+106
+00:03:57.890 --> 00:03:59.390
+hands-on practice to get
+
+107
+00:03:59.390 --> 00:04:02.330
+a Production Machine Learning
+system up and running.
+
+108
+00:04:02.330 --> 00:04:04.535
+In the first course
+which I teach,
+
+109
+00:04:04.535 --> 00:04:06.410
+you see an overview of
+
+110
+00:04:06.410 --> 00:04:07.820
+the entire life cycle of
+
+111
+00:04:07.820 --> 00:04:10.145
+a production machine
+learning project,
+
+112
+00:04:10.145 --> 00:04:12.575
+from the scoping to getting data,
+
+113
+00:04:12.575 --> 00:04:14.930
+to modeling, to deployment.
+
+114
+00:04:14.930 --> 00:04:16.790
+The second course is all about
+
+115
+00:04:16.790 --> 00:04:19.490
+data and how it
+evolves over time.
+
+116
+00:04:19.490 --> 00:04:21.020
+With this course, you'll build
+
+117
+00:04:21.020 --> 00:04:23.735
+data pipelines by
+gathering, cleaning,
+
+118
+00:04:23.735 --> 00:04:27.290
+and validating data sets
+using TensorFlow extended or
+
+119
+00:04:27.290 --> 00:04:31.055
+TFX and the TFX
+family of Libraries.
+
+120
+00:04:31.055 --> 00:04:33.409
+To understand your
+data evolution,
+
+121
+00:04:33.409 --> 00:04:36.290
+you'll track changes
+with ML metadata using
+
+122
+00:04:36.290 --> 00:04:39.455
+data provenance as a
+conceptual framework.
+
+123
+00:04:39.455 --> 00:04:41.780
+The third course is
+focused on machine
+
+124
+00:04:41.780 --> 00:04:44.299
+learning modeling
+pipelines in production.
+
+125
+00:04:44.299 --> 00:04:46.040
+In this course,
+you'll learn how to
+
+126
+00:04:46.040 --> 00:04:47.750
+manage modeling resources to
+
+127
+00:04:47.750 --> 00:04:51.620
+best serve inference
+requests and minimize costs.
+
+128
+00:04:51.620 --> 00:04:55.385
+You'll also use analytics
+to address model fairness,
+
+129
+00:04:55.385 --> 00:04:59.135
+explain-ability issues,
+and mitigate bottlenecks.
+
+130
+00:04:59.135 --> 00:05:01.330
+Course 4 is all about deployment.
+
+131
+00:05:01.330 --> 00:05:03.080
+This means of course
+that you want to get
+
+132
+00:05:03.080 --> 00:05:05.375
+ready to serve your
+users requests.
+
+133
+00:05:05.375 --> 00:05:06.965
+Now this can be exciting
+
+134
+00:05:06.965 --> 00:05:09.350
+and challenging all
+at the same time.
+
+135
+00:05:09.350 --> 00:05:12.890
+In course 4, you'll deliver
+deployment pipelines from
+
+136
+00:05:12.890 --> 00:05:14.540
+model serving that might
+
+137
+00:05:14.540 --> 00:05:17.000
+require many different
+infrastructures.
+
+138
+00:05:17.000 --> 00:05:20.045
+You'll also apply best
+practices to maintain
+
+139
+00:05:20.045 --> 00:05:22.000
+a continuously
+operating production
+
+140
+00:05:22.000 --> 00:05:23.510
+system that stays up to
+
+141
+00:05:23.510 --> 00:05:25.370
+date and importantly keeps
+
+142
+00:05:25.370 --> 00:05:27.965
+your users needs front of mind.
+
+143
+00:05:27.965 --> 00:05:30.605
+As a learner in this
+specialization,
+
+144
+00:05:30.605 --> 00:05:32.240
+we're assuming that
+you're comfortable with
+
+145
+00:05:32.240 --> 00:05:34.820
+Python programming
+and Machine Learning
+
+146
+00:05:34.820 --> 00:05:37.040
+and that you have
+some familiarity with
+
+147
+00:05:37.040 --> 00:05:39.514
+one of the deep-learning
+frameworks in Python,
+
+148
+00:05:39.514 --> 00:05:43.085
+like TensorFlow,
+keras, or PyTorch.
+
+149
+00:05:43.085 --> 00:05:45.500
+If you've completed the deep
+learning specialization
+
+150
+00:05:45.500 --> 00:05:47.690
+offered by deep-learning data AI,
+
+151
+00:05:47.690 --> 00:05:49.430
+you should be in great shape
+
+152
+00:05:49.430 --> 00:05:51.185
+to start this specialization.
+
+153
+00:05:51.185 --> 00:05:53.120
+Alternatively, of course,
+if you've completed
+
+154
+00:05:53.120 --> 00:05:54.410
+the deep learning data AI
+
+155
+00:05:54.410 --> 00:05:56.660
+TensorFlow developer
+certificate program,
+
+156
+00:05:56.660 --> 00:05:58.040
+you'll be really well-prepared
+
+157
+00:05:58.040 --> 00:05:59.270
+to start the specialization.
+
+158
+00:05:59.270 --> 00:06:01.580
+Great. Well with that,
+let's get started.
+
+159
+00:06:01.580 --> 00:06:03.005
+That sounds great to me.
+
+160
+00:06:03.005 --> 00:06:05.460
+Sounds good. Let's do it.

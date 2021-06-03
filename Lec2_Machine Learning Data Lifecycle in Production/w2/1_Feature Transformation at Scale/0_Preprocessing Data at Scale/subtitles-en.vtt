@@ -1,0 +1,834 @@
+WEBVTT
+
+1
+00:00:00.340 --> 00:00:04.325
+We've probably all done feature
+engineering before, but
+
+2
+00:00:04.325 --> 00:00:09.592
+it's one thing to do it in a notebook
+with maybe a few 100 megabytes of data.
+
+3
+00:00:09.592 --> 00:00:14.786
+And quite another thing to do it in
+a production environment with maybe
+
+4
+00:00:14.786 --> 00:00:19.640
+a couple of terabytes of data in
+a repeatable automated process.
+
+5
+00:00:19.640 --> 00:00:25.711
+Let's take a look now at how to do
+feature engineering at scale, okay?
+
+6
+00:00:25.711 --> 00:00:29.485
+So it's one thing to
+do transformations and
+
+7
+00:00:29.485 --> 00:00:34.483
+feature engineering on a one
+off basis saying a notebook.
+
+8
+00:00:34.483 --> 00:00:39.469
+But it's another thing to do it at
+scale in a production environment
+
+9
+00:00:39.469 --> 00:00:43.503
+in a reproducible and
+repeatable and consistent way.
+
+10
+00:00:43.503 --> 00:00:49.033
+So let's take a look now at
+pre processing data at scale.
+
+11
+00:00:49.033 --> 00:00:52.017
+So first let me tell you a story.
+
+12
+00:00:52.017 --> 00:00:57.225
+I once worked as a data scientist
+in a production environment
+
+13
+00:00:57.225 --> 00:01:01.820
+where we were deploying our
+workloads are production
+
+14
+00:01:01.820 --> 00:01:06.632
+workloads on Apache Storm and
+it it was a nice platform.
+
+15
+00:01:06.632 --> 00:01:09.140
+The performance was was pretty good on it.
+
+16
+00:01:09.140 --> 00:01:14.636
+We as data scientists created
+our models in notebooks and
+
+17
+00:01:14.636 --> 00:01:18.422
+then deployed them into Apache Storm.
+
+18
+00:01:18.422 --> 00:01:22.011
+Well it wasn't quite that simple.
+
+19
+00:01:22.011 --> 00:01:26.106
+We were developing our
+notebooks in python and
+
+20
+00:01:26.106 --> 00:01:30.621
+then when we deployed into
+storm we had to translate
+
+21
+00:01:30.621 --> 00:01:35.352
+all of the feature engineering
+that we did into java.
+
+22
+00:01:35.352 --> 00:01:39.470
+Well, as you can imagine,
+that was not ideal and
+
+23
+00:01:39.470 --> 00:01:43.590
+there were little weird
+problems that cropped up
+
+24
+00:01:43.590 --> 00:01:48.527
+often very difficult to find
+doing that transformation.
+
+25
+00:01:48.527 --> 00:01:53.802
+This is not an ideal way to do
+production machine learning.
+
+26
+00:01:53.802 --> 00:01:58.557
+So what is much better
+technique is to use a pipeline,
+
+27
+00:01:58.557 --> 00:02:02.786
+a unified framework where
+you can both train and
+
+28
+00:02:02.786 --> 00:02:07.453
+deploy with consistent and
+reproducible results.
+
+29
+00:02:07.453 --> 00:02:11.313
+So we'll be learning about
+that in this course.
+
+30
+00:02:11.313 --> 00:02:14.809
+Let's take a look now at
+some of the issues of doing
+
+31
+00:02:14.809 --> 00:02:17.066
+feature engineering at scale.
+
+32
+00:02:17.066 --> 00:02:22.061
+So here's what we're going to be talking
+about inconsistencies in feature
+
+33
+00:02:22.061 --> 00:02:24.159
+engineering very important.
+
+34
+00:02:24.159 --> 00:02:25.875
+Preprocessing granularity.
+
+35
+00:02:25.875 --> 00:02:29.927
+Also an interesting issue,
+working in production environment.
+
+36
+00:02:29.927 --> 00:02:35.452
+Preprocessing the training data set is
+one thing and optimizing the instance
+
+37
+00:02:35.452 --> 00:02:40.306
+level transformations for that is,
+something kind of different.
+
+38
+00:02:40.306 --> 00:02:44.350
+But there's a number of challenges
+that you need to deal with.
+
+39
+00:02:44.350 --> 00:02:50.211
+So to preprocessed data at scale,
+we start with real world models and
+
+40
+00:02:50.211 --> 00:02:53.152
+these could be terabytes of data.
+
+41
+00:02:53.152 --> 00:02:56.352
+So when you're doing this
+kind of kind of work,
+
+42
+00:02:56.352 --> 00:02:59.872
+you want to start with a subset
+of your data work out.
+
+43
+00:02:59.872 --> 00:03:04.415
+As many issues as you can think about
+how that's going to scale up to
+
+44
+00:03:04.415 --> 00:03:09.645
+the terabytes that you you need to
+actually work with your whole dataset.
+
+45
+00:03:09.645 --> 00:03:14.418
+Large scale data processing
+frameworks are no different than what
+
+46
+00:03:14.418 --> 00:03:19.285
+you're going to use, on your laptop or
+in a notebook or what have you.
+
+47
+00:03:19.285 --> 00:03:23.851
+So you need to start thinking about
+that from the beginning of the process,
+
+48
+00:03:23.851 --> 00:03:25.735
+how this is going to be applied and
+
+49
+00:03:25.735 --> 00:03:29.303
+the earlier you can start
+working with those frameworks.
+
+50
+00:03:29.303 --> 00:03:34.008
+The more you work out the issues
+early with smaller datasets and
+
+51
+00:03:34.008 --> 00:03:39.873
+quicker turnaround time, consistent
+transformations between training and
+
+52
+00:03:39.873 --> 00:03:42.652
+serving are incredibly important.
+
+53
+00:03:42.652 --> 00:03:47.646
+If you do different transformations
+when you're serving your model than
+
+54
+00:03:47.646 --> 00:03:50.705
+you did when you were training,
+your model,
+
+55
+00:03:50.705 --> 00:03:55.956
+you are going to have problems and often
+those problems are very hard to find.
+
+56
+00:03:55.956 --> 00:04:02.187
+So inconsistencies and feature engineering
+the training and serving code paths.
+
+57
+00:04:02.187 --> 00:04:06.071
+When you are training your model, you
+have code that you're using for training.
+
+58
+00:04:06.071 --> 00:04:11.266
+If you're using different code,
+like we were we were using python for
+
+59
+00:04:11.266 --> 00:04:16.740
+training and java for serving,
+that's a potential source of problems.
+
+60
+00:04:16.740 --> 00:04:20.096
+So, and you could have
+different deployment scenarios.
+
+61
+00:04:20.096 --> 00:04:22.563
+You you might be deploying your model for
+in different environments.
+
+62
+00:04:22.563 --> 00:04:26.193
+You you could be using the same model,
+say,
+
+63
+00:04:26.193 --> 00:04:30.920
+in a servant cluster and
+using it on an IOT device as well.
+
+64
+00:04:30.920 --> 00:04:33.494
+So there's different
+deployment targets and
+
+65
+00:04:33.494 --> 00:04:36.860
+you need to think about those and
+what are the CPU resources or
+
+66
+00:04:36.860 --> 00:04:40.493
+the compute resources that you
+have available on those targets.
+
+67
+00:04:40.493 --> 00:04:44.827
+So mobile, for example,
+very tight compute resources,
+
+68
+00:04:44.827 --> 00:04:49.868
+servers, you have more luxury, but
+again, cost is a big factor and
+
+69
+00:04:49.868 --> 00:04:54.661
+in a web browser, that could be
+deployed on different clients.
+
+70
+00:04:54.661 --> 00:04:56.411
+So you need to think about that as well.
+
+71
+00:04:56.411 --> 00:04:58.340
+You don't want to be too heavy.
+
+72
+00:04:58.340 --> 00:05:01.799
+Though, there's risks in introducing
+training, serving skews.
+
+73
+00:05:01.799 --> 00:05:07.425
+So that's what happens because of those
+different code paths between training and
+
+74
+00:05:07.425 --> 00:05:08.158
+serving.
+
+75
+00:05:08.158 --> 00:05:12.567
+If you don't have exactly the same
+transformation is happening between
+
+76
+00:05:12.567 --> 00:05:16.404
+the two and the best way to do that
+is used exactly the same code.
+
+77
+00:05:16.404 --> 00:05:18.598
+Then you have a potential problem and
+
+78
+00:05:18.598 --> 00:05:21.721
+that's going to lower
+the performance of your model.
+
+79
+00:05:21.721 --> 00:05:28.418
+So your model may, completely just
+error out or give wacky results or
+
+80
+00:05:28.418 --> 00:05:33.846
+it may be just slightly off
+in certain circumstances and
+
+81
+00:05:33.846 --> 00:05:38.366
+display sensitivity around certain things.
+
+82
+00:05:38.366 --> 00:05:42.857
+Those things are much harder to detect.
+
+83
+00:05:42.857 --> 00:05:48.730
+So there is a notion of the granularity
+at which you're doing preprocessing.
+
+84
+00:05:48.730 --> 00:05:53.950
+So you need to think about this,
+you're going to do transformations,
+
+85
+00:05:53.950 --> 00:05:58.094
+both the instance level and
+a full pass over your data.
+
+86
+00:05:58.094 --> 00:06:02.289
+And depending on the transformation
+that you're doing,
+
+87
+00:06:02.289 --> 00:06:05.036
+you may be doing it in one or the other.
+
+88
+00:06:05.036 --> 00:06:08.239
+You can usually always do instance level.
+
+89
+00:06:08.239 --> 00:06:11.462
+But full path requires that
+you have the whole dataset.
+
+90
+00:06:11.462 --> 00:06:16.297
+So for clipping, even for clipping,
+you need to set clipping boundaries.
+
+91
+00:06:16.297 --> 00:06:20.890
+If you're not doing that through some
+arbitrary setting of those boundaries,
+
+92
+00:06:20.890 --> 00:06:24.452
+if you're using the data set
+itself to determine how to clip,
+
+93
+00:06:24.452 --> 00:06:26.871
+then you're going to
+need to do a full pass.
+
+94
+00:06:26.871 --> 00:06:31.507
+So min max for
+clipping is is going to be important.
+
+95
+00:06:31.507 --> 00:06:36.596
+Doing a multiplication at the instance
+level is fine, but scaling well now
+
+96
+00:06:36.596 --> 00:06:41.705
+I'm going to need probably the standard
+deviation and maybe the min and max.
+
+97
+00:06:41.705 --> 00:06:46.966
+Bucketizing similarly, unless I know ahead
+of time what buckets are going to be,
+
+98
+00:06:46.966 --> 00:06:51.297
+I'm going to need to do a full pass
+to find what buckets makes sense.
+
+99
+00:06:51.297 --> 00:06:54.001
+Expanding features I can probably
+do that at the instance level.
+
+100
+00:06:54.001 --> 00:06:57.388
+So these two things
+are different at training time.
+
+101
+00:06:57.388 --> 00:07:00.666
+I have the whole dataset so
+I can do a full pass,
+
+102
+00:07:00.666 --> 00:07:03.535
+although it can be expensive to do that.
+
+103
+00:07:03.535 --> 00:07:07.212
+At serving time,
+I get individual examples, so
+
+104
+00:07:07.212 --> 00:07:10.004
+I can only really do instance level.
+
+105
+00:07:10.004 --> 00:07:15.346
+So anything I need to do that requires
+characteristics of the whole dataset.
+
+106
+00:07:15.346 --> 00:07:19.851
+I need to have that saved off so
+I can use it at serving time.
+
+107
+00:07:21.340 --> 00:07:27.410
+So when do you transform, you're going to
+pre-process your training dataset and
+
+108
+00:07:27.410 --> 00:07:30.544
+there's pros and cons in how you do that.
+
+109
+00:07:30.544 --> 00:07:35.823
+First of all, you you don't you only run
+once per training session, so that's cool.
+
+110
+00:07:35.823 --> 00:07:39.025
+And you're going to compute
+it on the entire dataset,
+
+111
+00:07:39.025 --> 00:07:41.953
+but but only once, for
+each training session.
+
+112
+00:07:41.953 --> 00:07:46.490
+The Collins well, you're going to have to
+reproduce all those transformations that
+
+113
+00:07:46.490 --> 00:07:50.247
+serving or save off the information
+that you learned about the data,
+
+114
+00:07:50.247 --> 00:07:51.962
+like the standard deviation.
+
+115
+00:07:51.962 --> 00:07:55.340
+So that you can use that
+later while you're serving.
+
+116
+00:07:55.340 --> 00:07:58.414
+And there's,
+slower iterations around this.
+
+117
+00:07:58.414 --> 00:08:03.022
+Each each time you make a change, you've
+got to make a full pass over the dataset.
+
+118
+00:08:03.022 --> 00:08:06.892
+So you can do this within the model.
+
+119
+00:08:06.892 --> 00:08:13.240
+Transforming within the model has some
+nice features to there are cons as well.
+
+120
+00:08:13.240 --> 00:08:18.484
+First of all it makes iteration somewhat
+easier because it's embedded as part of
+
+121
+00:08:18.484 --> 00:08:23.972
+your model and there's guarantees around
+the transformation that you're doing.
+
+122
+00:08:23.972 --> 00:08:28.644
+But the cons are it can be
+expensive to do those transforms,
+
+123
+00:08:28.644 --> 00:08:33.140
+especially when,
+your compute resources are limited.
+
+124
+00:08:33.140 --> 00:08:36.185
+And think about when you do
+a transform within the model,
+
+125
+00:08:36.185 --> 00:08:39.116
+you're going to do that same
+transform at serving time.
+
+126
+00:08:39.116 --> 00:08:42.941
+So you may have say GPUs or
+TPUs when you're training,
+
+127
+00:08:42.941 --> 00:08:45.940
+you may not when you're serving.
+
+128
+00:08:45.940 --> 00:08:51.096
+So there's long model latency,
+that's when you're serving your model,
+
+129
+00:08:51.096 --> 00:08:54.641
+if you're doing a lot of
+transformation with it that
+
+130
+00:08:54.641 --> 00:08:59.338
+can slow down the response time for
+your model and increase latency.
+
+131
+00:08:59.338 --> 00:09:05.201
+And, you can have transformations per
+batch that that skew that we talked about.
+
+132
+00:09:05.201 --> 00:09:11.532
+If you haven't saved those constants
+that you need, that could be an issue.
+
+133
+00:09:11.532 --> 00:09:17.340
+You can also transform per batch
+instead of for the entire dataset.
+
+134
+00:09:17.340 --> 00:09:19.127
+So you could for example,
+
+135
+00:09:19.127 --> 00:09:22.955
+normalize features by their
+average within the batch.
+
+136
+00:09:22.955 --> 00:09:26.752
+That only requires you to make
+a pass over each batch and
+
+137
+00:09:26.752 --> 00:09:31.973
+not the full data set, which when
+you're working with terabytes of data.
+
+138
+00:09:31.973 --> 00:09:36.155
+That can be a significant
+advantage in terms of processing.
+
+139
+00:09:36.155 --> 00:09:38.841
+And there's ways to
+normalize per batch as well.
+
+140
+00:09:38.841 --> 00:09:43.974
+So you can compute an average and
+use that and normalization per batch and
+
+141
+00:09:43.974 --> 00:09:49.377
+then do it again for the next batch there
+will be differences batch to batch.
+
+142
+00:09:49.377 --> 00:09:51.861
+Sometimes that's good in cases.
+
+143
+00:09:51.861 --> 00:09:56.813
+So for example where you have
+changes over time in a time series,
+
+144
+00:09:56.813 --> 00:10:00.954
+that can be a good thing but
+you need to consider that.
+
+145
+00:10:00.954 --> 00:10:05.295
+So normalizing by the average per batch,
+precompeting the average and
+
+146
+00:10:05.295 --> 00:10:10.299
+using it during normalization, you can
+use it for multiple batches for example.
+
+147
+00:10:10.299 --> 00:10:16.382
+So this is different ways to try to think
+about how to work with your data when you,
+
+148
+00:10:16.382 --> 00:10:19.610
+especially when you have a large dataset.
+
+149
+00:10:19.610 --> 00:10:24.164
+You need to think about optimizing
+the instance level transformations as well
+
+150
+00:10:24.164 --> 00:10:27.890
+because this is going to affect
+both the training efficiency and
+
+151
+00:10:27.890 --> 00:10:29.692
+you're serving efficiency.
+
+152
+00:10:29.692 --> 00:10:33.668
+So you're going to have accelerators
+that you need to consider.
+
+153
+00:10:33.668 --> 00:10:38.040
+They may be sitting idle while
+your CPU is doing transforms.
+
+154
+00:10:38.040 --> 00:10:42.499
+That's something that you want to try to
+avoid because accelerators tend to be
+
+155
+00:10:42.499 --> 00:10:43.261
+expensive.
+
+156
+00:10:43.261 --> 00:10:48.896
+So as a solution you can prefetch
+your your transformations and
+
+157
+00:10:48.896 --> 00:10:52.734
+use your accelerators more efficiently.
+
+158
+00:10:52.734 --> 00:10:57.918
+So by prefetching you can
+prefetch with your CPU feed your
+
+159
+00:10:57.918 --> 00:11:04.294
+your accelerator your GPU or CPU and
+try to paralyze that processing.
+
+160
+00:11:04.294 --> 00:11:10.383
+So again this all gets down to cost and
+how much it costs to train and
+
+161
+00:11:10.383 --> 00:11:17.153
+and the time required as well to train
+your model and how efficient it is.
+
+162
+00:11:17.153 --> 00:11:22.002
+So to summarize the challenges we
+have to balance the predictive
+
+163
+00:11:22.002 --> 00:11:26.150
+performance of our model and
+the requirements for it.
+
+164
+00:11:26.150 --> 00:11:30.456
+Making folks passed transformations
+on the training data is one thing.
+
+165
+00:11:30.456 --> 00:11:34.965
+If we're going to do that then we need to
+think about how that works when we serve
+
+166
+00:11:34.965 --> 00:11:37.582
+our model as well and
+save those constants.
+
+167
+00:11:37.582 --> 00:11:41.089
+And we want to optimize the instance
+level transformations for
+
+168
+00:11:41.089 --> 00:11:42.849
+better training efficiency.
+
+169
+00:11:42.849 --> 00:11:45.646
+So things like prefetching
+can really help with that.
+
+170
+00:11:45.646 --> 00:11:52.619
+So key points, inconsistent data
+affects the accuracy of the results.
+
+171
+00:11:52.619 --> 00:11:58.279
+So scalable data processing frameworks
+allows to process large datasets and
+
+172
+00:11:58.279 --> 00:12:00.724
+distributed inefficient ways.
+
+173
+00:12:00.724 --> 00:12:04.750
+But we also need to think about
+how that gets applied in serving.

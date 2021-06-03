@@ -1,0 +1,51 @@
+Now, let's talk about feature selection. What is feature selection? Well, we have a number of features and
+as it turns out, we may need some of them and
+perhaps not all of them. So we try to select which
+features we actually, need and eliminate the features that we don't need. So that gives us a smaller set of
+features, which are useful features. The ones that we have selected. Feature selection identifies the features
+that best represent the relationship between the features, and
+the target that we're trying to predict. So, it removes features that
+don't influence the outcome. That reduces the size
+of the feature space. So remember, depending on the number
+of features in the feature vector, that defines the size of a space. Every time we add a feature,
+the space increases exponentially. So we want to try to reduce
+the number of features. That reduces the resource requirements for processing our data, and
+the model complexity as well. So why is feature selection needed? Well, we want to reduce storage and
+I/O requirements, that's part of it. Less features means smaller data. And we want to minimize the training,
+and inference costs. Especially in many cases the inference
+costs, because we may be serving millions of requests with
+once we have trained our model, and each one of those costs
+a certain amount to serve. So, there's different ways
+to do feature selection. First of all, you can do unsupervised
+feature selection, meaning you don't have to or doesn't account really for the
+labels, or supervised feature selection. So, it is going to use
+the information in the labels. So for unsupervised feature
+selection it takes the features, and the target variable
+relationship is not considered. It removes the redundant features which
+in unsupervised, really means looking for correlation. When you have two features or more than
+two features that are highly correlated, you really only need one of those, and you're going to select the one that
+probably gives you the best result. For supervised feature selection, it is
+going to use the target relationship. So the relationship between each of
+the features, and the target or label. So it's going to select those features, that contribute most to
+correctly predicting the target. So let's take a look at
+some supervised methods. We're going to use feature selection,
+and there's different methods to do that filter methods, wrapper methods,
+and embedded methods. For a practical example, we're going to work with a dataset
+from breast cancer diagnostic. So this is going to be the data set we're
+going to use for looking at several different kinds of feature selection,
+but this is going to be our example. So we're going to try to predict
+whether the tumor is benign or malignant, and that gives you some
+notion of how cancer reproduces. This is our feature list, and
+as you can see we've created and assigned an id for our example. And we also have an irrelevant
+feature that's been added here, so that we have something there. This is just an example,
+usually it's not quite so obvious as something named unnamed 32, but
+you do often see not a number of values. So that's often a clue or missing values, that's often a clue that you
+have an irrelevant feature. And for performance evaluation,
+will start as a baseline value. We're going to use a random
+forest classifier, using sklearn to work with
+our selected features. And we're going to use some metrics for
+that. So that's going to include
+the accuracy score, the AUC score, the precision,
+recall, and F1. So, this is our baseline
+here with all 30 features. It gives us for each of those metrics,
+the values that we get for all 30 features

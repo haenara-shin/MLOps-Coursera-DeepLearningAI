@@ -1,0 +1,694 @@
+WEBVTT
+
+1
+00:00:00.440 --> 00:00:06.028
+Some machine learning tasks are trying to
+predict an inherently ambiguous output and
+
+2
+00:00:06.028 --> 00:00:10.918
+Human Level Performance can establish
+a useful baseline of performance as
+
+3
+00:00:10.918 --> 00:00:12.240
+a reference.
+
+4
+00:00:12.240 --> 00:00:16.170
+But Human Level Performance
+is also sometimes misuse.
+
+5
+00:00:16.170 --> 00:00:17.430
+Let's take a look.
+
+6
+00:00:17.430 --> 00:00:22.305
+One of the most important users of
+measuring Human Level Performance or
+
+7
+00:00:22.305 --> 00:00:25.980
+HLP is to estimate based error or
+irreducible error.
+
+8
+00:00:25.980 --> 00:00:31.432
+Especially on unstructured data tasks in
+order to help with their analysis and
+
+9
+00:00:31.432 --> 00:00:36.040
+prioritization and
+just establish what might be possible.
+
+10
+00:00:36.040 --> 00:00:38.140
+Take a visual inspection tasks.
+
+11
+00:00:38.140 --> 00:00:40.800
+This may have happened to you before, but
+
+12
+00:00:40.800 --> 00:00:45.056
+I have gotten requests from
+business owners saying, hey Andrew,
+
+13
+00:00:45.056 --> 00:00:50.540
+can you please build a system that's
+99% accurate or maybe 99.9% accurate.
+
+14
+00:00:50.540 --> 00:00:55.329
+So one way to establish what might be
+possible would be to take a data set and
+
+15
+00:00:55.329 --> 00:00:57.840
+look at the Ground Truth Data.
+
+16
+00:00:57.840 --> 00:01:02.630
+Say you have six examples where
+the Ground Truth Label is these, and
+
+17
+00:01:02.630 --> 00:01:07.085
+then to answer human inspector to
+label the same data blinded to
+
+18
+00:01:07.085 --> 00:01:11.570
+the Ground Truth Label of course and
+see what they come up with.
+
+19
+00:01:11.570 --> 00:01:16.355
+And if they come up with these you
+would say this inspector agreed to
+
+20
+00:01:16.355 --> 00:01:21.760
+the ground truth on four other six
+examples and disagreed on two out of six.
+
+21
+00:01:21.760 --> 00:01:26.551
+And so Human Level Performance is 66.7%.
+
+22
+00:01:28.040 --> 00:01:32.480
+And so this would let you go back
+to the business owner and say look,
+
+23
+00:01:32.480 --> 00:01:35.910
+even your inspector is
+only 66.7% accuracy.
+
+24
+00:01:35.910 --> 00:01:39.230
+How can you expect me to Get 99% accuracy?
+
+25
+00:01:39.230 --> 00:01:40.786
+So HLP is useful for
+
+26
+00:01:40.786 --> 00:01:46.340
+establishing a baseline in terms
+of what might be possible.
+
+27
+00:01:46.340 --> 00:01:50.371
+There's one question
+that is often not asked,
+
+28
+00:01:50.371 --> 00:01:54.620
+which is what exactly is
+this Ground Truth Label?
+
+29
+00:01:54.620 --> 00:01:59.471
+Because rather than just
+measuring how well we can
+
+30
+00:01:59.471 --> 00:02:03.400
+do compared to some Ground Truth Label,
+
+31
+00:02:03.400 --> 00:02:08.840
+which was probably written
+by some other human.
+
+32
+00:02:08.840 --> 00:02:13.321
+Are we really measuring what is
+possible or are we just measuring how
+
+33
+00:02:13.321 --> 00:02:17.840
+well two different people happen
+to agree with each other?
+
+34
+00:02:17.840 --> 00:02:24.140
+When the Ground Truth Label is
+itself determined by a person.
+
+35
+00:02:24.140 --> 00:02:30.163
+There's a very different approach to
+thinking about Human Level Performance
+
+36
+00:02:30.163 --> 00:02:34.282
+which I want to share of you in this and
+the next video.
+
+37
+00:02:34.282 --> 00:02:39.266
+Beyond this purpose of estimating Bayes
+error and establishing what's possible
+
+38
+00:02:39.266 --> 00:02:43.340
+using that to help with their analysis and
+prioritization.
+
+39
+00:02:43.340 --> 00:02:47.271
+Here are some other users
+of Human Level Performance.
+
+40
+00:02:47.271 --> 00:02:52.240
+In academia, HLP is often used
+as a respectable benchmark.
+
+41
+00:02:52.240 --> 00:02:56.776
+And so when you establish that
+people are only 92% accurate or
+
+42
+00:02:56.776 --> 00:03:00.490
+some of the number on a speech
+recognition data set.
+
+43
+00:03:00.490 --> 00:03:03.721
+And if you can beat
+human level performance,
+
+44
+00:03:03.721 --> 00:03:09.332
+then that establishes then that helps
+you to quote proof that you're learning
+
+45
+00:03:09.332 --> 00:03:14.370
+algorithm is doing something hard and
+helps get the paper published.
+
+46
+00:03:14.370 --> 00:03:18.158
+I'm not saying this is a great use of HLP,
+but
+
+47
+00:03:18.158 --> 00:03:21.949
+in academia showing you
+can beat HLP maybe for
+
+48
+00:03:21.949 --> 00:03:26.138
+the first time has been a tried and
+true formula for
+
+49
+00:03:26.138 --> 00:03:31.328
+establishing the academic
+significance of a piece of work and
+
+50
+00:03:31.328 --> 00:03:35.740
+helps with getting something published.
+
+51
+00:03:35.740 --> 00:03:40.649
+We discussed briefly on the last slide
+what to do if a business of product owner
+
+52
+00:03:40.649 --> 00:03:44.802
+asked for 99% accuracy and
+if you think that's unrealistic,
+
+53
+00:03:44.802 --> 00:03:49.740
+then measuring HLP may help you to
+establish a more reasonable target.
+
+54
+00:03:49.740 --> 00:03:53.240
+That's one of the use of HLP
+that you might hear about.
+
+55
+00:03:53.240 --> 00:03:57.669
+Do not be cautious about which is,
+I've seen many projects
+
+56
+00:03:57.669 --> 00:04:02.560
+with the machine learning team,
+wants to use HLP or beating HLP.
+
+57
+00:04:02.560 --> 00:04:07.540
+To prove that the Machine Learning System
+is superior to the human is doing the job.
+
+58
+00:04:07.540 --> 00:04:11.903
+And as tempting as it is to go to
+someone and says look, I've proved that
+
+59
+00:04:11.903 --> 00:04:16.416
+my machinery system is more accurate
+than humans inspecting the phones or
+
+60
+00:04:16.416 --> 00:04:19.430
+the radiologist reading X-rays or
+something.
+
+61
+00:04:19.430 --> 00:04:23.757
+And now that I've mathematically proved
+the superiority of my learning album,
+
+62
+00:04:23.757 --> 00:04:25.110
+you have to use it right?
+
+63
+00:04:25.110 --> 00:04:28.583
+I know the logic of that is tempting, but
+
+64
+00:04:28.583 --> 00:04:33.200
+as a practical matter,
+this approach rarely works.
+
+65
+00:04:33.200 --> 00:04:37.171
+And you also saw last week
+that businesses need systems
+
+66
+00:04:37.171 --> 00:04:42.140
+that do more than just doing well
+on average test set accuracy.
+
+67
+00:04:42.140 --> 00:04:45.847
+So if you ever find
+yourself in this situation,
+
+68
+00:04:45.847 --> 00:04:50.480
+I would urge you to just use this
+type of logic with caution or
+
+69
+00:04:50.480 --> 00:04:55.320
+maybe even more preferably just
+don't use these arguments.
+
+70
+00:04:55.320 --> 00:04:59.547
+I've usually found other arguments
+than this to be more effective that
+
+71
+00:04:59.547 --> 00:05:05.040
+working with the business to see if they
+should adopt a Machine Learning System.
+
+72
+00:05:05.040 --> 00:05:09.846
+The problem with beating
+Human Level Performance as proof of
+
+73
+00:05:09.846 --> 00:05:13.531
+machine learning
+superiority is multi fold.
+
+74
+00:05:13.531 --> 00:05:18.330
+Beyond the fact that most
+applications require more than just
+
+75
+00:05:18.330 --> 00:05:23.037
+high average tested accuracy,
+one of the problems with this
+
+76
+00:05:23.037 --> 00:05:28.021
+metric is that it sometimes gives
+a learning algorithm an unfair
+
+77
+00:05:28.021 --> 00:05:33.040
+advantage when labeling
+instructions are inconsistent.
+
+78
+00:05:33.040 --> 00:05:34.710
+Let me show you what I mean.
+
+79
+00:05:34.710 --> 00:05:39.541
+If you have inconsistent
+labeling instructions so
+
+80
+00:05:39.541 --> 00:05:44.258
+that when an audio clip
+says nearest gas station,
+
+81
+00:05:44.258 --> 00:05:49.762
+let's say 70% of labelers,
+uses label convention and
+
+82
+00:05:49.762 --> 00:05:54.510
+30 percent of labelers
+uses label convention.
+
+83
+00:05:54.510 --> 00:05:59.070
+Neither one is the superiors transcript
+to the other both seemed completely fine.
+
+84
+00:05:59.070 --> 00:06:04.114
+But just by luck of the draw,
+70% of labelers choose the first one,
+
+85
+00:06:04.114 --> 00:06:06.360
+30% choose the second one.
+
+86
+00:06:06.360 --> 00:06:10.038
+So if the ground truth is
+established by a labelers,
+
+87
+00:06:10.038 --> 00:06:16.240
+maybe just a laborer with a slightly
+bigger title, but really by one labelers.
+
+88
+00:06:16.240 --> 00:06:21.910
+Then the chance that two
+random labeler will agree
+
+89
+00:06:21.910 --> 00:06:29.350
+will be 0.7 squared plus 0.3 squares,
+which is 0.58.
+
+90
+00:06:29.350 --> 00:06:32.678
+So if you had two labelers
+use the first convention,
+
+91
+00:06:32.678 --> 00:06:35.340
+there's a 0.7 square chance of that.
+
+92
+00:06:35.340 --> 00:06:39.057
+Or if both of your random labelers
+use the second convention,
+
+93
+00:06:39.057 --> 00:06:41.940
+there's a 0.3 square chance of that.
+
+94
+00:06:41.940 --> 00:06:44.040
+Then the two of them will agree.
+
+95
+00:06:44.040 --> 00:06:47.320
+So the chances to labelers agreeing 0.58.
+
+96
+00:06:47.320 --> 00:06:51.009
+And in the usual way of measuring
+Human Level Performance,
+
+97
+00:06:51.009 --> 00:06:55.340
+you will conclude that
+Human Level Performance is 0.58.
+
+98
+00:06:55.340 --> 00:06:59.752
+But what you're really measuring is the
+chance of two random labelers agreeing.
+
+99
+00:06:59.752 --> 00:07:04.640
+This is where the machine learning
+our room has an unfair advantage.
+
+100
+00:07:04.640 --> 00:07:08.250
+I think either of these labeling
+conventions is completely fine.
+
+101
+00:07:08.250 --> 00:07:13.849
+But the learning algorithm is a little
+bit better at gathering statistics
+
+102
+00:07:13.849 --> 00:07:19.808
+of how often ellipses versus commas are
+used in such a context than the learning
+
+103
+00:07:19.808 --> 00:07:24.970
+algorithm may be able to always
+use the first labeling convention.
+
+104
+00:07:24.970 --> 00:07:27.712
+Because it knows that statistically,
+
+105
+00:07:27.712 --> 00:07:32.953
+it has a 70% chance of getting it right
+if it uses ellipses or dot dot dot.
+
+106
+00:07:32.953 --> 00:07:38.666
+So a learning algorithm will agree
+with humans 70% of the time,
+
+107
+00:07:38.666 --> 00:07:43.340
+just by choosing the first
+lebeling convention.
+
+108
+00:07:43.340 --> 00:07:47.330
+But this 12% improvement in performance,
+
+109
+00:07:47.330 --> 00:07:51.321
+whereas Human Level Performance is 58% and
+
+110
+00:07:51.321 --> 00:07:56.142
+your learning algorithm
+is 12% better is 0.70.
+
+111
+00:07:56.142 --> 00:07:59.960
+This 12 better performance is
+not actually important for
+
+112
+00:07:59.960 --> 00:08:04.773
+anything between these two equally
+good slightly operate choices between
+
+113
+00:08:04.773 --> 00:08:08.390
+these two equally good,
+slightly arbitrary choices.
+
+114
+00:08:08.390 --> 00:08:13.167
+The learning algorithm just
+consistently picks the first one so
+
+115
+00:08:13.167 --> 00:08:18.298
+it gains what seems like a 12%
+advantage on this type of query, but
+
+116
+00:08:18.298 --> 00:08:24.520
+it's not actually outperforming any human
+in any way that a user would care about.
+
+117
+00:08:24.520 --> 00:08:27.541
+And one side effect of this is that,
+
+118
+00:08:27.541 --> 00:08:33.100
+if you're speech recognition tool
+has multiple types of audio.
+
+119
+00:08:33.100 --> 00:08:38.031
+For some, there's this dot dot dot or
+ellipses versus common ambiguity and
+
+120
+00:08:38.031 --> 00:08:40.891
+learning album does 12% better on this.
+
+121
+00:08:44.540 --> 00:08:50.345
+If you're learning algorithm makes some
+more significant errors on other types
+
+122
+00:08:50.345 --> 00:08:56.062
+of input audio, then when its performance
+where it actually does worse could be
+
+123
+00:08:56.062 --> 00:09:02.065
+averaged out by queries like these where
+kind of fake looks like it's doing better.
+
+124
+00:09:02.065 --> 00:09:07.544
+And this will therefore mask or hide
+the fact that you're learning algorithm
+
+125
+00:09:07.544 --> 00:09:12.840
+is actually creating worse
+transcripts than humans actually are.
+
+126
+00:09:12.840 --> 00:09:17.547
+And what this means is that
+a machine learning system can look
+
+127
+00:09:17.547 --> 00:09:20.233
+like it's doing better than HLP.
+
+128
+00:09:20.233 --> 00:09:25.431
+But actually be producing worse
+transcripts than people because it's just
+
+129
+00:09:25.431 --> 00:09:30.382
+doing better on this type of problem
+which is not important to do better on
+
+130
+00:09:30.382 --> 00:09:35.601
+while potentially actually doing worse
+on some other types of input audio.
+
+131
+00:09:35.601 --> 00:09:40.563
+Given these problems with Human Level
+Performance, what are we supposed to do?
+
+132
+00:09:40.563 --> 00:09:43.500
+Measuring Human Level Performance
+is useful for
+
+133
+00:09:43.500 --> 00:09:48.840
+establishing a baseline using that to
+drive error analysis and prioritization.
+
+134
+00:09:48.840 --> 00:09:51.336
+But using it to benchmark machines and
+
+135
+00:09:51.336 --> 00:09:55.740
+humans sometimes runs into
+problematic cases like this.
+
+136
+00:09:55.740 --> 00:09:58.862
+I found that when my goal is
+to build a useful application,
+
+137
+00:09:58.862 --> 00:10:01.154
+not publish a paper, you publish a paper,
+
+138
+00:10:01.154 --> 00:10:04.807
+let's prove we can outperform
+people that helps published paper.
+
+139
+00:10:04.807 --> 00:10:09.797
+But found that when my goal is to build
+a useful application rather than trying to
+
+140
+00:10:09.797 --> 00:10:11.808
+beat Human Level Performance,
+
+141
+00:10:11.808 --> 00:10:16.424
+I found it's often useful to instead
+try to raise Human Level Performance
+
+142
+00:10:16.424 --> 00:10:21.266
+because we raise Human Level Performance
+by improving label consistency and
+
+143
+00:10:21.266 --> 00:10:26.540
+that ultimately results in better
+learning outcomes performance as well.
+
+144
+00:10:26.540 --> 00:10:29.060
+Let's take a deeper look
+at this in the next video

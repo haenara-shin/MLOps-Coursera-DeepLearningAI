@@ -1,0 +1,610 @@
+WEBVTT
+
+1
+00:00:00.540 --> 00:00:02.140
+Welcome back.
+
+2
+00:00:02.140 --> 00:00:06.317
+The only constant in
+the universe is change.
+
+3
+00:00:06.317 --> 00:00:13.340
+That quote is actually attributed to
+Heraclitus of a thesis in 500 BC.
+
+4
+00:00:13.340 --> 00:00:17.584
+And I think it's fairly safe to
+say that it's still true today and
+
+5
+00:00:17.584 --> 00:00:19.680
+it affects production amount.
+
+6
+00:00:19.680 --> 00:00:24.519
+So for example if you had trained a model
+a few years ago to recognize what
+
+7
+00:00:24.519 --> 00:00:28.180
+a book looks like,
+it might have looked like this.
+
+8
+00:00:28.180 --> 00:00:34.540
+If you train a model today, you'd also
+want to include books that look like this.
+
+9
+00:00:34.540 --> 00:00:35.951
+Let's find out more now.
+
+10
+00:00:37.040 --> 00:00:42.240
+To illustrate some of the issues with
+labeled data in performance settings,
+
+11
+00:00:42.240 --> 00:00:44.561
+let's take a look at a case study.
+
+12
+00:00:46.340 --> 00:00:49.875
+So imagine that you're
+an online retailer and
+
+13
+00:00:49.875 --> 00:00:54.587
+you're selling shoes and
+you have a model that predicts click
+
+14
+00:00:54.587 --> 00:00:59.861
+through rates which helps you to
+decide how much inventory to order.
+
+15
+00:01:01.240 --> 00:01:06.136
+And suddenly the AUC and
+prediction accuracy have dropped not
+
+16
+00:01:06.136 --> 00:01:11.240
+on everything but
+on a particular part of your inventory.
+
+17
+00:01:11.240 --> 00:01:13.840
+Men's dress shoes.
+
+18
+00:01:13.840 --> 00:01:15.440
+Okay.
+
+19
+00:01:15.440 --> 00:01:18.021
+Why?
+You trained your model?
+
+20
+00:01:18.021 --> 00:01:21.431
+You did fairly well in your metrics and
+so forth.
+
+21
+00:01:21.431 --> 00:01:22.361
+Why is it different?
+
+22
+00:01:22.361 --> 00:01:23.150
+What changed?
+
+23
+00:01:23.150 --> 00:01:27.263
+Why does your model not predict
+men's dress shoes well now?
+
+24
+00:01:27.263 --> 00:01:32.500
+And perhaps more importantly, how do
+you even know that you have a problem?
+
+25
+00:01:32.500 --> 00:01:33.851
+Your models still running?
+
+26
+00:01:33.851 --> 00:01:35.549
+It's still giving predictions.
+
+27
+00:01:35.549 --> 00:01:37.840
+You're still ordering inventory.
+
+28
+00:01:37.840 --> 00:01:41.409
+How do you know that the orders
+that you're making and
+
+29
+00:01:41.409 --> 00:01:47.040
+the predictions that your model is giving
+you are not as good as they used to be?
+
+30
+00:01:47.040 --> 00:01:51.949
+Well, unfortunately,
+if you don't put good practices into place
+
+31
+00:01:51.949 --> 00:01:56.858
+in the production setting,
+you're probably going to find out either
+
+32
+00:01:56.858 --> 00:02:01.440
+when you order way too many shoes or
+not enough shoes.
+
+33
+00:02:01.440 --> 00:02:05.820
+And that's not a situation that
+you want to be in in a business.
+
+34
+00:02:05.820 --> 00:02:07.129
+This is going to cost you money.
+
+35
+00:02:09.840 --> 00:02:15.851
+So you need to think about how you're
+going to detect problems like that early.
+
+36
+00:02:15.851 --> 00:02:20.135
+And what the possible causes are so
+that you can look for
+
+37
+00:02:20.135 --> 00:02:23.140
+those and monitor your system.
+
+38
+00:02:23.140 --> 00:02:28.521
+And then try to have methods systems
+in place to deal with those problems
+
+39
+00:02:28.521 --> 00:02:33.551
+when they happen because they
+probably will happen at some point.
+
+40
+00:02:34.640 --> 00:02:36.530
+But what kinds of problems?
+
+41
+00:02:36.530 --> 00:02:38.872
+Well, there's different kinds and
+
+42
+00:02:38.872 --> 00:02:42.940
+they tend to fall into
+two different categories.
+
+43
+00:02:42.940 --> 00:02:45.040
+There are slow problems.
+
+44
+00:02:45.040 --> 00:02:52.509
+So for example, your data will drift
+over time as the world changes and
+
+45
+00:02:52.509 --> 00:02:56.561
+seasons pass and you have holidays and
+
+46
+00:02:56.561 --> 00:03:02.040
+competitors enter or change what have you.
+
+47
+00:03:02.040 --> 00:03:06.101
+And then you have fast problems that
+are really part of your system.
+
+48
+00:03:06.101 --> 00:03:11.056
+So you have a sensor that goes bad or
+you have a software update
+
+49
+00:03:11.056 --> 00:03:15.840
+that gets applied and
+suddenly things are wonky.
+
+50
+00:03:15.840 --> 00:03:20.523
+So you need to really be monitoring
+your system well and looking for
+
+51
+00:03:20.523 --> 00:03:25.471
+both of those problems and
+thinking about remediation in both cases.
+
+52
+00:03:25.471 --> 00:03:30.401
+For gradual problems, they tend to
+fall into two groups really, but
+
+53
+00:03:30.401 --> 00:03:36.100
+they're interrelated too so it's not
+like there's a hard line between them.
+
+54
+00:03:36.100 --> 00:03:41.052
+Trend and seasonality for example,
+especially in time series you will
+
+55
+00:03:41.052 --> 00:03:46.168
+have trends and you will have seasonality
+in most cases and you could argue
+
+56
+00:03:46.168 --> 00:03:51.540
+about whether that's really a change
+in data or a change in the world.
+
+57
+00:03:51.540 --> 00:03:53.941
+Same thing with the distribution
+of the features.
+
+58
+00:03:53.941 --> 00:03:57.284
+Again, it's something that
+you see in your data.
+
+59
+00:03:57.284 --> 00:04:03.112
+And the relative importance of features
+can change too as the relative importance
+
+60
+00:04:03.112 --> 00:04:08.451
+changes, if you haven't retrained
+your model accuracy starts to decay.
+
+61
+00:04:10.140 --> 00:04:12.548
+The world also changes constantly.
+
+62
+00:04:12.548 --> 00:04:17.154
+And in production settings that
+has to become part of the systems
+
+63
+00:04:17.154 --> 00:04:21.740
+that you design and
+the processes that you have in place.
+
+64
+00:04:21.740 --> 00:04:25.238
+Things like, well,
+if we're working in retail and
+
+65
+00:04:25.238 --> 00:04:29.470
+we're just looking at an example
+with shoes, styles change.
+
+66
+00:04:29.470 --> 00:04:35.056
+So, maybe last year black shoes
+were really fashionable for
+
+67
+00:04:35.056 --> 00:04:41.640
+men's dress shoes and
+now it's brown shoes or what have you.
+
+68
+00:04:41.640 --> 00:04:44.561
+The scope and the processes change.
+
+69
+00:04:44.561 --> 00:04:49.062
+So your understanding
+of those processes and
+
+70
+00:04:49.062 --> 00:04:53.800
+how they happen in the world
+will affect how your
+
+71
+00:04:53.800 --> 00:04:58.310
+model views the results
+of those processes.
+
+72
+00:04:58.310 --> 00:05:03.300
+Competitors change and
+your business also changes.
+
+73
+00:05:03.300 --> 00:05:05.737
+So you may take on new products,
+
+74
+00:05:05.737 --> 00:05:10.614
+you may end of life other products
+you may have new competitors,
+
+75
+00:05:10.614 --> 00:05:16.212
+you may expand into other geography
+ease or you may move out of geography,
+
+76
+00:05:16.212 --> 00:05:21.087
+ease prices from suppliers change,
+prices on the open market,
+
+77
+00:05:21.087 --> 00:05:26.361
+change all of that affects how your
+model needs to adapt to the world.
+
+78
+00:05:26.361 --> 00:05:31.311
+And this tends to be very domain specific,
+but in general,
+
+79
+00:05:31.311 --> 00:05:38.740
+in nearly all domains, changes in
+the world affect your model performance.
+
+80
+00:05:38.740 --> 00:05:43.997
+So for sudden problems, there's things
+that you're probably familiar with.
+
+81
+00:05:43.997 --> 00:05:49.308
+So data collection problems,
+things like a bad sensor or bad camera,
+
+82
+00:05:49.308 --> 00:05:54.079
+the log data suddenly changes and
+you have a different format or
+
+83
+00:05:54.079 --> 00:05:59.841
+the logs themselves are may be rotated
+differently, you can have a sensor or
+
+84
+00:05:59.841 --> 00:06:03.913
+a camera that doesn't really change,
+but it moves.
+
+85
+00:06:03.913 --> 00:06:09.950
+Maybe it gets bumped or maybe someone
+decided it should be in a different spot.
+
+86
+00:06:09.950 --> 00:06:13.939
+I personally have seen that
+happen where we had cameras that
+
+87
+00:06:13.939 --> 00:06:18.907
+someone decided that they should be
+moved and didn't tell us about that.
+
+88
+00:06:18.907 --> 00:06:19.446
+[LAUGH].
+
+89
+00:06:19.446 --> 00:06:20.600
+Systems problems.
+
+90
+00:06:20.600 --> 00:06:25.927
+So you're going to have software updates
+all the time and if they change something
+
+91
+00:06:25.927 --> 00:06:30.560
+significant that you weren't aware of,
+that can be a real problem.
+
+92
+00:06:30.560 --> 00:06:32.164
+Network connectivity.
+
+93
+00:06:32.164 --> 00:06:35.610
+No, no, the network never goes down,
+does it?
+
+94
+00:06:35.610 --> 00:06:38.340
+Well, maybe sometimes it does.
+
+95
+00:06:38.340 --> 00:06:39.187
+Systems too.
+
+96
+00:06:39.187 --> 00:06:41.022
+Whole systems can go down.
+
+97
+00:06:41.022 --> 00:06:42.405
+So be aware of that.
+
+98
+00:06:42.405 --> 00:06:42.958
+[LAUGH].
+
+99
+00:06:42.958 --> 00:06:48.062
+And bad credentials, you sign
+credentials and often they time out or
+
+100
+00:06:48.062 --> 00:06:52.990
+something changes about them,
+all those things can cause a sudden
+
+101
+00:06:52.990 --> 00:06:58.451
+problem that all of a sudden it's a fire
+drill and you need to deal with it.
+
+102
+00:06:59.940 --> 00:07:03.599
+So part of this is really trying
+to understand your model and
+
+103
+00:07:03.599 --> 00:07:07.540
+how it's sensitive to different
+changes in the world.
+
+104
+00:07:07.540 --> 00:07:14.050
+A big issue here is that miss predictions
+don't have uniform cost to your business.
+
+105
+00:07:14.050 --> 00:07:20.740
+Some miss predictions will have very
+little effect on your business.
+
+106
+00:07:20.740 --> 00:07:23.960
+Other miss predictions
+could have huge effects.
+
+107
+00:07:23.960 --> 00:07:28.926
+So understanding that and
+really as you're monitoring things,
+
+108
+00:07:28.926 --> 00:07:34.440
+looking for things that have
+larger impacts is important.
+
+109
+00:07:34.440 --> 00:07:41.640
+The data you have as you collect data is
+rarely the data that you wish you had.
+
+110
+00:07:41.640 --> 00:07:46.625
+So I've personally seen cases where
+we were using sensor data from
+
+111
+00:07:46.625 --> 00:07:49.580
+wifi devices and it was not great data.
+
+112
+00:07:49.580 --> 00:07:53.901
+It was really noisy and
+but it was all we had.
+
+113
+00:07:53.901 --> 00:07:55.740
+It was all we could have.
+
+114
+00:07:55.740 --> 00:07:58.540
+So we had to work with what we had.
+
+115
+00:07:58.540 --> 00:08:02.318
+The model objective is
+almost always a proxy for
+
+116
+00:08:02.318 --> 00:08:05.351
+what you're really trying to get to.
+
+117
+00:08:05.351 --> 00:08:10.027
+In many cases, sometimes you can design
+a model and you have the data to
+
+118
+00:08:10.027 --> 00:08:15.140
+design a model for exactly the thing
+that you're trying to attack.
+
+119
+00:08:15.140 --> 00:08:19.883
+But often, as in the case of
+the shoes that we just looked at,
+
+120
+00:08:19.883 --> 00:08:23.976
+we were predicting click
+through rates as a proxy for
+
+121
+00:08:23.976 --> 00:08:27.840
+deciding how much inventory to order.
+
+122
+00:08:27.840 --> 00:08:32.440
+Some percentage of your customers
+will have a bad experience.
+
+123
+00:08:32.440 --> 00:08:37.827
+You want that percentage to be as small
+as possible and as much as possible,
+
+124
+00:08:37.827 --> 00:08:42.361
+you want to understand which
+customers those are going to be, so
+
+125
+00:08:42.361 --> 00:08:45.950
+that you can try to design
+ways to mitigate that and
+
+126
+00:08:45.950 --> 00:08:50.540
+improve the situation for
+all of your customers.
+
+127
+00:08:50.540 --> 00:08:55.440
+But the bottom line here that you will
+deal with constantly is that the real
+
+128
+00:08:55.440 --> 00:08:57.840
+world does not stand still.
+
+129
+00:08:57.840 --> 00:09:00.861
+The one constant in the world is change.

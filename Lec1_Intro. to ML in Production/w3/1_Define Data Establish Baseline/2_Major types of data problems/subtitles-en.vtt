@@ -1,0 +1,736 @@
+WEBVTT
+
+1
+00:00:00.540 --> 00:00:02.925
+I'd like to share with you
+a useful framework for
+
+2
+00:00:02.925 --> 00:00:06.373
+thinking about different major
+types of machine learning projects.
+
+3
+00:00:06.373 --> 00:00:11.047
+It turns out that the best practices for
+organizing data for one type can be quite
+
+4
+00:00:11.047 --> 00:00:14.906
+different than the best practices for
+totally different types.
+
+5
+00:00:14.906 --> 00:00:18.738
+Let's take a look at whether these major
+types of machine learning projects.
+
+6
+00:00:18.738 --> 00:00:21.222
+Let's fall in this two by two grid.
+
+7
+00:00:21.222 --> 00:00:26.631
+One axis will be whether your machine
+learning problem uses unstructured data or
+
+8
+00:00:26.631 --> 00:00:27.912
+structured data.
+
+9
+00:00:27.912 --> 00:00:33.592
+I found that the best practices for these
+are very different, mainly because humans
+
+10
+00:00:33.592 --> 00:00:38.712
+are great at processing unstructured data,
+the images and audio and text,
+
+11
+00:00:38.712 --> 00:00:43.442
+and not as good at processing
+structured data like database records.
+
+12
+00:00:43.442 --> 00:00:47.251
+The second axis is
+the size of your data set.
+
+13
+00:00:47.251 --> 00:00:50.786
+Do you have a relatively small data set?
+
+14
+00:00:50.786 --> 00:00:56.147
+Do you have a relatively small datasets or
+do you have a very large data set?
+
+15
+00:00:56.147 --> 00:01:02.448
+There is no precise definition of what
+exactly is small and what is large?
+
+16
+00:01:02.448 --> 00:01:07.373
+But I'm going to use as
+a slightly arbitrary threshold,
+
+17
+00:01:07.373 --> 00:01:12.197
+whether you have over 10,000 examples or
+not.
+
+18
+00:01:12.197 --> 00:01:16.148
+And clearly this boundary
+is a little bit fuzzy and
+
+19
+00:01:16.148 --> 00:01:20.957
+the transitions from small to
+big data sets is a gradual one.
+
+20
+00:01:20.957 --> 00:01:27.059
+But I found that best practices if
+you have, say 100 or 1000 examples,
+
+21
+00:01:27.059 --> 00:01:32.711
+smaller data sets is pretty different
+than we have a very large data set.
+
+22
+00:01:32.711 --> 00:01:38.941
+And the reason I chose the number 10,000
+is that's roughly the size beyond
+
+23
+00:01:38.941 --> 00:01:44.723
+which it becomes quite painful to
+examine every single example yourself.
+
+24
+00:01:44.723 --> 00:01:49.325
+If you have 1000 examples, you could
+probably examine every example yourself.
+
+25
+00:01:49.325 --> 00:01:55.071
+But when you have, 10,000,
+100,000, million examples,
+
+26
+00:01:55.071 --> 00:01:59.448
+it becomes very time consuming for
+you as an individual or
+
+27
+00:01:59.448 --> 00:02:05.394
+maybe a couple of machinery and engineers
+to manually look at every example.
+
+28
+00:02:05.394 --> 00:02:09.703
+So that affects the best
+practices as well.
+
+29
+00:02:09.703 --> 00:02:11.809
+Let's look at some examples.
+
+30
+00:02:11.809 --> 00:02:17.096
+If you are training a manufacturing
+visual inspection from just 100 examples
+
+31
+00:02:17.096 --> 00:02:22.149
+of stretch phones, that's unstructured
+data because this is image data and
+
+32
+00:02:22.149 --> 00:02:24.107
+it's pretty small data set.
+
+33
+00:02:24.107 --> 00:02:29.342
+If you are trying to predict housing
+prices based on the size of the halls and
+
+34
+00:02:29.342 --> 00:02:33.247
+other features of the house,
+from just 52 examples,
+
+35
+00:02:33.247 --> 00:02:35.923
+then there's a structured data set.
+
+36
+00:02:35.923 --> 00:02:41.931
+We've just real value features and
+a relatively small data sets.
+
+37
+00:02:41.931 --> 00:02:47.257
+If you are carrying out speech recognition
+from 50 million train examples,
+
+38
+00:02:47.257 --> 00:02:49.282
+that's unstructured data.
+
+39
+00:02:49.282 --> 00:02:55.041
+But you have a lot of data or
+if you are trying to recommend products.
+
+40
+00:02:55.041 --> 00:03:00.132
+So online shopping recommendations and
+you have a million users in your database,
+
+41
+00:03:00.132 --> 00:03:04.657
+then that's a structured problem with
+relatively large amount of data.
+
+42
+00:03:04.657 --> 00:03:07.790
+For a lot of unstructured data problems,
+
+43
+00:03:07.790 --> 00:03:14.043
+people, Can help you to label data and
+
+44
+00:03:14.043 --> 00:03:20.000
+data augmentation such as synthesizing
+new images or synthesizing new audio.
+
+45
+00:03:20.000 --> 00:03:24.881
+And there's some emerging techniques for
+synthesizing new text as well,
+
+46
+00:03:24.881 --> 00:03:27.059
+but data augmentation can help.
+
+47
+00:03:27.059 --> 00:03:31.742
+So for manufacturing vision inspection,
+you can use data augmentation
+
+48
+00:03:31.742 --> 00:03:36.589
+to maybe generate more pictures of
+smart films or for speech recognition.
+
+49
+00:03:36.589 --> 00:03:39.822
+Data augmentation can help
+you synthesize audio clips
+
+50
+00:03:39.822 --> 00:03:41.938
+with different background noise.
+
+51
+00:03:41.938 --> 00:03:45.305
+In contrast for structured data problems,
+
+52
+00:03:45.305 --> 00:03:51.220
+it can be harder to obtain more data and
+also harder to use data augmentation,
+
+53
+00:03:51.220 --> 00:03:55.865
+if only 50 houses have been so
+recently in that geography.
+
+54
+00:03:55.865 --> 00:03:59.588
+Well, it's hard to synthesize
+new houses that don't exist or
+
+55
+00:03:59.588 --> 00:04:02.747
+if you have a million users
+in your database, again,
+
+56
+00:04:02.747 --> 00:04:06.416
+it's hard to synthesize new
+users that don't really exist.
+
+57
+00:04:06.416 --> 00:04:10.931
+And it's also harder not impossible,
+still worth trying, but it may or
+
+58
+00:04:10.931 --> 00:04:14.126
+may not be possible to get
+humans to label the data.
+
+59
+00:04:14.126 --> 00:04:16.204
+So I find that the best practices for
+
+60
+00:04:16.204 --> 00:04:19.742
+unstructured versus structured
+data are quite different.
+
+61
+00:04:19.742 --> 00:04:22.139
+The second axis is
+the size of your data set.
+
+62
+00:04:22.139 --> 00:04:29.215
+When you have a relatively small data set,
+having clean labels is critical.
+
+63
+00:04:29.215 --> 00:04:31.904
+If you have 100 training examples,
+
+64
+00:04:31.904 --> 00:04:37.285
+then if just one of the examples is
+mislabeled, that's 1% of your data set.
+
+65
+00:04:37.285 --> 00:04:42.476
+And because the data set is small enough
+for you or a small team to go through it
+
+66
+00:04:42.476 --> 00:04:48.256
+efficiently, it may well be aware of your
+while to go through that 100 examples.
+
+67
+00:04:48.256 --> 00:04:52.605
+And make sure that every one of those
+examples is labelled in a clean and
+
+68
+00:04:52.605 --> 00:04:57.193
+consistent way, meaning according
+to a consistent labeling standard.
+
+69
+00:04:57.193 --> 00:05:05.695
+In contrast, if you have a million
+data points, it can be harder.
+
+70
+00:05:05.695 --> 00:05:07.300
+Maybe impossible for
+
+71
+00:05:07.300 --> 00:05:12.481
+a small machine learning team to
+manually go through every example.
+
+72
+00:05:12.481 --> 00:05:16.055
+Having clean labels is still very helpful,
+don't get me wrong.
+
+73
+00:05:16.055 --> 00:05:20.624
+Even when you have a lot of data, clean
+labels is better than non clean ones.
+
+74
+00:05:20.624 --> 00:05:25.626
+But because of the difficulty of
+having the machine learning and
+
+75
+00:05:25.626 --> 00:05:31.193
+jointly go through every example,
+the emphasis is on data processes.
+
+76
+00:05:31.193 --> 00:05:34.330
+In terms of how you collect,
+install the data,
+
+77
+00:05:34.330 --> 00:05:39.831
+the labeling instructions you may write
+for a large team of crowdsource labelers.
+
+78
+00:05:39.831 --> 00:05:44.607
+And once you have executed some
+data process, such as asked a large
+
+79
+00:05:44.607 --> 00:05:49.638
+team of laborers to label a large set
+of audio clips, it can also be much
+
+80
+00:05:49.638 --> 00:05:54.607
+harder to go back and change your mind and
+get everything relabeled.
+
+81
+00:05:54.607 --> 00:05:58.748
+So let's summarize or
+unstructured data problems.
+
+82
+00:05:58.748 --> 00:06:02.782
+You may or may not have a huge
+collection of unlabeled examples x.
+
+83
+00:06:02.782 --> 00:06:07.831
+Maybe in your factory, you actually took
+many thousands of images of smartphones,
+
+84
+00:06:07.831 --> 00:06:11.187
+but you just haven't bothered
+to label all of them yet.
+
+85
+00:06:11.187 --> 00:06:15.102
+This is also common in
+the self driving car industry,
+
+86
+00:06:15.102 --> 00:06:20.235
+where many self driving car companies
+have collected tons of images of
+
+87
+00:06:20.235 --> 00:06:25.560
+cars driving around, but just have not yet
+caught in that data labeled.
+
+88
+00:06:25.560 --> 00:06:30.467
+For these structured data problems,
+you can sometimes get more data by
+
+89
+00:06:30.467 --> 00:06:35.552
+taking your unlabeled data x, and
+asking humans to just label more of it.
+
+90
+00:06:35.552 --> 00:06:38.113
+This doesn't apply to every problem,
+but for
+
+91
+00:06:38.113 --> 00:06:42.590
+the problems where you do have tons of
+unlabeled data, this can be very helpful.
+
+92
+00:06:42.590 --> 00:06:47.201
+And as we have already mentioned,
+data augmentation can also be helpful.
+
+93
+00:06:47.201 --> 00:06:49.322
+For structured data problems,
+
+94
+00:06:49.322 --> 00:06:54.190
+is usually harder to obtain more data
+because you only have so many users or
+
+95
+00:06:54.190 --> 00:06:58.056
+only so many houses were so
+that you can collect data from.
+
+96
+00:06:58.056 --> 00:07:03.307
+And human labeling on average is
+also harder, although there are some
+
+97
+00:07:03.307 --> 00:07:08.113
+exceptions, such as in the Lost Video
+where you saw that we could
+
+98
+00:07:08.113 --> 00:07:13.011
+try to ask people to label examples for
+the user ID merge problem.
+
+99
+00:07:13.011 --> 00:07:17.454
+But in many cases where we ask
+humans to label structure data,
+
+100
+00:07:17.454 --> 00:07:23.009
+even when there's a completely worthwhile
+to ask people to try to label if two
+
+101
+00:07:23.009 --> 00:07:29.178
+records are the same person, there's more
+likely to be a little bit more ambiguity.
+
+102
+00:07:29.178 --> 00:07:33.946
+But even the human labor sometimes
+finds it hard to be sure what is
+
+103
+00:07:33.946 --> 00:07:35.461
+the correct label.
+
+104
+00:07:35.461 --> 00:07:40.634
+Lastly, let's look at small
+versus big data where I used to
+
+105
+00:07:40.634 --> 00:07:45.603
+slightly arbitrary threshold
+of whether you have more or
+
+106
+00:07:45.603 --> 00:07:50.792
+less than say 10,000,
+they put training examples.
+
+107
+00:07:50.792 --> 00:07:54.289
+For small data sets,
+clean labels are critical and
+
+108
+00:07:54.289 --> 00:07:56.647
+the data set may be small enough for
+
+109
+00:07:56.647 --> 00:08:02.279
+you to manually look through the entire
+data set and fix any inconsistent labels.
+
+110
+00:08:02.279 --> 00:08:08.019
+Further, the labeling team is probably
+not that large, it maybe one or
+
+111
+00:08:08.019 --> 00:08:12.813
+two or just a handful of people
+that created all the labels.
+
+112
+00:08:12.813 --> 00:08:17.931
+So if you discover an inconsistency
+in the labels, say one person label
+
+113
+00:08:17.931 --> 00:08:23.319
+Iguanas one way and the different
+person labeled Iguanas a different way.
+
+114
+00:08:23.319 --> 00:08:26.184
+You can just get the two or
+three labels together and
+
+115
+00:08:26.184 --> 00:08:30.586
+have them talk to each other and hash out
+and agree on one labeling convention.
+
+116
+00:08:30.586 --> 00:08:36.723
+For the very large data sets,
+the emphasis has to be on data process.
+
+117
+00:08:36.723 --> 00:08:40.905
+And if you have a 100 labelers or
+even more, it's just harder to
+
+118
+00:08:40.905 --> 00:08:45.849
+get 100 people into a room to all talk
+to each other and hash out the process.
+
+119
+00:08:45.849 --> 00:08:50.831
+And so you might have to rely on
+a smaller team to establish a consistent
+
+120
+00:08:50.831 --> 00:08:55.983
+label definition and then share that
+definition with all, say 100 or
+
+121
+00:08:55.983 --> 00:09:00.386
+more labelers and ask them to
+all implement the same process.
+
+122
+00:09:00.386 --> 00:09:05.845
+I want to leave you with one last thought,
+which is that I found this categorization
+
+123
+00:09:05.845 --> 00:09:10.926
+of problems into unstructured versus
+structured, small versus big data.
+
+124
+00:09:10.926 --> 00:09:15.788
+I found this to be helpful for
+predicting not just whether
+
+125
+00:09:15.788 --> 00:09:20.954
+data processes generalize from
+one to another problem, but
+
+126
+00:09:20.954 --> 00:09:27.657
+also whether other machine learning
+idea is generalized from one to another.
+
+127
+00:09:27.657 --> 00:09:33.289
+So one tip, if you are working on a
+problem from one of these four quadrants,
+
+128
+00:09:33.289 --> 00:09:38.129
+then on average advice from someone
+that has worked on problems in
+
+129
+00:09:38.129 --> 00:09:42.881
+the same quadrants will probably
+be more useful than advice from
+
+130
+00:09:42.881 --> 00:09:46.582
+someone that's worked in
+a different quadrant.
+
+131
+00:09:46.582 --> 00:09:51.682
+I found also in hiring machine learning
+engineers, someone that's worked
+
+132
+00:09:51.682 --> 00:09:56.383
+in the same quadrant as the problem
+I'm trying to solve will usually be
+
+133
+00:09:56.383 --> 00:10:01.344
+able to adapt more quickly to working
+on other problems in that quadrant.
+
+134
+00:10:01.344 --> 00:10:06.252
+Because the instincts and decisions
+are more similar within one quadrant
+
+135
+00:10:06.252 --> 00:10:10.619
+than if you shift to a totally
+different quadrants in discharge.
+
+136
+00:10:10.619 --> 00:10:15.440
+I've sometimes heard people give advice
+like if you are building a computer
+
+137
+00:10:15.440 --> 00:10:19.290
+vision system always get at
+least 1000 labor examples.
+
+138
+00:10:19.290 --> 00:10:23.236
+And I think people that give advice
+like that are well meaning and
+
+139
+00:10:23.236 --> 00:10:26.891
+I appreciate that they're
+trying to give good advice, but
+
+140
+00:10:26.891 --> 00:10:30.636
+I found that advice to not really
+be useful for all problems.
+
+141
+00:10:30.636 --> 00:10:33.550
+Machine learning is very diverse and
+
+142
+00:10:33.550 --> 00:10:37.787
+it's hard to find one size
+fits all advice like that.
+
+143
+00:10:37.787 --> 00:10:41.999
+I've seen computer vision problems
+built with 100 examples or
+
+144
+00:10:41.999 --> 00:10:47.277
+100 examples for a class, screen systems
+built with 100 million examples.
+
+145
+00:10:47.277 --> 00:10:52.884
+And so if you are looking for advice on
+a machine learning project, try to find
+
+146
+00:10:52.884 --> 00:10:58.944
+someone that's worked in the same quadrant
+as the problem you are trying to solve.
+
+147
+00:10:58.944 --> 00:11:03.363
+Now we talked about one
+formulation of different types of
+
+148
+00:11:03.363 --> 00:11:05.673
+machine learning problems.
+
+149
+00:11:05.673 --> 00:11:10.203
+There's one aspect I would like to
+dive into with you in the next video,
+
+150
+00:11:10.203 --> 00:11:15.505
+which is how for small data problems,
+having clean data is especially important.
+
+151
+00:11:15.505 --> 00:11:19.061
+Let's take a look at the next
+video of why it is true.

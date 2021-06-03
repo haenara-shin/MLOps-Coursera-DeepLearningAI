@@ -1,0 +1,311 @@
+WEBVTT
+
+1
+00:00:00.640 --> 00:00:03.440
+Now, let's talk about feature selection.
+
+2
+00:00:03.440 --> 00:00:04.900
+What is feature selection?
+
+3
+00:00:04.900 --> 00:00:09.365
+Well, we have a number of features and
+as it turns out,
+
+4
+00:00:09.365 --> 00:00:13.551
+we may need some of them and
+perhaps not all of them.
+
+5
+00:00:14.640 --> 00:00:18.402
+So we try to select which
+features we actually, need and
+
+6
+00:00:18.402 --> 00:00:22.240
+eliminate the features that we don't need.
+
+7
+00:00:22.240 --> 00:00:26.881
+So that gives us a smaller set of
+features, which are useful features.
+
+8
+00:00:26.881 --> 00:00:28.840
+The ones that we have selected.
+
+9
+00:00:28.840 --> 00:00:33.697
+Feature selection identifies the features
+that best represent the relationship
+
+10
+00:00:33.697 --> 00:00:38.640
+between the features, and
+the target that we're trying to predict.
+
+11
+00:00:38.640 --> 00:00:42.751
+So, it removes features that
+don't influence the outcome.
+
+12
+00:00:44.040 --> 00:00:47.630
+That reduces the size
+of the feature space.
+
+13
+00:00:47.630 --> 00:00:53.562
+So remember, depending on the number
+of features in the feature vector,
+
+14
+00:00:53.562 --> 00:00:56.260
+that defines the size of a space.
+
+15
+00:00:56.260 --> 00:01:01.661
+Every time we add a feature,
+the space increases exponentially.
+
+16
+00:01:01.661 --> 00:01:05.855
+So we want to try to reduce
+the number of features.
+
+17
+00:01:05.855 --> 00:01:09.289
+That reduces the resource requirements for
+
+18
+00:01:09.289 --> 00:01:14.140
+processing our data, and
+the model complexity as well.
+
+19
+00:01:14.140 --> 00:01:16.370
+So why is feature selection needed?
+
+20
+00:01:16.370 --> 00:01:20.480
+Well, we want to reduce storage and
+I/O requirements, that's part of it.
+
+21
+00:01:20.480 --> 00:01:23.094
+Less features means smaller data.
+
+22
+00:01:23.094 --> 00:01:27.460
+And we want to minimize the training,
+and inference costs.
+
+23
+00:01:27.460 --> 00:01:31.566
+Especially in many cases the inference
+costs, because we may be
+
+24
+00:01:31.566 --> 00:01:36.052
+serving millions of requests with
+once we have trained our model, and
+
+25
+00:01:36.052 --> 00:01:39.840
+each one of those costs
+a certain amount to serve.
+
+26
+00:01:39.840 --> 00:01:44.140
+So, there's different ways
+to do feature selection.
+
+27
+00:01:44.140 --> 00:01:48.924
+First of all, you can do unsupervised
+feature selection, meaning you don't have
+
+28
+00:01:48.924 --> 00:01:53.661
+to or doesn't account really for the
+labels, or supervised feature selection.
+
+29
+00:01:53.661 --> 00:01:56.840
+So, it is going to use
+the information in the labels.
+
+30
+00:01:56.840 --> 00:02:01.107
+So for unsupervised feature
+selection it takes the features,
+
+31
+00:02:01.107 --> 00:02:06.040
+and the target variable
+relationship is not considered.
+
+32
+00:02:06.040 --> 00:02:10.836
+It removes the redundant features which
+in unsupervised, really means looking for
+
+33
+00:02:10.836 --> 00:02:11.730
+correlation.
+
+34
+00:02:11.730 --> 00:02:16.607
+When you have two features or more than
+two features that are highly correlated,
+
+35
+00:02:16.607 --> 00:02:18.901
+you really only need one of those, and
+
+36
+00:02:18.901 --> 00:02:23.151
+you're going to select the one that
+probably gives you the best result.
+
+37
+00:02:24.340 --> 00:02:30.151
+For supervised feature selection, it is
+going to use the target relationship.
+
+38
+00:02:30.151 --> 00:02:35.340
+So the relationship between each of
+the features, and the target or label.
+
+39
+00:02:35.340 --> 00:02:37.888
+So it's going to select those features,
+
+40
+00:02:37.888 --> 00:02:42.640
+that contribute most to
+correctly predicting the target.
+
+41
+00:02:42.640 --> 00:02:45.280
+So let's take a look at
+some supervised methods.
+
+42
+00:02:45.280 --> 00:02:49.676
+We're going to use feature selection,
+and there's different methods to do that
+
+43
+00:02:49.676 --> 00:02:53.040
+filter methods, wrapper methods,
+and embedded methods.
+
+44
+00:02:53.040 --> 00:02:54.758
+For a practical example,
+
+45
+00:02:54.758 --> 00:02:59.540
+we're going to work with a dataset
+from breast cancer diagnostic.
+
+46
+00:02:59.540 --> 00:03:03.839
+So this is going to be the data set we're
+going to use for looking at several
+
+47
+00:03:03.839 --> 00:03:08.840
+different kinds of feature selection,
+but this is going to be our example.
+
+48
+00:03:08.840 --> 00:03:13.092
+So we're going to try to predict
+whether the tumor is benign or
+
+49
+00:03:13.092 --> 00:03:18.130
+malignant, and that gives you some
+notion of how cancer reproduces.
+
+50
+00:03:18.130 --> 00:03:23.049
+This is our feature list, and
+as you can see we've created and
+
+51
+00:03:23.049 --> 00:03:25.620
+assigned an id for our example.
+
+52
+00:03:25.620 --> 00:03:29.123
+And we also have an irrelevant
+feature that's been added here, so
+
+53
+00:03:29.123 --> 00:03:31.140
+that we have something there.
+
+54
+00:03:31.140 --> 00:03:35.270
+This is just an example,
+usually it's not quite so
+
+55
+00:03:35.270 --> 00:03:42.201
+obvious as something named unnamed 32, but
+you do often see not a number of values.
+
+56
+00:03:42.201 --> 00:03:45.352
+So that's often a clue or missing values,
+
+57
+00:03:45.352 --> 00:03:49.651
+that's often a clue that you
+have an irrelevant feature.
+
+58
+00:03:50.840 --> 00:03:56.531
+And for performance evaluation,
+will start as a baseline value.
+
+59
+00:03:56.531 --> 00:04:00.522
+We're going to use a random
+forest classifier,
+
+60
+00:04:00.522 --> 00:04:04.940
+using sklearn to work with
+our selected features.
+
+61
+00:04:04.940 --> 00:04:08.340
+And we're going to use some metrics for
+that.
+
+62
+00:04:08.340 --> 00:04:12.337
+So that's going to include
+the accuracy score,
+
+63
+00:04:12.337 --> 00:04:16.751
+the AUC score, the precision,
+recall, and F1.
+
+64
+00:04:17.940 --> 00:04:22.450
+So, this is our baseline
+here with all 30 features.
+
+65
+00:04:22.450 --> 00:04:29.150
+It gives us for each of those metrics,
+the values that we get for all 30 features

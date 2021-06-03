@@ -1,0 +1,307 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.630
+You've seen the machine
+learning project life cycle.
+
+2
+00:00:03.630 --> 00:00:05.550
+Let's briefly go over what
+
+3
+00:00:05.550 --> 00:00:07.935
+you'll learn in the
+rest of this course.
+
+4
+00:00:07.935 --> 00:00:09.720
+Even though I presented
+
+5
+00:00:09.720 --> 00:00:12.585
+the life cycle going
+from left to right,
+
+6
+00:00:12.585 --> 00:00:15.480
+I found that for learning
+these materials,
+
+7
+00:00:15.480 --> 00:00:17.340
+it will be more efficient for
+
+8
+00:00:17.340 --> 00:00:19.215
+you to start at the end goal,
+
+9
+00:00:19.215 --> 00:00:20.790
+and start from deployment,
+
+10
+00:00:20.790 --> 00:00:22.740
+and then work backwards to
+
+11
+00:00:22.740 --> 00:00:25.050
+modeling data and then scoping.
+
+12
+00:00:25.050 --> 00:00:26.715
+In the rest of this week,
+
+13
+00:00:26.715 --> 00:00:28.095
+starting with the next video,
+
+14
+00:00:28.095 --> 00:00:30.585
+you'll learn about the
+most important ideas
+
+15
+00:00:30.585 --> 00:00:32.190
+in Deployment.
+
+16
+00:00:32.190 --> 00:00:34.125
+Next week, in Week 2,
+
+17
+00:00:34.125 --> 00:00:36.285
+you'll learn about modeling.
+
+18
+00:00:36.285 --> 00:00:38.430
+You may have learned
+about how to train
+
+19
+00:00:38.430 --> 00:00:40.970
+a machine learning model
+from other courses.
+
+20
+00:00:40.970 --> 00:00:42.875
+In this video, I'll share
+
+21
+00:00:42.875 --> 00:00:46.280
+some new ideas that you may
+not have heard before of
+
+22
+00:00:46.280 --> 00:00:49.595
+how to systematically use
+a data-centric approach
+
+23
+00:00:49.595 --> 00:00:51.380
+to be more efficient in how you
+
+24
+00:00:51.380 --> 00:00:53.500
+improve the performance
+of your model.
+
+25
+00:00:53.500 --> 00:00:55.230
+Then in the third,
+
+26
+00:00:55.230 --> 00:00:57.195
+and final week of this course,
+
+27
+00:00:57.195 --> 00:00:59.135
+you'll learn about data.
+
+28
+00:00:59.135 --> 00:01:02.375
+How to define data and
+establish a baseline,
+
+29
+00:01:02.375 --> 00:01:04.190
+and how to label and organize
+
+30
+00:01:04.190 --> 00:01:07.245
+your data in a way
+that is systematic.
+
+31
+00:01:07.245 --> 00:01:09.540
+Not Ad hoc, not hacking around in
+
+32
+00:01:09.540 --> 00:01:10.940
+the Jupyter notebook in the hope
+
+33
+00:01:10.940 --> 00:01:12.500
+that you stumble onto
+the right insights,
+
+34
+00:01:12.500 --> 00:01:14.135
+but in a more systematic way
+
+35
+00:01:14.135 --> 00:01:16.160
+that helps you be
+more efficient in
+
+36
+00:01:16.160 --> 00:01:18.230
+defining the data that will help
+
+37
+00:01:18.230 --> 00:01:20.920
+the modeling to help
+you get to deployment.
+
+38
+00:01:20.920 --> 00:01:23.300
+Then finally, in Week 3 we'll
+
+39
+00:01:23.300 --> 00:01:26.225
+also have an optional
+section on scoping.
+
+40
+00:01:26.225 --> 00:01:29.795
+In which I hope to share with
+you some tips I've learned
+
+41
+00:01:29.795 --> 00:01:33.695
+on how to define effective
+machine learning projects.
+
+42
+00:01:33.695 --> 00:01:36.875
+Throughout this course, you'll
+also learn about MLOps,
+
+43
+00:01:36.875 --> 00:01:39.110
+or machine learning operations.
+
+44
+00:01:39.110 --> 00:01:40.865
+Which is an emerging discipline
+
+45
+00:01:40.865 --> 00:01:43.070
+that comprises a set of tools and
+
+46
+00:01:43.070 --> 00:01:45.170
+principles to support progress
+
+47
+00:01:45.170 --> 00:01:47.615
+through the machine ML
+project life cycle,
+
+48
+00:01:47.615 --> 00:01:50.705
+but especially these three steps.
+
+49
+00:01:50.705 --> 00:01:53.885
+For example, at Landing
+AI, where I'm CEO,
+
+50
+00:01:53.885 --> 00:01:55.970
+we used to do a lot of
+these steps manually,
+
+51
+00:01:55.970 --> 00:01:57.725
+which is okay, but slow.
+
+52
+00:01:57.725 --> 00:02:00.290
+But after building
+an MLOps tool called
+
+53
+00:02:00.290 --> 00:02:02.855
+LandingLens for computer
+vision applications,
+
+54
+00:02:02.855 --> 00:02:04.895
+all these steps
+became much quicker.
+
+55
+00:02:04.895 --> 00:02:07.190
+The key idea in MLOps is
+
+56
+00:02:07.190 --> 00:02:10.235
+that systematic ways to
+think about scoping, data,
+
+57
+00:02:10.235 --> 00:02:12.560
+modeling, and
+deployment, and also
+
+58
+00:02:12.560 --> 00:02:16.210
+software tools to support
+the best practices.
+
+59
+00:02:16.210 --> 00:02:18.260
+That's it. In this course,
+
+60
+00:02:18.260 --> 00:02:20.000
+we're going to start
+at the end goal,
+
+61
+00:02:20.000 --> 00:02:23.855
+start from deployment, and
+then work our way backwards.
+
+62
+00:02:23.855 --> 00:02:25.455
+As you already know,
+
+63
+00:02:25.455 --> 00:02:28.940
+being able to deploy system
+is one of the most important,
+
+64
+00:02:28.940 --> 00:02:31.460
+and valuable skills in
+Machine Learning today.
+
+65
+00:02:31.460 --> 00:02:35.195
+Let's go on to the next video
+where we'll dive deep into
+
+66
+00:02:35.195 --> 00:02:37.880
+the most important ideas
+
+67
+00:02:37.880 --> 00:02:40.655
+needed to deploy machine
+learning systems.
+
+68
+00:02:40.655 --> 00:02:43.260
+I will see you in the next video.

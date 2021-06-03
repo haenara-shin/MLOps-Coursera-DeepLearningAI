@@ -1,0 +1,132 @@
+For some applications, having
+and tracking metadata, data provenance, and data
+lineage can be a big help. What do these words even mean? Let's look at an example. Here's a more complex
+example of a data pipeline, building on our previous
+example of using user records to
+predict if someone is looking for a job at
+a given moment in time. Let's say you start off
+with a spam dataset. This may include a list of known spam accounts
+as well as features such as a list of blacklisted IP addresses that
+spammers are known to use. You might also implement
+a learning algorithm or a piece of machine learning code and train your
+learning algorithm, understand dataset, thus
+giving you an anti-spam model. These arrows indicate flow of information or
+flow of computation, where training your ML code on the spam dataset gives
+you your anti-spam model. You then take your user data and apply the anti-spam model to it to get the
+disband user data. We're following our usual
+convention that things with the purple rectangle around
+it represent pieces of code. Now, taking your
+de-spammed user data. Next, you may want to
+carry out user ID merge. To do that, you might start
+off with some ID merged data. This would be labeled data telling you some pairs of
+accounts that actually correspond to the same person have a machine learning
+algorithm implementation, train the model on that, and this gives you a learned ID merge model that tells you when to combine two accounts
+into a single user ID. You take your ID merge model, apply it to the
+de-spammed user data. This gives you your
+cleaned up user data. Then finally, based on
+the clean user data, hopefully, some of this labels with whether someone's
+looking for a job, you'll then have another
+machine learning model, train on it to give
+you a model to predict if a given user is
+looking for a job or not. This is then used
+to make predictions on other users or maybe across your whole
+database of users. This level of complexity
+of a data pipeline is not typical in large
+commercial systems. I've seen data pipelines
+or data cascades that are even far more
+complicated than this. One of the challenges of working with data
+pipelines like this is, what if after running
+this system for months, you discover that, oops, the IP address blacklists you're using has
+some mistakes in it. In particular, what if you
+discover that there was some IP addresses that were
+incorrectly blacklisted. Maybe because the provider
+from whom you had purchased a blacklisted IP
+addresses found out that there were some IP addresses
+that multiple users use, such as multiple users on a corporate campus or
+university campus, sharing IP address
+for security reasons. But the organization
+creating the blacklist IP address thought it
+was spammy because so many people shared
+an IP address. This has happened before. The question is, having built
+up this big complex system, if you were to update
+your spam dataset, won't that change
+your spam model, and therefore that,
+and therefore that, and therefore that,
+and therefore that. How do you go back
+and fix this problem? Especially if each of these systems was developed
+by different engineers, and you have files spread
+across the laptops of your machine learning
+engineering development team. To make sure your
+system is maintainable, especially when a piece of data upstream ends up
+needing to be changed, it can be very
+helpful to keep track of data provenance
+as well as lineage. Data provenance refers to
+where the data came from. Who did you purchase the
+spam IP address from? Lineage refers to the sequence of steps needed to get to
+the end of the pipeline. At the very least, having extensive
+documentation could help you reconstruct data
+provenance and lineage, but to build robust, maintainable systems, not in
+the proof of concept stage, but in the production stage. There are more
+sophisticated tools to help you keep track of what
+happens so that you can change part of the system and hopefully replicate the rest of the data pipeline without too much unnecessary complexity. To be honest, the tools for keeping track of
+data provenance and lineage are still immature into this machine learning world. I find that extensive
+documentation can help and some formal tools like TensorFlow
+Transform can also help but solving this
+type of problem is still not something that we are great at as a community yet. To make life easier, both for managing data
+pipelines as well as for error analysis and driving machine
+learning development, there's one tip I want to share, which is to make extensive
+use of metadata. Metadata is data about data. For example, in manufacturing
+visual inspection, the data would be the pictures
+of phones and the labels but if you have
+metadata that tells you what time was this
+picture of a phone taken, what factory was
+this picture from, what's the line number, what were the camera
+settings such as camera exposure time
+and camera aperture, what's the number of the
+phone you're inspecting, what's the ID of the inspector
+that provided this label. These are examples of data
+about your dataset X and Y. This type of metadata can
+turn out to be really useful because if you discover, during machine
+learning development, that for some strange reason, line number 17 in factory 2 generates images that produce a lot more
+errors for some reason. Then this allows you
+to go back to see what was funny about line
+17 and factory 2. But if you had not stored the factory in line number
+metadata in the first place, then it would have been
+really difficult to discover this during
+error analysis. I found many times
+when I happened to maybe get lucky and
+store the right metadata, only to discover a month
+later that that metadata helped generate a key insight that helped the
+project move forward. My tip is if you have
+a framework or a set of MLOps tools for
+storing metadata, that will definitely make life easier but even if you don't, just like you rarely regret
+commenting your code, I think you will
+really regret storing metadata that could then
+turn out to be useful later. Just like if you don't comment
+your code in a timely way, it's much harder to go
+back to comment it later. In the same way, if you don't store the
+metadata in a timely way, it can be much
+harder to go back to recapture and organize that data. One more example for
+speech recognition. If you have audio recorded from different brands
+of smartphones, let's say that in advance, or if you have different
+labelers labeling your speech, or if you use a voice
+activity detection model, then just keep track of what was their version number of the voice activity detection
+model that you use. All of these means that
+in case for some reason, one version of the VAD, voice activity detection system results in much larger errors, this significantly increases
+the odds of you discovering that and really use that to improve your learning
+algorithm performance. To summarize, metadata can be very useful for error
+analysis and spotting unexpected effects or tags
+or categories of data that have some unusually
+poor performance or something else, to suggest how to
+improve your system. Of course, maybe
+not surprisingly, this type of metadata is
+also very useful for keeping track of where the data came
+from or data provenance. The takeaway from this
+video is that for large complex machine learning systems that you might
+need to maintain, keeping track of
+data provenance and lineage can make your
+life much easier. As part of building
+out the systems, consider keeping
+track of metadata, which can help you with
+tracking data provenance, but also error analysis. Before we wrap up this section, there's just one more tip
+I hope to share with you, which is the importance of balanced train dev-test splits. Let's go on to the next video.

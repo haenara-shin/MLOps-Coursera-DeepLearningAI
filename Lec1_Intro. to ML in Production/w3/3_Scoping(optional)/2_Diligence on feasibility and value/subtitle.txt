@@ -1,0 +1,196 @@
+In the last video, you heard about the
+step of assessing a project for technical
+feasibility and for value. Let's take a deeper
+look at how you can carry out this diligence step to figure out if a project
+really is feasible and also how valuable
+it really is. Let's start with feasibility. Is this project idea
+technically feasible? Before you've started on the
+Machine Learning Project, how do you know if this
+thing can even be built? One way to get a quick
+sense of feasibility is to use an external benchmark
+such as the research, literature or other
+forms of publications, or if different company or even a competitor
+has managed to build a certain type of
+online search system before, or recommendation system
+or, inventory management. But if there's some
+external benchmark that might help give you a sense that this project
+may be technically feasible, because someone else has managed
+to do something similar. Either to complement this type of external benchmark or in the absence of this other
+external benchmark, here are some other ways
+to assess feasibility. I'm going to build a two by two matrix that looks
+at different cases, depending on whether your problem has
+unstructured data like speech images or structured data like
+transaction records. On the other axis, I'm going to put new
+versus existing. Whereby new I mean, you're trying to
+build a system to do a task for the first time, such as if you've
+never done demand forecasting before and you're
+thinking of building one, whereas existing refers to if you already have
+some existing system, maybe a machine learning
+one, maybe not, that is carrying out this
+task and you're thinking of scoping out an improvement
+to an existing system. New means you are delivering a brand new capability
+and the existing means you're scoping
+out the project to improve on an
+existing capability. In the upper left hand quadrant, to see if a project is
+technically feasible, I find Human Level Performance, HLP to be very
+useful and give you an initial sense of whether
+a project is doable. When evaluating HLP, I
+would give a human to same data as would be fed to a learning algorithm
+and just ask, can a human given the same data, perform the tasks such as can the human given a picture of
+a scratch smartphone, perform the task of detecting
+scratches reliably? If a human can do it, then that significantly
+increases the hope they can also get the
+learning algorithm to do it. For existing projects, I would use HLP as a reference as well. Where if you have a visual [inaudible]
+inspection system and you're hoping
+to improve it to a certain level of performance. If humans can achieve the
+level you're hoping to get to, then that might give you more hope that it is
+technically feasible. Whereas if you're
+hoping to increase performance well beyond
+human level performance, then that suggests the project might be harder or
+may not be possible. In addition to HLP, I often also use the history of the project as a predictor
+for future progress. I will say more
+about both HLP and history of project in
+the next few slides, but the previous rate of
+progress on the project can be a reasonable predictor for the future rate of
+progress on a project. You see more of this
+later in this video. Moving over to the right column. If you're working on a brand new project
+with structure data, the question I would ask is, are predictive
+features available? Do you have reason to think
+that the data you have, the inputs X are strongly predictive
+or sufficiently predictive of the
+target outputs Y? In this box on the lower right, for structured data problem, if you're trying to improve
+an existing system, one thing that will
+help a lot is if you can identify new
+predictive features. Are there features that you aren't yet using but
+you can identify that could really help predict
+Y and also by looking at? The history, of the project. On this slide, you heard
+about three concepts. Human-level performance,
+the question of whether predictive
+features are available, and also the history
+of a project. Let's take a deeper look
+at these three concepts. Let's start with using HLP
+on unstructured data images. I use HLP to benchmark
+what might be durable for unstructured data
+because people are very good on
+unstructured data tasks. The key criteria for assessing
+project feasibility is, can a human given the exact same data as would be given to a learning
+algorithm, perform the task? Let's look at an example. Let's say you're building
+a self-driving car, and you want an
+algorithm to classify whether a traffic
+light is currently red, yellow, or green. I will take pictures from your self-driving car and ask a person to look
+at an image like this, and see if the person
+looking only at the image can tell which lamp is
+illuminated and in this example, it's pretty clear it's green. But if you find that you also
+have pictures like these, then I can't tell which lamp is illuminated
+in this example. This is why it's important for this HLP benchmark
+to make sure that human is given only the same data as your learning algorithm. It turns out maybe
+a human sitting in the car and seeing the traffic
+light with their own eye, could have told
+you which lamp was illuminated in this
+example on the right, but that's because
+the human eye has superior contrast to
+most digital cameras. But the useful test
+is not whether the human eye can recognize
+which lamp is illuminated, the useful test is
+if the person was sitting back in the
+office and they can only see the image from the camera, can they still do the task? That gives you a better
+read on feasibility. Specifically, it helps you make a better guess at whether
+a learning algorithm, which will only have
+access to this image, can also accurately detect which lamp in a traffic
+light is illuminated. Making sure that a human sees only the same data as
+a learning algorithm will see is really important. I've seen a lot of
+projects where for a long time a team was working on a computer
+vision system, say, and they thought they could
+do it because a human physically inspecting
+the cell phone or something could
+detect the defect. But it took a long
+time to realize that even a human looking
+only at the image, couldn't figure out
+what was going on. If you can realize that earlier, then you can figure much earlier that with the
+current camera set up, it just wasn't visible. The more efficient thing to
+do would have been to invest early on in a better camera or better lighting
+setup or something, rather than keep working on
+a machine learning algorithm on the problem that I
+think just wasn't durable, with the imaging setup
+available at a time. Next, for structured
+data problems, one of the key criteria to assess for technical
+feasibility is, do we have input features
+X that seem to be predictive whenever we're
+trying to predict Y. Let's look at a few examples. In a Ecom example, if you have features
+that show what are the past purchases of a user and you like to
+predict future purchases. That seems possible to
+me because most people's previous purchases are
+predictive of future purchases. If you have past purchase data, you do have features
+that seem predictive of future purchases and this
+project might be worth a try. Or if you work with
+a physical store, given data on whether if you want to predict
+shopping mall foot traffic. How many people will
+go to the mall? While we know that, when it rains a lot, fewer people leave their house, so weather is predictive of foot traffic in
+shopping malls and so, I will say you do have
+predictive features. Let's look at some more examples. Given DNA of an individual, let's try to predict if this individual will
+have heart disease. This one, I don't know, the mapping from your DNA
+to whether or not you get heart disease is
+a very noisy mapping. In biology, this is referred to the genotype and phenotype, but the mapping from
+genotype to phenotype or your genetics to your
+health condition is a very noisy mapping. I would have mixed feelings
+about this project, because it turns out your genetic sequence
+is only slightly, maybe mildly predictive of
+whether you get heart disease. I'm going to put a
+question mark there. Given social media chatter, can you predict demand
+for a clothing style? This is another iffy one. I think you may be
+able to predict demand for clothing
+style right now, but given social media chatter, can you predict what
+will be the hot, fashionable trend
+six months from now? That actually seems
+very difficult. One of the ways I've seen
+AI projects go poorly, is if there's an idea like let's use social
+media to figure out what people are chatting
+about in fashion and then we'll
+manufacture the clothing and sell it in six months. Sometimes the data just
+is not that predictive, and you end up with a
+learning algorithm that does barely better
+than random guessing. That's why looking at whether you have features that you
+believe are predictive, is an important step of diligence for assessing technical feasibility
+of a project. One last example that
+may be even clearer, which is given a history of a particular stock
+market shares price. Let's try to predict the
+future price of that stock. All of the evidence I've seen is that this is not
+doable unless you get some other clever set of features looking at a single
+shares historical price, to predict the future price of that stock is
+exceedingly difficult. I would say if those are
+the only futures you have, those features are
+not predictive of the future price of that stock based on the evidence I've seen. Even leaving aside
+the question of how much predicting share
+prices are trading, if there's any social value, I have some questions
+about that sometimes. I think this project is also just not
+technically feasible. Finally, on this diagram, one last criteria I
+mentioned a couple of times is the history
+of a project. Let's take a look at that. When I've worked on a machine learning
+application for many months, I found that the rates of
+previous improvements can be maybe a surprisingly
+good predictor for the rate of future improvement. Here's a simple
+model you can use. Let's see a speech
+recognition as the example, and let's say that this is
+human level performance. I'm going to use human
+level performance as our estimate for B0 or the irreducible level of error that we hope to get to. Let's say that when
+you started a project, you'll see in the first
+quarter or Q1 of some year, the system had 10
+percent error rate. Over time, in
+subsequent quarters, the error went down like, Q2, Q3, Q4 and so on. It turns out that it's not a terrible model to
+estimate this curve. If you want to estimate how well the team could do in the future, one simple model I've used, is to estimate the rate of progress as for every
+fixed period of time, say every quarter,
+the team will reduce the error rate by some percentage relative to
+human level performance. In this case, it looks like this gap between the current
+level of performance and human level performance is shrinking by maybe 30
+percent every quarter, which is why you get
+this curve that is exponentially
+decaying to what HRP. By estimating this
+rate of progress, you may project into the future that hopefully
+in future quarters, you continue to reduce the error by 30 percent
+relative to HRP. This will give you a
+sense of what might be reasonable for the future rate of progress on this project. This gives you a sense of
+what may be feasible for an existing project for which
+you already have this type of history and can try to
+extrapolate into the future. In this video, you saw how to use human level performance, the question of whether you
+have predictive features and the history of a project in order to assess
+technical feasibility. Next, let's dive more deeply into assessing the value of a project. We'll do that in the next video.

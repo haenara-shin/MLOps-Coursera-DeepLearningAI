@@ -1,0 +1,721 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.529
+How do you estimate
+
+2
+00:00:01.529 --> 00:00:04.260
+the value of Machine
+Learning Project?
+
+3
+00:00:04.260 --> 00:00:07.050
+This is sometimes not
+easy to estimate,
+
+4
+00:00:07.050 --> 00:00:09.705
+but let me share with you
+a few best practices.
+
+5
+00:00:09.705 --> 00:00:11.880
+Took speech recognition, let's
+
+6
+00:00:11.880 --> 00:00:14.040
+say you're working on building
+
+7
+00:00:14.040 --> 00:00:16.410
+a more accurate speech
+recognition system
+
+8
+00:00:16.410 --> 00:00:17.760
+for the purpose of
+
+9
+00:00:17.760 --> 00:00:19.830
+voice search so that
+people speak to
+
+10
+00:00:19.830 --> 00:00:22.655
+the smartphone app
+to do web searches.
+
+11
+00:00:22.655 --> 00:00:26.790
+It turns out that
+in most businesses
+
+12
+00:00:26.790 --> 00:00:28.620
+there will be some metrics
+
+13
+00:00:28.620 --> 00:00:31.020
+that machine learning engineers
+
+14
+00:00:31.020 --> 00:00:34.845
+are used to optimizing
+and some metrics that
+
+15
+00:00:34.845 --> 00:00:37.380
+the owners of the product or
+
+16
+00:00:37.380 --> 00:00:40.685
+the business will
+want to maximize.
+
+17
+00:00:40.685 --> 00:00:42.810
+There's often a gap between
+
+18
+00:00:42.810 --> 00:00:47.250
+these two building machine
+learning systems to objective
+
+19
+00:00:47.250 --> 00:00:50.160
+that a learning
+algorithm may optimize
+
+20
+00:00:50.160 --> 00:00:54.165
+might be something right
+where level accuracy.
+
+21
+00:00:54.165 --> 00:00:58.020
+If a user says a certain
+number of words,
+
+22
+00:00:58.020 --> 00:01:00.930
+how many of the words
+do we get right?
+
+23
+00:01:00.930 --> 00:01:02.970
+Maybe the learning algorithm
+
+24
+00:01:02.970 --> 00:01:04.650
+actually does great in the sense
+
+25
+00:01:04.650 --> 00:01:07.735
+on log-likelihood or
+some other criteria.
+
+26
+00:01:07.735 --> 00:01:10.425
+But many machine learning
+teams would be comfortable
+
+27
+00:01:10.425 --> 00:01:13.800
+trying to get good
+words-level accuracy.
+
+28
+00:01:13.800 --> 00:01:16.305
+But when using this in
+a business context,
+
+29
+00:01:16.305 --> 00:01:20.414
+one other key metrics
+query-level accuracy,
+
+30
+00:01:20.414 --> 00:01:22.500
+which is how often do you get
+
+31
+00:01:22.500 --> 00:01:24.900
+all the words in a query right.
+
+32
+00:01:24.900 --> 00:01:29.520
+For some businesses word-level
+accuracy is important,
+
+33
+00:01:29.520 --> 00:01:33.615
+but query-level accuracy
+may be even more important.
+
+34
+00:01:33.615 --> 00:01:37.755
+We've now taken one step
+away from the objective
+
+35
+00:01:37.755 --> 00:01:39.450
+that the learning algorithm
+
+36
+00:01:39.450 --> 00:01:42.675
+is almost directly optimizing.
+
+37
+00:01:42.675 --> 00:01:45.405
+Even after you get
+the query right,
+
+38
+00:01:45.405 --> 00:01:48.510
+which is important for
+the user experience,
+
+39
+00:01:48.510 --> 00:01:50.670
+what users care even more
+
+40
+00:01:50.670 --> 00:01:53.580
+about is the search
+result quality.
+
+41
+00:01:53.580 --> 00:01:56.490
+The reason the business may want
+
+42
+00:01:56.490 --> 00:01:59.280
+to ensure search result quality
+
+43
+00:01:59.280 --> 00:02:01.200
+is that this gives users
+
+44
+00:02:01.200 --> 00:02:05.130
+a better experience and just
+increases user engagement,
+
+45
+00:02:05.130 --> 00:02:07.740
+so they come back to the
+search engine more often.
+
+46
+00:02:07.740 --> 00:02:11.640
+This is important, but
+this is just one step
+
+47
+00:02:11.640 --> 00:02:15.960
+towards actually driving the
+revenue of the business.
+
+48
+00:02:15.960 --> 00:02:18.120
+One gap I've often seen
+
+49
+00:02:18.120 --> 00:02:20.730
+between machine learning
+teams and business teams
+
+50
+00:02:20.730 --> 00:02:25.890
+is the entry team will
+usually want to work on this,
+
+51
+00:02:25.890 --> 00:02:34.150
+whereas the business leader
+may once promises on that.
+
+52
+00:02:34.250 --> 00:02:37.990
+In order for a project
+to move forward,
+
+53
+00:02:37.990 --> 00:02:40.720
+I usually try to have
+the technical and
+
+54
+00:02:40.720 --> 00:02:42.850
+the business teams try to agree
+
+55
+00:02:42.850 --> 00:02:45.280
+on metrics that both
+are comfortable with.
+
+56
+00:02:45.280 --> 00:02:47.740
+This often takes a little bit of
+
+57
+00:02:47.740 --> 00:02:51.370
+compromise where the machine
+learning team might stretch
+
+58
+00:02:51.370 --> 00:02:53.800
+a little bit further
+to the right and
+
+59
+00:02:53.800 --> 00:02:55.360
+the business teams stretch
+
+60
+00:02:55.360 --> 00:02:57.625
+a little bit further to the left.
+
+61
+00:02:57.625 --> 00:02:59.560
+The further we go to the right,
+
+62
+00:02:59.560 --> 00:03:01.000
+the harder it is for
+
+63
+00:03:01.000 --> 00:03:04.560
+a machine learning team to
+really give a guarantee.
+
+64
+00:03:04.560 --> 00:03:08.650
+I wish more problems
+could be solved by
+
+65
+00:03:08.650 --> 00:03:13.615
+gradient descent or by
+optimizing tested accuracy.
+
+66
+00:03:13.615 --> 00:03:16.360
+But that's just not to
+say of the world today,
+
+67
+00:03:16.360 --> 00:03:19.780
+a lot of practical
+problems require
+
+68
+00:03:19.780 --> 00:03:21.310
+we do something more than
+
+69
+00:03:21.310 --> 00:03:23.780
+just optimizing tested accuracy.
+
+70
+00:03:23.780 --> 00:03:26.350
+Having the technical team and
+
+71
+00:03:26.350 --> 00:03:28.540
+the business teams both step
+
+72
+00:03:28.540 --> 00:03:31.060
+a little bit outside their
+comfort zone is often
+
+73
+00:03:31.060 --> 00:03:34.030
+important for reaching
+compromise to pick
+
+74
+00:03:34.030 --> 00:03:38.020
+some set of metrics that the
+technical team feels like
+
+75
+00:03:38.020 --> 00:03:39.550
+could stretch a bit to deliver
+
+76
+00:03:39.550 --> 00:03:42.310
+on and that the business
+team can stretch
+
+77
+00:03:42.310 --> 00:03:44.445
+a bit to feel comfortable will
+
+78
+00:03:44.445 --> 00:03:46.945
+create sufficient value
+for the business.
+
+79
+00:03:46.945 --> 00:03:50.455
+One other practice
+I've found useful
+
+80
+00:03:50.455 --> 00:03:54.730
+is that if you can do
+even very rough back of
+
+81
+00:03:54.730 --> 00:03:57.670
+the envelope calculations to
+
+82
+00:03:57.670 --> 00:03:59.470
+relate what level of
+
+83
+00:03:59.470 --> 00:04:02.810
+accuracy to some of the
+metrics on the right.
+
+84
+00:04:02.810 --> 00:04:06.320
+If word accuracy
+improves by one percent,
+
+85
+00:04:06.320 --> 00:04:08.260
+if you have any rough guess
+
+86
+00:04:08.260 --> 00:04:11.424
+for will that improve
+query level accuracy,
+
+87
+00:04:11.424 --> 00:04:16.010
+maybe by 0.7 percent
+or 0.8 percent,
+
+88
+00:04:16.010 --> 00:04:18.600
+and how much will that improve
+
+89
+00:04:18.600 --> 00:04:20.920
+search result quality and
+
+90
+00:04:20.920 --> 00:04:23.570
+user engagement
+and maybe revenue,
+
+91
+00:04:23.570 --> 00:04:25.270
+if able to come up with
+
+92
+00:04:25.270 --> 00:04:28.990
+even a very crude back of
+the envelope calculation.
+
+93
+00:04:28.990 --> 00:04:32.440
+Sometimes these are also
+called Fermi estimates.
+
+94
+00:04:32.440 --> 00:04:37.410
+You can read about
+this on Wikipedia.
+
+95
+00:04:37.410 --> 00:04:40.850
+That can also be a
+way to help bridge
+
+96
+00:04:40.850 --> 00:04:42.110
+the machine learning and gene
+
+97
+00:04:42.110 --> 00:04:44.375
+metrics and business metrics.
+
+98
+00:04:44.375 --> 00:04:47.660
+Now it goes without
+saying that as
+
+99
+00:04:47.660 --> 00:04:51.200
+part of estimating the
+value of a project,
+
+100
+00:04:51.200 --> 00:04:53.715
+I would encourage you to give
+
+101
+00:04:53.715 --> 00:04:57.290
+thought to any ethical
+considerations as well,
+
+102
+00:04:57.290 --> 00:04:59.570
+such as is this project
+
+103
+00:04:59.570 --> 00:05:02.360
+creating net positive
+societal value?
+
+104
+00:05:02.360 --> 00:05:05.590
+If not, I hope you won't do it.
+
+105
+00:05:05.590 --> 00:05:08.120
+Or is this project
+reasonably fair and
+
+106
+00:05:08.120 --> 00:05:10.520
+free from bias and have any
+
+107
+00:05:10.520 --> 00:05:12.980
+ethical or values-based concerns
+
+108
+00:05:12.980 --> 00:05:15.680
+been openly aired and debated?
+
+109
+00:05:15.680 --> 00:05:17.810
+I find it issues of
+
+110
+00:05:17.810 --> 00:05:20.840
+values and ethics is
+very domain-dependent,
+
+111
+00:05:20.840 --> 00:05:24.110
+is very different in
+making loans versus
+
+112
+00:05:24.110 --> 00:05:29.335
+health care versus
+recommending products online.
+
+113
+00:05:29.335 --> 00:05:31.670
+Encourage you to look up
+
+114
+00:05:31.670 --> 00:05:34.580
+any ethical frameworks that have
+
+115
+00:05:34.580 --> 00:05:38.090
+been developed for your
+industry and your application.
+
+116
+00:05:38.090 --> 00:05:40.310
+If you have any concerns,
+
+117
+00:05:40.310 --> 00:05:42.720
+raise it for debate
+within your team.
+
+118
+00:05:42.720 --> 00:05:44.270
+Ultimately, if you don't
+
+119
+00:05:44.270 --> 00:05:46.100
+think the project
+you're working on
+
+120
+00:05:46.100 --> 00:05:47.840
+will help other people or
+
+121
+00:05:47.840 --> 00:05:50.025
+will help humanity move forward,
+
+122
+00:05:50.025 --> 00:05:53.270
+I hope you'll keep
+searching for other,
+
+123
+00:05:53.270 --> 00:05:55.825
+more meaningful
+projects to jump into.
+
+124
+00:05:55.825 --> 00:05:59.660
+In my work, I have faced
+difficult choices where
+
+125
+00:05:59.660 --> 00:06:01.520
+I really wasn't sure if
+
+126
+00:06:01.520 --> 00:06:04.245
+a particular project was
+something I should work on.
+
+127
+00:06:04.245 --> 00:06:06.850
+Because I really didn't
+know if it would make
+
+128
+00:06:06.850 --> 00:06:09.190
+people net-net better off,
+
+129
+00:06:09.190 --> 00:06:10.720
+and I found that having
+
+130
+00:06:10.720 --> 00:06:14.740
+a team debate and
+discuss it openly often
+
+131
+00:06:14.740 --> 00:06:17.455
+helps us get to better answer
+
+132
+00:06:17.455 --> 00:06:20.580
+and feel more comfortable with
+whatever decision we make.
+
+133
+00:06:20.580 --> 00:06:22.750
+I have called
+multiple projects on
+
+134
+00:06:22.750 --> 00:06:25.420
+ethical considerations
+when I felt
+
+135
+00:06:25.420 --> 00:06:28.540
+the project was
+economically sound,
+
+136
+00:06:28.540 --> 00:06:30.250
+but I didn't think it
+would help people,
+
+137
+00:06:30.250 --> 00:06:31.540
+and I just told the team,
+
+138
+00:06:31.540 --> 00:06:33.235
+I don't want to do it
+and I won't do it.
+
+139
+00:06:33.235 --> 00:06:35.080
+I hope this gives
+you a framework for
+
+140
+00:06:35.080 --> 00:06:38.650
+evaluating the
+value of a project.
+
+141
+00:06:38.650 --> 00:06:41.335
+On the ethics and value piece,
+
+142
+00:06:41.335 --> 00:06:44.080
+I think all of us collectively
+should only work on
+
+143
+00:06:44.080 --> 00:06:47.020
+projects that create net
+positive social value,
+
+144
+00:06:47.020 --> 00:06:50.005
+that help other people that
+move humanity forward.
+
+145
+00:06:50.005 --> 00:06:53.045
+I personally cool projects
+just on that basis.
+
+146
+00:06:53.045 --> 00:06:55.630
+There are multiple
+projects that I
+
+147
+00:06:55.630 --> 00:06:58.810
+felt the economic value
+was completely sound.
+
+148
+00:06:58.810 --> 00:07:00.850
+The economic case
+is completely fine,
+
+149
+00:07:00.850 --> 00:07:02.695
+but I look for the
+price and I said,
+
+150
+00:07:02.695 --> 00:07:05.955
+I don't think this actually
+helps people and have
+
+151
+00:07:05.955 --> 00:07:09.475
+cool projects just on that
+basis and told my teams,
+
+152
+00:07:09.475 --> 00:07:10.870
+let's find something else to work
+
+153
+00:07:10.870 --> 00:07:12.430
+on because I'm not
+going to do that.
+
+154
+00:07:12.430 --> 00:07:16.810
+I hope that you also be able
+to focus your efforts just
+
+155
+00:07:16.810 --> 00:07:18.880
+on projects that help people
+
+156
+00:07:18.880 --> 00:07:22.250
+and that help move
+humanity forward.

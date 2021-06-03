@@ -1,0 +1,79 @@
+Welcome back. This next section is all about ML Pipelines. No, not those kind of pipelines. Machine Learning Pipelines. ML Pipelines are the heart
+of any Production ML system. You're going to learn all
+about them right now. In this lesson, we'll
+begin to introduce ML Pipelines and the
+concept of MLOps. Now allow us to see how
+pipeline orchestrators sequence and schedule ML tasks to implement the entire
+ML training process. We'll then look at the example of TensorFlow Extended or TFX, which is a widely
+adopted framework for creating ML Pipelines. What do we mean by the
+phrase ML Pipeline? Well, remember the
+iterative ML workflow that we talked about previously. ML Pipeline is a
+software architecture to implement exactly that. Automating, monitoring,
+and maintaining this ML workflow from
+data to a trained model. ML Pipelines form a key component
+of MLOps architectures. This slide shows one version of what an ML
+Pipeline looks like, which was put together by an industry group,
+the CD Foundation. There are some differences between different
+pipeline architectures, but in general they look
+something like this. You'll notice that they basically mirror the ML
+development process. Starting with data ingestion and ending with a trained model. That's by design
+since they need to encapsulate and
+formalize that process. ML Pipelines are almost always directed cyclic graph or DAGs. Although in some
+advanced cases they can sometimes includes cycles. A DAG is a collection of all
+the tasks you want to run sequenced in a way that reflects their relationships
+and dependencies. Notice that in this graph the edges are directed
+and there are no cycles. That makes this graph a DAG. Orchestrators are responsible for scheduling the
+various components in an ML Pipeline based on
+dependencies defined by a DAG. Orchestrators help with
+pipeline automation. Examples include
+Argo and Airflow, and Celery and
+Luigi and Kubeflow. TFX is an open-source end to end Machine Learning platform, and it's what we use at Google. A TFX Pipeline is a sequence of scalable components that can handle large volumes of data. Starting on the left, we ingest data and then we move to Data Validation and we do
+some feature engineering. We train a model, we validate it. If it's better than what we
+already have in production, we're going to push
+it to production. Finally, we're
+serving predictions. The sequence of components
+are designed for scalable high performance
+Machine Learning tasks. In this course, you'll be
+using TFX to implement real ML Pipelines exactly as you would for
+Production Systems. TFX in production
+components are built on top of open-source libraries, such as Tensorflow
+Data Validation, which you'll also learn
+about later this week. Tensorflow Transform. We shall also be working
+with extensively later in this course and others, like Tensorflow Model Analysis. Components in the orange here, leverage those Libraries and form your DAG as you sequence these components and set up
+the dependency between them, you create your DAG, which is your ML Pipeline. This is what we refer to
+as the Hello World of TFX. We start on the left
+with our data and we're going to ingest our data with a TFX component
+called ExampleGen. All the boxes in orange that you see here are TFX components. In fact, these are
+components that come with TFX when you just
+do a PIP install. Next, we generate
+statistics for our data. We want to know the
+ranges of our features, if they're numerical features, if they're categorical features, we want to know what are the valid categories
+and so forth. What are the types
+of our features? Example Validator is used to look for problems in our data. SchemaGen is used to generate a schema for our data
+across our feature vector. Transform will do
+feature engineering. Tuner and Trainer
+are used to train a model and to tune the
+hyper-parameters for that model. Evaluator is used to do deep analysis of the
+performance of our model. We'll talk about what we mean by deep analysis a
+little bit later. Infra Validator is used to
+make sure that we can actually run predictions using our model on the infrastructure
+that we have. For example, do we
+have enough memory? If all of that passes
+and the model actually performs better than what we might already have in production. Then Pusher pushes the
+model to Production. What does that mean? Well, we might be pushing
+to a repository like Tensorflow HUB and
+then using our model later for maybe
+transfer learning. We're generating Embeddings. We could be pushing
+to TensorFlow JS. If we're going to be
+using our model in a web browser or a
+Node.js application. We could push to
+TensorFlow Lite and use our model in a mobile
+application or on an IOT device. Or we could push to
+TensorFlow Serving and UserModel on a server or
+maybe a serving cluster. The key points
+here, first of all, Production ML Pipelines are
+more than just ML code. They're ML development and
+software development and a formalized process for running that sequence
+of tasks end to end, in a maintainable
+and scalable way. TFX is an open-sourced end to end ML platform that we'll
+be using in this course.

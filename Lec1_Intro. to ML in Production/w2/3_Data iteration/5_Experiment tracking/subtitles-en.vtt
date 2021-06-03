@@ -1,0 +1,483 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.960
+As you're working to iteratively
+improve your algorithm.
+
+2
+00:00:03.960 --> 00:00:05.490
+One thing, that'll help you be a
+
+3
+00:00:05.490 --> 00:00:07.020
+bit more efficient is to make
+
+4
+00:00:07.020 --> 00:00:10.640
+sure that you have robust
+experiment tracking.
+
+5
+00:00:10.640 --> 00:00:13.065
+Let's take a look at
+some best practices.
+
+6
+00:00:13.065 --> 00:00:15.540
+When you're running
+dozens or hundreds
+
+7
+00:00:15.540 --> 00:00:17.280
+or maybe even more experiments,
+
+8
+00:00:17.280 --> 00:00:18.885
+it's easy to forget
+
+9
+00:00:18.885 --> 00:00:21.675
+what experiments you
+have already run.
+
+10
+00:00:21.675 --> 00:00:24.120
+Having a system for tracking
+
+11
+00:00:24.120 --> 00:00:27.900
+your experiments can help
+you be more efficient
+
+12
+00:00:27.900 --> 00:00:31.740
+in making the decisions on
+the data or the model or
+
+13
+00:00:31.740 --> 00:00:33.210
+hyperparameters to
+
+14
+00:00:33.210 --> 00:00:35.805
+systematically improve your
+algorithm's performance.
+
+15
+00:00:35.805 --> 00:00:38.775
+When you are tracking the
+experiments you've run,
+
+16
+00:00:38.775 --> 00:00:40.800
+meaning the models
+you've trained,
+
+17
+00:00:40.800 --> 00:00:44.370
+here are some things I
+would urge you to track.
+
+18
+00:00:44.370 --> 00:00:46.920
+One, is to keep track of
+
+19
+00:00:46.920 --> 00:00:50.250
+what algorithm you're using
+and what version of code.
+
+20
+00:00:50.250 --> 00:00:52.560
+Keeping a record of
+this will make it
+
+21
+00:00:52.560 --> 00:00:54.600
+much easier for
+you to go back and
+
+22
+00:00:54.600 --> 00:00:57.660
+replicate the experiment
+you had run maybe
+
+23
+00:00:57.660 --> 00:00:59.490
+two weeks ago and whose details
+
+24
+00:00:59.490 --> 00:01:01.215
+you may not fully
+remember anymore.
+
+25
+00:01:01.215 --> 00:01:04.395
+Second, keep track of
+the data set you use.
+
+26
+00:01:04.395 --> 00:01:07.810
+Third, hyperparameters
+and fourth,
+
+27
+00:01:07.810 --> 00:01:09.815
+save the results somewhere.
+
+28
+00:01:09.815 --> 00:01:13.350
+This should include at least
+the high level metrics
+
+29
+00:01:13.350 --> 00:01:16.665
+such as accuracy or F1 score
+or the relevant metrics,
+
+30
+00:01:16.665 --> 00:01:18.870
+but if possible, it'd
+be useful to just
+
+31
+00:01:18.870 --> 00:01:21.555
+save a copy of the trained model.
+
+32
+00:01:21.555 --> 00:01:24.735
+How can you track these things?
+
+33
+00:01:24.735 --> 00:01:27.465
+Here are some tracking
+tools you might consider.
+
+34
+00:01:27.465 --> 00:01:29.640
+A lot of individuals
+and sometimes
+
+35
+00:01:29.640 --> 00:01:32.760
+even teams will start
+off with text files.
+
+36
+00:01:32.760 --> 00:01:35.145
+When I'm running
+experiment by myself,
+
+37
+00:01:35.145 --> 00:01:39.060
+I might use a text file
+to just make a note with
+
+38
+00:01:39.060 --> 00:01:40.560
+a few lines of text per
+
+39
+00:01:40.560 --> 00:01:43.515
+experiment to note
+down what I was doing.
+
+40
+00:01:43.515 --> 00:01:45.270
+This does not scale well,
+
+41
+00:01:45.270 --> 00:01:48.675
+but it may be okay for
+small experiments.
+
+42
+00:01:48.675 --> 00:01:50.700
+A lot of teams then migrate from
+
+43
+00:01:50.700 --> 00:01:52.500
+text files to spreadsheets,
+
+44
+00:01:52.500 --> 00:01:53.910
+especially shared spreadsheets,
+
+45
+00:01:53.910 --> 00:01:56.130
+if you're working in a team where
+
+46
+00:01:56.130 --> 00:01:58.410
+different columns of a
+spreadsheet could keep
+
+47
+00:01:58.410 --> 00:02:01.140
+track of the different things
+
+48
+00:02:01.140 --> 00:02:02.370
+you want to track for
+
+49
+00:02:02.370 --> 00:02:04.455
+the different experiments
+you're running.
+
+50
+00:02:04.455 --> 00:02:08.160
+Spreadsheets actually
+scale quite a bit further,
+
+51
+00:02:08.160 --> 00:02:10.320
+especially shared
+spreadsheets that
+
+52
+00:02:10.320 --> 00:02:12.855
+multiple members of a team
+may be able to look at.
+
+53
+00:02:12.855 --> 00:02:14.550
+But beyond a certain point,
+
+54
+00:02:14.550 --> 00:02:16.935
+some teams will also consider
+
+55
+00:02:16.935 --> 00:02:21.585
+migrating to a more formal
+experiment tracking system.
+
+56
+00:02:21.585 --> 00:02:24.090
+The space of experiment
+tracking systems
+
+57
+00:02:24.090 --> 00:02:26.460
+is still evolving rapidly,
+
+58
+00:02:26.460 --> 00:02:30.225
+and so does a growing
+set of tools out there.
+
+59
+00:02:30.225 --> 00:02:33.375
+But some examples
+include Weight &Biases,
+
+60
+00:02:33.375 --> 00:02:36.525
+Comet, MLflow, Sage Maker Studio,
+
+61
+00:02:36.525 --> 00:02:39.000
+Verta.ai Granseal also has
+
+62
+00:02:39.000 --> 00:02:41.520
+its own experiment
+tracking tool focusing on
+
+63
+00:02:41.520 --> 00:02:44.370
+computed vision and
+manufacturing applications.
+
+64
+00:02:44.370 --> 00:02:48.540
+When I'm trying to
+use a tracking tool,
+
+65
+00:02:48.540 --> 00:02:49.560
+weather a text file or
+
+66
+00:02:49.560 --> 00:02:51.930
+a spreadsheet or
+some larger system,
+
+67
+00:02:51.930 --> 00:02:54.945
+here are some of
+things I look at.
+
+68
+00:02:54.945 --> 00:02:57.930
+First is, does it give me
+
+69
+00:02:57.930 --> 00:03:02.650
+all the information needed
+to replicate the results?
+
+70
+00:03:03.860 --> 00:03:07.165
+In terms of replicability,
+
+71
+00:03:07.165 --> 00:03:09.510
+one thing to watch out for is if
+
+72
+00:03:09.510 --> 00:03:13.110
+your learning algorithm
+pulls data off the Internet.
+
+73
+00:03:13.110 --> 00:03:15.690
+Because data off the
+Internet can change,
+
+74
+00:03:15.690 --> 00:03:18.195
+that can decrease replicability
+
+75
+00:03:18.195 --> 00:03:22.095
+unless you're careful in how
+your system is implemented.
+
+76
+00:03:22.095 --> 00:03:25.950
+Second, tools that
+help you quickly
+
+77
+00:03:25.950 --> 00:03:28.290
+understand the
+experimental results
+
+78
+00:03:28.290 --> 00:03:29.955
+of a specific training run,
+
+79
+00:03:29.955 --> 00:03:32.850
+ideally with useful
+summary metrics and
+
+80
+00:03:32.850 --> 00:03:36.195
+maybe even a bit of
+a in-depth analysis,
+
+81
+00:03:36.195 --> 00:03:38.520
+can help you more quickly look
+
+82
+00:03:38.520 --> 00:03:40.620
+at your most recent
+experiments or even
+
+83
+00:03:40.620 --> 00:03:45.375
+look at older experiments and
+remember what had happened.
+
+84
+00:03:45.375 --> 00:03:49.185
+Finally, some other
+features to consider,
+
+85
+00:03:49.185 --> 00:03:50.800
+resource monitoring,
+
+86
+00:03:50.800 --> 00:03:54.375
+how much CPU/GPU memory
+resources do it use?
+
+87
+00:03:54.375 --> 00:03:58.590
+Or tools to help you
+visualize the trained model
+
+88
+00:03:58.590 --> 00:04:00.690
+or even tools to help you with
+
+89
+00:04:00.690 --> 00:04:03.060
+a more in-depth error analysis?
+
+90
+00:04:03.060 --> 00:04:05.790
+I've found all of
+these to sometimes be
+
+91
+00:04:05.790 --> 00:04:09.840
+useful features of experiment
+tracking frameworks.
+
+92
+00:04:09.840 --> 00:04:12.510
+Rather than worrying
+too much about exactly
+
+93
+00:04:12.510 --> 00:04:15.255
+which experiment tracking
+framework to use though,
+
+94
+00:04:15.255 --> 00:04:17.040
+the number one thing I
+
+95
+00:04:17.040 --> 00:04:19.155
+hope you take away
+from this video is,
+
+96
+00:04:19.155 --> 00:04:21.659
+do got to have some system,
+
+97
+00:04:21.659 --> 00:04:23.880
+even if it's just a text file or
+
+98
+00:04:23.880 --> 00:04:26.400
+just a spreadsheet
+for keeping track of
+
+99
+00:04:26.400 --> 00:04:28.230
+your experiments and include
+
+100
+00:04:28.230 --> 00:04:31.350
+as much information as is
+convenient to include.
+
+101
+00:04:31.350 --> 00:04:33.630
+Because later on, if
+you try to look back,
+
+102
+00:04:33.630 --> 00:04:36.540
+remember how you had
+generated a certain model,
+
+103
+00:04:36.540 --> 00:04:38.580
+having that information
+would be really
+
+104
+00:04:38.580 --> 00:04:42.910
+useful for helping you to
+replicate your own results.

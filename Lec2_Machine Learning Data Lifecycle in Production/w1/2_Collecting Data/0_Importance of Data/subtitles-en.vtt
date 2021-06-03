@@ -1,0 +1,567 @@
+WEBVTT
+
+1
+00:00:00.640 --> 00:00:04.567
+Hi and welcome back,
+well to actually do any machine learning,
+
+2
+00:00:04.567 --> 00:00:06.740
+you need to have some data.
+
+3
+00:00:06.740 --> 00:00:11.699
+Where do you get that data, well in
+production ML it turns out you usually
+
+4
+00:00:11.699 --> 00:00:17.840
+have to find ways to collect that data,
+and we'll talk all about that right now.
+
+5
+00:00:17.840 --> 00:00:23.326
+Now let's discuss collecting data and
+a little bit about the importance of data,
+
+6
+00:00:23.326 --> 00:00:28.940
+to first let me tell you a story about
+an application that I was involved in.
+
+7
+00:00:28.940 --> 00:00:34.311
+We were asked to create a model to
+predict the amount of time that it would
+
+8
+00:00:34.311 --> 00:00:39.504
+take to get through an airport
+security checkpoint on different days
+
+9
+00:00:39.504 --> 00:00:45.840
+at different times with different lines
+of different lengths and so forth.
+
+10
+00:00:45.840 --> 00:00:50.950
+So we need a data, and how are we
+going to get that data, well we had to
+
+11
+00:00:50.950 --> 00:00:56.270
+measure how long it took people to
+get through security checkpoints.
+
+12
+00:00:56.270 --> 00:01:01.028
+How are we going to measure that, well,
+what it came up with is we had to
+
+13
+00:01:01.028 --> 00:01:06.111
+actually go to the airport, we had to
+get someone cleared through security
+
+14
+00:01:06.111 --> 00:01:11.940
+because anything you do in an airport
+has to be approved by the security.
+
+15
+00:01:11.940 --> 00:01:16.890
+We had one person standing at
+the beginning of the line to get into
+
+16
+00:01:16.890 --> 00:01:23.540
+a security checkpoint and they would
+record the time that somebody entered.
+
+17
+00:01:23.540 --> 00:01:27.864
+And then we had another person standing at
+the other end, the exit of the checkpoint,
+
+18
+00:01:27.864 --> 00:01:30.701
+and actually they were far
+enough away from each other.
+
+19
+00:01:30.701 --> 00:01:33.492
+They couldn't even see each other, and
+
+20
+00:01:33.492 --> 00:01:37.640
+they would record the time
+that each person left.
+
+21
+00:01:37.640 --> 00:01:42.968
+And in that way we would gradually build
+up a data set of labeled data that gave us
+
+22
+00:01:42.968 --> 00:01:49.340
+the amount of time that people took to get
+through an airport security checkpoint.
+
+23
+00:01:49.340 --> 00:01:52.304
+Well, as you can imagine,
+it was incredibly painful,
+
+24
+00:01:52.304 --> 00:01:55.980
+we had to develop applications just
+to support being able to do that.
+
+25
+00:01:55.980 --> 00:01:57.869
+And it was incredibly expensive,
+
+26
+00:01:57.869 --> 00:02:02.440
+we had to pay people they had to be
+cleared through security and so forth.
+
+27
+00:02:02.440 --> 00:02:05.872
+So when we talk about collecting
+data in the real world,
+
+28
+00:02:05.872 --> 00:02:09.831
+hopefully you're not going to
+deal with a situation like that.
+
+29
+00:02:09.831 --> 00:02:14.829
+But it will be a real world situation
+where you need to think about how you're
+
+30
+00:02:14.829 --> 00:02:18.811
+going to get the data you need unless,
+you're very lucky and
+
+31
+00:02:18.811 --> 00:02:22.510
+somebody already has the data for
+you, which is great.
+
+32
+00:02:22.510 --> 00:02:27.024
+And if that's the case, that's wonderful,
+so let's start by discussing
+
+33
+00:02:27.024 --> 00:02:31.540
+the importance of data and
+the importance of data quality.
+
+34
+00:02:31.540 --> 00:02:33.175
+It's your your data and
+
+35
+00:02:33.175 --> 00:02:37.930
+your model is only going to be good
+as good as the quality of your data.
+
+36
+00:02:37.930 --> 00:02:42.807
+If there's a lot of noise in your data,
+then you need to try to deal with that,
+
+37
+00:02:42.807 --> 00:02:45.136
+if the labels especially are noisy,
+
+38
+00:02:45.136 --> 00:02:49.740
+then there you have to find ways
+to try to clear up that signal.
+
+39
+00:02:49.740 --> 00:02:54.501
+We're going to be using data pipelines
+almost exclusively because remember we
+
+40
+00:02:54.501 --> 00:02:56.641
+need to automate these processes.
+
+41
+00:02:56.641 --> 00:02:59.299
+So we're going to need data collection and
+
+42
+00:02:59.299 --> 00:03:03.061
+then in our pipeline we're
+going to ingest and prepare.
+
+43
+00:03:03.061 --> 00:03:06.433
+Our data has sequenced automated tasks,
+and
+
+44
+00:03:06.433 --> 00:03:10.171
+we're going to need to
+monitor data collection.
+
+45
+00:03:10.171 --> 00:03:15.486
+So remember for most applications,
+you don't just collect data once
+
+46
+00:03:15.486 --> 00:03:21.280
+you are going to collect data throughout
+the lifetime of that application.
+
+47
+00:03:21.280 --> 00:03:24.569
+As we've seen,
+data is the hardest part of ML and
+
+48
+00:03:24.569 --> 00:03:27.231
+the most important piece to get right.
+
+49
+00:03:27.231 --> 00:03:28.908
+This is a quote from Uber,
+
+50
+00:03:28.908 --> 00:03:33.731
+broken data is the most common cause
+of problems in production ML systems.
+
+51
+00:03:33.731 --> 00:03:38.087
+Well, i hope you never have
+to learn that the hard way,
+
+52
+00:03:38.087 --> 00:03:41.321
+Gojek has similar feelings about that.
+
+53
+00:03:41.321 --> 00:03:45.597
+And really if you go to just about
+any production machine learning team,
+
+54
+00:03:45.597 --> 00:03:48.892
+they'll tell you stories
+about collecting data and and
+
+55
+00:03:48.892 --> 00:03:52.240
+how important it is to get the data right.
+
+56
+00:03:52.240 --> 00:03:57.626
+In programming language design,
+a first called citizen is a in a given
+
+57
+00:03:57.626 --> 00:04:02.924
+programming language is an entity
+which supports all the operations
+
+58
+00:04:02.924 --> 00:04:10.140
+generally available to other entities,
+and an ML data is a first class citizen.
+
+59
+00:04:10.140 --> 00:04:15.278
+So software one data was all about code,
+it's it's really just,
+
+60
+00:04:15.278 --> 00:04:19.866
+the instructions for the computer,
+in software two dato,
+
+61
+00:04:19.866 --> 00:04:24.544
+we need to specify a goal and
+for the behavior of the program,
+
+62
+00:04:24.544 --> 00:04:29.681
+the code is important, but
+not the only thing that we worry about,
+
+63
+00:04:29.681 --> 00:04:33.481
+optimization is really
+the driving force here.
+
+64
+00:04:33.481 --> 00:04:36.091
+So optimization in a lot
+of different directions.
+
+65
+00:04:36.091 --> 00:04:41.125
+So we want to optimize for performance,
+obviously what we want to optimize for
+
+66
+00:04:41.125 --> 00:04:44.540
+maintain ability and scalability as well.
+
+67
+00:04:44.540 --> 00:04:49.715
+And for ML data is data
+quality is really critical for
+
+68
+00:04:49.715 --> 00:04:54.535
+success, so
+in some ways you could look at it as,
+
+69
+00:04:54.535 --> 00:04:59.708
+data is is almost like
+the software almost like a code
+
+70
+00:04:59.708 --> 00:05:04.646
+in a software window
+application data is is sort of
+
+71
+00:05:04.646 --> 00:05:09.740
+a similar sort of player
+in an ML application.
+
+72
+00:05:09.740 --> 00:05:15.286
+So the cartoon on the right
+shows one way to look at this,
+
+73
+00:05:15.286 --> 00:05:22.141
+you I'll let you read there by yourself,
+but models aren't magic.
+
+74
+00:05:22.141 --> 00:05:26.758
+So it's good for
+you to know that the data that you have,
+
+75
+00:05:26.758 --> 00:05:33.732
+you could have mountains of data, but if
+it if it doesn't have predictive content,
+
+76
+00:05:33.732 --> 00:05:40.136
+then, you're just not going to be able
+to create a predictive model with it.
+
+77
+00:05:40.136 --> 00:05:45.040
+So there's a couple things here, you you
+want to remove information from your
+
+78
+00:05:45.040 --> 00:05:48.906
+model and features from your
+model that aren't predictive,
+
+79
+00:05:48.906 --> 00:05:53.664
+because they're going to cause problems
+are certainly going to take a lot of
+
+80
+00:05:53.664 --> 00:05:57.633
+compute resources that you don't
+want to be spending on that.
+
+81
+00:05:57.633 --> 00:06:00.979
+And you need to make sure
+supervised learning case or
+
+82
+00:06:00.979 --> 00:06:02.957
+even unsupervised learning,
+
+83
+00:06:02.957 --> 00:06:07.671
+that your training data is really
+covering the same feature space as the as
+
+84
+00:06:07.671 --> 00:06:13.013
+the prediction requests that you'll get
+when you put your model into production.
+
+85
+00:06:13.013 --> 00:06:17.227
+You need to cover that same space so
+that your model has good
+
+86
+00:06:17.227 --> 00:06:22.303
+information about the regions of
+that space to make predictions and,
+
+87
+00:06:22.303 --> 00:06:26.361
+just like anything,
+it's garbage in and garbage out.
+
+88
+00:06:26.361 --> 00:06:31.929
+So if your data is garbage,
+if your data quality is low your model and
+
+89
+00:06:31.929 --> 00:06:36.040
+your application will, be low quality.
+
+90
+00:06:36.040 --> 00:06:37.575
+The good news actually for
+
+91
+00:06:37.575 --> 00:06:41.740
+ML is that we can measure that in
+a lot of software applications.
+
+92
+00:06:41.740 --> 00:06:46.881
+You, it might not be as easy to measure
+how bad your solution or good your
+
+93
+00:06:46.881 --> 00:06:52.650
+solution is doing, but in the end well
+it's it's pretty easy to measure that.
+
+94
+00:06:52.650 --> 00:06:55.850
+So data collection is an important and
+
+95
+00:06:55.850 --> 00:07:00.360
+critical first step to
+building ml systems and data.
+
+96
+00:07:00.360 --> 00:07:03.287
+You want to avoid problems with downtime,
+
+97
+00:07:03.287 --> 00:07:07.839
+you need to make sure that your
+training a model that you can scale,
+
+98
+00:07:07.839 --> 00:07:12.963
+that you can serve predictions and
+you need to think about, especially for
+
+99
+00:07:12.963 --> 00:07:18.440
+things like time series, you have
+things like seasonality and trends.
+
+100
+00:07:18.440 --> 00:07:20.948
+You need to think about
+different kinds of errors and
+
+101
+00:07:20.948 --> 00:07:22.840
+what we'll talk about all of these.
+
+102
+00:07:22.840 --> 00:07:27.751
+But it's this whole picture that you
+need to sort of keep in your mind when
+
+103
+00:07:27.751 --> 00:07:32.987
+you're you're developing things that
+it's going to be an entire process,
+
+104
+00:07:32.987 --> 00:07:37.431
+from ingestion through serving and
+that all has to be automated.
+
+105
+00:07:37.431 --> 00:07:42.354
+It all has to be testable and
+maintainable and scale well and so forth,
+
+106
+00:07:42.354 --> 00:07:46.527
+so you need to understand your users and
+you need to make sure
+
+107
+00:07:46.527 --> 00:07:50.881
+that you're translating the user
+needs into data problems.
+
+108
+00:07:50.881 --> 00:07:54.356
+You don't want to just do
+the model that you happen
+
+109
+00:07:54.356 --> 00:07:57.761
+to have if it doesn't meet
+the needs of the user.
+
+110
+00:07:58.940 --> 00:08:03.622
+You need to make sure that your data
+covers the same region of your feature
+
+111
+00:08:03.622 --> 00:08:08.767
+space as the prediction request that
+you'll get your training data and you want
+
+112
+00:08:08.767 --> 00:08:14.740
+to make sure that you've really maximize
+the predictive signal in that data.
+
+113
+00:08:14.740 --> 00:08:19.223
+And you need to worry about the data
+quality not just at the beginning but
+
+114
+00:08:19.223 --> 00:08:22.840
+throughout the life of the application.
+
+115
+00:08:22.840 --> 00:08:27.251
+So part of that is making sure that
+your sourcing data responsibly and
+
+116
+00:08:27.251 --> 00:08:30.827
+you're thinking about things like bias and
+fairness,
+
+117
+00:08:30.827 --> 00:08:33.961
+which we will talk about
+later on in this course.

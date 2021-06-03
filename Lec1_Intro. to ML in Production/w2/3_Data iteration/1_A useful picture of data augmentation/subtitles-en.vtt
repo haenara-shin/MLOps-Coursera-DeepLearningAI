@@ -1,0 +1,386 @@
+WEBVTT
+
+1
+00:00:00.540 --> 00:00:05.518
+There's a picture, a conceptual picture
+that I found useful for thinking about
+
+2
+00:00:05.518 --> 00:00:10.590
+data augmentation and how this can help
+the performance of a learning algorithm.
+
+3
+00:00:10.590 --> 00:00:14.979
+Let me share this picture of you since I
+think you find it useful to when trying to
+
+4
+00:00:14.979 --> 00:00:17.530
+decide whether they use data augmentation.
+
+5
+00:00:17.530 --> 00:00:19.540
+Take speech recognition.
+
+6
+00:00:19.540 --> 00:00:26.575
+There could be many different types of
+noise in speech input such as car noise,
+
+7
+00:00:26.575 --> 00:00:31.691
+play noise, train noise,
+machine noise, cafe noise or
+
+8
+00:00:31.691 --> 00:00:37.640
+library noise, which isn't that loud or
+food court noise.
+
+9
+00:00:37.640 --> 00:00:42.631
+Maybe these types of noises are more
+similar to each other because they're all
+
+10
+00:00:42.631 --> 00:00:47.773
+mechanical types of noise and these types
+of noise maybe a little bit more similar
+
+11
+00:00:47.773 --> 00:00:52.570
+to each other with mainly people talking
+and interacting with each other.
+
+12
+00:00:52.570 --> 00:00:57.552
+So let me share of your picture that I
+keep in mind when I'm planning out my
+
+13
+00:00:57.552 --> 00:01:01.801
+activities on getting more data
+through data augmentation or
+
+14
+00:01:01.801 --> 00:01:06.240
+through actual data collection
+of any of these types of data.
+
+15
+00:01:06.240 --> 00:01:12.430
+In this diagram, the vertical axis
+represents performance, say accuracy.
+
+16
+00:01:12.430 --> 00:01:14.529
+And on the horizontal axis, and
+
+17
+00:01:14.529 --> 00:01:18.830
+this is a conceptual kind of
+a thought experiment type of access.
+
+18
+00:01:18.830 --> 00:01:22.540
+I'm going to represent
+the space of possible inputs.
+
+19
+00:01:22.540 --> 00:01:25.675
+So for
+example there speech with car noise and
+
+20
+00:01:25.675 --> 00:01:29.481
+plane noise and
+train noise sound a bit like car noise.
+
+21
+00:01:29.481 --> 00:01:33.268
+So they're quite similar and
+machine noise a little bit further away,
+
+22
+00:01:33.268 --> 00:01:36.865
+by machine noise, I'm picturing
+the sounds of a washing machine or
+
+23
+00:01:36.865 --> 00:01:38.521
+a very loud air conditioners.
+
+24
+00:01:38.521 --> 00:01:42.651
+Then you may have speech with cafe noise,
+library noise or
+
+25
+00:01:42.651 --> 00:01:47.340
+food court ,and those are maybe
+more similar to each other.
+
+26
+00:01:47.340 --> 00:01:49.887
+Then to these types of mechanical noise.
+
+27
+00:01:49.887 --> 00:01:54.820
+Your system will have different levels
+of performance on these different types
+
+28
+00:01:54.820 --> 00:01:55.500
+of input.
+
+29
+00:01:55.500 --> 00:01:59.897
+Let's say the performance is this for
+data of play noise,
+
+30
+00:01:59.897 --> 00:02:03.690
+that of car noise,
+train noise, machine noise.
+
+31
+00:02:03.690 --> 00:02:10.710
+And it does worse on data with library
+noise, cafe noise, food court noise.
+
+32
+00:02:10.710 --> 00:02:13.321
+And so I think of their as being a curve.
+
+33
+00:02:13.321 --> 00:02:19.958
+Or maybe think of this like a one
+dimensional piece of rubber band or
+
+34
+00:02:19.958 --> 00:02:25.409
+like a rubber sheet that shows
+how accurate your speech
+
+35
+00:02:25.409 --> 00:02:31.040
+system is as a function of
+the type of input it gets.
+
+36
+00:02:31.040 --> 00:02:35.958
+A human will have some other
+level of performance on these
+
+37
+00:02:35.958 --> 00:02:38.230
+different types of data.
+
+38
+00:02:38.230 --> 00:02:43.903
+So maybe a human is a bit better,
+will play noise bit better in car noise,
+
+39
+00:02:43.903 --> 00:02:48.739
+and so on and maybe there are much
+better then your algorithm on
+
+40
+00:02:48.739 --> 00:02:52.661
+library noise, cafe noise and
+food court noise.
+
+41
+00:02:52.661 --> 00:03:00.940
+So the human level performance is
+represented via some other curve.
+
+42
+00:03:00.940 --> 00:03:07.640
+And let me just label this as
+the current models performance in blue.
+
+43
+00:03:07.640 --> 00:03:12.540
+So this gap represents an opportunity for
+improvement.
+
+44
+00:03:12.540 --> 00:03:16.284
+Now, what happens if you
+use data augmentation or
+
+45
+00:03:16.284 --> 00:03:21.187
+maybe not data augmentation but
+go out to a bunch of actual cafes,
+
+46
+00:03:21.187 --> 00:03:26.540
+to collect a lot more data with
+cafe noise in the background.
+
+47
+00:03:26.540 --> 00:03:31.866
+What you'll do is, you'll take this
+point imagine grabbing a hold of this
+
+48
+00:03:31.866 --> 00:03:36.953
+blue rubber bands or this rubber sheet,
+and pulling it upward like so.
+
+49
+00:03:36.953 --> 00:03:40.191
+That's what you're doing if you collect or
+
+50
+00:03:40.191 --> 00:03:45.352
+somehow gets more data with cafe noise and
+add that your training set,
+
+51
+00:03:45.352 --> 00:03:51.240
+you're pulling up the performance of
+the algorithm on inputs with cafe noise.
+
+52
+00:03:51.240 --> 00:03:53.577
+And what that will tend to do,
+
+53
+00:03:53.577 --> 00:03:58.640
+is pull up this rubber sheet in
+the adjacent region as well.
+
+54
+00:03:58.640 --> 00:04:03.840
+So if performance on cafe noise goes up,
+probably performance
+
+55
+00:04:03.840 --> 00:04:08.951
+on the nearby points will go up to and
+performance on far away.
+
+56
+00:04:08.951 --> 00:04:12.640
+Points may or may not go up as much.
+
+57
+00:04:12.640 --> 00:04:16.326
+It turns out that for
+unstructured data problems,
+
+58
+00:04:16.326 --> 00:04:20.697
+pulling up one piece of this
+rubber sheet is unlikely to cause
+
+59
+00:04:20.697 --> 00:04:25.520
+a different piece of the rubber
+sheet to dip down really far below.
+
+60
+00:04:25.520 --> 00:04:30.369
+Instead, pulling up one point causes
+nearby points to be pulled up quite a lot
+
+61
+00:04:30.369 --> 00:04:34.770
+and far away points may be pulled up
+a little bit, or if you're lucky,
+
+62
+00:04:34.770 --> 00:04:36.740
+maybe more than a little bit.
+
+63
+00:04:36.740 --> 00:04:42.485
+But when I'm planning how to improve
+my learning albums performance and
+
+64
+00:04:42.485 --> 00:04:44.743
+where I hope to get it to, and
+
+65
+00:04:44.743 --> 00:04:50.582
+getting more data in those places to
+[INAUDIBLE] pull up with those pieces or
+
+66
+00:04:50.582 --> 00:04:56.830
+those parts of the rubber sheet to get
+them closer to human level performance.
+
+67
+00:04:56.830 --> 00:04:59.951
+And when you pull up
+part of the rubber sheet,
+
+68
+00:04:59.951 --> 00:05:04.160
+the location of the biggest gap
+may shift to somewhere else.
+
+69
+00:05:04.160 --> 00:05:09.913
+And error analysis will tell you what is
+the location of this new biggest gap,
+
+70
+00:05:09.913 --> 00:05:14.515
+that may then be worth your effort,
+to collect more data on and
+
+71
+00:05:14.515 --> 00:05:17.988
+therefore to try to pull
+up one piece at a time.
+
+72
+00:05:17.988 --> 00:05:23.283
+And this turns out to be a pretty
+efficient way to decide where on the blue
+
+73
+00:05:23.283 --> 00:05:28.048
+rubber sheet to pull up next to
+try to get performance closer to,
+
+74
+00:05:28.048 --> 00:05:30.361
+say human level performance.
+
+75
+00:05:31.440 --> 00:05:36.655
+I hope this analogy of a rubber band or
+rubber sheet and repeatedly pulling
+
+76
+00:05:36.655 --> 00:05:42.122
+up a point on this rubber sheet will help
+you predict the effects of collecting
+
+77
+00:05:42.122 --> 00:05:48.340
+more data that's associated with
+a specific category or a specific tag.
+
+78
+00:05:48.340 --> 00:05:50.480
+How do you get more of this data?
+
+79
+00:05:50.480 --> 00:05:54.159
+Let's take a look at how you can
+perform data augmentation and
+
+80
+00:05:54.159 --> 00:05:57.001
+some best practices doing so
+in the next video.

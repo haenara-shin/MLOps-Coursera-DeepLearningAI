@@ -1,0 +1,95 @@
+In problems of a small dataset. Having clean and
+consistent labels is especially important. Let's start with an example. One of the things I used to do is use
+machine learning to fly helicopters. One things you might want to do is take us
+input the voltage apply to the motor or to the helicopter rotor and
+predict what's the speed of the rotor. You can have this type of problem,
+not just to find helicopters before other control problems with
+controlling the speed of the motor. So let's say you have a data
+set that looks like this where you have five examples. So a pretty small data
+set because this data set that is the output Y is pretty noisy, is difficult to know what is the function. It's difficult to know what is
+the function you should use to map voltage to the rotor speed in rpm. Maybe it should be a straight line,
+something like that. Or maybe something like that. Or maybe it should go up and
+then be flat like that. Or maybe it should be a curve like that. Really hard to tell when
+you have a small data set. five examples in noisy labels. It's difficult to fit
+a function confidently. Now, if you had a ton of data, this
+data set is equally noisy as the one on the left, but
+you just have a lot more data. Then the learning algorithm can
+average over the noisy data sets and you can now fill a function. You're pretty confidently looks like
+curve should be something like that. A lot of AI had recently grown up in large
+consumer Internet companies which may have 100 million users or billion
+users and does very large data sets. And so, I think some of the practices for how to deal with small data sets
+have not been emphasized as much as would be needed to tackle
+problems where you don't have 100 million examples, but
+only 1000 or even fewer. So to me, the interesting case is what
+if you still have a small data set? Five examples same as
+the example on the left. But you now have clean and
+consistent labels. In this case you can pretty
+confidently fit a function through your data and
+with only five examples. You can build a pretty good model for
+predicting speed as a function of the input
+voltage of trained computer vision systems with just 30 images and
+had to work just fine. And the key is usually to make sure that
+the labels are clean and consistent. Let's take a look at another
+example of phone defect inspection, the tosses, the tickets,
+input pictures like these and to decide whether there is a defect or
+not on the phone. Now, if labeling instructions
+are initially unclear, then labors will label
+images inconsistently. It may be that when
+there's a giant scratch, sufficiently large one that everyone
+will agree as a defect, and if there's a tiny little thing
+that inspectors will ignore it. But there's this region of ambiguity
+where different inspectors will label different scratches with a length between
+0.2 and 0.4 in slightly inconsistent ways. So one solution to this would be to say, why don't we try to get a lot more
+pictures of phones and scratches. And then see what the inspectors do and then maybe eventually we
+can train a neural network. They can figure out from the image what
+is and what isn't a scratch on average. Maybe that approach could work,
+but it'd be a lot of work and require collecting a lot of images. I found that it can be more fruitful
+to ask the inspectors to sit down and just try to reach agreement on
+what is the size of scratch. That would cause them to label
+a scratcher of a bounding box versus decide is too small and
+not worth bothering labeling. So in this example,
+if the labelers can agree that the point of transition from where
+little ding becomes a defect. Is a length of 0.3, then the way they label the images
+becomes much more consistent. And it becomes much easier for
+learning algorithm to take as input images like this and consistently decide whether
+something is a scratch of the effect.. Just to be clear. In this example, the input to the learning
+algorithm is images like that on the left, not the stretched length
+like that on the right. But the point is, if you can get
+inspectors to agree what is a scratch and what is in the scratch. And to define The task as
+putting bounding boxes around defects are over 0.3 mm in length. Then that will cause your images to
+be labeled more consistently and allow your learning album
+to achieve higher accuracy. Even when your data set isn't that big. So you see the couple
+examples now of how label consistency helps a learning algorithm. I want to wrap up this video
+with one more thought, which is that big data problems can
+have small data challenges too. Specifically problems of the large
+data set, but where there's a long tail of rare events in the input
+will have small data challenges too. For example, the large web search engine
+companies all have very large data sets of web search queries, but
+many web queries actually very rare. And so the amount of click stream data for the rare queries is actually small or
+take self-driving cars. Self-driving car companies tend
+to have very large data sets, collected from driving hundreds of
+thousands or millions of hours or more. But there are rare occurrences that
+are critical to get right to make sure a self-driving car is safe. Such as that very rare occurrence of
+a young child running across the highway, or that very rare occurrence of
+a truck parked across the highway. So even if a self driving car
+has a very large data set, the number of examples that may have of
+these rare events is actually very small. And so ensuring label consistency
+in terms of how these rare events are detective and
+labels is still very helpful for improving self-driving cars or
+product recommended systems. If you have a catalog of hundreds
+of thousands, or millions or more items or
+product recommendation systems. If you have an online catalog of anywhere
+from thousands to hundreds of thousands to sometimes even millions of catalogs
+to sometimes even millions of items. Then you will have a lot of
+products where the number sold of that item is quite small. And so the amount of data you
+have of users interacting with the items in the long
+tail is actually small. And if there's a way which is not easy,
+but there's a way to make sure that data is clean and consistent, then that
+too will help you learning algorithm. In terms of how it recommends or
+doesn't recommend items in the long tail where the amount of
+data per item will tend to be low. So when you have a small dataset
+label consistency is critical. Even when you have a big data set,
+label consistency can be very important. It's just that found it easier, on average to get to label consistency on
+smaller data sets than on very large ones. In the next video, we'll look at some
+concrete ideas and best practices for improving your data,
+says label consistency. Let's go on to the next video.

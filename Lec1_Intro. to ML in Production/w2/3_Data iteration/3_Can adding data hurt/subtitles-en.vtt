@@ -1,0 +1,380 @@
+WEBVTT
+
+1
+00:00:00.240 --> 00:00:04.431
+For a lot of machine learning problems,
+training sets and
+
+2
+00:00:04.431 --> 00:00:09.406
+death and test set distribution
+start at being reasonably similar.
+
+3
+00:00:09.406 --> 00:00:14.547
+But, if you're using data augmentation,
+you're adding to specific
+
+4
+00:00:14.547 --> 00:00:19.526
+parts of the training set such as
+adding lots of data with cafe noise.
+
+5
+00:00:19.526 --> 00:00:24.231
+So now you're training set may come
+from a very different distribution than
+
+6
+00:00:24.231 --> 00:00:26.153
+the death set and the test set.
+
+7
+00:00:26.153 --> 00:00:29.150
+Is this going to hurt your
+learning album's performance?
+
+8
+00:00:29.150 --> 00:00:33.670
+Usually the answer is no with some caveats
+when you're working on unstructured
+
+9
+00:00:33.670 --> 00:00:34.630
+data problems.
+
+10
+00:00:34.630 --> 00:00:38.040
+But let's take a deeper look
+at what that really means.
+
+11
+00:00:38.040 --> 00:00:42.605
+If you are working on
+an unstructured data problem and
+
+12
+00:00:42.605 --> 00:00:48.590
+if your model is large, such as a neural
+network that is quite large and
+
+13
+00:00:48.590 --> 00:00:51.960
+has a large capacity and does low bias.
+
+14
+00:00:51.960 --> 00:00:58.041
+And if the mapping from x to y is clear
+and by that I mean given only the input x,
+
+15
+00:00:58.041 --> 00:01:01.288
+humans can make accurate predictions.
+
+16
+00:01:01.288 --> 00:01:08.350
+Then it turns out adding accurately
+labeled data rarely hurts accuracy.
+
+17
+00:01:08.350 --> 00:01:13.280
+This is an important observation
+because adding data through data
+
+18
+00:01:13.280 --> 00:01:17.242
+augmentation or
+collecting more of one type of data,
+
+19
+00:01:17.242 --> 00:01:22.449
+can really change your input dated
+distribution to probability of x.
+
+20
+00:01:22.449 --> 00:01:29.840
+Let's say at the start of your problem,
+20% of your data had cafe noise.
+
+21
+00:01:29.840 --> 00:01:33.561
+But using augmentation,
+you added a lot of cafe noise.
+
+22
+00:01:33.561 --> 00:01:40.240
+So now this is 50 of your data is
+data of cafe noise in the background.
+
+23
+00:01:40.240 --> 00:01:44.765
+It turns out that so
+long as your model is sufficiently large,
+
+24
+00:01:44.765 --> 00:01:49.550
+then it won't stop it from doing
+a good job on the cafe noise data as
+
+25
+00:01:49.550 --> 00:01:52.970
+well as doing a good job
+on non cafe noise data.
+
+26
+00:01:52.970 --> 00:01:59.096
+In contrast, if your model was small, then
+changing your input data distribution this
+
+27
+00:01:59.096 --> 00:02:04.840
+way may cause it to spend too much of its
+resources modeling cafe noise settings.
+
+28
+00:02:04.840 --> 00:02:08.910
+And this could hurt this
+performance on non cafe noise data.
+
+29
+00:02:08.910 --> 00:02:13.740
+But if your model is large enough,
+then this isn't really an issue.
+
+30
+00:02:13.740 --> 00:02:20.143
+The second problem that could arise is
+if the mapping from x to y is not clear,
+
+31
+00:02:20.143 --> 00:02:25.440
+meaning given x,
+the true label of y is very ambiguous.
+
+32
+00:02:25.440 --> 00:02:29.694
+This doesn't really happen much
+in speech recognition, but
+
+33
+00:02:29.694 --> 00:02:34.440
+let me illustrate this with
+an example from computer vision.
+
+34
+00:02:34.440 --> 00:02:39.254
+This is very rare, so it's not
+something I would worry about the most
+
+35
+00:02:39.254 --> 00:02:43.500
+practical problems, but
+let's see why this is important.
+
+36
+00:02:43.500 --> 00:02:48.252
+One of the systems I had worked
+on many years ago use Google
+
+37
+00:02:48.252 --> 00:02:52.806
+street view images to read
+host numbers in order to more
+
+38
+00:02:52.806 --> 00:02:58.080
+accurately clear locate buildings and
+houses in Google maps.
+
+39
+00:02:58.080 --> 00:03:02.368
+So one of the things that
+system did was take us input
+
+40
+00:03:02.368 --> 00:03:06.880
+pictures like this and
+figure out what is this digit.
+
+41
+00:03:06.880 --> 00:03:14.397
+So clearly this is a one and
+this is a alphabet I.
+
+42
+00:03:14.397 --> 00:03:20.895
+You don't see a lot of I's in street view
+images, but there are some building.
+
+43
+00:03:20.895 --> 00:03:27.598
+You may see a sign that says
+navigate to house number 42 I,
+
+44
+00:03:27.598 --> 00:03:34.640
+but house numbers really rarely
+have an alphabet I in it.
+
+45
+00:03:34.640 --> 00:03:40.542
+Now, if you find that your
+algorithm has very high accuracy
+
+46
+00:03:40.542 --> 00:03:46.445
+on recognizing ones, but
+low accuracy on recognizing Is,
+
+47
+00:03:46.445 --> 00:03:53.790
+one thing you might do is add a lot more
+examples of Is in your training set.
+
+48
+00:03:53.790 --> 00:03:58.748
+And the problem, and
+this is a rare problem is there
+
+49
+00:03:58.748 --> 00:04:02.920
+are some images that are truly ambiguous.
+
+50
+00:04:02.920 --> 00:04:07.940
+Is this a one or is this an I?
+
+51
+00:04:07.940 --> 00:04:12.200
+And if you were to add a lot of
+new Is to your training set,
+
+52
+00:04:12.200 --> 00:04:15.646
+especially ambiguous examples like these,
+
+53
+00:04:15.646 --> 00:04:21.284
+then that may skew the data sets to
+have a lot more Is and hurt performance.
+
+54
+00:04:21.284 --> 00:04:26.660
+Because we know that there are a lot
+more ones than Is on house numbers.
+
+55
+00:04:26.660 --> 00:04:29.505
+If the Sees a picture like this,
+
+56
+00:04:29.505 --> 00:04:34.550
+it would be safer to guess that this
+is a one rather than that this is an I.
+
+57
+00:04:34.550 --> 00:04:39.314
+But if data augmentation skews
+the data set in the direction of
+
+58
+00:04:39.314 --> 00:04:42.793
+having a lot more Is
+rather than a lot of ones,
+
+59
+00:04:42.793 --> 00:04:49.540
+that may cause the [INAUDIBLE] To guess
+poorly on an ambiguous example like this.
+
+60
+00:04:49.540 --> 00:04:56.677
+So this is one rare example where adding
+more data could hurt performance and
+
+61
+00:04:56.677 --> 00:05:04.258
+this example of one versus I is one that
+contradicts the second bullet because for
+
+62
+00:05:04.258 --> 00:05:08.737
+some images the mapping
+from x to y is not clear.
+
+63
+00:05:08.737 --> 00:05:13.935
+In particular given only
+an image like this on the right,
+
+64
+00:05:13.935 --> 00:05:18.540
+even a human can't really
+tell what this is.
+
+65
+00:05:18.540 --> 00:05:23.241
+Just to be clear, the example that we just
+went through together is a pretty rare
+
+66
+00:05:23.241 --> 00:05:27.241
+almost corner case and it's quite
+unusual for data augmentation or
+
+67
+00:05:27.241 --> 00:05:31.410
+adding more data to hurt the performance
+of your learning algorithm.
+
+68
+00:05:31.410 --> 00:05:33.906
+So long as your model is big enough,
+
+69
+00:05:33.906 --> 00:05:39.540
+maybe a neural network is big enough to
+learn from diverse set of data sources.
+
+70
+00:05:39.540 --> 00:05:44.347
+But I hope that understanding this rare
+case where it could hypothetically hurt
+
+71
+00:05:44.347 --> 00:05:49.082
+gives you more comfort with using data
+augmentation or collecting more data to
+
+72
+00:05:49.082 --> 00:05:53.887
+improve the performance of your algorithm,
+even if it causes your training set
+
+73
+00:05:53.887 --> 00:05:59.840
+distribution to become different from
+your death set and test set distribution.
+
+74
+00:05:59.840 --> 00:06:04.530
+So far, our discussion has focused
+on unstructured data problems.
+
+75
+00:06:04.530 --> 00:06:07.120
+How about structured data problems?
+
+76
+00:06:07.120 --> 00:06:11.354
+It turns out there's a different
+set of techniques that's useful for
+
+77
+00:06:11.354 --> 00:06:12.520
+structured data.
+
+78
+00:06:12.520 --> 00:06:14.861
+Let's take a look at
+that in the next video.

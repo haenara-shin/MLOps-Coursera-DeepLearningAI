@@ -1,0 +1,515 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.985
+Let's look at some
+wrapper methods.
+
+2
+00:00:02.985 --> 00:00:05.505
+Wrapper methods work
+all differently.
+
+3
+00:00:05.505 --> 00:00:07.575
+It stores supervised method,
+
+4
+00:00:07.575 --> 00:00:08.940
+but we're going to use this with
+
+5
+00:00:08.940 --> 00:00:11.910
+a model and there's
+different ways to do it.
+
+6
+00:00:11.910 --> 00:00:14.160
+But basically you're
+iterating through,
+
+7
+00:00:14.160 --> 00:00:18.045
+it's a search method against
+the features that you have
+
+8
+00:00:18.045 --> 00:00:22.545
+using a model as the measure
+of their effectiveness.
+
+9
+00:00:22.545 --> 00:00:24.870
+We can do it through
+forward elimination
+
+10
+00:00:24.870 --> 00:00:26.850
+and we'll talk about
+this in a second.
+
+11
+00:00:26.850 --> 00:00:28.350
+Forward elimination,
+
+12
+00:00:28.350 --> 00:00:32.535
+backward elimination or
+recurrent feature elimination.
+
+13
+00:00:32.535 --> 00:00:34.235
+Let's take a look at these.
+
+14
+00:00:34.235 --> 00:00:36.905
+We start with all of our feature,
+
+15
+00:00:36.905 --> 00:00:39.620
+regenerate a subset
+of those features,
+
+16
+00:00:39.620 --> 00:00:43.085
+and we'll talk about how
+that gets generated,
+
+17
+00:00:43.085 --> 00:00:45.605
+that gets given to our model.
+
+18
+00:00:45.605 --> 00:00:48.980
+The results that is
+generated from that model is
+
+19
+00:00:48.980 --> 00:00:52.400
+then used to generate
+the next subset.
+
+20
+00:00:52.400 --> 00:00:55.220
+That becomes this
+feedback loop to select
+
+21
+00:00:55.220 --> 00:00:56.930
+the best subset of
+
+22
+00:00:56.930 --> 00:01:00.355
+our features using our
+model as a measure.
+
+23
+00:01:00.355 --> 00:01:03.410
+That gives us the performance of
+
+24
+00:01:03.410 --> 00:01:07.260
+the final best subset
+that is selected.
+
+25
+00:01:07.360 --> 00:01:10.189
+There's different
+wrapper methods,
+
+26
+00:01:10.189 --> 00:01:14.360
+forward selection and
+backwards selection and
+
+27
+00:01:14.360 --> 00:01:16.355
+recursive feature selection or
+
+28
+00:01:16.355 --> 00:01:18.905
+recursive feature
+elimination rather,
+
+29
+00:01:18.905 --> 00:01:22.700
+these can all be used to
+select a subset that we just
+
+30
+00:01:22.700 --> 00:01:26.615
+looked at through each iteration
+of that feedback loop.
+
+31
+00:01:26.615 --> 00:01:31.595
+For forward selection it's
+an iterative, greedy method.
+
+32
+00:01:31.595 --> 00:01:34.835
+We start with one
+feature, it's greedy,
+
+33
+00:01:34.835 --> 00:01:37.310
+and then we evaluate the
+model performance and
+
+34
+00:01:37.310 --> 00:01:40.910
+we add one at a time features.
+
+35
+00:01:40.910 --> 00:01:43.040
+We're adding, we're gradually
+
+36
+00:01:43.040 --> 00:01:45.710
+building up this feature vector,
+
+37
+00:01:45.710 --> 00:01:47.495
+one feature at a time,
+
+38
+00:01:47.495 --> 00:01:49.540
+starting with just one feature.
+
+39
+00:01:49.540 --> 00:01:51.530
+We try to add the next feature
+
+40
+00:01:51.530 --> 00:01:53.210
+that gives the best performance,
+
+41
+00:01:53.210 --> 00:01:54.620
+but we're going to measure that
+
+42
+00:01:54.620 --> 00:01:56.665
+to see what the result is.
+
+43
+00:01:56.665 --> 00:01:58.820
+We keep repeating
+this until there's
+
+44
+00:01:58.820 --> 00:02:00.650
+no improvement and
+then we know that
+
+45
+00:02:00.650 --> 00:02:04.250
+we've generated the best
+subset of our feature.
+
+46
+00:02:04.250 --> 00:02:07.520
+Backward elimination, well,
+if you think about it,
+
+47
+00:02:07.520 --> 00:02:09.395
+we just looked at
+forward elimination.
+
+48
+00:02:09.395 --> 00:02:12.680
+Backward elimination starts
+with all of the features
+
+49
+00:02:12.680 --> 00:02:14.870
+and evaluates the
+model performance
+
+50
+00:02:14.870 --> 00:02:16.805
+when removing feature.
+
+51
+00:02:16.805 --> 00:02:18.860
+It's exactly what you might think
+
+52
+00:02:18.860 --> 00:02:21.385
+from the name one at a time.
+
+53
+00:02:21.385 --> 00:02:23.615
+We remove the next feature,
+
+54
+00:02:23.615 --> 00:02:25.925
+trying to get to better
+performance with
+
+55
+00:02:25.925 --> 00:02:28.060
+less features and we
+
+56
+00:02:28.060 --> 00:02:30.935
+keep doing that until
+there's no improvement.
+
+57
+00:02:30.935 --> 00:02:35.000
+Recursive feature
+elimination, we select
+
+58
+00:02:35.000 --> 00:02:38.840
+a model to use for evaluating
+feature importance.
+
+59
+00:02:38.840 --> 00:02:41.090
+We select the desired number of
+
+60
+00:02:41.090 --> 00:02:44.055
+features and we fit them up.
+
+61
+00:02:44.055 --> 00:02:47.445
+We rank the features
+by importance.
+
+62
+00:02:47.445 --> 00:02:50.300
+We need to have a method
+of assigning importance to
+
+63
+00:02:50.300 --> 00:02:51.830
+those features and then we
+
+64
+00:02:51.830 --> 00:02:54.625
+discard the least
+important features.
+
+65
+00:02:54.625 --> 00:02:57.680
+We keep doing that
+until we get down to
+
+66
+00:02:57.680 --> 00:03:00.950
+the number of features that
+we're looking to target.
+
+67
+00:03:00.950 --> 00:03:02.990
+An important aspect of this is
+
+68
+00:03:02.990 --> 00:03:05.449
+that we need to
+have a measurement
+
+69
+00:03:05.449 --> 00:03:07.310
+of feature importance in
+
+70
+00:03:07.310 --> 00:03:10.675
+our model and not all
+models are able to do that.
+
+71
+00:03:10.675 --> 00:03:13.820
+For recursive
+feature elimination,
+
+72
+00:03:13.820 --> 00:03:15.770
+this is what the code
+might look like.
+
+73
+00:03:15.770 --> 00:03:17.405
+Again, we're pulling in
+
+74
+00:03:17.405 --> 00:03:20.390
+our data and splitting
+it with train and test,
+
+75
+00:03:20.390 --> 00:03:23.840
+and pulling out the labels
+from our data as well.
+
+76
+00:03:23.840 --> 00:03:25.820
+We have X and Y,
+why you're going to
+
+77
+00:03:25.820 --> 00:03:28.295
+scale it because it's
+always a good idea.
+
+78
+00:03:28.295 --> 00:03:31.085
+Then we're going to use a
+random forest classifier.
+
+79
+00:03:31.085 --> 00:03:33.350
+A random forest
+classifier is one of
+
+80
+00:03:33.350 --> 00:03:36.710
+the model types where we can
+get the feature importance.
+
+81
+00:03:36.710 --> 00:03:39.170
+In this case we're
+using entropy as
+
+82
+00:03:39.170 --> 00:03:43.850
+the metric and we're initializing
+it with a random state.
+
+83
+00:03:43.850 --> 00:03:45.410
+We're going to apply
+
+84
+00:03:45.410 --> 00:03:48.680
+our random feature
+elimination trying to get to
+
+85
+00:03:48.680 --> 00:03:53.825
+20 features with our
+model that gets fitted.
+
+86
+00:03:53.825 --> 00:03:55.610
+That's going to do
+
+87
+00:03:55.610 --> 00:03:58.645
+that elimination and that
+
+88
+00:03:58.645 --> 00:04:02.150
+results in the list of
+features that we've selected.
+
+89
+00:04:02.150 --> 00:04:05.330
+Those are the names of the
+features that we've selected,
+
+90
+00:04:05.330 --> 00:04:07.640
+the 20 features that
+we were looking
+
+91
+00:04:07.640 --> 00:04:10.805
+for to eliminate all
+but 20 of our features.
+
+92
+00:04:10.805 --> 00:04:13.280
+Then we're going
+to use that to do
+
+93
+00:04:13.280 --> 00:04:16.345
+the evaluation to
+get the final value.
+
+94
+00:04:16.345 --> 00:04:19.895
+How does that look compared
+to our other examples?
+
+95
+00:04:19.895 --> 00:04:22.910
+Well, so recursive
+feature elimination
+
+96
+00:04:22.910 --> 00:04:25.415
+also got two of our 20 features.
+
+97
+00:04:25.415 --> 00:04:27.650
+The accuracy was quite a
+
+98
+00:04:27.650 --> 00:04:29.800
+bit better than it
+was for univariate,
+
+99
+00:04:29.800 --> 00:04:32.780
+in fact, it's as
+good as correlation.
+
+100
+00:04:32.780 --> 00:04:38.750
+The AUC also as good as
+correlation, which is great.
+
+101
+00:04:38.750 --> 00:04:41.885
+The precision also as good,
+
+102
+00:04:41.885 --> 00:04:43.520
+I would say as correlation,
+
+103
+00:04:43.520 --> 00:04:45.140
+it doesn't go quite so far out,
+
+104
+00:04:45.140 --> 00:04:47.720
+but that's for precision.
+
+105
+00:04:47.720 --> 00:04:50.855
+For recall, exactly the same,
+
+106
+00:04:50.855 --> 00:04:54.095
+for the F1 score is
+actually slightly better.
+
+107
+00:04:54.095 --> 00:04:57.695
+I mean, just barely,
+but slightly better.
+
+108
+00:04:57.695 --> 00:04:59.460
+We've gotten to fewer features,
+
+109
+00:04:59.460 --> 00:05:04.130
+we did it with 20 features
+instead of 21 for correlation.
+
+110
+00:05:04.130 --> 00:05:06.769
+That recursive
+feature elimination
+
+111
+00:05:06.769 --> 00:05:09.390
+is now our best result.

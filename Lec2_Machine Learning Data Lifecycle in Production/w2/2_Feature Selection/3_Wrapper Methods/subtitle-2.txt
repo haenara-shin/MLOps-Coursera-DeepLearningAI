@@ -1,0 +1,71 @@
+Let's look at some
+wrapper methods. Wrapper methods work
+all differently. It stores supervised method, but we're going to use this with a model and there's
+different ways to do it. But basically you're
+iterating through, it's a search method against
+the features that you have using a model as the measure
+of their effectiveness. We can do it through
+forward elimination and we'll talk about
+this in a second. Forward elimination, backward elimination or
+recurrent feature elimination. Let's take a look at these. We start with all of our feature, regenerate a subset
+of those features, and we'll talk about how
+that gets generated, that gets given to our model. The results that is
+generated from that model is then used to generate
+the next subset. That becomes this
+feedback loop to select the best subset of our features using our
+model as a measure. That gives us the performance of the final best subset
+that is selected. There's different
+wrapper methods, forward selection and
+backwards selection and recursive feature selection or recursive feature
+elimination rather, these can all be used to
+select a subset that we just looked at through each iteration
+of that feedback loop. For forward selection it's
+an iterative, greedy method. We start with one
+feature, it's greedy, and then we evaluate the
+model performance and we add one at a time features. We're adding, we're gradually building up this feature vector, one feature at a time, starting with just one feature. We try to add the next feature that gives the best performance, but we're going to measure that to see what the result is. We keep repeating
+this until there's no improvement and
+then we know that we've generated the best
+subset of our feature. Backward elimination, well,
+if you think about it, we just looked at
+forward elimination. Backward elimination starts
+with all of the features and evaluates the
+model performance when removing feature. It's exactly what you might think from the name one at a time. We remove the next feature, trying to get to better
+performance with less features and we keep doing that until
+there's no improvement. Recursive feature
+elimination, we select a model to use for evaluating
+feature importance. We select the desired number of features and we fit them up. We rank the features
+by importance. We need to have a method
+of assigning importance to those features and then we discard the least
+important features. We keep doing that
+until we get down to the number of features that
+we're looking to target. An important aspect of this is that we need to
+have a measurement of feature importance in our model and not all
+models are able to do that. For recursive
+feature elimination, this is what the code
+might look like. Again, we're pulling in our data and splitting
+it with train and test, and pulling out the labels
+from our data as well. We have X and Y,
+why you're going to scale it because it's
+always a good idea. Then we're going to use a
+random forest classifier. A random forest
+classifier is one of the model types where we can
+get the feature importance. In this case we're
+using entropy as the metric and we're initializing
+it with a random state. We're going to apply our random feature
+elimination trying to get to 20 features with our
+model that gets fitted. That's going to do that elimination and that results in the list of
+features that we've selected. Those are the names of the
+features that we've selected, the 20 features that
+we were looking for to eliminate all
+but 20 of our features. Then we're going
+to use that to do the evaluation to
+get the final value. How does that look compared
+to our other examples? Well, so recursive
+feature elimination also got two of our 20 features. The accuracy was quite a bit better than it
+was for univariate, in fact, it's as
+good as correlation. The AUC also as good as
+correlation, which is great. The precision also as good, I would say as correlation, it doesn't go quite so far out, but that's for precision. For recall, exactly the same, for the F1 score is
+actually slightly better. I mean, just barely,
+but slightly better. We've gotten to fewer features, we did it with 20 features
+instead of 21 for correlation. That recursive
+feature elimination is now our best result.

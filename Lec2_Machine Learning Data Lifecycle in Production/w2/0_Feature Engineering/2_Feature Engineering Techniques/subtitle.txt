@@ -1,0 +1,124 @@
+Now let's review some Feature
+Engineering techniques. Here's what we're
+going to talk about. There's basic feature
+scaling, usually, especially with numerical data, where you're really
+doing is scaling the numerical features
+in different ways. We'll talk about some
+of the basics of these like normalization
+and standardization. You can also do bucketizing or binning and we'll
+talk about that. That's a useful
+technique as well. Then some other techniques like dimensionality reduction for
+example. Let's get started. Feature Engineering takes
+a variety of forms, normalizing, and scaling features, and coding categorical
+values and so forth. We have scaling and
+normalizing and standardizing. We can also do groupings, so that could be bucketizing. Where things like for text, we could do a bag of words. This is going to
+be very dependent on the particular algorithm
+that you're going to use. You have to understand
+the connection between the kinds of scaling or grouping that you do and the algorithms that are
+going to be using with it. Scaling converts
+to standard range and different techniques
+to it differently. For example, a gray-scale
+image pixel intensity is typically expressed in the raw data
+as a number between 0-255, and then that's usually re-scale
+to negative one to one. Here's some Python, for
+example, for doing that. The benefits of that are, it helps the neural
+network to converge faster or maybe converge at all. It does away with a lot of the problems with not a number errors
+during training. For each feature the model is really trying to
+learn the right way, and having them in the
+right numerical range, helps a lot with that. Here's the standard formula
+for normalizing something. It's also called min-max. You're taking your X, you're subtracting the minimum
+value of that feature. You have to make a full pass over your data set to get
+that minimum value, and then you subtract that
+and then you divide by the maximum value minus
+the minimum value. You're going to need
+to make a full pass to get those numbers. Then it gives you a number
+that is between 0-1. Normalizations are
+usually good if you know that the distribution of your data is not Gaussian. Doesn't always have to be true, but typically that's a good
+assumption to start with. A good rule of thumb. If you're working
+with data that you know is not Gaussian, or a normal distribution, then normalization is a good
+technique to start with. Normalization is widely
+used for scaling, you have a numerical feature that might start out like this, where numbers are falling and
+there is a kind of a range. You're going to transform that to the normalized version of that, which is bounded in
+a range between 0-1. That's normalization. You're probably familiar with this although you may not
+have thought of some of the production implications like the fact that you need to
+make a full past career data set in order to get the
+numbers that you're going to need to
+perform normalization. The scales here are again, between 0-1 and whatever
+the original was. Standardization, which is
+often using a Z-score, is a different technique. It's a way of scaling using
+the standard deviation. It's looking at the distribution itself and trying to
+scale relative to that. The example here is using, , and you're going to subtract the mean and divide
+by the standard deviation. That gives you the Z- score or the standardized value of X. Which is somewhere between zero and the standard deviation. This is how that's expressed, actually between some multiple
+of the standard deviation. But it's centered around
+the mean of the data. If the original looked
+like this, again, a standardized value of
+that might look like this. Notice that this score
+is centered on zero, so the mean is
+translated to zero. But you can have
+negative values and positive values that
+are beyond one. It's a little bit less
+bounded transformation than a normalization is. But there are some
+advantages to it, that your data is a
+normal distribution, then a standardization technique is a good place to start, it's a good rule of
+thumb to start with for your numerical features. But I encourage you to try both standardization
+and normalization and compare the results. Because sometimes it doesn't
+make much of a difference. Sometimes it can make a
+substantial difference. It's good to try both. Moving on into
+bucketizing and binning. We're going to take
+a look at an example where we have a house that was built in a particular year and we're going to
+bucketize that. Often you don't want to enter a number directly into a model. Instead, you want to encode it as a category by grouping
+it into buckets. You notice how we've taken
+our number, our year, and we've created a one-hot
+encoding of that that helps us learn from that number in
+a more really relevant way because the difference
+between 1960 and 61 isn't nearly as important
+as the difference between 1960 and 1970 in terms of the value that
+this feature contained. Looking at how it gets binned into one-hot encoded vector, you can see it's put it
+into different buckets. We can also look at
+that using facets, which is a nice
+visualization tool to help us look at that. This really demonstrates some of the value of bucketizing
+and binning, but it also is a good way to look at your
+data and try to understand it. Which is an important part anytime you're working with data, is making sure that
+you really have a good solid understanding
+of what's happening in your data and develop an
+intuitive sense for it. This kind of visualization
+can really help you do that. Some other techniques. There's dimensionality
+reduction techniques, for example, that you can do. There's PCA, which is
+going to project your data along the principal components in order to reduce the
+dimensionality of it. There's t-SNE, which is an important technique for
+embeddings, often very useful. Uniform manifold approximation
+and projection is a less well-known technique, but interesting and has
+some interesting aspects. We won't really go
+into that in detail. Then feature crossing as well. One of the things that
+you can use when you're working with embeddings is
+an embedding projector, like the TensorFlow
+embedding projector that we're looking at here. You can quickly get an idea of what your data looks like
+at a particular space. That again, is helping
+you to develop that intuitive
+sense of your data. You can already see
+just looking at it, you can get a feel for
+how it's clustered. You can see where different types of data land in that space. That understanding is very important to help you
+work with your data. This is really where some of the art of feature
+engineering comes into play, where you as a developer developed this
+understanding of your data. As an intuitive exploration, really important for
+high-dimensional data because we as humans can visualize maybe
+three dimensions and then it gets really weird. Even four is hard and
+20 is impossible. Visualizing it and
+analyzing it is important. There's different techniques
+for doing that or for doing dimensionality
+reduction along that to help you understand that. PCA that you're
+probably familiar with principal component analysis and t-SNE and UMAP that we just
+talked about a little bit. Then there's other custom
+linear projections as well. That TensorFlow embedding
+projector is available. It's free, you can
+go play with it. It's actually a lot of fun, but it's also a great
+tool to really help you understand your data. There's the address for it
+if you want to learn more. Key points for this
+particular section, feature engineering. It's going to
+prepare and tune and transform and extract
+and construct features where we're going to work with features
+and change them starting with our raw data through to the data that we're going to give to our model. Feature engineering is very important for model refinement. Really, it can make
+the difference between successfully
+modeling something and not. Feature engineering really
+helps with ML Analysis and really developing that intuitive
+understanding of our data.

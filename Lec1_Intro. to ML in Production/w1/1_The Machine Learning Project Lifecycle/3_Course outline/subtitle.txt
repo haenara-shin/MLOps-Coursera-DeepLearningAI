@@ -1,0 +1,35 @@
+You've seen the machine
+learning project life cycle. Let's briefly go over what you'll learn in the
+rest of this course. Even though I presented the life cycle going
+from left to right, I found that for learning
+these materials, it will be more efficient for you to start at the end goal, and start from deployment, and then work backwards to modeling data and then scoping. In the rest of this week, starting with the next video, you'll learn about the
+most important ideas in Deployment. Next week, in Week 2, you'll learn about modeling. You may have learned
+about how to train a machine learning model
+from other courses. In this video, I'll share some new ideas that you may
+not have heard before of how to systematically use
+a data-centric approach to be more efficient in how you improve the performance
+of your model. Then in the third, and final week of this course, you'll learn about data. How to define data and
+establish a baseline, and how to label and organize your data in a way
+that is systematic. Not Ad hoc, not hacking around in the Jupyter notebook in the hope that you stumble onto
+the right insights, but in a more systematic way that helps you be
+more efficient in defining the data that will help the modeling to help
+you get to deployment. Then finally, in Week 3 we'll also have an optional
+section on scoping. In which I hope to share with
+you some tips I've learned on how to define effective
+machine learning projects. Throughout this course, you'll
+also learn about MLOps, or machine learning operations. Which is an emerging discipline that comprises a set of tools and principles to support progress through the machine ML
+project life cycle, but especially these three steps. For example, at Landing
+AI, where I'm CEO, we used to do a lot of
+these steps manually, which is okay, but slow. But after building
+an MLOps tool called LandingLens for computer
+vision applications, all these steps
+became much quicker. The key idea in MLOps is that systematic ways to
+think about scoping, data, modeling, and
+deployment, and also software tools to support
+the best practices. That's it. In this course, we're going to start
+at the end goal, start from deployment, and
+then work our way backwards. As you already know, being able to deploy system
+is one of the most important, and valuable skills in
+Machine Learning today. Let's go on to the next video
+where we'll dive deep into the most important ideas needed to deploy machine
+learning systems. I will see you in the next video.

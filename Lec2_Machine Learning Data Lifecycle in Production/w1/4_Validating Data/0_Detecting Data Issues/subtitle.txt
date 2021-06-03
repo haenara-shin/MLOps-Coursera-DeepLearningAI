@@ -1,0 +1,95 @@
+Hello and welcome back. You've probably heard the
+phrase garbage in, garbage out. Well, that's very true
+for Production ML. You can have a live data. But if your data isn't good, well it's not good for ML
+either. How do you know? How do you know your data
+is good or isn't good? Let's find out right now. Now let's look at validating
+data and detecting data issues and really
+look at trying to understand what issues
+we need to deal with. We need to detect data issues, and we often talk
+about drift and skew. We're going to be
+discussing Data and concept Drift and Schema Skew
+and Distribution Skew, and how to go about conceptually
+detecting data issues. First of all, let's get some definitions out of
+the way, drift and skew. Drift is changes
+in data over time. For example, data collected
+once a day over time, maybe a week later, a month later, there are
+changes that data has drifted. Skew is the difference between two static versions from different sources of
+conceptually the same dataset. For example, it could
+be the difference between your training set and the data that
+you're getting for prediction requests,
+your serving set. Those differences are
+referred to as skew. In a typical ML pipeline, this shows batch processing, but it could also be
+online processing. You'll have different sources of data that are
+conceptually the same. They have the same
+feature vector, but over time they will change. That means that model
+performance can either drop quickly due to things like system failure or can decay
+over time due to changes in the data and things
+like changes in the world. We're going to focus on
+performance decay over time that arises due to issues between training
+and serving data. There's really two
+main reasons for that. There's Data drift, which
+are changes in the data between training and serving
+typically and Concept drift, which are changes in the world changes in
+the ground truth. To understand model
+decay over time, an ML model will start
+to perform poorly in many cases and we refer
+to this as model decay. That's usually or
+often caused by drift, which is changes in
+a conceptual way. There is changes in the statistical properties
+of the features. It's sometimes due to
+things like seasonality or trend or unexpected events, or just changes in the world. This example here, we're
+looking at an app that during training the app
+classified as a spammer, any user who is sending 20
+or more messages per minute. We classified anybody
+like that as a spammer. But after a system
+update which you see as labeled on
+the chart there, both spammers and non-spammers start to send more messages. In this case, the data, the world has changed and that causes unwanted
+misclassification. We have all of our
+users are classified as spammers which they
+probably won't like. Concept drift is a change in the statistical properties
+of the labels over time. At training, an ML
+model learns a mapping between the features
+and the labels. In a static world that's
+fine, that won't change. But in real-world, distribution and the labels
+meaning will change. The model needs to change
+as well as the mapping found during training
+will no longer be valid. As you previously see, there are many factors that cause changes over time including upstream data changes and seasonality and evolving
+business processes. Schema skew occurs
+when the training and scheming as serving data do not conform to the same schema, which you might think could never happen but
+actually it can because you're collecting data
+and things change and suddenly you're
+getting an integer where are you expecting a float. Or you're getting
+a string where you are expecting a category. Distributions skew
+is a divergence of training and
+serving data sets. The data set shift can
+be really manifested by covariant and concept
+and other types of shifts. We'll talk about
+that in a second. Skew detection involves
+continuous evaluation of data coming to your server
+once you train your model. To detect these changes, you need continuous monitoring and evaluation of the data. Let's take a look at a
+more rigorous definition of the drift and skew
+that we're talking. Dataset shift occurs when the
+joint probability of x are features and y are labels is not the same
+during training and serving. The data has shifted over time. Covariate shift refers
+to the change in distribution of the
+input variables present in training
+and serving data. In other words, it's where the
+marginal distribution of x are features is not the same
+during training and serving, but the conditional
+distribution remains unchanged. Concept shift refers to a change in the
+relationship between the input and output variables as opposed to the differences in the Data Distribution
+or input itself. In other words, it's when the conditional
+distribution of y are labels given x are features is not the same
+during training and serving, but the marginal distribution of x are features remains unchanged. There's a straightforward
+workflow to detect data skew. The first stage is looking
+at training data and computing baseline statistics
+and a reference schema. Then you do basically the
+same with your serving data, you're going to generate
+the descriptive statistics. Then you compare the two. You compare your serving baseline statistics
+and instances. You check for differences between that and
+your training data. You look for skew and drift. Significant changes
+become anomalies and they'll trigger an alert. That alert goes to whoever's
+monitoring system, that can either be a human
+or another system to analyze the change and decide on the proper
+course of action. That's got to be
+the remediation of the way that you're going to fix and react to that problem.

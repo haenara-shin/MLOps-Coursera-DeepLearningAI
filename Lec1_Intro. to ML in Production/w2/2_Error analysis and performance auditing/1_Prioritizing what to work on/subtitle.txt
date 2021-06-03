@@ -1,0 +1,70 @@
+In the last video,
+you learned about brainstorming and tagging your data with
+different attributes. Let's see how you can use this to
+prioritize where to focus your attention. Here is the example we had
+previously with four tags and the accuracy of the algorithm,
+human level performance and what's the gap between the current
+accuracy and human level performance. Rather than deciding to work on car noise
+because the gap to HLP is biggest, one other useful factor to look at is what's
+the percentage of data with that tag. Let's say that 60% of your
+data is clean speech, 4% is data with car noise,
+30% has people noise and 6% is low bandwidth audio. This tells us that if we
+could take clean speech and raise our accuracy from 94 to
+95% on all the clean speech, then multiplying 1% with 60%,
+this tells us that if we could improve our performance on clean speech,
+the human level performance, our overall speech system
+would be 0.6% more accurate, because we would do 1%
+better on 60% of the data. So this will raise
+average accuracy by 0.6%. On the car noise,
+if we can improve the performance by 4% on 4% of the data,
+multiplying that out, that gives us a 0.16% improvement. And multiplying results as well,
+we get 0.6% and, well, essentially 0% because we
+can't make that any better. And so whereas previously we had
+said there's a lot of room for improvement in car noise,
+in this slightly richer analysis, we see that because people noise accounts
+for such a large fraction of the data, it may be more worthwhile to
+work on either people noise or maybe on clean speech because there's
+actually larger potential for improvements in both of those than for
+speech with car noise. So to summarize,
+when prioritizing what to work on, you might decide on the most important
+categories to work on based on, how much room for improvement there is,
+such as compared to human level performance or
+according to some baseline comparison. How frequently does that category appear? You can also take into account how easy it
+is to improve accuracy in that category. For example, if you have some ideas for how to improve the accuracy of speech with
+car noise, maybe a data augmentation, that might cause you to prioritize that
+category more highly than some other category where you just don't have as
+many ideas for how to improve the system. And then finally, how important it is to
+improve performance on that category. For example, you may decide that improving
+performance with car noise is especially important because when you're driving,
+you have a stronger desire to do search, especially search on maps and
+find addresses without needing to use your hands if your hands are supposed
+to be holding the steering wheel. There is no mathematical formula that
+will tell you what to work on, but by looking at these factors, I hope you'll
+be able to make more fruitful decisions. Once you've decided that you want to
+work on one category of data, say, data with car noise, once you've
+decided that there's a category or maybe a few categories where you want
+to improve the average performance, one fruitful approach is to consider
+adding data or improving the quality of that data for that one or
+maybe a small handful of categories. So for example, if you want to improve
+performance on speech with car noise, you might go out and
+collect more data with car noise. Or if you have a way of using data
+augmentation to get more data from that category, that would be another way
+to improve your average performance. One topic that we'll discuss next week is how to improve label accuracy or
+data quality. You'll learn more about this when
+we talk about the data phase of the machine learning project lifecycle. In machine learning, we always
+would like to have more data, but going out to collect more data generically
+can be very time consuming and expensive. By carrying out an analysis like this,
+when you are then going through this initiative process of improving
+your learning algorithm, you can be much more focused in exactly
+what types of data you collect. Because if you decide to collect more data
+with car noise or maybe people noise, you can be much more specific in going
+out to collect more of just that data or using data augmentation
+without wasting time trying to collect more data from a low
+bandwidth cell phone connection. And this focus on improving your data
+on the tags that you have determined are most fruitful for you to work on,
+that can help you be much more efficient in how you improve your
+learning average performance. I found this type of error
+analysis procedure very useful for many of my projects, and I hope it will help you too in building
+production-ready machine learning systems. Nicks, one of the most common challenges
+you run into is skewed data sets. Let's go on to the Nicks' video
+to go through some techniques for managing skewed data sets

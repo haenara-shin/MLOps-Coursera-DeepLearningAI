@@ -1,0 +1,114 @@
+In the last video, you saw how the right bounding boxes for
+an image can be ambiguous. Let's take a look at some more
+label ambiguity examples. We briefly touched on speech recognition in the
+first week of this course. Here's another example. Given this audio clip, sounds like someone
+was standing on a busy road side asking for the nearest gas station
+and then a car drove past. Did they say something
+right after that? I don't know. One way to transcribe this would be
+"Um, nearest gas station." In some places, people
+spell "um" with two m's. That would be a different
+way to spell it. We could have used dot-dot-dot or ellipses instead of
+the comma as well, which would be another ambiguity. Or given the audio had
+noise after the last words. Nearest gas station. Did they say something
+after nearest gas station? I'm not sure actually. Would you transcribe
+it like this instead? There are combinatorially
+many ways to transcribe this. With one M or two M's,
+comma or ellipses, whether to write unintelligible
+at the end of this. Being able to standardize
+on one convention will help your speech
+recognition algorithm. Let's also look an example
+of structured data. A common application in many large companies
+is user ID merge. That's when you have multiple data records that
+you think correspond to the same person and you want to merge these user data
+records together. For example, say you
+run a website that offers online listings of jobs. This may be one data record that you have from one of your registered users
+with the email, first name, last
+name and address. Now, say your company acquires a second company that runs a mobile app that
+allows people to login, to chat and get advice from each other about their resumes. It seems synergistic
+for your business. If you run a listing
+of online jobs, maybe you merge or acquire
+a second company that runs a mobile app that lets
+people chat about their resumes and
+from this mobile app, you have a different
+database of users. Given this data
+record and this one, do you think these two
+are the same person? One approach to the
+User ID merge problem, is the use of supervised
+learning algorithm that takes as inputs to user data
+records and tries to outputs either one or
+zero based on whether it thinks these two are actually the same physical human being. If you have a way to get
+ground true data records, such as if a handful
+of users are willing to explicitly link
+the two accounts, then that could be a good set of labeled examples to
+train an algorithm. But if you don't have such
+a ground true set of data, what many companies have
+done is ask human labors, sometimes a product
+management team to just manually look
+at some pairs of records that have
+been filtered to have maybe similar names
+or similar ZIP codes, and then to just use human
+judgment to determine if these two records appear
+to be the same person. Because whether these
+two records really is the same person, is
+genuinely ambiguous. They may and they may not be different people will label
+these records inconsistently. If there's a way to just get them to label the data a
+little more consistently, you see some examples
+of how to do this later even when the ground
+truth is ambiguous, then that can help the performance of your
+learning algorithm. User ID merging is a very common function
+in many companies. Let me just ask you to please do this only in ways
+that are respectful of the users data and their privacy and only if
+you're using the data in a way, consistence with what they
+have given you permission for. User privacy is really important. A few other examples
+from structured data. If you are trying to use the learning algorithm to
+look at the user account like this and predict is it a
+bot or a spam account? Sometimes that can be ambiguous. Or if you look at
+a online purchase, is this a 40-length transaction? Has someone stolen
+accounts and is using stolen accounts to interact with your websites or
+to make purchases? Sometimes that too is ambiguous. Or if you look at someone's interactions
+with your website and you want to know, are they looking for a new job at this moment in time based on how someone behaves on a job board website
+or a resume chat app, you can sometimes guess if
+they're looking for a job, but it's hard to be sure. That's also a little
+bit ambiguous. In the face of potentially very important and valuable prediction
+tasks like these, the ground truth
+can be ambiguous. If you ask people to take their best guess at the ground truth label
+for tasks like these, giving labeling instructions
+that results in more consistent and less
+noisy and less random labels will improve the performance
+of your learning algorithm. When defining the data for
+your learning algorithm, here are some
+important questions. First, what is the input x? For example, if you are trying to detect defects on smart phones, for the pictures you're taking, is the lighting good enough? Is the camera
+contrast good enough? Is the camera
+resolution good enough? If you find that you have a
+bunch of pictures like these, which are so dark, it's hard even for a person
+to see what's going on. The right thing to
+do may not be to take this input x
+and just label it. It may be to go to
+the factory and politely request
+improving the lighting because it is only with this better image quality
+that the labor can then more easily see scratches
+like this and label them. Sometimes if your sensor or your imaging solution or your audio recording
+solution is not good enough, the best thing you
+could do is recognize that if even a person can't look at the input and
+tell us what's going on, then improving the quality of your sensor or improving
+the quality of the input x, that can be an
+important first step to ensuring your
+learning algorithm can have reasonable performance. For structured data problems, defining whether the
+features to include can have a huge impact on your learning
+algorithm's performance. For example, for user ID merge, if you have a way of getting
+the user's location, even a rough GPS location. If you have permission
+from the user to use that, can be a very useful tool
+for deciding whether two user accounts actually
+belong to the same person. Of course, please do this type
+of thing only if you have permission from the user to
+use their data this way. In addition to
+defining the input x, you also have to figure out what should be the target label y. As you've seen from the
+preceding examples, one key question is, how can we ensure labels
+give consistent labels? In the last video and this video, you saw a variety
+of problems with the labels being ambiguous
+or in some cases, the input x not being
+sufficiently informative, such as an image is too dark. Let's take these
+data issues and put them into more
+systematic framework. That will allow us to devise solutions in a more
+systematic way. Let's go on to the next
+video to take a look.

@@ -1,0 +1,79 @@
+Let's start with filter methods. Filter methods are one of the supervised methods of
+doing feature selection, which includes wrapper methods
+and embedded methods also. But for filter methods, we're primarily using correlation to look for the features that contain the information that we're going to use to
+predict our target. Univariate feature
+selection is also very often used for efficiency really. Let's take a look at
+some filter methods. Correlated features are usually redundant as we
+just talked about. When you have to
+features that are highly correlated
+with each other, that usually is an indicator
+that they're redundant. You want to choose one of those so you remove
+the other one. Popular filter methods
+include Pearson correlation. These are different
+ways to do correlation. Pearson correlation is one. That's correlation
+between features and between the features
+and the label. That's why it's a
+supervised method. You can also do univariate
+feature selection which is very common. Filter methods; well, we are
+going to start with all of the features and
+we're going to select the best subset and
+we're going to give those to our model and
+that's going to give us our performance
+for the model with this subset of our features. One of the ways to visualize this is really correlation matrix. We can look for features where
+we can see that there is a correlation between two
+or more of our features. It helps show how
+features are related, both to each other and with the target variable
+and to emphasize that, when they're unrelated to
+each other, that's bad. You only want one of
+those and of course, you do want it correlated
+with a target. That's going to fall in
+a range of correlation between negative 1 and one and one is highly
+positive correlation and negative 1 is highly
+negative correlation. Comparing the different tests, you have Pearson's correlation
+for linear relationships. That's by far I think
+the most common. Kendall Tau is a rank
+correlation coefficient, looks at monotonic relationships, and it's usually used with a fairly small sample
+size for efficiency. Spearman's is another one. It's also rank correlation and it also is looking at
+monotonic relationship. Other methods; well,
+there's mutual information. Mutual information has some
+nice characteristics to it. F-test, that's another fairly
+common one and chi-squared. Chi-square is also a
+fairly common one. Looking at how we
+would do this in code, let's just take a look using
+Pearson's correlation. This is going to use pandas. We have a data frame and we're using the
+Pearsoncorrelation.cor method. That gives us our correlation
+and we can then draw our heat map with seaborn and that's what
+that's going to look like. That gives us our
+correlation matrix. Looking at it again, we've got the absolute value of that and we can
+select our target. That gives us our result with a subset of our features
+that we've selected. In this case, we've eliminated seven features because
+they were correlated. Now, we have instead of 30, we have 21 features in
+our feature vector. The accuracy is actually better, the AUC is actually better, precision is actually better and recall is exactly the same. At least have five
+decimal places. The F1 score is a little better. Removing features, mostly almost all our
+metrics improved. That also goes along with the improvements that we made in the compute resources that are required to process 21
+features instead of 30. That's our best result so far. Let's look at univariate
+feature selection. Univariate feature selection and we're going to do that
+using Sci-kit learn. There's SelectKBest,
+there's SelectPercentile, GenericUnivariateSelect, which is fairly generic I assume. Some statistical tests
+we can use with that, there's mutual information and F-tests for regression problems. For classification, we have chi-squared and
+there's a version of the F-test for classification and similarly for
+mutual information, there's a version of
+that for classification. Let's look at how that
+gets implemented in code. We've got a function
+that we're going to define for univariate selection. It's going to take our test set, actually our training
+set has been split for both training and
+test and then that's going to be scaled
+with a standard scalar and we're going to use the MinMaxScalar
+as well to give us a scaled x and then our
+selector we're going to use is the SelectKBest and
+we're going to use that with the chi-squared test and that's going to look for the
+20 best features here. We're going to fit
+that transform, we're going to get the features that it selects
+and we're going to drop the other features
+in our original data set. That gives us the feature names of the features that
+we've selected. How does that perform? Well, a univariate test
+using chi-squared, we asked for 20 features, so it gave us 20 features. The accuracy dropped
+a little bit, so did the AUC, so did the precision, but recall interestingly did not, its still exactly the
+same and the F1 score is unfortunately a
+little bit lower. The correlation is
+still our best result. It's one more feature, but it's still our best result.

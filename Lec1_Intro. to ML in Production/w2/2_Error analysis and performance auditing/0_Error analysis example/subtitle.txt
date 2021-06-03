@@ -1,0 +1,98 @@
+The first time you train a learning algorithm, you can almost guarantee that it
+won't work not the first time out. So I think of the heart of
+the machine learning development process as error analysis,
+which if you do it well, I can tell you what's the most
+efficient use of your time in terms of what you should do to improve
+your learning algorithm's performance. Let's start with an example. Let me walk through an error analysis
+example using speech recognition. When I'm carrying out error analysis,
+this is pretty much what I would do myself in a spreadsheet to get a handle on
+whether the errors of the speech system. You might listen to maybe 100
+mislabeled examples from your dev set from the development set. So let's say the first example
+was labeled with the ground truth label stir fried lettuce recipe. But you're learning arms prediction
+was stir fry letters recipe. If you have a couple of hypothesis, but what are the major types
+of data in your dataset? Maybe you think some of the data has car
+noise, some of the data has people noise. Then you can build a spreadsheet and I literally do this in a spreadsheet
+with a couple of columns like this. And when you listen to this example,
+if this example has car noise in the background,
+you can then make a check mark or other annotation in your spreadsheet to
+indicate that this example had car noise. Then you listen to the second example, maybe sweeten coffee caught
+mis-transcribed as Swedish coffee and maybe this example had people
+noise in the background. And maybe one example with sail away song
+was mis transcribed sell away song and this again had people noise and
+let's catch up with trans drivers. Let's catch up. And maybe this example had both
+car noise and people noise. Note that these tags up on top don't
+have to be mutually exclusive. During this process of error analysis,
+as you listen to audio clips, you may come up with ideas for
+additional tags. Let's say this for for example,
+had a very low bandwidth connection and reflecting on the areas
+you're spotting you remember. Maybe quite a few of the audio clips
+have a low bandwidth connection, at this point you may decide to add a new
+column to your spreadsheet with one more tag that says low bandwidth. And check that and maybe go back to
+see if some of the other examples also had a low bandwidth connection. So even though I went through this example using a slide when I'm doing
+error analysis myself, sometimes I literally fire up
+a spreadsheet program like Google sheet or Excel or on a Mac, the numbers program and
+do it like this in the spreadsheet. This process hopes you understand
+whether the categories as denoted by tags that may be
+the source of more of the errors and does may be worthy of further effort and
+attention. Until now, error analysis has typically
+been done via a manual process, say, in the Jupiter notebook or
+tracking errors in spreadsheet. I still sometimes do it that way and
+if that's how you're doing it too, that's fine. But there are also emerging MLOps
+tools that making this process easier for developers. For example, when my team landing AI works
+on computer vision applications, the whole team now uses landing lens, which makes
+this much easier than the spreadsheet. You've heard me say that training
+a model is initiative process, deploying a model is an intuitive process. Maybe it should come as no surprise
+that error analysis is also an iterative process where what a typical process would
+be is you might examine and tag some set of examples with an initial set of
+tags such as car noise and people noise. And based on examining this
+initial set of examples, you may come back and
+say you want to propose some new tags. with the new tags, you can then go back
+to examine and tag even more examples. Let me step through a few other
+examples of what such tags could be. Take visual inspection. You know, the problem of
+finding defects in smart phones. Some of the tags could be
+specific class labels, such as this is going to have a scratch or
+does evident and so on. So it's fine if some of these tags
+are associated with specific class labels y or
+some of the tax could be image properties. Is this picture of the phone blurry? Is it against the dark background or
+a light background? Is there a unwanted
+reflection in this picture? The tags could also come from
+other forms of metadata. What is the film model? What is the factory which is
+the manufacturing line that captured the specific image? And the goal of this type of process
+where you come over tag label. More data come over tag, is to try to
+come up with a few categories where you could productively improve the algorithm
+such as in our earlier speech example deciding to work on speech
+with car noise in the background. Let me step through just one more example,
+product recommendations for an online e commerce site. You might look at what products
+a system is recommending to users and find the clearly incorrect or
+irrelevant recommendations. And try to figure out if there
+are specific user demographics such as are we really badly recommending
+products to younger women or to older men or to something else? Or are there specific product features or specific product categories where
+the recommendations are particularly poor. And by alternatively brainstorming and
+applying such tags, you can hopefully come
+up with a few ideas for categories of data that we're trying
+to improve your albums performance on. As you go through these different tags
+here are some useful numbers to look at. First what fraction of
+errors have that tag? For example,
+if you listen to 100 audio clips and find that 12% of them were
+labeled with the car noise type, then that gives you a sense of how
+important is it to work on car noise. It tells you also that even if you
+fix all of the car noise issues, the performance may improve only by 12%,
+which is actually not bad. Or you can ask all the data with that
+tag what fraction is misclassified? So far we've only talked about tagging the
+mislabeled examples for time efficiency. You might focus your attention
+on tagging the mislabeled, the misclassified examples. But if this tag you can apply
+to both correctly labeled and two mislabeled examples, then you can
+ask of all the data of that tag, what fraction is misclassified? So for example,
+if you find that of all the data with car noise, 18% of it is mistrust right. Then that tells you that
+the performance on data with this type of tag has only a certain
+level of accuracy and tells you how hard these examples
+with car noise really are. You might also ask what fraction
+of all the data has that tag. This tells you how important relative to
+your entire data set are examples with that tag. So what fraction of your
+entire data set has car noise? And then lastly, how much room for improvement is there
+on data with that tag? And one example that you've already
+seen for how to do this analysis is to measure human level
+performance on data with that tag. So by brainstorming different tags, you can segment your data
+into different categories and then use questions like these to try to
+decide what to prioritize working on. Let's dive more deeply into an example
+of doing this in the next video.

@@ -1,0 +1,594 @@
+WEBVTT
+
+1
+00:00:00.740 --> 00:00:03.840
+The first time you train a learning algorithm,
+
+2
+00:00:03.840 --> 00:00:09.340
+you can almost guarantee that it
+won't work not the first time out.
+
+3
+00:00:09.340 --> 00:00:12.918
+So I think of the heart of
+the machine learning development
+
+4
+00:00:12.918 --> 00:00:16.130
+process as error analysis,
+which if you do it well,
+
+5
+00:00:16.130 --> 00:00:19.561
+I can tell you what's the most
+efficient use of your time
+
+6
+00:00:19.561 --> 00:00:24.840
+in terms of what you should do to improve
+your learning algorithm's performance.
+
+7
+00:00:24.840 --> 00:00:26.810
+Let's start with an example.
+
+8
+00:00:26.810 --> 00:00:31.761
+Let me walk through an error analysis
+example using speech recognition.
+
+9
+00:00:31.761 --> 00:00:37.139
+When I'm carrying out error analysis,
+this is pretty much what I would do myself
+
+10
+00:00:37.139 --> 00:00:42.141
+in a spreadsheet to get a handle on
+whether the errors of the speech system.
+
+11
+00:00:42.141 --> 00:00:47.007
+You might listen to maybe 100
+mislabeled examples from your
+
+12
+00:00:47.007 --> 00:00:49.780
+dev set from the development set.
+
+13
+00:00:49.780 --> 00:00:54.484
+So let's say the first example
+was labeled with the ground truth
+
+14
+00:00:54.484 --> 00:00:57.030
+label stir fried lettuce recipe.
+
+15
+00:00:57.030 --> 00:01:00.570
+But you're learning arms prediction
+was stir fry letters recipe.
+
+16
+00:01:00.570 --> 00:01:03.082
+If you have a couple of hypothesis,
+
+17
+00:01:03.082 --> 00:01:06.790
+but what are the major types
+of data in your dataset?
+
+18
+00:01:06.790 --> 00:01:12.110
+Maybe you think some of the data has car
+noise, some of the data has people noise.
+
+19
+00:01:12.110 --> 00:01:14.562
+Then you can build a spreadsheet and
+
+20
+00:01:14.562 --> 00:01:19.490
+I literally do this in a spreadsheet
+with a couple of columns like this.
+
+21
+00:01:19.490 --> 00:01:23.679
+And when you listen to this example,
+if this example has car noise in
+
+22
+00:01:23.679 --> 00:01:26.692
+the background,
+you can then make a check mark or
+
+23
+00:01:26.692 --> 00:01:32.440
+other annotation in your spreadsheet to
+indicate that this example had car noise.
+
+24
+00:01:32.440 --> 00:01:34.904
+Then you listen to the second example,
+
+25
+00:01:34.904 --> 00:01:39.236
+maybe sweeten coffee caught
+mis-transcribed as Swedish coffee and
+
+26
+00:01:39.236 --> 00:01:43.240
+maybe this example had people
+noise in the background.
+
+27
+00:01:43.240 --> 00:01:49.906
+And maybe one example with sail away song
+was mis transcribed sell away song and
+
+28
+00:01:49.906 --> 00:01:55.671
+this again had people noise and
+let's catch up with trans drivers.
+
+29
+00:01:55.671 --> 00:01:56.570
+Let's catch up.
+
+30
+00:01:56.570 --> 00:02:00.540
+And maybe this example had both
+car noise and people noise.
+
+31
+00:02:00.540 --> 00:02:05.856
+Note that these tags up on top don't
+have to be mutually exclusive.
+
+32
+00:02:05.856 --> 00:02:10.090
+During this process of error analysis,
+as you listen to audio clips,
+
+33
+00:02:10.090 --> 00:02:12.990
+you may come up with ideas for
+additional tags.
+
+34
+00:02:12.990 --> 00:02:17.368
+Let's say this for for example,
+had a very low bandwidth connection and
+
+35
+00:02:17.368 --> 00:02:21.520
+reflecting on the areas
+you're spotting you remember.
+
+36
+00:02:21.520 --> 00:02:25.796
+Maybe quite a few of the audio clips
+have a low bandwidth connection,
+
+37
+00:02:25.796 --> 00:02:30.660
+at this point you may decide to add a new
+column to your spreadsheet with one more
+
+38
+00:02:30.660 --> 00:02:32.519
+tag that says low bandwidth.
+
+39
+00:02:32.519 --> 00:02:36.589
+And check that and maybe go back to
+see if some of the other examples
+
+40
+00:02:36.589 --> 00:02:39.340
+also had a low bandwidth connection.
+
+41
+00:02:39.340 --> 00:02:42.159
+So even though I went through this example
+
+42
+00:02:42.159 --> 00:02:45.785
+using a slide when I'm doing
+error analysis myself,
+
+43
+00:02:45.785 --> 00:02:50.701
+sometimes I literally fire up
+a spreadsheet program like Google sheet or
+
+44
+00:02:50.701 --> 00:02:56.340
+Excel or on a Mac, the numbers program and
+do it like this in the spreadsheet.
+
+45
+00:02:56.340 --> 00:03:01.342
+This process hopes you understand
+whether the categories
+
+46
+00:03:01.342 --> 00:03:06.751
+as denoted by tags that may be
+the source of more of the errors and
+
+47
+00:03:06.751 --> 00:03:11.840
+does may be worthy of further effort and
+attention.
+
+48
+00:03:11.840 --> 00:03:16.212
+Until now, error analysis has typically
+been done via a manual process, say,
+
+49
+00:03:16.212 --> 00:03:20.140
+in the Jupiter notebook or
+tracking errors in spreadsheet.
+
+50
+00:03:20.140 --> 00:03:23.110
+I still sometimes do it that way and
+if that's how you're doing it too,
+
+51
+00:03:23.110 --> 00:03:24.140
+that's fine.
+
+52
+00:03:24.140 --> 00:03:28.777
+But there are also emerging MLOps
+tools that making this process easier for
+
+53
+00:03:28.777 --> 00:03:29.650
+developers.
+
+54
+00:03:29.650 --> 00:03:34.696
+For example, when my team landing AI works
+on computer vision applications, the whole
+
+55
+00:03:34.696 --> 00:03:40.140
+team now uses landing lens, which makes
+this much easier than the spreadsheet.
+
+56
+00:03:40.140 --> 00:03:44.156
+You've heard me say that training
+a model is initiative process,
+
+57
+00:03:44.156 --> 00:03:46.830
+deploying a model is an intuitive process.
+
+58
+00:03:46.830 --> 00:03:52.500
+Maybe it should come as no surprise
+that error analysis is also an iterative
+
+59
+00:03:52.500 --> 00:03:58.350
+process where what a typical process would
+be is you might examine and tag some
+
+60
+00:03:58.350 --> 00:04:04.210
+set of examples with an initial set of
+tags such as car noise and people noise.
+
+61
+00:04:04.210 --> 00:04:08.447
+And based on examining this
+initial set of examples,
+
+62
+00:04:08.447 --> 00:04:13.070
+you may come back and
+say you want to propose some new tags.
+
+63
+00:04:13.070 --> 00:04:19.940
+with the new tags, you can then go back
+to examine and tag even more examples.
+
+64
+00:04:19.940 --> 00:04:25.300
+Let me step through a few other
+examples of what such tags could be.
+
+65
+00:04:25.300 --> 00:04:26.900
+Take visual inspection.
+
+66
+00:04:26.900 --> 00:04:30.240
+You know, the problem of
+finding defects in smart phones.
+
+67
+00:04:30.240 --> 00:04:32.935
+Some of the tags could be
+specific class labels,
+
+68
+00:04:32.935 --> 00:04:36.431
+such as this is going to have a scratch or
+does evident and so on.
+
+69
+00:04:36.431 --> 00:04:41.760
+So it's fine if some of these tags
+are associated with specific class labels
+
+70
+00:04:41.760 --> 00:04:45.090
+y or
+some of the tax could be image properties.
+
+71
+00:04:45.090 --> 00:04:47.340
+Is this picture of the phone blurry?
+
+72
+00:04:47.340 --> 00:04:49.940
+Is it against the dark background or
+a light background?
+
+73
+00:04:49.940 --> 00:04:53.260
+Is there a unwanted
+reflection in this picture?
+
+74
+00:04:53.260 --> 00:04:57.840
+The tags could also come from
+other forms of metadata.
+
+75
+00:04:57.840 --> 00:04:59.151
+What is the film model?
+
+76
+00:04:59.151 --> 00:05:03.111
+What is the factory which is
+the manufacturing line that captured
+
+77
+00:05:03.111 --> 00:05:04.420
+the specific image?
+
+78
+00:05:04.420 --> 00:05:07.961
+And the goal of this type of process
+where you come over tag label.
+
+79
+00:05:07.961 --> 00:05:13.061
+More data come over tag, is to try to
+come up with a few categories where you
+
+80
+00:05:13.061 --> 00:05:18.003
+could productively improve the algorithm
+such as in our earlier speech
+
+81
+00:05:18.003 --> 00:05:22.810
+example deciding to work on speech
+with car noise in the background.
+
+82
+00:05:22.810 --> 00:05:27.634
+Let me step through just one more example,
+product recommendations for
+
+83
+00:05:27.634 --> 00:05:29.458
+an online e commerce site.
+
+84
+00:05:29.458 --> 00:05:34.003
+You might look at what products
+a system is recommending to users and
+
+85
+00:05:34.003 --> 00:05:38.640
+find the clearly incorrect or
+irrelevant recommendations.
+
+86
+00:05:38.640 --> 00:05:43.480
+And try to figure out if there
+are specific user demographics such
+
+87
+00:05:43.480 --> 00:05:48.232
+as are we really badly recommending
+products to younger women or
+
+88
+00:05:48.232 --> 00:05:50.890
+to older men or to something else?
+
+89
+00:05:50.890 --> 00:05:53.763
+Or are there specific product features or
+
+90
+00:05:53.763 --> 00:05:59.438
+specific product categories where
+the recommendations are particularly poor.
+
+91
+00:05:59.438 --> 00:06:03.832
+And by alternatively brainstorming and
+applying such tags,
+
+92
+00:06:03.832 --> 00:06:06.956
+you can hopefully come
+up with a few ideas for
+
+93
+00:06:06.956 --> 00:06:12.550
+categories of data that we're trying
+to improve your albums performance on.
+
+94
+00:06:12.550 --> 00:06:18.273
+As you go through these different tags
+here are some useful numbers to look at.
+
+95
+00:06:18.273 --> 00:06:21.540
+First what fraction of
+errors have that tag?
+
+96
+00:06:21.540 --> 00:06:26.165
+For example,
+if you listen to 100 audio clips and
+
+97
+00:06:26.165 --> 00:06:31.634
+find that 12% of them were
+labeled with the car noise type,
+
+98
+00:06:31.634 --> 00:06:37.749
+then that gives you a sense of how
+important is it to work on car noise.
+
+99
+00:06:37.749 --> 00:06:43.425
+It tells you also that even if you
+fix all of the car noise issues,
+
+100
+00:06:43.425 --> 00:06:50.440
+the performance may improve only by 12%,
+which is actually not bad.
+
+101
+00:06:50.440 --> 00:06:56.701
+Or you can ask all the data with that
+tag what fraction is misclassified?
+
+102
+00:06:56.701 --> 00:07:02.251
+So far we've only talked about tagging the
+mislabeled examples for time efficiency.
+
+103
+00:07:02.251 --> 00:07:05.681
+You might focus your attention
+on tagging the mislabeled,
+
+104
+00:07:05.681 --> 00:07:07.480
+the misclassified examples.
+
+105
+00:07:07.480 --> 00:07:11.397
+But if this tag you can apply
+to both correctly labeled and
+
+106
+00:07:11.397 --> 00:07:16.375
+two mislabeled examples, then you can
+ask of all the data of that tag,
+
+107
+00:07:16.375 --> 00:07:18.840
+what fraction is misclassified?
+
+108
+00:07:18.840 --> 00:07:23.907
+So for example,
+if you find that of all the data with
+
+109
+00:07:23.907 --> 00:07:28.540
+car noise, 18% of it is mistrust right.
+
+110
+00:07:28.540 --> 00:07:32.767
+Then that tells you that
+the performance on data with this
+
+111
+00:07:32.767 --> 00:07:36.466
+type of tag has only a certain
+level of accuracy and
+
+112
+00:07:36.466 --> 00:07:40.990
+tells you how hard these examples
+with car noise really are.
+
+113
+00:07:40.990 --> 00:07:44.600
+You might also ask what fraction
+of all the data has that tag.
+
+114
+00:07:44.600 --> 00:07:49.448
+This tells you how important relative to
+your entire data set are examples with
+
+115
+00:07:49.448 --> 00:07:50.113
+that tag.
+
+116
+00:07:50.113 --> 00:07:53.520
+So what fraction of your
+entire data set has car noise?
+
+117
+00:07:53.520 --> 00:07:55.638
+And then lastly, how much room for
+
+118
+00:07:55.638 --> 00:07:59.040
+improvement is there
+on data with that tag?
+
+119
+00:07:59.040 --> 00:08:03.889
+And one example that you've already
+seen for how to do this analysis
+
+120
+00:08:03.889 --> 00:08:09.240
+is to measure human level
+performance on data with that tag.
+
+121
+00:08:09.240 --> 00:08:12.108
+So by brainstorming different tags,
+
+122
+00:08:12.108 --> 00:08:16.321
+you can segment your data
+into different categories and
+
+123
+00:08:16.321 --> 00:08:22.540
+then use questions like these to try to
+decide what to prioritize working on.
+
+124
+00:08:22.540 --> 00:08:26.461
+Let's dive more deeply into an example
+of doing this in the next video.

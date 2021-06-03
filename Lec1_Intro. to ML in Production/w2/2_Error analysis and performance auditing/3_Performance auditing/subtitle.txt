@@ -1,0 +1,95 @@
+Even when you're learning algorithm is
+doing well On accuracy or F one score or some appropriate metric is often worth
+one last performance audit before you push it to production. And this can sometimes save you from
+significant post deployment problems. Let's take a look. You've seen this diagram before. After you've gone around this move
+multiple times to develop a good learning algorithm. It's worthwhile Auditing this
+performance one last time. Yeah. Here's a framework for
+how you can double check your system for accuracy for fairness bias and
+for other possible problems. Step one is brainstorm the different
+ways the system might go wrong. For example, does the algorithm perform sufficiently
+well on different subsets of the data? Such as individuals of a certain ethnicity
+or individuals of different genders? Or does the algorithm make certain
+errors such as false positives and false negatives which you might
+worry about institute datasets or how does it perform on certain rare and
+important causes. So the types of issues we talked
+about in the key challenges video earlier this week. Any of them that concern you,
+You might include them in this brainstormed ways that
+the system might go wrong for all the ways that you're worried
+about the system going wrong. You might then establish metrics to
+assess the performance of your algorithm against these issues. One very common design patterns
+you see is that you often be evaluating performance
+on slices of the data. So rather than evaluating performance
+on your entire death set, you may be taking out all of
+the individuals of a certain ethnicity, all the individuals of a certain gender or
+all of the examples where there is a scratch defect on the smartphone but
+to take a subset of the data. Also called a slice of the data
+to analyze performance on those slices in order to check against
+these things that may the problems. >> After establishing appropriate metrics,
+MLOps tools can also help trigger an automatic evaluation for
+each model to audit this performance. For instance, tensorflow has a package for
+tensorflow model analysis or TFM A that computes detailed metrics
+on new machine learning models, on different slices of data. You learn more about this
+too in the next course. >> And as part of this process,
+I would also advise you to get buy in from the business of
+the product owner that these are the most appropriate set
+of problems to worry about and a reasonable set of metrics to assess
+against these possible problems. And if you do find a problem,
+then it is great that you discovered this problem before pushing
+your system to production and you can then go back to update
+the system to address it before deploying a system that may
+cause problems downstream. Let's walk through this
+framework with an example, I'm going to use speech recognition again,
+if you build a speech recognition system, you might then brainstorm the way
+the system might go wrong. So one thing I've looked at the fall for
+systems I worked on was accuracy on different genders and
+different ethnicities. For example, a speech system that
+does poorly on certain genders may be problematic or also ethnicities. One type of analysis I've done before
+is to carry out analysis of our accuracy depending on the perceived
+accent of the speaker because we want to understand if the speech systems
+performance was a huge function of the accent of the speaker or you might
+worry about the accuracy on different devices because different devices
+may have different microphones. And so if you do much worse on one
+brand of cell phones so that if there is a problem, you can proactively fix it.
+Or finally, this might not be an example you would have thought of but
+prevalence of rude mis-transcriptions. Here's one example of something that
+actually happened to some of deep learning.ai's courses. One of our instructors, Laurence Maroney
+was talking about GANs, generative adversarial networks, but because the
+transcription system was mistranscribing GANs because this unfortunately is
+not a common word in english language. And so, the subtitles had a lot
+of references to gun and gang, which were mistranscriptions of what the
+instructor actually said, which is GAN. So it made it look like there's
+a lot of gun violence in that deep learning.ai course and
+we actually had to go in to fix it because we didn't want that much
+gun gang violence in the subtitles. It turns out more generally
+that mistranscribing someone's speech into a root word or
+a swear word that's perceived much more negatively than a more
+neutral mis transcription. And so are built speech systems as
+well where we pay special attention to avoiding mis transcriptions that
+resulted in the speech system thinking someone said a swear word when maybe
+they didn't actually say that swear word based on this list of brainstorm ways
+that the speech system might go wrong. You can then establish metrics to assess
+performance against these issues on the appropriate slices of data. For example, you can measure the mean
+accuracy of the speech system for different genders and for different
+accents represented in the data set and also check for
+accuracy on different devices and check for offensive or
+roots words in the output. I find that the ways a system
+might go wrong turns out to be very problem dependent. Different industries, different tasks
+will have very different standards and in fact today our standards in A I for
+what to consider an unacceptable level of bias or
+what is there and what is not there. Those standards are still
+continuing to evolve in A I and in many specific industries. So I would advise you to do a search for your industry to see what is
+acceptable and to keep current with standards of fairness and
+all of our growing awareness for how to make our systems more fair and
+less biased. One last tip, I find that rather than
+just one person trying to brainstorm what could go wrong for high stakes
+applications if you can have a team or sometimes even external advisors help
+you brainstorm things that you want to watch out for
+that can reduce the risk of you or your team being caught later by
+something that you hadn't thought of. I know that if standards
+are still evolving for what we consider fair and sufficient
+unbiased in many industries, but this is one of the topics I think would
+be good for us to get ahead of and to proactively try to identify, measure
+against and solve problems rather than deploy a system to be surprised much
+later by some unexpected consequences. So that's it for
+performance auditing with this. I hope you have higher confidence in your
+learning algorithm when you go out to push it to production.

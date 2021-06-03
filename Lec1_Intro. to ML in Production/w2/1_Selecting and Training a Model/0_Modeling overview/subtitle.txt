@@ -1,0 +1,43 @@
+Hi, welcome back. In this week, you learn about some best
+practices for building a machine learning model that is worthy of a production
+deployment. One of my friends,
+Adam Cotes joke that the way he listened to me give advice to machine
+learning teams, he felt the way I get advice was quite consistent from
+project to project, so that he could
+almost replace me with an if then else
+sequence of statements. I found too when several senior machinery engineers
+look at the project, the advice they tend to give is also remarkably consistent. What you learned in this
+week is whether some of the key challenges
+of trying to build a production-ready
+machine learning model, things like how do you
+handle new datasets? Or what if you do
+well in the test set, but for some reason, that still isn't good enough
+for your actual application? I hope that after this
+week's materials, you'll be able to
+very efficiently know how to improve your
+machine learning model, to solve the most
+important problems that then make it
+deployment's ready. Let's dive in. This week, our focus will be on the modeling part of the full cycle of a
+machine learning project, and you learn some suggestions for how to select
+and train the model, and how to perform
+error analysis, and use that to drive
+model improvements. One of the themes you hear me
+refer to multiple times is model-centric AI development versus data-centric
+AI development. The way that AI has grown up, there's been a lot of emphasis on how to choose the right model, such as maybe how to choose the right neural
+network architecture. I found that for
+practical projects, it can be even more useful to take a more
+data-centric approach, where you focus not just on improving the neural
+network architecture, but on making sure
+you are feeding your algorithm high-quality data. That ultimately lets you be more efficient in getting your
+system to perform well. But the way I engage in data-centric AI
+development is not to just go and try to
+collect more data, which can be very time-consuming, but to instead use
+tools to help me improve the data in the most
+efficient possible way. You'll learn some ways for
+how to do that in this week. I'm excited to go through this week's materials with
+you on training models. But first, let's look at
+some key challenges that many fields face when building
+machine learning models. By understanding
+these key challenges, you'd be better able to
+spot them ahead of time, and adjust them more
+efficiently for your projects. Let's go on to the next video.

@@ -1,0 +1,65 @@
+Welcome back. You're now in the 3rd and final
+week of this course, just one more week, and then you'll be done with this 1st course of
+the specialization. In this week we dive into data. How do you get data that
+sets up your training, your modeling for success? But first, why is defining
+what data to use even hard? Let's look at an example. I'm going to use the example
+of detecting Iguanas. One of my friends, [inaudible]
+really likes Iguanas, so I have a bunch of iguana
+pictures floating around. Let's say that you've gone into the forest and
+collected hundreds of pictures like these and you send these pictures to laborers
+with the instructions, "Please use bounding boxes to indicate the position
+of Iguanas.'' One laborer, may label
+it like this and say, one iguana, two Iguanas. This laborer did a good job. A 2nd laborer that is
+equally hard working, equally diligent may say, look, the iguana on the left has a tail that goes all the way
+to the right to this image. The 2nd laborer may say
+one iguana, two iguana's. Good job, laborer. Hard to
+follow this labor either. A 3rd laborer may say, well, I'm going to look
+through all hundreds of images and label them all, and I'm going to
+use bounding boxes, and so let me indicate the position iguanas and draw
+a bounding box like that. Three diligent, hard
+working laborers can come up with these three
+very different ways of labeling iguana's, and maybe any of these
+is actually fine. I would prefer the top two
+rather than the 3rd one. But any of these
+labeling conventions could result in you
+learning algorithm, learning a pretty
+good iguana detector. But what is not fine is if 1/3 of your laborers use the 1st
+and 1/3 the 2nd, and 1/3, the 3rd labeling convention, because then your labels
+are inconsistent, and this is confusing to
+the learning algorithm. While, the iguana
+example was a fun one. You see this type of effect in many practical computer
+vision problems as well. Let's use the phone
+defect detection example. If you ask a laborer to use bounding boxes to indicate
+significant defects, maybe one laborer will
+look and then go, ''Well, clearly the scratch is the
+most significant defect. Let me draw a bounding
+box on that.'' A 2nd laborer may look
+at his phone and say, "There are actually two
+significant defects. There's a big scratch, and then there's that small mark there,'' it's called a pit mark, like if someone poked a phone
+with a sharp screwdriver. I think the 2nd laborer
+probably did a better job. But then a 3rd laborer
+may look at this and say, well, here's a bounding box that shows you where
+the defects are. Between these three labels, probably the one in the
+middle would work the best. But this is a very
+typical example of inconsistence labeling
+that you will get back from a labeling process with even slightly ambiguous
+labeling instructions, and if you can consistently label the
+data with one convention, maybe the one in middle, you're learning algorithm
+will do better. What we would do in this week
+is dive into best practices for the data stage of the full cycle of a
+machine learning project. Specifically, we'll
+talk about how to define what is the data, what should be x
+and what should be y and establish a baseline and doing that well will set you up to label and
+organize the data well, which would give
+you a good data set for when you move into
+the modeling phase, which you already saw last week. Many machine learning
+researchers and many machine learning
+engineers had started off downloading data off the Internet to
+experiment with models, so using data prepared
+by someone else. Nothing at all wrong with that, and for many practical
+applications, the way you prepare your
+data sets will have a huge impact on the success of your
+machine learning projects. In the next video, we'll take a look at
+some more examples of how data can be ambiguous, so that this will set us
+up later this week for some techniques for improving
+the quality of your data. Let's go on to the next video.

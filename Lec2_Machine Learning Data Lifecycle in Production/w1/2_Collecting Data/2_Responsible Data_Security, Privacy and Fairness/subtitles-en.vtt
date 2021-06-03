@@ -1,0 +1,745 @@
+WEBVTT
+
+1
+00:00:00.940 --> 00:00:06.858
+One of the key aspects of collecting data
+is to make sure that you're collecting it
+
+2
+00:00:06.858 --> 00:00:13.010
+responsibly and paying attention to things
+like security, privacy and fairness.
+
+3
+00:00:13.010 --> 00:00:15.140
+Let's talk about that now.
+
+4
+00:00:15.140 --> 00:00:20.279
+So we're going to be looking at how
+to responsibly sourced data and
+
+5
+00:00:20.279 --> 00:00:26.550
+ensure that our data is secure and that
+we're managing user privacy correctly.
+
+6
+00:00:26.550 --> 00:00:30.903
+We need to know how to check for
+and ensure fairness and
+
+7
+00:00:30.903 --> 00:00:36.640
+we need to design labelling
+systems that will mitigate bias.
+
+8
+00:00:36.640 --> 00:00:38.380
+So here's an example.
+
+9
+00:00:38.380 --> 00:00:43.965
+These images here show one standard
+open source image classifier trained
+
+10
+00:00:43.965 --> 00:00:49.369
+on the open images data set that does
+not properly apply wedding related
+
+11
+00:00:49.369 --> 00:00:55.540
+labels to images of wedding traditions
+from different parts of the world.
+
+12
+00:00:55.540 --> 00:01:01.591
+On the far left, the classifiers,
+label prediction is recorded as ceremony,
+
+13
+00:01:01.591 --> 00:01:05.410
+Wedding, bride, man, group, woman, dress.
+
+14
+00:01:05.410 --> 00:01:07.240
+So that's pretty correct.
+
+15
+00:01:07.240 --> 00:01:12.857
+The next one is bride ceremony,
+wedding, dress and woman.
+
+16
+00:01:12.857 --> 00:01:17.310
+Again we know that's correct
+at least in the west,
+
+17
+00:01:17.310 --> 00:01:21.740
+that's what a bride typically looks like.
+
+18
+00:01:21.740 --> 00:01:24.661
+The next one over is good as well.
+
+19
+00:01:24.661 --> 00:01:29.035
+So it's ceremony and bride and
+wedding, man, groom, woman,
+
+20
+00:01:29.035 --> 00:01:31.061
+dress again, gets it right.
+
+21
+00:01:31.061 --> 00:01:34.940
+But the one on the end,
+the one on the right.
+
+22
+00:01:34.940 --> 00:01:38.616
+Well, that's for
+an African wedding ceremony, but
+
+23
+00:01:38.616 --> 00:01:42.470
+it's incorrectly labeled
+as simply person or people.
+
+24
+00:01:42.470 --> 00:01:47.071
+Well, it is person your people, but it's
+also a ceremony and there's a bride and
+
+25
+00:01:47.071 --> 00:01:49.340
+a groom and address and so forth.
+
+26
+00:01:49.340 --> 00:01:53.339
+So this is a classic
+case it's an example it's
+
+27
+00:01:53.339 --> 00:01:58.040
+often cited of a problem
+with bias in the data set.
+
+28
+00:01:58.040 --> 00:02:02.103
+So an ML system, the data may
+come from different sources and
+
+29
+00:02:02.103 --> 00:02:06.563
+you need to think about those sources
+as well in your day to say it's
+
+30
+00:02:06.563 --> 00:02:11.039
+not just the data that you have but
+where did you get it from?
+
+31
+00:02:11.039 --> 00:02:14.919
+So you might be building synthetic data,
+you might be doing web scraping
+
+32
+00:02:14.919 --> 00:02:19.840
+your often collecting live data,
+especially when you're running inference.
+
+33
+00:02:19.840 --> 00:02:24.313
+You're often almost always really going
+to be building your own data set,
+
+34
+00:02:24.313 --> 00:02:27.941
+although sometimes you can be
+using an open source data set.
+
+35
+00:02:27.941 --> 00:02:32.240
+It just depends on what's available and
+what you need.
+
+36
+00:02:32.240 --> 00:02:38.730
+But data security and privacy or key,
+they're always going to be important.
+
+37
+00:02:38.730 --> 00:02:44.497
+Data security that really refers
+to the policies and methods and
+
+38
+00:02:44.497 --> 00:02:50.476
+means to secure personal data or
+what's often referred to as PII,
+
+39
+00:02:50.476 --> 00:02:54.239
+Personally Identifiable Information.
+
+40
+00:02:54.239 --> 00:02:57.571
+Data privacy is about proper usage,
+
+41
+00:02:57.571 --> 00:03:03.061
+collection retention, deletion and
+storage of that data.
+
+42
+00:03:04.240 --> 00:03:07.200
+So data collection is not
+just about your model.
+
+43
+00:03:07.200 --> 00:03:12.224
+You need to think about your users and
+treat that data as
+
+44
+00:03:12.224 --> 00:03:17.467
+something that has been given
+to you to be a steward of your
+
+45
+00:03:17.467 --> 00:03:23.740
+taking care of that data you
+need to manage it responsibly.
+
+46
+00:03:23.740 --> 00:03:28.030
+Users really should have control
+over which data is being collected.
+
+47
+00:03:28.030 --> 00:03:33.119
+And it's important to establish
+mechanisms to prevent your system
+
+48
+00:03:33.119 --> 00:03:38.540
+revealing a user's data inadvertently or
+even through a tax.
+
+49
+00:03:38.540 --> 00:03:43.139
+So how you handle your data privacy and
+data security depends on
+
+50
+00:03:43.139 --> 00:03:47.650
+the nature of your data as well
+as the operating conditions and
+
+51
+00:03:47.650 --> 00:03:52.800
+regulations and policies,
+things like GDP are very important here.
+
+52
+00:03:52.800 --> 00:03:56.331
+Users privacy is also really key.
+
+53
+00:03:56.331 --> 00:04:02.740
+So you need to protect personally
+identifiable information or data.
+
+54
+00:04:02.740 --> 00:04:04.191
+Well, there's different ways to do that.
+
+55
+00:04:04.191 --> 00:04:08.363
+Aggregation really helps with that
+if you can aggregate the data so
+
+56
+00:04:08.363 --> 00:04:13.280
+that you can identify individual people
+within it, anonymous, rising it and
+
+57
+00:04:13.280 --> 00:04:16.360
+giving users control over
+what data they share.
+
+58
+00:04:16.360 --> 00:04:19.140
+Also, a good good way to deal with that.
+
+59
+00:04:19.140 --> 00:04:21.577
+You need to consider any laws or
+
+60
+00:04:21.577 --> 00:04:26.550
+regulations regarding user privacy
+that might be affecting in
+
+61
+00:04:26.550 --> 00:04:32.011
+the places where you're going to
+be using your model and redaction.
+
+62
+00:04:32.011 --> 00:04:36.251
+So in a lot of cases you need to give
+users a way to remove some of the data,
+
+63
+00:04:36.251 --> 00:04:38.941
+which will create a less
+complete picture but
+
+64
+00:04:38.941 --> 00:04:41.661
+is part of being
+responsible with your data.
+
+65
+00:04:44.040 --> 00:04:48.668
+So ML Systems can fail users
+in a lot of different ways and
+
+66
+00:04:48.668 --> 00:04:52.706
+we need to strike a balance
+between being fair and
+
+67
+00:04:52.706 --> 00:04:56.461
+accurate and transparent and explainable.
+
+68
+00:04:58.140 --> 00:05:01.752
+Some of the ways that ML Systems
+can fail are through things like
+
+69
+00:05:01.752 --> 00:05:03.840
+representational harm.
+
+70
+00:05:03.840 --> 00:05:08.227
+So representational harm is
+where a system will amplify or
+
+71
+00:05:08.227 --> 00:05:12.623
+reflect a negative stereotype
+about particular groups.
+
+72
+00:05:12.623 --> 00:05:17.471
+Opportunity denial is when a system
+makes predictions that have
+
+73
+00:05:17.471 --> 00:05:23.640
+negative real life consequences that
+could result in lasting impacts.
+
+74
+00:05:23.640 --> 00:05:28.786
+Disproportionate product failure
+is where the effectiveness of your
+
+75
+00:05:28.786 --> 00:05:33.843
+model is really skewed so that
+the outputs happen more frequently for
+
+76
+00:05:33.843 --> 00:05:38.028
+particular groups of users,
+you get skewed outputs more
+
+77
+00:05:38.028 --> 00:05:42.847
+frequently essentially can think
+of as errors more frequently.
+
+78
+00:05:42.847 --> 00:05:48.481
+Harm by disadvantage is where
+a system will infer disadvantageous
+
+79
+00:05:48.481 --> 00:05:54.218
+associations between different
+demographic characteristics and
+
+80
+00:05:54.218 --> 00:05:57.640
+the user behaviors around that.
+
+81
+00:05:57.640 --> 00:06:03.640
+So fairness is important and you should
+really commit to it from the beginning.
+
+82
+00:06:03.640 --> 00:06:04.681
+So what does it mean?
+
+83
+00:06:04.681 --> 00:06:10.219
+Well, being fair means that you're
+going to identify if some groups
+
+84
+00:06:10.219 --> 00:06:16.540
+of people get a different experience
+than others in a problematic way.
+
+85
+00:06:16.540 --> 00:06:21.242
+So for instance, let's assume
+particular gender or occupation or
+
+86
+00:06:21.242 --> 00:06:25.611
+age fields or part of your data and
+that you use it to train a model
+
+87
+00:06:25.611 --> 00:06:31.040
+that predicts whether someone
+would be a reliable new employee.
+
+88
+00:06:31.040 --> 00:06:33.540
+So it's involved in hiring.
+
+89
+00:06:33.540 --> 00:06:37.590
+You need to really check to make
+sure that your model does not
+
+90
+00:06:37.590 --> 00:06:40.995
+consistently predict
+different experiences for
+
+91
+00:06:40.995 --> 00:06:45.221
+some groups in a problematic
+way by ensuring group fairness.
+
+92
+00:06:45.221 --> 00:06:47.939
+So what that means is
+demographic parody and
+
+93
+00:06:47.939 --> 00:06:51.840
+that things are equalized
+across different groups.
+
+94
+00:06:51.840 --> 00:06:55.473
+And you need to make sure
+the accuracy as well is equal or or
+
+95
+00:06:55.473 --> 00:06:57.940
+as close as you can get it.
+
+96
+00:06:57.940 --> 00:07:03.238
+The data collected and labeled by
+humans will reflect their biases in
+
+97
+00:07:03.238 --> 00:07:09.011
+many cases and their personal experiences
+so you have to account for that.
+
+98
+00:07:09.011 --> 00:07:14.099
+Diversifying your user base is
+a good way to move towards fairness,
+
+99
+00:07:14.099 --> 00:07:16.940
+but it's not a guarantee.
+
+100
+00:07:16.940 --> 00:07:19.701
+So ML Systems can amplify biases.
+
+101
+00:07:19.701 --> 00:07:24.025
+You need to be aware of that and
+be careful about it and
+
+102
+00:07:24.025 --> 00:07:28.367
+you really what you want to
+do is deploy fair models.
+
+103
+00:07:28.367 --> 00:07:33.772
+Biases can also arise when you have
+disproportionate representation
+
+104
+00:07:33.772 --> 00:07:39.240
+of some groups within your data or
+no representation at all.
+
+105
+00:07:39.240 --> 00:07:42.967
+So looking at the graphic here,
+what we're trying to show is
+
+106
+00:07:42.967 --> 00:07:46.618
+that part of the people that
+are shown here are in your data,
+
+107
+00:07:46.618 --> 00:07:50.540
+but there's a whole lot of
+other people who are not.
+
+108
+00:07:50.540 --> 00:07:54.770
+So those groups might be stereotyped
+the ones that are not in your data or
+
+109
+00:07:54.770 --> 00:07:58.013
+they might just be presented
+in a less positive way, or
+
+110
+00:07:58.013 --> 00:08:01.740
+they may just get a bad
+experience a lot more often.
+
+111
+00:08:01.740 --> 00:08:04.666
+So to reduce bias for supervised learning,
+
+112
+00:08:04.666 --> 00:08:09.261
+you need accurate labels to train
+your model and serve predictions.
+
+113
+00:08:10.840 --> 00:08:14.241
+The labels are usually coming
+from two broad sources.
+
+114
+00:08:14.241 --> 00:08:18.651
+It depends there's other sources as well,
+but most of the time they're going to be
+
+115
+00:08:18.651 --> 00:08:23.540
+coming from automated systems or
+human Raters, and we'll talk about both.
+
+116
+00:08:23.540 --> 00:08:27.140
+Humans are able to label
+data in different ways.
+
+117
+00:08:27.140 --> 00:08:31.993
+And the more complicated the data is,
+the more you may require an expert to
+
+118
+00:08:31.993 --> 00:08:35.840
+look at that data and
+we'll talk about that in a bit.
+
+119
+00:08:35.840 --> 00:08:40.419
+So humans that label data
+are referred to as Rater's.
+
+120
+00:08:40.419 --> 00:08:42.670
+So who are raters?
+
+121
+00:08:42.670 --> 00:08:48.239
+Well, they could be generalists and
+these are people who just pretty average
+
+122
+00:08:48.239 --> 00:08:54.260
+people who are going to be adding labels
+through a variety of crowdsourcing tools.
+
+123
+00:08:54.260 --> 00:09:00.321
+And these are cases where it's fairly easy
+for people to recognize the correct label.
+
+124
+00:09:00.321 --> 00:09:05.262
+So for example, if you want a human to
+recognize the difference between a cat and
+
+125
+00:09:05.262 --> 00:09:09.740
+a dog, that's something most people
+can do by looking at the image.
+
+126
+00:09:09.740 --> 00:09:12.960
+But in some cases you really
+need a subject matter expert.
+
+127
+00:09:12.960 --> 00:09:17.569
+So in those cases you're often
+using specialized tools and
+
+128
+00:09:17.569 --> 00:09:21.911
+an example of that is is looking
+at X rays for diagnosis.
+
+129
+00:09:21.911 --> 00:09:24.190
+It's not something that
+just anyone can do.
+
+130
+00:09:24.190 --> 00:09:27.443
+You need to make sure that you're
+working with an expert and
+
+131
+00:09:27.443 --> 00:09:30.840
+that labelling tends to
+get pretty expensive.
+
+132
+00:09:30.840 --> 00:09:34.261
+So a subject matter expert or
+domain expert,
+
+133
+00:09:34.261 --> 00:09:38.053
+this is something that you
+need in certain cases.
+
+134
+00:09:38.053 --> 00:09:40.201
+You can also use your users.
+
+135
+00:09:40.201 --> 00:09:44.030
+So this sort of feedback that we
+looked at for our running app.
+
+136
+00:09:44.030 --> 00:09:48.805
+This can often be very valuable if you
+can find a way to work without in your
+
+137
+00:09:48.805 --> 00:09:53.584
+application and it's going to give
+you this ongoing stream of labels for
+
+138
+00:09:53.584 --> 00:09:55.961
+your data if you can make that work.
+
+139
+00:09:57.440 --> 00:10:02.756
+So key points, first of all,
+always account for fair Raters and
+
+140
+00:10:02.756 --> 00:10:08.178
+fair representation in your data
+set to avoid potential biases.
+
+141
+00:10:08.178 --> 00:10:13.582
+And take into account who those labelers
+are and what their incentives are,
+
+142
+00:10:13.582 --> 00:10:17.298
+because if you design
+the incentives incorrectly,
+
+143
+00:10:17.298 --> 00:10:21.140
+you could get a lot of
+garbage in your data.
+
+144
+00:10:21.140 --> 00:10:25.740
+The cost is certainly always going
+to be an important consideration.
+
+145
+00:10:25.740 --> 00:10:30.991
+So if you can find a way to do it
+with a high level of quality but
+
+146
+00:10:30.991 --> 00:10:33.740
+at less cost, that's great.
+
+147
+00:10:33.740 --> 00:10:35.441
+But you need enough data.
+
+148
+00:10:35.441 --> 00:10:37.060
+You need to find a way to do that.
+
+149
+00:10:37.060 --> 00:10:41.033
+It's one of the challenges of
+production applications and
+
+150
+00:10:41.033 --> 00:10:43.024
+finally data freshness too.
+
+151
+00:10:43.024 --> 00:10:48.270
+You're going to be working with data and
+depending on how the world changes
+
+152
+00:10:48.270 --> 00:10:53.345
+around the application and the data
+that you have, you're going to need
+
+153
+00:10:53.345 --> 00:10:59.440
+to refresh that data on some regular basis
+and detect when you need to do that.
+
+154
+00:10:59.440 --> 00:11:03.833
+So those are all issues you need to think
+about to really manage collection of data
+
+155
+00:11:03.833 --> 00:11:05.651
+and to do it in a responsible way.

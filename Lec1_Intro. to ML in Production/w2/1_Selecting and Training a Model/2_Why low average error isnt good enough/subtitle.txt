@@ -1,0 +1,147 @@
+The job of a machine
+learning engineer would be much simpler if the only thing we
+ever had to do was do well on the holdout test set. As hard as it is to do well
+in the holdout test set, unfortunately, sometimes
+that isn't enough. Let's take a look at some of the other things we
+sometimes need to accomplish in order to
+make a project successful. We've already talked about concept drift and
+data drift last week, but here are some additional
+challenges we may have to address for a production
+machine learning project. First, a machine learning system may have low average
+test set error, but if its performance
+on a set of disproportionately important
+examples isn't good enough, then the machine learning
+system will still not be acceptable for
+production deployment. Let me use an example
+from Web search. There are a lot of
+web search queries like these: Apple pie recipe, latest movies,
+wireless data plan, I want to learn about
+the Diwali Festival. These types of queries
+are sometimes called informational or
+transactional queries, where I want to learn
+about apple pies or maybe I want to buy a new
+wireless data plan and you might be willing to forgive a web search engine
+that doesn't give you the best apple pie recipe because there are a
+lot of good apple pie recipes on the Internet. For informational and
+transactional queries, a web search engine wants to return the most relevant results, but users are willing to forgive maybe ranking the best result, Number two or Number three. There's a different type of web search query
+such as Stanford, or Reddit, or YouTube. These are called
+navigational queries, where the user has a
+very clear intent, very clear desire to
+go to Stanford.edu, or Reddit.com, or YouTube.com. When a user has a very
+clear navigational intent, they will tend to be very unforgiving if a
+web search engine does anything other than return Stanford.edu as the
+Number one ranked results and the search engine
+that doesn't give the right results will quickly lose the trust of its users. Navigational queries
+in this context are a disproportionately
+important set of examples and if you have
+a learning algorithm that improves your average
+test set accuracy for web search but messes up just a small handful of
+navigational queries, that may not be acceptable
+for deployment. The challenge, of course, is that average test set accuracy tends to weight all
+examples equally, whereas, in web search, some queries are
+disproportionately important. Now one thing you
+could do is try to give these examples
+a higher weight. That could work for
+some applications, but in my experience, just changing the weights
+of different examples doesn't always solve
+the entire problem. Closely related to this
+is the question of performance on key
+slices of the data set. For example, let's
+say you've built a machine learning algorithm for loan approval to decide who is likely to repay a
+loan and thus to recommend approving certain
+loans for approval. For such a system, you will probably want to make sure that your system does not unfairly discriminate
+against loan applicants according to their ethnicity, gender, maybe their location, their language, or other
+protected attributes. Many countries also have laws or regulations that mandates
+that financial systems and loan approval processes not discriminate on the basis of
+a certain set of attributes, sometimes called
+protected attributes. Even if a learning algorithm for loan approval achieves high
+average test set accuracy, it would not be acceptable for production deployment if it exhibits an unacceptable level
+of bias or discrimination. Whereas the A.I. community
+has had a lot of discussion about
+fairness to individuals, and rightly so because this is an important topic we have
+to address and do well on, the issue of fairness or performance of key slices also
+occurs in other settings. Let's say you run an
+online shopping website, so an e-commerce website
+where you advocate and sell products from many
+different manufacturers and many different
+brands of retailers. You might want to make sure that your system treats
+fairly all major user, retailer, and product categories. For example, even if a machine learning system has high average
+test set accuracy, maybe it recommends better
+products on average. If it gives really
+irrelevant recommendations to all users of one ethnicity, that may be unacceptable, or if it always pushes products from large retailers and
+ignores the smaller brands, that could also be harmful to the business because
+you may then lose all the small
+retailers and it would also feel unfair to build
+a recommender system that only ever recommends products from the large
+brands and ignores the smaller businesses or it had a product recommender that gave highly relevant
+recommendations, but for some reason would never recommend
+electronics products, then maybe the retailers that sell electronics
+would be quite reasonably upset
+and this may not be the right thing for the retailers
+on your platform or for the long term health of your
+business even if the average test set accuracy shows that by not recommending
+electronics products, you're showing slightly
+more relevant results to your users for some reason. One thing you learn
+later this week is how to carry out analysis on key slices of the data
+to make sure that you spot and address potential
+problems like these. Next is the issue of rare classes and specifically of skewed
+data distributions. In medical diagnosis,
+it's not uncommon for many patients not to
+have a certain disease, and so if you have
+a data set which is 99 percent negative examples
+because 99 percent of the population doesn't have a certain disease but
+one percent positive. Then you can achieve very good tested accuracy by writing a program that
+just says print "0", don't even [inaudible] just
+write this one line of code and you have 99 percent
+accuracy on your dataset. But clearly, print "0" is not a very useful algorithm
+for disease diagnosis. By the way, this
+actually did happen to me once where my
+team had trained a huge neural
+network found we had 99 percent average
+accuracy and we found and achieved it by printing
+"0" all the time, so we basically trained a giant neural
+network that did exactly the same
+thing as print "0", and of course, when
+we discovered, we then went back
+to fix the problem. Hopefully this won't
+happen to you. Closely related to the issue of skew data distributions
+which is often a discussion of
+positive and negatives is accuracy on rare causes. I was working with my friend
+Pranav Ross Baker and others on diagnosis
+from chest X-rays and we were diagnosing
+causes and we were working on deep learning to
+spot different conditions. There were some relatively
+common conditions, these are technical
+medical terminology, but for a medical
+condition called effusion, we had about 10,000 images and so we were able to achieve a
+high level of performance, whereas for much rarer
+condition hernia, we had about a hundred images and so performance was much worse. It turns out that from a
+medical standpoint is not acceptable for diagnosis system to ignore obvious
+cases of hernia. If a patient shows up and an X-ray clearly shows
+they have hernia, a learning algorithm
+that misses that diagnosis would be problematic, but because this was a
+relatively rare class, the overall average
+tested accuracy of the algorithm
+was not that bad, and in fact the algorithm
+could have completely ignored all cases of hernia and it would have had only
+a modest impact on this average test accuracy, because cases of hernia were rare and the Avrum could
+pretty much ignore it without hurting this average
+tested accuracy that much if average tested accuracy gives equal weight to every single
+example in the test set. I have heard pretty much this
+exact same conversation too many times in too many companies and the conversation
+goes like this, a machine learning engineer says, "I did well in the test set!", this works, let's use it, and a private owner or
+business owner says, "but this doesn't work for my application" and the machine
+that the engineer replies, "but I did well on the test set!" my advice to you, if you ever find yourself
+in this conversation, is don't get defensive. We as a community have built lots of tools for doing
+well on the test set, and that's to be celebrated. I think it's great,
+but we often need to go beyond that because just doing well on the test set isn't enough for many production applications. When I'm building a
+machine learning system, I view it as my job not just
+to do well on the test set, but to produce a machine
+learning system that solves the actual business
+or application needs, and I hope you take a
+similar view as well. Later this week, we'll go
+through some techniques, usually involving error analysis, maybe air analysis on slices of the data that will allow
+you to spot some of these issues that
+require going beyond average tested accuracy
+and help you with tools to tackle these
+broader challenges as well.

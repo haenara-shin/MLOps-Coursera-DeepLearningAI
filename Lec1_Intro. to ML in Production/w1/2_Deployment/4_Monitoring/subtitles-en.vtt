@@ -1,0 +1,1110 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.510
+How can you monitor a
+machine learning system to
+
+2
+00:00:03.510 --> 00:00:05.220
+make sure that it is meeting
+
+3
+00:00:05.220 --> 00:00:07.170
+your performance expectations?
+
+4
+00:00:07.170 --> 00:00:10.245
+In this video, you'll
+learn about best practices
+
+5
+00:00:10.245 --> 00:00:13.620
+for monitoring deployed
+machine learning systems.
+
+6
+00:00:13.620 --> 00:00:15.180
+The most common way to
+
+7
+00:00:15.180 --> 00:00:17.280
+monitor a machine
+learning system is
+
+8
+00:00:17.280 --> 00:00:21.835
+to use a dashboard to track
+how it is doing over time.
+
+9
+00:00:21.835 --> 00:00:23.360
+Depending on your application,
+
+10
+00:00:23.360 --> 00:00:26.045
+your dashboards may
+monitor different metrics.
+
+11
+00:00:26.045 --> 00:00:27.620
+For example, you may have
+
+12
+00:00:27.620 --> 00:00:30.740
+one dashboard to monitor
+the server load,
+
+13
+00:00:30.740 --> 00:00:33.424
+or a different
+dashboards to monitor
+
+14
+00:00:33.424 --> 00:00:36.215
+diffraction of non-null outputs.
+
+15
+00:00:36.215 --> 00:00:38.570
+Sometimes a speech
+recognition system output
+
+16
+00:00:38.570 --> 00:00:41.255
+is null when the things that
+users didn't say anything.
+
+17
+00:00:41.255 --> 00:00:44.315
+If this changes
+dramatically over time,
+
+18
+00:00:44.315 --> 00:00:47.090
+it may be an indication
+that something is wrong,
+
+19
+00:00:47.090 --> 00:00:50.405
+or one common one I've
+seen for a lot of
+
+20
+00:00:50.405 --> 00:00:52.565
+structured data task is
+
+21
+00:00:52.565 --> 00:00:55.820
+monitoring the fraction
+of missing input values.
+
+22
+00:00:55.820 --> 00:00:57.530
+If that changes, it may mean that
+
+23
+00:00:57.530 --> 00:01:00.055
+something has changed
+about your data.
+
+24
+00:01:00.055 --> 00:01:03.290
+When you're trying to
+decide what to monitor,
+
+25
+00:01:03.290 --> 00:01:06.230
+my recommendation is
+that you sit down with
+
+26
+00:01:06.230 --> 00:01:08.134
+your team and brainstorm
+
+27
+00:01:08.134 --> 00:01:10.190
+all the things that
+could possibly go wrong.
+
+28
+00:01:10.190 --> 00:01:13.955
+Then you want to know about
+if something does go wrong.
+
+29
+00:01:13.955 --> 00:01:16.505
+For all the things
+that could go wrong,
+
+30
+00:01:16.505 --> 00:01:18.830
+brainstorm a few statistics or
+
+31
+00:01:18.830 --> 00:01:22.580
+a few metrics that will
+detect that problem.
+
+32
+00:01:22.580 --> 00:01:24.440
+For example, if you're worried
+
+33
+00:01:24.440 --> 00:01:27.049
+about user traffic spiking,
+
+34
+00:01:27.049 --> 00:01:29.870
+causing the service
+to become overloaded,
+
+35
+00:01:29.870 --> 00:01:33.095
+then server loads
+maybe one metric,
+
+36
+00:01:33.095 --> 00:01:37.315
+you could track and so on
+for the other examples here.
+
+37
+00:01:37.315 --> 00:01:39.290
+When I'm designing
+
+38
+00:01:39.290 --> 00:01:41.900
+my monitoring dashboards
+for the first time,
+
+39
+00:01:41.900 --> 00:01:44.870
+I think it's okay to start
+
+40
+00:01:44.870 --> 00:01:47.840
+off with a lot of different
+metrics and monitor
+
+41
+00:01:47.840 --> 00:01:49.430
+a relatively large set
+
+42
+00:01:49.430 --> 00:01:51.560
+and then gradually
+remove the ones that
+
+43
+00:01:51.560 --> 00:01:55.310
+you find over time not to
+be particularly useful.
+
+44
+00:01:55.310 --> 00:01:58.070
+Here are some examples
+of metrics our views
+
+45
+00:01:58.070 --> 00:02:01.190
+or I've seen others use
+on a variety of projects.
+
+46
+00:02:01.190 --> 00:02:03.575
+First are the software metrics,
+
+47
+00:02:03.575 --> 00:02:05.480
+such as memory, compute,
+
+48
+00:02:05.480 --> 00:02:07.715
+latency, throughput, server load,
+
+49
+00:02:07.715 --> 00:02:10.010
+things that help you
+monitor the health
+
+50
+00:02:10.010 --> 00:02:12.890
+of your software
+implementation of
+
+51
+00:02:12.890 --> 00:02:14.600
+the prediction service or
+
+52
+00:02:14.600 --> 00:02:18.765
+other pieces of software around
+your learning algorithm.
+
+53
+00:02:18.765 --> 00:02:21.395
+But these software metrics
+will help you make sure
+
+54
+00:02:21.395 --> 00:02:24.080
+that your software
+is running well.
+
+55
+00:02:24.080 --> 00:02:26.300
+Many MLOps tools will
+come over the bouts
+
+56
+00:02:26.300 --> 00:02:29.150
+already tracking these
+software metrics.
+
+57
+00:02:29.150 --> 00:02:31.384
+In addition to the
+software metrics,
+
+58
+00:02:31.384 --> 00:02:35.030
+I would often choose
+other metrics that help
+
+59
+00:02:35.030 --> 00:02:38.045
+monitor the statistical health
+
+60
+00:02:38.045 --> 00:02:41.030
+or the performance of
+the learning algorithm.
+
+61
+00:02:41.030 --> 00:02:43.760
+Broadly, there are two types of
+
+62
+00:02:43.760 --> 00:02:46.520
+metrics you might
+brainstorm around.
+
+63
+00:02:46.520 --> 00:02:48.530
+One is input metrics,
+
+64
+00:02:48.530 --> 00:02:50.870
+which are metrics
+that measure has
+
+65
+00:02:50.870 --> 00:02:53.465
+your input distribution x change.
+
+66
+00:02:53.465 --> 00:02:55.700
+For example, if you are
+
+67
+00:02:55.700 --> 00:02:58.115
+building a speech
+recognition system,
+
+68
+00:02:58.115 --> 00:03:01.160
+you might monitor the
+average input length
+
+69
+00:03:01.160 --> 00:03:02.720
+in seconds of the length for
+
+70
+00:03:02.720 --> 00:03:04.670
+the audio clip fed to your system.
+
+71
+00:03:04.670 --> 00:03:08.080
+You might monitor the
+average input volume.
+
+72
+00:03:08.080 --> 00:03:11.179
+If these change for some reason,
+
+73
+00:03:11.179 --> 00:03:14.000
+that might be something
+you'll once to take a look
+
+74
+00:03:14.000 --> 00:03:15.650
+at just to make sure this
+
+75
+00:03:15.650 --> 00:03:17.960
+hasn't hurt the performance
+of your algorithm.
+
+76
+00:03:17.960 --> 00:03:19.460
+I mentioned just now,
+
+77
+00:03:19.460 --> 00:03:20.900
+number or percentage of
+
+78
+00:03:20.900 --> 00:03:23.840
+missing values is a
+very common metric.
+
+79
+00:03:23.840 --> 00:03:25.610
+When using structured data,
+
+80
+00:03:25.610 --> 00:03:28.150
+some of which may
+have missing values,
+
+81
+00:03:28.150 --> 00:03:31.235
+or for the manufacturing
+visual inspection example,
+
+82
+00:03:31.235 --> 00:03:34.205
+you might monitor
+average image brightness
+
+83
+00:03:34.205 --> 00:03:36.650
+if you think that lighting
+conditions could change,
+
+84
+00:03:36.650 --> 00:03:38.960
+and you want to make sure
+you know if it does,
+
+85
+00:03:38.960 --> 00:03:42.110
+so you can brainstorm
+different metrics to see if
+
+86
+00:03:42.110 --> 00:03:46.055
+your input distribution
+x might have changed.
+
+87
+00:03:46.055 --> 00:03:49.580
+A second set of metrics
+that help you understand
+
+88
+00:03:49.580 --> 00:03:51.050
+if your learning
+algorithm is performing
+
+89
+00:03:51.050 --> 00:03:53.435
+well are output metrics.
+
+90
+00:03:53.435 --> 00:03:56.180
+Such as, how often does
+
+91
+00:03:56.180 --> 00:03:59.000
+your speech recognition
+system return null,
+
+92
+00:03:59.000 --> 00:04:00.170
+the empty string, because
+
+93
+00:04:00.170 --> 00:04:02.030
+the things the user
+doesn't say anything,
+
+94
+00:04:02.030 --> 00:04:04.490
+or if you have built
+
+95
+00:04:04.490 --> 00:04:08.660
+a speech recognition system
+for web search using voice,
+
+96
+00:04:08.660 --> 00:04:12.755
+you might decide to see
+how often does the user
+
+97
+00:04:12.755 --> 00:04:14.780
+do two very quick searches in
+
+98
+00:04:14.780 --> 00:04:17.015
+a row with substantially
+the same input.
+
+99
+00:04:17.015 --> 00:04:18.635
+That might be a sign that you
+
+100
+00:04:18.635 --> 00:04:21.860
+misrecognize their query
+the first time round.
+
+101
+00:04:21.860 --> 00:04:23.900
+It's an imperfect signal but you
+
+102
+00:04:23.900 --> 00:04:26.870
+could try this metric
+and see if it helps.
+
+103
+00:04:26.870 --> 00:04:28.610
+Or you could monitor
+the number of
+
+104
+00:04:28.610 --> 00:04:30.620
+times the user first try to
+
+105
+00:04:30.620 --> 00:04:34.820
+use the speech system and
+then switches over to typing,
+
+106
+00:04:34.820 --> 00:04:36.110
+that could be a sign that
+
+107
+00:04:36.110 --> 00:04:39.320
+the user got frustrated
+or gave up on
+
+108
+00:04:39.320 --> 00:04:41.210
+your speech system and
+
+109
+00:04:41.210 --> 00:04:43.890
+could indicate
+degrading performance.
+
+110
+00:04:43.890 --> 00:04:45.530
+Of course, for web search,
+
+111
+00:04:45.530 --> 00:04:47.450
+you would also use maybe very
+
+112
+00:04:47.450 --> 00:04:50.315
+course metrics like
+click-through rate or CTR,
+
+113
+00:04:50.315 --> 00:04:54.040
+just to make sure that the
+overall system is healthy.
+
+114
+00:04:54.040 --> 00:04:57.050
+These output metrics
+can help you figure
+
+115
+00:04:57.050 --> 00:04:59.725
+out if either your
+learning algorithm,
+
+116
+00:04:59.725 --> 00:05:02.775
+output y has changed in some way,
+
+117
+00:05:02.775 --> 00:05:04.775
+or if something that comes
+
+118
+00:05:04.775 --> 00:05:06.815
+even after your learning
+algorithms output,
+
+119
+00:05:06.815 --> 00:05:08.540
+such as the user's
+switching over to
+
+120
+00:05:08.540 --> 00:05:12.140
+typing has changed in
+some significant way.
+
+121
+00:05:12.140 --> 00:05:13.640
+Because input and output metrics
+
+122
+00:05:13.640 --> 00:05:15.095
+are application specific,
+
+123
+00:05:15.095 --> 00:05:18.185
+most MLOps tools will need to
+be configured specifically
+
+124
+00:05:18.185 --> 00:05:19.310
+to track the input and
+
+125
+00:05:19.310 --> 00:05:21.425
+output metrics for
+your application.
+
+126
+00:05:21.425 --> 00:05:25.010
+You may already know that
+machine learning modeling is
+
+127
+00:05:25.010 --> 00:05:28.490
+a highly iterative
+process, so as deployment.
+
+128
+00:05:28.490 --> 00:05:30.725
+Take modeling, you would
+
+129
+00:05:30.725 --> 00:05:33.699
+come up with a machine
+learning model and some data,
+
+130
+00:05:33.699 --> 00:05:36.805
+train the model,
+that's an experiment.
+
+131
+00:05:36.805 --> 00:05:39.650
+Then do error analysis and use
+
+132
+00:05:39.650 --> 00:05:42.230
+the error analysis to go
+back to figure out how
+
+133
+00:05:42.230 --> 00:05:43.700
+to improve the model or
+
+134
+00:05:43.700 --> 00:05:46.760
+your data and is by
+iterating through
+
+135
+00:05:46.760 --> 00:05:49.160
+this loop multiple
+times that you then
+
+136
+00:05:49.160 --> 00:05:52.535
+hopefully gets a good model.
+
+137
+00:05:52.535 --> 00:05:54.845
+I encourage you to think of
+
+138
+00:05:54.845 --> 00:05:58.415
+deployments as an
+iterative process as well.
+
+139
+00:05:58.415 --> 00:06:01.700
+When you get your first
+deployments up and
+
+140
+00:06:01.700 --> 00:06:06.020
+running and put in place a
+set of monitoring dashboards.
+
+141
+00:06:06.020 --> 00:06:09.500
+But that's only the start
+of this iterative process.
+
+142
+00:06:09.500 --> 00:06:11.795
+A running system
+allows you to get
+
+143
+00:06:11.795 --> 00:06:15.155
+row user data or road traffic.
+
+144
+00:06:15.155 --> 00:06:18.230
+It is by seeing how
+your learning algorithm
+
+145
+00:06:18.230 --> 00:06:21.530
+performs on real data
+on road traffic that,
+
+146
+00:06:21.530 --> 00:06:25.460
+that allows you to do
+performance analysis,
+
+147
+00:06:25.460 --> 00:06:28.745
+and this in turn
+helps you to update
+
+148
+00:06:28.745 --> 00:06:32.375
+your deployment and to keep
+on monitoring your system.
+
+149
+00:06:32.375 --> 00:06:35.225
+In my experience,
+it usually takes
+
+150
+00:06:35.225 --> 00:06:37.565
+a few tries to converge
+
+151
+00:06:37.565 --> 00:06:40.205
+to the right set of
+metrics to monitor.
+
+152
+00:06:40.205 --> 00:06:43.100
+Sometimes have deploy the
+machine learning system,
+
+153
+00:06:43.100 --> 00:06:45.620
+and it's not uncommon
+for you to deploy
+
+154
+00:06:45.620 --> 00:06:48.710
+machine learning system with
+an initial set of metrics
+
+155
+00:06:48.710 --> 00:06:51.020
+only to run the system for
+
+156
+00:06:51.020 --> 00:06:53.510
+a few weeks and then
+to realize that
+
+157
+00:06:53.510 --> 00:06:54.650
+something could go wrong with
+
+158
+00:06:54.650 --> 00:06:55.670
+it that you hadn't thought of
+
+159
+00:06:55.670 --> 00:06:58.925
+before and into pick a
+new metric to monitor.
+
+160
+00:06:58.925 --> 00:07:01.670
+Or for you to have some
+metric that you monitor
+
+161
+00:07:01.670 --> 00:07:04.415
+for a few weeks and then
+decide they're just metric,
+
+162
+00:07:04.415 --> 00:07:06.860
+hardly ever changes
+in does is inducible,
+
+163
+00:07:06.860 --> 00:07:08.870
+and to get rid of that metric in
+
+164
+00:07:08.870 --> 00:07:11.300
+favor of focusing attention
+on something else.
+
+165
+00:07:11.300 --> 00:07:14.660
+After you've chosen a set
+of metrics to monitor,
+
+166
+00:07:14.660 --> 00:07:18.590
+common practice would be to
+set thresholds for alarms.
+
+167
+00:07:18.590 --> 00:07:20.690
+You may decide based on this set,
+
+168
+00:07:20.690 --> 00:07:26.370
+if the server load
+ever goes above 0.91,
+
+169
+00:07:27.010 --> 00:07:29.690
+that may trigger an alarm or
+
+170
+00:07:29.690 --> 00:07:32.120
+a notification to
+let you know or let
+
+171
+00:07:32.120 --> 00:07:34.370
+the team know to see if
+there's a problem and
+
+172
+00:07:34.370 --> 00:07:36.875
+maybe spin up some more servers.
+
+173
+00:07:36.875 --> 00:07:40.400
+Or if the fashion of
+non-null plus goals
+
+174
+00:07:40.400 --> 00:07:43.565
+above or beyond
+certain thresholds
+
+175
+00:07:43.565 --> 00:07:45.380
+that might trigger an alarm.
+
+176
+00:07:45.380 --> 00:07:48.395
+Or if they're not, fraction
+of missing values goes
+
+177
+00:07:48.395 --> 00:07:51.665
+above or below some
+set of thresholds,
+
+178
+00:07:51.665 --> 00:07:54.410
+maybe that should
+trigger an alarm,
+
+179
+00:07:54.410 --> 00:07:56.960
+and it is okay if you adapt
+
+180
+00:07:56.960 --> 00:07:59.960
+the metrics and the
+thresholds over time to
+
+181
+00:07:59.960 --> 00:08:02.285
+make sure that they
+are flagging to you
+
+182
+00:08:02.285 --> 00:08:05.690
+the most relevant
+cases of concern.
+
+183
+00:08:05.690 --> 00:08:09.080
+If something goes wrong with
+your learning algorithm,
+
+184
+00:08:09.080 --> 00:08:13.820
+if is a software issue such
+as server load is too high,
+
+185
+00:08:13.820 --> 00:08:15.755
+then that may require
+
+186
+00:08:15.755 --> 00:08:18.095
+changing the software
+implementation,
+
+187
+00:08:18.095 --> 00:08:20.990
+or if it is a performance problem
+
+188
+00:08:20.990 --> 00:08:24.155
+associated with the accuracy
+of the learning algorithm,
+
+189
+00:08:24.155 --> 00:08:28.115
+then you may need to
+update your model.
+
+190
+00:08:28.115 --> 00:08:30.080
+Or if it is an issue associated
+
+191
+00:08:30.080 --> 00:08:32.105
+with the accuracy of
+the learning algorithm,
+
+192
+00:08:32.105 --> 00:08:35.375
+then you may need to go
+back to fix that that's why
+
+193
+00:08:35.375 --> 00:08:38.210
+many machine learning models
+will need a little bit
+
+194
+00:08:38.210 --> 00:08:41.180
+of maintenance or
+retraining over time.
+
+195
+00:08:41.180 --> 00:08:43.415
+Just like almost all software
+
+196
+00:08:43.415 --> 00:08:46.070
+needs some level of
+maintenance as well.
+
+197
+00:08:46.070 --> 00:08:48.200
+When a model needs to be updated,
+
+198
+00:08:48.200 --> 00:08:52.475
+you can either retrain it
+manually, where in Engineer,
+
+199
+00:08:52.475 --> 00:08:53.840
+maybe you will retrain
+
+200
+00:08:53.840 --> 00:08:55.910
+the model perform
+error analysis and
+
+201
+00:08:55.910 --> 00:08:57.320
+the new model and
+make sure it looks
+
+202
+00:08:57.320 --> 00:08:59.600
+okay before you push
+that to deployment.
+
+203
+00:08:59.600 --> 00:09:01.310
+Or you could also put in place
+
+204
+00:09:01.310 --> 00:09:04.430
+a system where there is
+automatic retraining.
+
+205
+00:09:04.430 --> 00:09:07.220
+Today, manual retraining is far
+
+206
+00:09:07.220 --> 00:09:09.890
+more common than
+automatically training for
+
+207
+00:09:09.890 --> 00:09:14.390
+many applications developers
+are reluctant to learning
+
+208
+00:09:14.390 --> 00:09:17.390
+algorithm be fully
+automatic in terms of
+
+209
+00:09:17.390 --> 00:09:20.630
+deciding to retrain and pushing
+new model to production,
+
+210
+00:09:20.630 --> 00:09:23.345
+but there are some applications,
+
+211
+00:09:23.345 --> 00:09:25.490
+especially in consumer
+software Internet,
+
+212
+00:09:25.490 --> 00:09:29.150
+where automatically
+training does happen.
+
+213
+00:09:29.150 --> 00:09:34.430
+We'll talk more about retraining
+and how to vet or verify
+
+214
+00:09:34.430 --> 00:09:36.830
+a model's performance
+before pushing
+
+215
+00:09:36.830 --> 00:09:40.670
+a new model out to production
+in next week's videos.
+
+216
+00:09:40.670 --> 00:09:43.970
+But the key takeaways are that it
+
+217
+00:09:43.970 --> 00:09:47.135
+is only by monitoring
+the system that
+
+218
+00:09:47.135 --> 00:09:50.750
+you can spot if there may
+be a problem that may
+
+219
+00:09:50.750 --> 00:09:55.250
+cause you to go back to perform
+a deeper error analysis,
+
+220
+00:09:55.250 --> 00:10:01.910
+or that may cause you to
+go back to get more data
+
+221
+00:10:01.910 --> 00:10:05.720
+with which you can
+update your model so as
+
+222
+00:10:05.720 --> 00:10:09.875
+to maintain or improve
+your system's performance.
+
+223
+00:10:09.875 --> 00:10:13.220
+You learn more about
+how to update models
+
+224
+00:10:13.220 --> 00:10:16.490
+in the next two weeks
+Materials as well.
+
+225
+00:10:16.490 --> 00:10:18.380
+In this video,
+you'll learn how to
+
+226
+00:10:18.380 --> 00:10:20.810
+monitor the performance of
+the machine learning system,
+
+227
+00:10:20.810 --> 00:10:22.265
+so that in case something
+
+228
+00:10:22.265 --> 00:10:23.795
+needs to be maintained or fixed,
+
+229
+00:10:23.795 --> 00:10:25.130
+you can be alerted so they
+
+230
+00:10:25.130 --> 00:10:26.705
+can take the appropriate action.
+
+231
+00:10:26.705 --> 00:10:28.670
+We've talked about how to monitor
+
+232
+00:10:28.670 --> 00:10:31.490
+the performance of a single
+machine learning model.
+
+233
+00:10:31.490 --> 00:10:33.455
+One of the most useful concepts
+
+234
+00:10:33.455 --> 00:10:35.780
+is for more complex systems,
+
+235
+00:10:35.780 --> 00:10:37.940
+where you don't
+have just one model
+
+236
+00:10:37.940 --> 00:10:40.865
+with a more complex
+machine learning pipeline,
+
+237
+00:10:40.865 --> 00:10:43.205
+how do you monitor the
+performance of that?
+
+238
+00:10:43.205 --> 00:10:46.170
+You'll learn about that
+in the next video.

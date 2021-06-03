@@ -1,0 +1,553 @@
+WEBVTT
+
+1
+00:00:00.020 --> 00:00:03.360
+In our discussion
+of labeling data,
+
+2
+00:00:03.360 --> 00:00:05.960
+let's take a look at data and
+
+3
+00:00:05.960 --> 00:00:09.940
+concept change in production ML.
+
+4
+00:00:09.940 --> 00:00:12.780
+We're going to be
+talking about detecting
+
+5
+00:00:12.780 --> 00:00:15.240
+problems with deployed models.
+
+6
+00:00:15.240 --> 00:00:17.790
+Really that focuses
+on two things,
+
+7
+00:00:17.790 --> 00:00:24.705
+data change and concept
+change or world change.
+
+8
+00:00:24.705 --> 00:00:26.790
+There's different kinds of this.
+
+9
+00:00:26.790 --> 00:00:28.980
+We've talked about a
+little bit of this,
+
+10
+00:00:28.980 --> 00:00:30.450
+we'll get into it some more.
+
+11
+00:00:30.450 --> 00:00:34.400
+There are different kinds
+of changing ground truth.
+
+12
+00:00:34.400 --> 00:00:37.970
+There's easy problems,
+there's harder problems,
+
+13
+00:00:37.970 --> 00:00:40.970
+and then you get really
+hard problems and you need
+
+14
+00:00:40.970 --> 00:00:42.800
+different approaches to deal
+
+15
+00:00:42.800 --> 00:00:45.280
+with these. Let's look at them.
+
+16
+00:00:45.280 --> 00:00:48.350
+Detecting problems
+with deployed models,
+
+17
+00:00:48.350 --> 00:00:50.870
+you can look at the
+data and the scope of
+
+18
+00:00:50.870 --> 00:00:54.110
+the data and the world in a
+couple of different ways,
+
+19
+00:00:54.110 --> 00:00:55.760
+but fundamentally, you need to
+
+20
+00:00:55.760 --> 00:00:58.700
+monitor your models
+and you need to
+
+21
+00:00:58.700 --> 00:01:01.100
+validate the results
+and the data of
+
+22
+00:01:01.100 --> 00:01:04.310
+your models to find problems.
+
+23
+00:01:04.310 --> 00:01:06.080
+You want to try to find problems
+
+24
+00:01:06.080 --> 00:01:08.450
+early especially with
+system problems that
+
+25
+00:01:08.450 --> 00:01:10.640
+happen quickly like a bad sensor
+
+26
+00:01:10.640 --> 00:01:13.090
+or things like that,
+that we've discussed.
+
+27
+00:01:13.090 --> 00:01:18.615
+But a fundamental issue
+is changing ground truth.
+
+28
+00:01:18.615 --> 00:01:21.680
+What that means is
+that you need to label
+
+29
+00:01:21.680 --> 00:01:25.775
+new data over the life
+of your application.
+
+30
+00:01:25.775 --> 00:01:27.560
+It depends on really
+
+31
+00:01:27.560 --> 00:01:29.720
+the domain that you're
+working in and the kinds of
+
+32
+00:01:29.720 --> 00:01:32.840
+problems that you're trying
+to solve as far as what
+
+33
+00:01:32.840 --> 00:01:36.835
+approaches are really
+feasible for doing that.
+
+34
+00:01:36.835 --> 00:01:39.465
+There are easy problems.
+
+35
+00:01:39.465 --> 00:01:44.285
+Things like, trying to recognize
+images of cats and dogs.
+
+36
+00:01:44.285 --> 00:01:46.190
+In this case, the ground truth
+
+37
+00:01:46.190 --> 00:01:48.835
+really changes pretty slowly.
+
+38
+00:01:48.835 --> 00:01:51.290
+Model retraining in those cases
+
+39
+00:01:51.290 --> 00:01:53.780
+is usually driven by
+model improvements,
+
+40
+00:01:53.780 --> 00:01:57.540
+you are better at
+recognizing cats or dogs,
+
+41
+00:01:57.540 --> 00:01:59.690
+or whatever it is
+that you're doing.
+
+42
+00:01:59.690 --> 00:02:01.870
+You could have changes
+in software too.
+
+43
+00:02:01.870 --> 00:02:02.960
+You could be upgrading
+
+44
+00:02:02.960 --> 00:02:05.149
+things or using a
+different library,
+
+45
+00:02:05.149 --> 00:02:07.585
+that kind of thing, or systems.
+
+46
+00:02:07.585 --> 00:02:10.560
+Labeling in this case
+is fairly simple,
+
+47
+00:02:10.560 --> 00:02:11.900
+you're going to work with maybe a
+
+48
+00:02:11.900 --> 00:02:13.280
+curated dataset that you're
+
+49
+00:02:13.280 --> 00:02:16.730
+getting from some
+public domain source or
+
+50
+00:02:16.730 --> 00:02:19.970
+a source that your organization
+has been using for
+
+51
+00:02:19.970 --> 00:02:24.310
+awhile or you could look
+at crowd-based as well.
+
+52
+00:02:24.310 --> 00:02:27.950
+If it tends to be fairly
+simple, things like feedback,
+
+53
+00:02:27.950 --> 00:02:31.145
+of course, if you have those
+available, great, use them.
+
+54
+00:02:31.145 --> 00:02:33.175
+Use what you can.
+
+55
+00:02:33.175 --> 00:02:36.170
+Then we get into a
+little harder problems
+
+56
+00:02:36.170 --> 00:02:39.320
+where the ground truth
+really changes faster.
+
+57
+00:02:39.320 --> 00:02:40.970
+Things like styles.
+
+58
+00:02:40.970 --> 00:02:42.020
+We looked at shoes,
+
+59
+00:02:42.020 --> 00:02:44.705
+but there's a lot of
+things where styles.
+
+60
+00:02:44.705 --> 00:02:48.935
+The world changes on a
+matter of maybe weeks,
+
+61
+00:02:48.935 --> 00:02:50.885
+that kind of thing.
+
+62
+00:02:50.885 --> 00:02:53.600
+Model retraining in
+that case is usually
+
+63
+00:02:53.600 --> 00:02:56.300
+driven by declining
+model performance,
+
+64
+00:02:56.300 --> 00:03:00.185
+which you need to measure if
+you're going to be aware of.
+
+65
+00:03:00.185 --> 00:03:02.580
+You can also have
+model improvements,
+
+66
+00:03:02.580 --> 00:03:04.970
+you can also have better
+data and of course,
+
+67
+00:03:04.970 --> 00:03:06.230
+the software and systems you're
+
+68
+00:03:06.230 --> 00:03:08.210
+running on can also change.
+
+69
+00:03:08.210 --> 00:03:10.400
+But as these things get harder,
+
+70
+00:03:10.400 --> 00:03:12.830
+you get more things and
+
+71
+00:03:12.830 --> 00:03:16.415
+declining model performance
+is one of those.
+
+72
+00:03:16.415 --> 00:03:18.380
+Labeling in this case,
+
+73
+00:03:18.380 --> 00:03:21.680
+if you can do direct
+feedback either from
+
+74
+00:03:21.680 --> 00:03:25.115
+your systems or from your
+users, that's great.
+
+75
+00:03:25.115 --> 00:03:27.950
+Crowd-based human labeling is
+
+76
+00:03:27.950 --> 00:03:29.850
+another feasible
+way of doing this,
+
+77
+00:03:29.850 --> 00:03:34.525
+since you do have probably
+weeks to respond.
+
+78
+00:03:34.525 --> 00:03:39.385
+You can take a pass through
+human raters to do that.
+
+79
+00:03:39.385 --> 00:03:41.975
+Really hard problems though,
+
+80
+00:03:41.975 --> 00:03:44.655
+it becomes well, really hard.
+
+81
+00:03:44.655 --> 00:03:48.440
+In this case, ground
+truth changes very fast,
+
+82
+00:03:48.440 --> 00:03:53.105
+like on order of days or
+hours or even minutes.
+
+83
+00:03:53.105 --> 00:03:57.380
+Things like markets really
+fall into this category,
+
+84
+00:03:57.380 --> 00:03:59.600
+they change very quickly.
+
+85
+00:03:59.600 --> 00:04:01.580
+In this case, declining
+model performance
+
+86
+00:04:01.580 --> 00:04:02.690
+is definitely going to be
+
+87
+00:04:02.690 --> 00:04:05.705
+a driver for when you need
+to retrain your model.
+
+88
+00:04:05.705 --> 00:04:07.310
+You can also have things like
+
+89
+00:04:07.310 --> 00:04:09.740
+model improvements and changes
+in software and so forth,
+
+90
+00:04:09.740 --> 00:04:13.565
+but those tend to be things
+that you'll be working on
+
+91
+00:04:13.565 --> 00:04:18.020
+offline while you're keeping
+your application running.
+
+92
+00:04:18.020 --> 00:04:20.830
+It's really model performance
+where you really need
+
+93
+00:04:20.830 --> 00:04:24.935
+well-defined processes to
+deal with those changes.
+
+94
+00:04:24.935 --> 00:04:28.595
+Labeling in this case
+becomes very challenging.
+
+95
+00:04:28.595 --> 00:04:33.785
+Direct feedback is great if
+you can do it in your domain.
+
+96
+00:04:33.785 --> 00:04:35.810
+If not, you need to
+look at things like
+
+97
+00:04:35.810 --> 00:04:38.135
+week supervision that
+we'll talk about.
+
+98
+00:04:38.135 --> 00:04:42.680
+But it's really challenging
+in these kinds of domains.
+
+99
+00:04:42.680 --> 00:04:45.530
+They tend to be
+high-value domains.
+
+100
+00:04:45.530 --> 00:04:47.825
+Things like predicting
+markets where there's
+
+101
+00:04:47.825 --> 00:04:52.225
+significant incentive to
+doing these predictions.
+
+102
+00:04:52.225 --> 00:04:55.280
+The key points of what
+we're talking about here,
+
+103
+00:04:55.280 --> 00:04:58.210
+model performance
+decays over time.
+
+104
+00:04:58.210 --> 00:05:00.950
+It may decay slowly over time,
+
+105
+00:05:00.950 --> 00:05:02.530
+in things like cats and dogs,
+
+106
+00:05:02.530 --> 00:05:05.405
+that doesn't change very quickly,
+
+107
+00:05:05.405 --> 00:05:10.160
+or it may change very
+fast, things like markets.
+
+108
+00:05:10.160 --> 00:05:13.220
+Model retraining will help you
+
+109
+00:05:13.220 --> 00:05:16.250
+improve or maintain
+your performance.
+
+110
+00:05:16.250 --> 00:05:20.765
+Certainly as your model
+performance decays,
+
+111
+00:05:20.765 --> 00:05:22.625
+it'll help you do that.
+
+112
+00:05:22.625 --> 00:05:25.970
+Data labeling, assuming you're
+doing supervised learning,
+
+113
+00:05:25.970 --> 00:05:27.695
+which is pretty common,
+
+114
+00:05:27.695 --> 00:05:30.280
+data labeling is a
+key part of that.
+
+115
+00:05:30.280 --> 00:05:31.370
+You really need to think
+
+116
+00:05:31.370 --> 00:05:32.525
+about how you're
+going to approach
+
+117
+00:05:32.525 --> 00:05:34.954
+that in your particular problem,
+
+118
+00:05:34.954 --> 00:05:37.805
+in your particular
+domain and with
+
+119
+00:05:37.805 --> 00:05:42.030
+the systems that you
+have available to you.

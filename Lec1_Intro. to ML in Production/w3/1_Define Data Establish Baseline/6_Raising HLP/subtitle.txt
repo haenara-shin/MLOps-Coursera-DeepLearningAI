@@ -1,0 +1,119 @@
+I think the use of HLP had taken off first in academia
+when people figured out it was a useful thing to include to help
+get papers published, but there's also
+been a bit misuse in terms of building
+useful applications. I think the use of HLP in machine learning has
+taken off partly because it helped people get papers published to
+show they can be HLP. There's also been a bit
+misused in settings where the goal was to build a
+valuable application, not just to publish a paper. When the ground truth
+is externally defined, then there are
+fewer problems with HLP when the drought really
+is some real drought-proof. For example, I've done a lot
+of work on medical imaging, working on your AI for diagnosing from X-rays
+or things like these. Given an X-ray image, if you want to
+predict a diagnosis, if the diagnosis is defined
+according to, say, a biopsy, so your biological
+or medical tests, then HLP helps you measure
+how well does a doctor versus a learning algorithm
+predict the outcome of a biopsy or a
+biological medical tests. I find that to be really useful. But when the ground truth
+is defined by a human, maybe even a doctor
+labeled an X-ray image, then HLP is just measuring how well can one doctor predict another doctor's label
+versus how well can one learning algorithm predict
+another doctor's label. That too is useful, but it's different than if you're measuring how well you versus a doctor are predicting some ground truth outcome
+from a medical biopsy. To summarize, when the ground truth label
+is externally defined, such as the medical biopsy, then HLP gives an estimate
+for base error and irreducible error in
+terms of predicting the outcome of that
+medical test, the biopsy. But there are also a
+lot of problems with the ground truth is just
+another human label. The visual inspection
+example we had from the previous video showed this, where the inspector had
+66.7 percent accuracy. Rather than just aspiring to
+beat the human inspector, it may be more useful to
+see why the ground truth, which is just some other
+inspector compared to this inspector don't agree. For example, if we look at the length of the different
+scratches that they labeled, say, on these six examples, these were the length
+of the scratches. If we speak of the inspectors
+and have them agree that 0.3 mm is the threshold above which a stretch
+becomes a defect, then what we realize is
+that for the first example, both label that one
+totally appropriately. For the second example, the ground truth here is
+one but is less than 0.3, so we really should
+change this to zero, then 0.5 guess 1 1, 0.2 000.1. This example has
+a stretch of 0.1, but really this should
+have been a zero. If we go through this
+exercise of getting the ground truth label and
+this inspector to agree, then we actually just raise
+human-level performance from 66.7 percent to 100 percent, at least as measured
+on these six examples. But notice what we've done, by raising HLP to 100
+percent we've made it pretty much impossible for learning algorithm to beat HLP, so that seems terrible. You can't tell the
+business owner anymore, you beat HLP, and thus
+they must use your system. But the benefit of this is
+you now have much cleaner, more consistent data, and that ultimately will allow your learning algorithm
+to do better. When you go is to come up with a learning algorithm
+that actually generates accurate predictions rather than just proof for some reason
+that you can beat HLP. I find this approach
+of working to raise HLP to be more useful. To summarize, when the ground truth label
+y comes from a human, HLP being quite a bit less than 100
+percent may just indicate that the labeling instructions or labeling convention is ambiguous. On the last slide,
+you saw an example of this in visual inspection. You also see this in
+speech recognition where the camera versus ellipses..., that type of ambiguous
+labeling convention will also cause HLP to be less
+than 100 hundred percent. Improving label consistency will raise human-level
+performance. This makes it harder, unfortunately for your
+learning algorithm to beat HLP by the more consistent labels who raise your machine
+learning album performance, which is ultimately likely to benefit the actual application. Far we've been discussing
+HLP on unstructured data, but some of these issues apply
+to structure data as well. You already know that
+structured data problems are less likely to
+involve human labors and thus HLP is less
+frequently use. But there are exceptions. You saw previously the
+user ID emerging example, where you might
+have a human label, where the two records
+belong to the same person. I've worked on projects
+where we will look at network traffic into a computer to try to figure out if
+the computer was hacked, and we as human IT experts
+to provide labels for us. Sometimes it's hard to
+know if a transaction is fraudulent and you just
+ask a human to label that. Or is this a spam account or
+a bot-generated accounts? Or from GPS, what is the mode
+of transportation is this person on foot, or on a bike, or in
+the car, or the bus. It turns out buses
+stop at bus stops, and so you can actually
+tell if someone is in a bus or in a car
+based on the GPS trace. For problems like these, it would be quite
+reasonable to ask a human to label the data, at least on the first pass for a learning algorithm to make
+such predictions as these. When the ground truth
+label you're trying to predict comes from one human, the same questions of
+what does HLP mean? It is a useful baseline to
+figure out what is possible. But sometimes when measuring HLP, you realize that low HLP stems
+from inconsistent labels, and working to improve
+HLP by coming up with a more consistent labeling
+standard will both raise HLP and give you cleaner data with which to improve your learning
+experience performance. Here's what I hope you
+take away from this video. First, HLP is
+important for problems where human-level performance can provide a useful reference. I do measure it and use it as
+a reference for what might be possible and to drive air
+analysis and prioritization. Having said that, when
+you're measuring HLP, if you find the HLP is much
+less than 100 percent, also ask yourself if some
+of the gap between HLP and complete consistency is due to inconsistent
+labeling instructions. Because if that turns
+out to be the case, then improving labeling
+consistency will raise HLP and also give cleaner data for your
+learning algorithm, which will ultimately result in better machine-learning
+algorithm performance. Guess what I hope you take
+away from this video. HLP is useful and important
+for many applications. For problems where
+I think how well humans perform is a
+useful reference, I do measure HLP and I use that to get a sense of
+what might be possible, and also use HLP to drive error analysis
+and preservation. Having said that, if, in the process of measuring HLP, you find that HLP is much less
+than perfect performance, much lower than 100 percent. This is also worth
+asking yourself, if that gap between HLP and 100 percent accuracy may be due to inconsistent
+labeling instructions. Because if that's the case, then improving labeling
+consistency will both raise HLP, but more importantly help you get cleaner and more
+consistent labels which would improve your learning
+algorithm's performance.

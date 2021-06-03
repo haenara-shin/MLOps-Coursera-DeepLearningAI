@@ -1,0 +1,563 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.530
+Now that you've seen some of
+
+2
+00:00:01.530 --> 00:00:04.845
+the data issues and
+detection workflows
+
+3
+00:00:04.845 --> 00:00:06.870
+and got an idea of
+
+4
+00:00:06.870 --> 00:00:10.545
+the importance of productions
+scale data validation.
+
+5
+00:00:10.545 --> 00:00:13.510
+Let's take a look at
+TensorFlow Data Validation,
+
+6
+00:00:13.510 --> 00:00:15.590
+which is a library from
+
+7
+00:00:15.590 --> 00:00:18.920
+Google as part of
+the TFX Ecosystem.
+
+8
+00:00:18.920 --> 00:00:21.020
+It'll allow you to do
+
+9
+00:00:21.020 --> 00:00:23.420
+data validation using Python
+
+10
+00:00:23.420 --> 00:00:26.520
+and we'll do an
+exercise doing that.
+
+11
+00:00:26.570 --> 00:00:31.180
+TensorFlow Data
+Validation or TFDV,
+
+12
+00:00:31.180 --> 00:00:34.250
+helps developers
+understand, validate,
+
+13
+00:00:34.250 --> 00:00:38.165
+and monitor their
+ML data at scale.
+
+14
+00:00:38.165 --> 00:00:41.000
+TFDV is used to analyze and
+
+15
+00:00:41.000 --> 00:00:43.850
+validate petabytes
+of data at Google
+
+16
+00:00:43.850 --> 00:00:47.180
+every day across
+hundreds or thousands of
+
+17
+00:00:47.180 --> 00:00:51.715
+different applications that
+are currently in production.
+
+18
+00:00:51.715 --> 00:00:54.630
+TFDV helps TFX users maintain
+
+19
+00:00:54.630 --> 00:00:57.900
+the health of their ML pipelines.
+
+20
+00:00:57.900 --> 00:01:01.190
+TFDV helps generate
+data statistics
+
+21
+00:01:01.190 --> 00:01:04.415
+and provides browser
+visualizations.
+
+22
+00:01:04.415 --> 00:01:08.240
+It also helps infer the
+schema for your data,
+
+23
+00:01:08.240 --> 00:01:09.680
+but you will need to make
+
+24
+00:01:09.680 --> 00:01:11.525
+sure that that
+schema makes sense.
+
+25
+00:01:11.525 --> 00:01:15.355
+It'll do an inference
+that is best effort.
+
+26
+00:01:15.355 --> 00:01:18.425
+Once it has these
+statistics and schema,
+
+27
+00:01:18.425 --> 00:01:22.160
+it can look for problems
+are anomalies in your data.
+
+28
+00:01:22.160 --> 00:01:27.200
+Then it will look at the
+training serving skew
+
+29
+00:01:27.200 --> 00:01:29.210
+by comparing the data in
+
+30
+00:01:29.210 --> 00:01:32.020
+your training and your
+serving datasets.
+
+31
+00:01:32.020 --> 00:01:34.430
+One of the common use cases is
+
+32
+00:01:34.430 --> 00:01:36.185
+continuously checking
+
+33
+00:01:36.185 --> 00:01:38.630
+newly arriving data
+by validating it
+
+34
+00:01:38.630 --> 00:01:41.885
+against the expectations
+which you have in
+
+35
+00:01:41.885 --> 00:01:43.580
+the reference schema that
+
+36
+00:01:43.580 --> 00:01:45.995
+you generated from
+your training data.
+
+37
+00:01:45.995 --> 00:01:49.475
+The typical setup
+uses the schema,
+
+38
+00:01:49.475 --> 00:01:52.039
+which is maintained over time,
+
+39
+00:01:52.039 --> 00:01:55.175
+and the statistics are
+computed over new data and
+
+40
+00:01:55.175 --> 00:01:57.230
+those statistics are used to
+
+41
+00:01:57.230 --> 00:02:00.805
+validate the data against
+the original schema.
+
+42
+00:02:00.805 --> 00:02:04.400
+Remember, we talked about
+skew detection and with
+
+43
+00:02:04.400 --> 00:02:08.540
+TFDV you can easily detect
+three different types of skew,
+
+44
+00:02:08.540 --> 00:02:14.610
+schema skew, feature skew,
+and distributions skew.
+
+45
+00:02:16.450 --> 00:02:21.110
+TFDV performs skew or
+drift detection on
+
+46
+00:02:21.110 --> 00:02:24.600
+categorical features and skew is
+
+47
+00:02:24.600 --> 00:02:28.835
+expressed in terms of
+an L-infinity distance,
+
+48
+00:02:28.835 --> 00:02:31.490
+which is also known as
+Chebyshev distance.
+
+49
+00:02:31.490 --> 00:02:33.425
+If you think of a chessboard,
+
+50
+00:02:33.425 --> 00:02:36.680
+it's the distance metric that is
+
+51
+00:02:36.680 --> 00:02:39.200
+the maximum absolute distance in
+
+52
+00:02:39.200 --> 00:02:44.050
+one-dimension of two
+n-dimensional points.
+
+53
+00:02:44.050 --> 00:02:46.760
+You can set thresholds
+so that you'll receive
+
+54
+00:02:46.760 --> 00:02:48.770
+warnings when the drift is
+
+55
+00:02:48.770 --> 00:02:51.820
+higher than what you
+think is acceptable.
+
+56
+00:02:51.820 --> 00:02:55.160
+Schema skew occurs when the
+
+57
+00:02:55.160 --> 00:02:56.840
+serving and training data
+
+58
+00:02:56.840 --> 00:02:59.540
+don't conform to the same schema.
+
+59
+00:02:59.540 --> 00:03:02.620
+For example, it could
+be a change in type,
+
+60
+00:03:02.620 --> 00:03:06.730
+an int, where you're
+expecting a float,
+
+61
+00:03:06.730 --> 00:03:10.250
+which could be a change
+in the feature itself.
+
+62
+00:03:10.640 --> 00:03:13.660
+Feature skew are changes in
+
+63
+00:03:13.660 --> 00:03:17.005
+the feature values between
+training and serving.
+
+64
+00:03:17.005 --> 00:03:20.979
+It could happen as the system
+uses different data sources
+
+65
+00:03:20.979 --> 00:03:22.675
+during training and serving
+
+66
+00:03:22.675 --> 00:03:25.150
+or things change or of course,
+
+67
+00:03:25.150 --> 00:03:27.595
+things like seasonality
+and trend as well.
+
+68
+00:03:27.595 --> 00:03:29.590
+Sometimes that simply because
+
+69
+00:03:29.590 --> 00:03:31.705
+you have two different code paths
+
+70
+00:03:31.705 --> 00:03:36.795
+and you're trying to do
+the same transformations,
+
+71
+00:03:36.795 --> 00:03:39.010
+both when you trained
+your model and
+
+72
+00:03:39.010 --> 00:03:41.200
+when you're serving
+your model using
+
+73
+00:03:41.200 --> 00:03:45.170
+two different code paths
+
+74
+00:03:45.170 --> 00:03:48.740
+and you're getting different
+results as a consequence.
+
+75
+00:03:48.740 --> 00:03:50.390
+There's ways to avoid doing
+
+76
+00:03:50.390 --> 00:03:53.220
+that and we'll talk
+about that later.
+
+77
+00:03:53.540 --> 00:03:56.720
+Distribution skew is changes in
+
+78
+00:03:56.720 --> 00:03:59.960
+the distribution of individual
+features in the dataset.
+
+79
+00:03:59.960 --> 00:04:03.245
+Features that's in training
+might have a range of
+
+80
+00:04:03.245 --> 00:04:08.180
+0-100 when you're training
+it and then at serving time,
+
+81
+00:04:08.180 --> 00:04:11.780
+you're seeing data between 5-600.
+
+82
+00:04:11.780 --> 00:04:13.160
+That would be a change in
+
+83
+00:04:13.160 --> 00:04:15.050
+the distribution
+for that feature.
+
+84
+00:04:15.050 --> 00:04:17.780
+You got to have things
+like changes is the
+
+85
+00:04:17.780 --> 00:04:20.660
+mean or the median or the
+standard deviation changes,
+
+86
+00:04:20.660 --> 00:04:22.955
+all of those are changes
+in distribution.
+
+87
+00:04:22.955 --> 00:04:25.100
+Depending on how severe it is,
+
+88
+00:04:25.100 --> 00:04:27.460
+it may or may not be a problem.
+
+89
+00:04:27.460 --> 00:04:30.250
+The question is, does it
+affect your model performance
+
+90
+00:04:30.250 --> 00:04:31.870
+enough that you need to make
+
+91
+00:04:31.870 --> 00:04:35.060
+changes to try to account for it?
+
+92
+00:04:35.090 --> 00:04:40.720
+TFDV provides you with
+descriptive statistics at scale.
+
+93
+00:04:40.720 --> 00:04:43.705
+Remember, we could be working
+with petabytes of data.
+
+94
+00:04:43.705 --> 00:04:47.350
+It provides some
+visualizations as well to help
+
+95
+00:04:47.350 --> 00:04:51.510
+you monitor and really
+understand that data.
+
+96
+00:04:51.510 --> 00:04:54.070
+Trying to understand the
+underlying statistics
+
+97
+00:04:54.070 --> 00:04:56.215
+for your data and do comparisons.
+
+98
+00:04:56.215 --> 00:04:58.360
+How does your training and
+
+99
+00:04:58.360 --> 00:05:01.060
+evaluation and serving
+datasets compare?
+
+100
+00:05:01.060 --> 00:05:02.590
+Just in terms of statistics,
+
+101
+00:05:02.590 --> 00:05:05.255
+for example, do they
+have the same mean?
+
+102
+00:05:05.255 --> 00:05:08.320
+How can you calculate and fix or
+
+103
+00:05:08.320 --> 00:05:12.230
+detect rather and
+fix data anomalies.
+
+104
+00:05:12.610 --> 00:05:15.175
+We did a lot here.
+
+105
+00:05:15.175 --> 00:05:17.530
+Just to wrap up, this week,
+
+106
+00:05:17.530 --> 00:05:21.400
+you saw differences
+between ML modeling in
+
+107
+00:05:21.400 --> 00:05:24.310
+academic or research environments
+
+108
+00:05:24.310 --> 00:05:27.350
+and production ML systems.
+
+109
+00:05:27.350 --> 00:05:31.105
+We discussed responsible
+data collection and how to
+
+110
+00:05:31.105 --> 00:05:35.245
+really approach building a
+fair production ML system.
+
+111
+00:05:35.245 --> 00:05:37.930
+We learned about
+process feedback and
+
+112
+00:05:37.930 --> 00:05:41.045
+direct labeling and
+also human labeling.
+
+113
+00:05:41.045 --> 00:05:44.230
+We looked at some of the
+issues that you can have with
+
+114
+00:05:44.230 --> 00:05:48.475
+data and how to identify
+and detect those issues.
+
+115
+00:05:48.475 --> 00:05:50.660
+Now, we're going to be
+
+116
+00:05:50.660 --> 00:05:54.020
+practicing Data
+Validation with TFDV,
+
+117
+00:05:54.020 --> 00:05:56.460
+TensorFlow Data Validation in
+
+118
+00:05:56.460 --> 00:05:58.800
+this week's exercise notebook.
+
+119
+00:05:58.800 --> 00:06:01.580
+You'll be testing
+your skills with
+
+120
+00:06:01.580 --> 00:06:04.819
+the programming assignment
+by generating datasets,
+
+121
+00:06:04.819 --> 00:06:08.210
+statistics, and
+creating and comparing
+
+122
+00:06:08.210 --> 00:06:13.180
+and updating data
+schemas. Good luck.

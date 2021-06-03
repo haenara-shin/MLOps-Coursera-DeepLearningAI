@@ -1,0 +1,78 @@
+Data pipelines, sometimes also called Data Cascais refers to when your data has
+multiple steps of processing before getting
+to the final output. There's some best practices relevant for managing
+such data pipelines. Let's start with an example. Let's say that given
+some user information you would like to predict if a given user is
+looking for a job, because if they're
+looking for a job at this moment in time, you may want to surface job ads or other pieces of perfectly
+useful information to them. Given raw data such
+as the data on top, there's often some pre-processing
+or data cleaning before the data is fed to
+learning algorithm that then tries to predict, why? Are they looking for a job? The data cleaning may include
+things like spam cleanup, such as removing
+the spam accounts, and maybe also user ID merge which we talked about
+in an earlier video. For the sake of this example, let's say that spam clean-up and user ID merge are done
+with just scripting. Explicit sequences of
+instructions that tells your code when is an account
+to be considered spammy and when should
+two user IDs be merged. These systems could be built using machine learning
+algorithms as well which makes them even a little bit more
+complex to manage. Now, when you have strips
+for the data cleaning, one of the issues you run into is replicability when you take these systems into
+production deployment. Let's say during the
+development of the system, you have input data fed through
+pre-processing scripts, and the pre-processed data is fed to a machine
+learning algorithm, and after some amount of work, your learning algorithm
+does well on the test set. Printed development
+phase, you may have seen that pre-processing scripts
+can be quite messy. It may be you hacking
+something up, processing data, mailing a file to a different
+member of your team, having them have a few
+incantations in Python or some scripting language to process the data and having them, mail the process
+data back to you. When you take this
+system to production, you then have new data which has to be fed
+through a similar set of scripts because this data is going to be fed to the same
+machine learning algorithm. Your machine-learning
+algorithm on this data is what will
+run in your product. The key question is, if you're pre-processing was
+done with a bunch of strips, spread out on a bunch of different people's
+computers and laptops, how do you replicate
+the strips to make sure that the
+input distribution to a machine learning
+algorithm was the same for the development data
+and the production data? I find that the amount of effort that you should
+invest to make sure that the pre-processing
+scripts are highly replicable can depend a little bit on the face of the project. I know that it may be
+fashionable to say that everything you do should
+be 100 percent replicable, and I'll probably
+get some criticism for not hewing to that line, but I find it a
+lot of projects do go through a proof of
+concept or POC phase, and then a production phase where during the proof
+of concept phase, the primary goal is
+just to decide if the application is workable and worth building and deploying. My advice to most teams
+is during the proof of concept phase focus on getting
+the prototype to work. It's okay if some of the data
+pre-processing is manual. If the project succeeds, you need to replicate all of
+this pre-processing later. My advice would be
+take extensive notes, write extensive
+comments to increase the odds that you can replicate all this pre-processing later, but this is also not
+the time to get bogged down in tons of process just to ensure replicability
+when the focus is really to just decide if the application is workable and is worth
+taking to the next phase. Once you decided that this project is worth
+taking to production, then you know it's
+going to be really important to do the replica
+any pre-processing strips. In this phase, that's
+when I would use more sophisticated
+tools to make sure the entire data
+pipeline is replicable. This is when tools which can be a little
+bit more heavyweight, but tools like TensorFlow
+Transform, Apache beam, Airflow, and so on
+become very valuable. In fact, you will
+learn more about TensorFlow Transform later
+into specialization as well. In this video, you learned
+about data pipelines, and when to invest in
+their replicability. It turns out many
+applications have significantly more
+complex data pipelines than what we saw in this video. For those settings, you also have to think about what metadata you want and perhaps also keep track and take care of data
+provenance and lineage. Let's go on to the next video
+to look at these topics.

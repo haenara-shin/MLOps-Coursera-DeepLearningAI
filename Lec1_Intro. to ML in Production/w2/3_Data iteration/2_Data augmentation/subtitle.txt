@@ -1,0 +1,118 @@
+Data augmentation can be a very efficient way
+to get more data, especially for
+unstructured data problems such as images,
+audio, maybe text. But when carrying out
+data augmentation, there're a lot of choices
+you have to make. What are the parameters? How do you design the
+data augmentation setup? Let's dive into this to look
+at some best practices. Take speech recognition. Given an audio clip like this, ''AI is the new electricity''. If you take background cafe
+noise that sounds like this [NOISE] and add these two
+audio clips together. Literally, take the two
+waveforms and sum them up, then you can create a synthetic example
+that sounds like this, ''AI is the new electricity''. Sounds like someone saying, AI is the new electricity
+in a noisy cafe. This is one form of
+data augmentation that lets you efficiently
+create a lot of data that sounds like data
+collected in the cafe. Or if you take the
+same audio clip, ''AI is the new electricity'', and add it to background
+music [MUSIC], that it sounds like
+someone saying it with maybe the radio
+on in the background. ''AI Is the new electricity''. Now when carrying out
+data augmentation, there're a few decisions
+you need to make such as what is the type of
+background noise and how loud should the background noise
+be relative to the speech. Let's take a look at some ways of making these decisions
+systematically. The goal of data augmentation, is to create examples that your learning
+algorithm can learn from. As a framework for doing that, I encourage you to think
+of how you can create realistic examples that the
+algorithm does poorly on, because if the algorithm already does well in those examples, then there's less for
+it to learn from. But you want the
+examples to still be ones that a human or maybe some other baseline can do well on, because otherwise, one way to generate examples that the
+algorithm does poorly on, would be to just create
+examples that are so noisy that no one can
+hear what anyone said, but that's not helpful. You want examples that are hard enough to
+challenge the algorithm, but not so hard that they're impossible for any human or any algorithm to ever do well on. That's why when I'm generating new examples
+using data augmentation, I try to generate examples that meets
+both of these criteria. Now, one way that some people do data augmentation is to
+generate an augmented data set, and then train the
+learning algorithm and see if the algorithm does
+better on the data set. Then fiddle around with
+the parameters for data augmentation and change the learning algorithm
+again and so on. This turns out to be quite
+inefficient because every time you change your data
+augmentation parameters, you need to train your new network or change
+your learning algorithm all over and this can
+take a long time. Instead, I found that
+using these principles, allows you to sanity check that your new data generated
+using data augmentation is useful without actually having to spend maybe hours or
+sometimes days of training or learning
+algorithm on that data to verify that it will result in the
+performance improvement. Specifically, here's a
+checklist you might go through when you are
+generating new data. One, doesn't sound realistic. You want your audio to
+actually sound like realistic audio of the sort that you want your
+algorithm to perform on. Two, is the X to Y mapping clear? In other words, can humans
+still recognize what was said? This is to verify point two here. Three, is the algorithm currently doing poorly
+on this new data. That helps you verify point one. If you can generate data that meets all of these criteria, then that would give you a higher chance that when you put this data into your training set and retrain the algorithm, then that will result
+in you successfully pulling up part of
+this rubber sheet. Let's look at one more example, using images this time. Let's say that you
+have a very small set of images of smartphones
+with scratches. Here's how you may be able
+to use data augmentation. You can take the image
+and flip it horizontally. This results in a
+pretty realistic image. The phone buttons are
+now on the other side, but this could be
+a useful example to add to your training set. Or you could implement
+contrast changes or actually brighten up the image here so the scratch is a
+little bit more visible. Or you could try
+darkening the image, but in this example, the image is now so
+dark that even I as a person can't really tell if there's a scratch
+there or not. Whereas these two
+examples on top would pass the checklist
+we had earlier, that the human can still
+detect the scratch well, this example is too dark, it would fail that checklists. I would try to choose the data augmentation scheme
+that generates more examples that look like the
+ones on top and fill the ones that look like the
+ones here at the bottom. In fact, going off
+the principle that we want images that look realistic, that humans can do well on and hopefully the
+algorithm does poorly on, you can also use more sophisticated
+techniques such as take a picture of a phone with no scratches and use Photoshop in order to artificially
+draw a scratch. This technique, literally
+using Photoshop, can also be an effective way
+to generate more examples, because this example
+of a scratch here, you may or may not be able
+to see it depending on the video compression and image contrast where you're
+watching this video, but with a scratch here, this looks like a pretty
+realistic scratch that's actually generated
+with Photoshop. I as a person can
+recognize the scratch and so if the learning algorithm isn't detecting this right now, this would be a great
+example to add. I've also used more advanced
+techniques like GANs, Generative Adversarial
+Networks to synthesize scratches like
+these automatically, although I found that techniques like that can also be overkill, meaning that there're simpler
+techniques that are much faster to implement that work just fine without
+the complexity of building again to
+synthesize scratches. You may have heard of the
+term model iteration, which refers to iteratively
+training a model using error analysis and then trying to decide how to improve the model. Taking a data-centric
+approach AI developments, sometimes it's useful
+to instead use a data iteration loop where you repeatedly take the
+data and the model, train your learning
+algorithm, do error analysis, and as you go through this loop, focus on how to add data or improve the
+quality of the data. For many practical applications, taking this data
+iteration loop approach, with a robust [inaudible]
+search, that's important too. Taking of data iteration
+loop approach, results in faster improvements to your learning
+algorithm performance, depending on your problem. When you're working on an
+unstructured data problem, data augmentation, if you can create new data that
+seems realistic, that humans can do quite well on, but the algorithm struggles on, that can be an efficient way to improve your learning
+algorithm performance. If you fall through
+error analysis, that you're learning
+algorithm does poorly on speech with cafe noise, data augmentation to
+generate more data with cafe noise could be an efficient way to improve your learning
+algorithm performance. Now, when you add
+data to your system, the question I've
+often been asked is, can adding data hurt your
+learning algorithm performance? Usually, for unstructured data performance,
+the answer is no, with some caveats, but let's dive more deeply into this
+in the next video.

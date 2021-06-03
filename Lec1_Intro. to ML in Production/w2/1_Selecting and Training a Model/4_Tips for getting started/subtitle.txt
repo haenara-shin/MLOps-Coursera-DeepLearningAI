@@ -1,0 +1,95 @@
+Let me share with
+you a few tips for getting started on
+machine learning project. This video will be
+a little bit of a grab bag of different ideas, but I hope nonetheless many of these ideas
+will be useful to you. We've talked about how
+machine learning is an iterative process
+where you start with a model, data, hyperparameters, training model, carry
+out error analysis, and then use that to drive
+further improvements. After you've done
+this a few times, gone around the
+loop enough times, when you have a
+good enough model, you might then carry out a final performance audit
+before taking it to production. In order to get started on this first step of
+coming of the model, here are some suggestions. When I'm starting on a
+machine learning project, I almost always start with a quick literature search
+to see what's possible, so you can look at
+online courses, look at blogs, look at
+open source projects. My advice to you
+if your goal is to build a practical
+production system and not to do research is, don't obsess about finding the latest, greatest algorithm. Instead, spend half a day, maybe a small number of days
+reading blog posts and pick something reasonable that
+lets you get started quickly, if you can find an open
+source implementation, that can also help you establish a baseline more efficiently. I find that for many
+practical applications, a reasonable algorithm with
+good data will often do just fine and will
+in fact outperform a great algorithm with
+not so good data. Don't obsess about taking
+the algorithm that was just published in some
+conference last week, that is the most
+cutting edge algorithm, instead find
+something reasonable, find a good open
+source implementation and use that to
+get going quickly. Because being able to get started on this first
+step of this loop, can make you more efficient in iterating through more times, and that will help you get to good performance more quickly. Second question I have often been asked
+, is, "Hey Andrew, do I need to take into account
+deployment constraints such as compute constraints
+when picking a model?" My answer is, yes you should take deployment constraints such as compute constraints into account, if the baseline is already established and you're
+relatively confident that this project
+will work and thus your goal is to build
+and deploy a system. But if you have not yet even
+established a baseline, or if you're not yet
+sure if this project will work and be
+worthy of deployment, then I will say no, or maybe not necessarily. If you are in a stage of the project where your first
+goal is to just establish a baseline and determine
+what is possible and if this project is even worth
+pursuing for the long term, then it might be okay to ignore deployment constraints
+and just find some open source
+implementation and try it out to see what
+might be possible, even if that open source
+implementation is so computationally
+intensive that you know you will never be
+able to deploy that. Of course, no harm taking deployment constraints
+into account as well at this phase
+of the project, but it might also be
+okay if you don't and focus on more efficiently establishing
+the baseline first. Finally, when trying out a learning algorithm
+for the first time, before running it
+on all your data, I would urge you to run a few quick sanity checks for your code and your algorithm. For example, I will
+usually try to overfit a very small
+training dataset before spending hours
+or sometimes even overnight or days training the algorithm on a large dataset. Maybe even try to
+make sure you can fit one training example, especially, if the output
+is a complex output. For example, I was once working on a speech
+recognition system where the goal was
+to input audio and have a learning algorithm
+output a transcript. When I trained my algorithm on just one example, one audio clip, when I trained my speech
+recognition system on just one audio clip
+on the training set, which is just one audio clip, my system outputs this, it outputs space, space, space, space, space, space. Clearly it wasn't working
+and because my speech system couldn't even accurately
+transcribe one training example, there wasn't much
+point to spending hours and hours training it
+on a giant training set. Or for image segmentation, if your goal is to take
+as input pictures like this and segment out
+the cats in the image, then before spending
+hours training your system on hundreds
+or thousands of images, a worthy sanity check would be to feed it just one image
+and see if it can at least overfit that
+one training example before scaling up to
+a larger dataset. The advantage of this is you may be able to
+train your algorithm on one or a small handful
+of examples in just minutes or
+maybe even seconds and this lets you find
+bugs much more quickly. Finally, for image
+classification problems, even if you have 10,000 images or 100,000 images or a million images
+in your training set, it might be worthwhile to very quickly train your algorithm on a small subset of just
+10 or maybe 100 images, because you can do that quickly. If your algorithm can't even
+do well on 100 images, well, then it's clearly not going
+to do well on 10,000 images, so this would be another useful sanity check for your code. Now, after you've trained
+a machine learning model, after you've trained
+your first model, one of the most
+important things is, how do you carry out error
+analysis to help you decide how to improve the
+performance of your algorithm? Let's go on to the
+next video to dive into error analysis and
+performance auditing.

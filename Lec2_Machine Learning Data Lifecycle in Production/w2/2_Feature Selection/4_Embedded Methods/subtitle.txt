@@ -1,0 +1,58 @@
+Now let's look at some Embedded Methods. So, what are embedded methods? Well, it's a again,
+a supervised method of Features Selection. And we've looked at Filter Methods. We've looked at Wrapper Methods. Let's look at Embedded Methods. So L1 or L2 regularization is
+essentially an embedded method for doing feature selection. Feature importance is another method. Both of these are highly connected
+to the model that you're using. So these both L1 regularization and
+feature importance really sort of an intrinsic characteristic of
+the model that you're working with. So it assigns scores. And for regularization really,
+we're talking about waiting for each feature in the data. And it discards features often by
+by setting those weights to zero or near zero. And that's going to eliminate the features
+that we're talking about based on the feature essentially
+the feature important. So look at that in SKLearn,
+if we look at Feature Importance class, that's built into the Tree Based Model. So, again, we're still using
+the RandomForestClassifier that we've been using all along. That's one of the model types that
+does include feature importance. It's available as a property of that
+model, the feature importances. And we can use SelectFromModel
+to select the features from the train model based on
+the assigned feature importances. So again, working with the model,
+it's really a characteristic of the model. How does that look in code? Well, we're going to define a function. Feature importance is from
+Tree Based Model and here's our data, it's been split into training and
+test and we've separated our labels. We're going to use our
+RandomForestClassifier as our model and we're going to fit it. And then we're going to pull out
+the feature importances here. That's going to give us a series that
+we're going to use a Panda series. That Panda series,
+we're going to select the 10 best. So the 10 highest feature importances and
+show that. So if we do that,
+this is the visualization that we get and we can see the 10 best
+features that we have based on the feature importance that
+was calculated in the model. So using that to select those features,
+we're going to go back and select from our model. That's going to give us our model and we're going to get support to get
+the indexes for those features. And then we're going to drop the other
+features from our feature vector. And that's going to give us the names
+of the features that we're keeping. So tying those together, we've got feature
+important from tree based model that that's going to give us the feature
+importances and plot them. Then we're going to select the features
+that we're going to keep and that's going to give us our performance. So in this case we've selected 14
+features and looking at the metrics for them, they're actually not quite
+as good but they're pretty good. So accuracy. It's now down a little bit. The ROC is up a little bit. It's kind of back to what it was
+with all features are almost there. Precision is down a little bit but
+still I mean it's down a little bit. Recall is not bad really
+because pretty much the same. It is the same and the F1 Score is back
+to what it was with all of the features. So Recursive Feature Elimination
+is really still our best result. Although with Feature Importance we
+were able to get down to 14 features. So this is a question where we need
+to consider the importance of our metrics versus the importance of
+reducing our compute resources. If it's really important, that compute
+resources, we may want to do that with the 14 features that were
+selected with Feature Importance. But if we're really interested in
+maintaining those metrics were improving them, then Recursive Feature Elimination
+is still the best result. Such review. We've covered a lot this week, we started
+out with an Introduction to Preprocessing. We talked at some length about
+Feature Engineering and why it's so important to doing machine learning,
+especially in production settings. We looked at Preprocessing Data at Scale,
+which is going to be important whenever you're working with large
+amounts of data or large models and specifically at TensorFlow Transform. We also looked at Feature Spaces and
+understanding how Feature Spaces work and and why we need to consider that
+as we do Feature Selection. And we looked at different
+kinds of Feature Selection. So Filter Methods and
+Wrapper Methods and Embedded Methods. We've covered a lot about working with
+our data and doing feature engineering. This has been quite a week so far.

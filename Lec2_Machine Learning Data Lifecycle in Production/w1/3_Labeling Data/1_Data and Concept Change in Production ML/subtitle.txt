@@ -1,0 +1,77 @@
+In our discussion
+of labeling data, let's take a look at data and concept change in production ML. We're going to be
+talking about detecting problems with deployed models. Really that focuses
+on two things, data change and concept
+change or world change. There's different kinds of this. We've talked about a
+little bit of this, we'll get into it some more. There are different kinds
+of changing ground truth. There's easy problems,
+there's harder problems, and then you get really
+hard problems and you need different approaches to deal with these. Let's look at them. Detecting problems
+with deployed models, you can look at the
+data and the scope of the data and the world in a
+couple of different ways, but fundamentally, you need to monitor your models
+and you need to validate the results
+and the data of your models to find problems. You want to try to find problems early especially with
+system problems that happen quickly like a bad sensor or things like that,
+that we've discussed. But a fundamental issue
+is changing ground truth. What that means is
+that you need to label new data over the life
+of your application. It depends on really the domain that you're
+working in and the kinds of problems that you're trying
+to solve as far as what approaches are really
+feasible for doing that. There are easy problems. Things like, trying to recognize
+images of cats and dogs. In this case, the ground truth really changes pretty slowly. Model retraining in those cases is usually driven by
+model improvements, you are better at
+recognizing cats or dogs, or whatever it is
+that you're doing. You could have changes
+in software too. You could be upgrading things or using a
+different library, that kind of thing, or systems. Labeling in this case
+is fairly simple, you're going to work with maybe a curated dataset that you're getting from some
+public domain source or a source that your organization
+has been using for awhile or you could look
+at crowd-based as well. If it tends to be fairly
+simple, things like feedback, of course, if you have those
+available, great, use them. Use what you can. Then we get into a
+little harder problems where the ground truth
+really changes faster. Things like styles. We looked at shoes, but there's a lot of
+things where styles. The world changes on a
+matter of maybe weeks, that kind of thing. Model retraining in
+that case is usually driven by declining
+model performance, which you need to measure if
+you're going to be aware of. You can also have
+model improvements, you can also have better
+data and of course, the software and systems you're running on can also change. But as these things get harder, you get more things and declining model performance
+is one of those. Labeling in this case, if you can do direct
+feedback either from your systems or from your
+users, that's great. Crowd-based human labeling is another feasible
+way of doing this, since you do have probably
+weeks to respond. You can take a pass through
+human raters to do that. Really hard problems though, it becomes well, really hard. In this case, ground
+truth changes very fast, like on order of days or
+hours or even minutes. Things like markets really
+fall into this category, they change very quickly. In this case, declining
+model performance is definitely going to be a driver for when you need
+to retrain your model. You can also have things like model improvements and changes
+in software and so forth, but those tend to be things
+that you'll be working on offline while you're keeping
+your application running. It's really model performance
+where you really need well-defined processes to
+deal with those changes. Labeling in this case
+becomes very challenging. Direct feedback is great if
+you can do it in your domain. If not, you need to
+look at things like week supervision that
+we'll talk about. But it's really challenging
+in these kinds of domains. They tend to be
+high-value domains. Things like predicting
+markets where there's significant incentive to
+doing these predictions. The key points of what
+we're talking about here, model performance
+decays over time. It may decay slowly over time, in things like cats and dogs, that doesn't change very quickly, or it may change very
+fast, things like markets. Model retraining will help you improve or maintain
+your performance. Certainly as your model
+performance decays, it'll help you do that. Data labeling, assuming you're
+doing supervised learning, which is pretty common, data labeling is a
+key part of that. You really need to think about how you're
+going to approach that in your particular problem, in your particular
+domain and with the systems that you
+have available to you.

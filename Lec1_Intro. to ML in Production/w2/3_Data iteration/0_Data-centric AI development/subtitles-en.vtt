@@ -1,0 +1,264 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.640
+Let's say that era analysis has
+
+2
+00:00:02.640 --> 00:00:04.920
+caused you to decide to focus on
+
+3
+00:00:04.920 --> 00:00:06.240
+improving your outcome learning
+
+4
+00:00:06.240 --> 00:00:10.050
+performance on data with
+a certain audio tag,
+
+5
+00:00:10.050 --> 00:00:13.275
+say speech with car
+noise in the background.
+
+6
+00:00:13.275 --> 00:00:15.360
+Let's take a look
+at how you can take
+
+7
+00:00:15.360 --> 00:00:17.925
+a data centric approach
+
+8
+00:00:17.925 --> 00:00:20.820
+to improving your learning
+outcomes performance.
+
+9
+00:00:20.820 --> 00:00:22.560
+You've heard me speak before
+
+10
+00:00:22.560 --> 00:00:27.390
+about model centric versus
+data centric AI developments.
+
+11
+00:00:27.390 --> 00:00:31.155
+Here's a little more
+detail on what I mean.
+
+12
+00:00:31.155 --> 00:00:34.380
+With a model centric
+view of AI developments,
+
+13
+00:00:34.380 --> 00:00:36.570
+you would take the
+data you have and
+
+14
+00:00:36.570 --> 00:00:38.670
+then try to work really hard to
+
+15
+00:00:38.670 --> 00:00:42.630
+develop a model that does as
+well as possible on the data
+
+16
+00:00:42.630 --> 00:00:44.790
+because a lot of
+academic research on
+
+17
+00:00:44.790 --> 00:00:47.190
+AI was driven by researchers,
+
+18
+00:00:47.190 --> 00:00:49.575
+downloading a benchmark data set
+
+19
+00:00:49.575 --> 00:00:52.225
+and trying to do well
+on that benchmark.
+
+20
+00:00:52.225 --> 00:00:56.580
+Most academic research
+on AI is model centric,
+
+21
+00:00:56.580 --> 00:01:00.060
+because the benchmark data
+set is a fixed quantity.
+
+22
+00:01:00.060 --> 00:01:02.969
+In this view, model
+centric development,
+
+23
+00:01:02.969 --> 00:01:06.390
+you would hold the data fixed
+and iterative the improve.
+
+24
+00:01:06.390 --> 00:01:09.075
+In this model centric view,
+
+25
+00:01:09.075 --> 00:01:11.490
+you would hold the data fixed and
+
+26
+00:01:11.490 --> 00:01:14.785
+iteratively improve
+the code or the model.
+
+27
+00:01:14.785 --> 00:01:17.490
+There's still an
+important role to play
+
+28
+00:01:17.490 --> 00:01:20.010
+in trying to come up
+with better models,
+
+29
+00:01:20.010 --> 00:01:23.040
+but that's a different
+view of AI developments
+
+30
+00:01:23.040 --> 00:01:26.925
+which I think is more useful
+for many applications.
+
+31
+00:01:26.925 --> 00:01:29.010
+Which is to shift a data from
+
+32
+00:01:29.010 --> 00:01:31.875
+a model centric to what
+a data centric view.
+
+33
+00:01:31.875 --> 00:01:34.020
+In this view, we think of
+
+34
+00:01:34.020 --> 00:01:36.630
+the quality of the
+data as paramount,
+
+35
+00:01:36.630 --> 00:01:41.010
+and you can use tools
+such as era analysis or
+
+36
+00:01:41.010 --> 00:01:43.680
+data augmentation
+to systematically
+
+37
+00:01:43.680 --> 00:01:46.440
+improve the data quality.
+
+38
+00:01:46.440 --> 00:01:48.330
+For many applications, I
+
+39
+00:01:48.330 --> 00:01:50.340
+find that if your
+data is good enough,
+
+40
+00:01:50.340 --> 00:01:53.300
+there are multiple models
+that will do just fine.
+
+41
+00:01:53.300 --> 00:01:56.415
+In this view, you can
+instead hold the code
+
+42
+00:01:56.415 --> 00:01:59.940
+fixed and iteratively
+improve the data.
+
+43
+00:01:59.940 --> 00:02:02.745
+There's a role for model
+centric development,
+
+44
+00:02:02.745 --> 00:02:06.565
+and there's a role for
+data centric development.
+
+45
+00:02:06.565 --> 00:02:08.940
+If you've been used
+to model centric
+
+46
+00:02:08.940 --> 00:02:10.530
+thinking for most of
+
+47
+00:02:10.530 --> 00:02:12.115
+your experience with
+machine learning,
+
+48
+00:02:12.115 --> 00:02:13.320
+I would urge you to
+
+49
+00:02:13.320 --> 00:02:16.515
+consider taking a data
+centric view as well,
+
+50
+00:02:16.515 --> 00:02:17.940
+where when you're trying to
+
+51
+00:02:17.940 --> 00:02:20.145
+improve your learning
+outcomes performance,
+
+52
+00:02:20.145 --> 00:02:25.200
+try asking how can you make
+your data set even better?
+
+53
+00:02:25.200 --> 00:02:28.650
+One of the most important
+ways to improve
+
+54
+00:02:28.650 --> 00:02:32.610
+the quality of a data set
+is data augmentation.
+
+55
+00:02:32.610 --> 00:02:35.310
+Let's go on to the next
+video where we'll start
+
+56
+00:02:35.310 --> 00:02:38.770
+to take a look at
+data augmentation.

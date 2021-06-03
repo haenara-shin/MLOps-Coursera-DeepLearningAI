@@ -1,0 +1,67 @@
+As you're working to iteratively
+improve your algorithm. One thing, that'll help you be a bit more efficient is to make sure that you have robust
+experiment tracking. Let's take a look at
+some best practices. When you're running
+dozens or hundreds or maybe even more experiments, it's easy to forget what experiments you
+have already run. Having a system for tracking your experiments can help
+you be more efficient in making the decisions on
+the data or the model or hyperparameters to systematically improve your
+algorithm's performance. When you are tracking the
+experiments you've run, meaning the models
+you've trained, here are some things I
+would urge you to track. One, is to keep track of what algorithm you're using
+and what version of code. Keeping a record of
+this will make it much easier for
+you to go back and replicate the experiment
+you had run maybe two weeks ago and whose details you may not fully
+remember anymore. Second, keep track of
+the data set you use. Third, hyperparameters
+and fourth, save the results somewhere. This should include at least
+the high level metrics such as accuracy or F1 score
+or the relevant metrics, but if possible, it'd
+be useful to just save a copy of the trained model. How can you track these things? Here are some tracking
+tools you might consider. A lot of individuals
+and sometimes even teams will start
+off with text files. When I'm running
+experiment by myself, I might use a text file
+to just make a note with a few lines of text per experiment to note
+down what I was doing. This does not scale well, but it may be okay for
+small experiments. A lot of teams then migrate from text files to spreadsheets, especially shared spreadsheets, if you're working in a team where different columns of a
+spreadsheet could keep track of the different things you want to track for the different experiments
+you're running. Spreadsheets actually
+scale quite a bit further, especially shared
+spreadsheets that multiple members of a team
+may be able to look at. But beyond a certain point, some teams will also consider migrating to a more formal
+experiment tracking system. The space of experiment
+tracking systems is still evolving rapidly, and so does a growing
+set of tools out there. But some examples
+include Weight &Biases, Comet, MLflow, Sage Maker Studio, Verta.ai Granseal also has its own experiment
+tracking tool focusing on computed vision and
+manufacturing applications. When I'm trying to
+use a tracking tool, weather a text file or a spreadsheet or
+some larger system, here are some of
+things I look at. First is, does it give me all the information needed
+to replicate the results? In terms of replicability, one thing to watch out for is if your learning algorithm
+pulls data off the Internet. Because data off the
+Internet can change, that can decrease replicability unless you're careful in how
+your system is implemented. Second, tools that
+help you quickly understand the
+experimental results of a specific training run, ideally with useful
+summary metrics and maybe even a bit of
+a in-depth analysis, can help you more quickly look at your most recent
+experiments or even look at older experiments and
+remember what had happened. Finally, some other
+features to consider, resource monitoring, how much CPU/GPU memory
+resources do it use? Or tools to help you
+visualize the trained model or even tools to help you with a more in-depth error analysis? I've found all of
+these to sometimes be useful features of experiment
+tracking frameworks. Rather than worrying
+too much about exactly which experiment tracking
+framework to use though, the number one thing I hope you take away
+from this video is, do got to have some system, even if it's just a text file or just a spreadsheet
+for keeping track of your experiments and include as much information as is
+convenient to include. Because later on, if
+you try to look back, remember how you had
+generated a certain model, having that information
+would be really useful for helping you to
+replicate your own results.

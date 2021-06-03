@@ -1,0 +1,284 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.155
+Say you've identified
+the problem,
+
+2
+00:00:02.155 --> 00:00:03.810
+found a worthy solution,
+
+3
+00:00:03.810 --> 00:00:06.120
+finish diligence for
+technical feasibility
+
+4
+00:00:06.120 --> 00:00:09.030
+and value and you think
+this is worth doing.
+
+5
+00:00:09.030 --> 00:00:11.010
+Let's take a look at
+the last steps of
+
+6
+00:00:11.010 --> 00:00:14.625
+the scoping process of
+milestones and resourcing.
+
+7
+00:00:14.625 --> 00:00:17.760
+Determining milestones
+and resourcing involves
+
+8
+00:00:17.760 --> 00:00:20.940
+writing out the key
+specifications for your project.
+
+9
+00:00:20.940 --> 00:00:23.520
+This will include
+machine learning metrics
+
+10
+00:00:23.520 --> 00:00:26.175
+such as accuracy or
+precision-recall.
+
+11
+00:00:26.175 --> 00:00:28.410
+For some applications,
+this may also
+
+12
+00:00:28.410 --> 00:00:31.680
+include fairness
+types of metrics.
+
+13
+00:00:31.680 --> 00:00:33.930
+The specification will
+often also include
+
+14
+00:00:33.930 --> 00:00:35.940
+software metrics regarding
+
+15
+00:00:35.940 --> 00:00:38.790
+the software system
+such as latency,
+
+16
+00:00:38.790 --> 00:00:40.470
+throughput, queries per second,
+
+17
+00:00:40.470 --> 00:00:41.610
+and so on given
+
+18
+00:00:41.610 --> 00:00:46.200
+the computational resources
+available, and if possible,
+
+19
+00:00:46.200 --> 00:00:49.140
+you might also write
+out estimates of
+
+20
+00:00:49.140 --> 00:00:50.880
+the business metrics you hope to
+
+21
+00:00:50.880 --> 00:00:52.980
+move for the project
+you're scoping,
+
+22
+00:00:52.980 --> 00:00:55.275
+such as how much
+incremental revenue
+
+23
+00:00:55.275 --> 00:00:57.180
+if you have a way
+of estimating that?
+
+24
+00:00:57.180 --> 00:00:58.680
+In addition, writing out
+
+25
+00:00:58.680 --> 00:01:01.140
+the resources needed,
+how much data?
+
+26
+00:01:01.140 --> 00:01:03.450
+From which teams? Personnel, any
+
+27
+00:01:03.450 --> 00:01:05.280
+help you need from
+cross-functional teams.
+
+28
+00:01:05.280 --> 00:01:07.560
+What software integrations, data
+
+29
+00:01:07.560 --> 00:01:09.030
+leaving support or other support
+
+30
+00:01:09.030 --> 00:01:10.815
+you need from other teams.
+
+31
+00:01:10.815 --> 00:01:14.790
+Finally, the timeline on
+
+32
+00:01:14.790 --> 00:01:16.090
+which you hope to achieve
+
+33
+00:01:16.090 --> 00:01:18.220
+certain milestones
+or deliverables.
+
+34
+00:01:18.220 --> 00:01:19.690
+Now, if you're looking at
+
+35
+00:01:19.690 --> 00:01:20.950
+a machine learning project
+
+36
+00:01:20.950 --> 00:01:22.180
+and you find that you're having
+
+37
+00:01:22.180 --> 00:01:23.785
+a very hard time
+
+38
+00:01:23.785 --> 00:01:27.190
+writing on some of these
+key specifications,
+
+39
+00:01:27.190 --> 00:01:31.300
+then you might also
+consider carrying out
+
+40
+00:01:31.300 --> 00:01:33.700
+a bench-marking exercise
+to compare it to
+
+41
+00:01:33.700 --> 00:01:35.860
+other similar projects that
+
+42
+00:01:35.860 --> 00:01:37.690
+others may have worked on before,
+
+43
+00:01:37.690 --> 00:01:41.470
+or building a proof
+of concept first in
+
+44
+00:01:41.470 --> 00:01:45.010
+order to get a better sense
+of what accuracy, precision,
+
+45
+00:01:45.010 --> 00:01:48.965
+or latency throughput or other
+metrics might be feasible,
+
+46
+00:01:48.965 --> 00:01:52.765
+and only after you've done
+that POC, proof of concept,
+
+47
+00:01:52.765 --> 00:01:55.390
+to then use that
+information to more
+
+48
+00:01:55.390 --> 00:01:58.570
+confidently scope out
+the milestones and
+
+49
+00:01:58.570 --> 00:02:03.160
+resources needed for a
+larger scale execution
+
+50
+00:02:03.160 --> 00:02:05.285
+of the project you have in mind.
+
+51
+00:02:05.285 --> 00:02:07.870
+That's it. Congratulations
+on making it
+
+52
+00:02:07.870 --> 00:02:10.290
+to the end of this
+section on scoping.
+
+53
+00:02:10.290 --> 00:02:13.090
+I hope that these
+ideas will help you to
+
+54
+00:02:13.090 --> 00:02:17.240
+pick valuable and meaningful
+projects to work on.
+
+55
+00:02:17.240 --> 00:02:21.475
+Thank you also for sticking
+with me from deployment,
+
+56
+00:02:21.475 --> 00:02:23.245
+through modeling,
+through training,
+
+57
+00:02:23.245 --> 00:02:25.344
+all the way back to scoping,
+
+58
+00:02:25.344 --> 00:02:26.770
+and I hope this framework of
+
+59
+00:02:26.770 --> 00:02:29.500
+the full cycle of machine
+learning project will
+
+60
+00:02:29.500 --> 00:02:31.105
+also be useful for
+
+61
+00:02:31.105 --> 00:02:34.760
+all the projects I hope
+you will build and deploy.

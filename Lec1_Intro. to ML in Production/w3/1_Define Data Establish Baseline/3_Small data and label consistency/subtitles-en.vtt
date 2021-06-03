@@ -1,0 +1,571 @@
+WEBVTT
+
+1
+00:00:00.640 --> 00:00:02.720
+In problems of a small dataset.
+
+2
+00:00:02.720 --> 00:00:06.580
+Having clean and
+consistent labels is especially important.
+
+3
+00:00:06.580 --> 00:00:08.740
+Let's start with an example.
+
+4
+00:00:08.740 --> 00:00:13.470
+One of the things I used to do is use
+machine learning to fly helicopters.
+
+5
+00:00:13.470 --> 00:00:19.488
+One things you might want to do is take us
+input the voltage apply to the motor or
+
+6
+00:00:19.488 --> 00:00:24.790
+to the helicopter rotor and
+predict what's the speed of the rotor.
+
+7
+00:00:24.790 --> 00:00:29.042
+You can have this type of problem,
+not just to find helicopters before
+
+8
+00:00:29.042 --> 00:00:33.030
+other control problems with
+controlling the speed of the motor.
+
+9
+00:00:33.030 --> 00:00:37.529
+So let's say you have a data
+set that looks like this where
+
+10
+00:00:37.529 --> 00:00:39.520
+you have five examples.
+
+11
+00:00:39.520 --> 00:00:44.182
+So a pretty small data
+set because this data
+
+12
+00:00:44.182 --> 00:00:48.584
+set that is the output Y is pretty noisy,
+
+13
+00:00:48.584 --> 00:00:53.840
+is difficult to know what is the function.
+
+14
+00:00:53.840 --> 00:00:58.824
+It's difficult to know what is
+the function you should use to
+
+15
+00:00:58.824 --> 00:01:02.540
+map voltage to the rotor speed in rpm.
+
+16
+00:01:02.540 --> 00:01:08.340
+Maybe it should be a straight line,
+something like that.
+
+17
+00:01:08.340 --> 00:01:10.070
+Or maybe something like that.
+
+18
+00:01:10.070 --> 00:01:14.200
+Or maybe it should go up and
+then be flat like that.
+
+19
+00:01:14.200 --> 00:01:16.100
+Or maybe it should be a curve like that.
+
+20
+00:01:16.100 --> 00:01:19.690
+Really hard to tell when
+you have a small data set.
+
+21
+00:01:19.690 --> 00:01:21.581
+five examples in noisy labels.
+
+22
+00:01:21.581 --> 00:01:25.440
+It's difficult to fit
+a function confidently.
+
+23
+00:01:25.440 --> 00:01:30.206
+Now, if you had a ton of data, this
+data set is equally noisy as the one on
+
+24
+00:01:30.206 --> 00:01:33.740
+the left, but
+you just have a lot more data.
+
+25
+00:01:33.740 --> 00:01:38.246
+Then the learning algorithm can
+average over the noisy data sets and
+
+26
+00:01:38.246 --> 00:01:40.160
+you can now fill a function.
+
+27
+00:01:40.160 --> 00:01:43.940
+You're pretty confidently looks like
+curve should be something like that.
+
+28
+00:01:43.940 --> 00:01:48.894
+A lot of AI had recently grown up in large
+consumer Internet companies which may
+
+29
+00:01:48.894 --> 00:01:54.140
+have 100 million users or billion
+users and does very large data sets.
+
+30
+00:01:54.140 --> 00:01:57.380
+And so, I think some of the practices for
+
+31
+00:01:57.380 --> 00:02:02.430
+how to deal with small data sets
+have not been emphasized as much
+
+32
+00:02:02.430 --> 00:02:07.100
+as would be needed to tackle
+problems where you don't have
+
+33
+00:02:07.100 --> 00:02:12.000
+100 million examples, but
+only 1000 or even fewer.
+
+34
+00:02:12.000 --> 00:02:16.810
+So to me, the interesting case is what
+if you still have a small data set?
+
+35
+00:02:16.810 --> 00:02:19.940
+Five examples same as
+the example on the left.
+
+36
+00:02:19.940 --> 00:02:23.370
+But you now have clean and
+consistent labels.
+
+37
+00:02:23.370 --> 00:02:28.051
+In this case you can pretty
+confidently fit a function
+
+38
+00:02:28.051 --> 00:02:32.220
+through your data and
+with only five examples.
+
+39
+00:02:32.220 --> 00:02:37.440
+You can build a pretty good model for
+predicting speed
+
+40
+00:02:37.440 --> 00:02:42.660
+as a function of the input
+voltage of trained computer
+
+41
+00:02:42.660 --> 00:02:48.813
+vision systems with just 30 images and
+had to work just fine.
+
+42
+00:02:48.813 --> 00:02:54.640
+And the key is usually to make sure that
+the labels are clean and consistent.
+
+43
+00:02:54.640 --> 00:02:59.344
+Let's take a look at another
+example of phone defect inspection,
+
+44
+00:02:59.344 --> 00:03:03.376
+the tosses, the tickets,
+input pictures like these and
+
+45
+00:03:03.376 --> 00:03:07.910
+to decide whether there is a defect or
+not on the phone.
+
+46
+00:03:07.910 --> 00:03:12.727
+Now, if labeling instructions
+are initially unclear,
+
+47
+00:03:12.727 --> 00:03:17.340
+then labors will label
+images inconsistently.
+
+48
+00:03:17.340 --> 00:03:20.672
+It may be that when
+there's a giant scratch,
+
+49
+00:03:20.672 --> 00:03:25.498
+sufficiently large one that everyone
+will agree as a defect, and
+
+50
+00:03:25.498 --> 00:03:30.254
+if there's a tiny little thing
+that inspectors will ignore it.
+
+51
+00:03:30.254 --> 00:03:35.668
+But there's this region of ambiguity
+where different inspectors will label
+
+52
+00:03:35.668 --> 00:03:42.640
+different scratches with a length between
+0.2 and 0.4 in slightly inconsistent ways.
+
+53
+00:03:42.640 --> 00:03:45.051
+So one solution to this would be to say,
+
+54
+00:03:45.051 --> 00:03:49.229
+why don't we try to get a lot more
+pictures of phones and scratches.
+
+55
+00:03:49.229 --> 00:03:51.535
+And then see what the inspectors do and
+
+56
+00:03:51.535 --> 00:03:54.791
+then maybe eventually we
+can train a neural network.
+
+57
+00:03:54.791 --> 00:03:59.513
+They can figure out from the image what
+is and what isn't a scratch on average.
+
+58
+00:03:59.513 --> 00:04:03.112
+Maybe that approach could work,
+but it'd be a lot of work and
+
+59
+00:04:03.112 --> 00:04:05.320
+require collecting a lot of images.
+
+60
+00:04:05.320 --> 00:04:10.411
+I found that it can be more fruitful
+to ask the inspectors to sit down and
+
+61
+00:04:10.411 --> 00:04:14.658
+just try to reach agreement on
+what is the size of scratch.
+
+62
+00:04:14.658 --> 00:04:19.241
+That would cause them to label
+a scratcher of a bounding box versus
+
+63
+00:04:19.241 --> 00:04:23.100
+decide is too small and
+not worth bothering labeling.
+
+64
+00:04:23.100 --> 00:04:28.607
+So in this example,
+if the labelers can agree that the point
+
+65
+00:04:28.607 --> 00:04:33.797
+of transition from where
+little ding becomes a defect.
+
+66
+00:04:33.797 --> 00:04:35.032
+Is a length of 0.3,
+
+67
+00:04:35.032 --> 00:04:38.616
+then the way they label the images
+becomes much more consistent.
+
+68
+00:04:38.616 --> 00:04:44.075
+And it becomes much easier for
+learning algorithm to take as input images
+
+69
+00:04:44.075 --> 00:04:50.840
+like this and consistently decide whether
+something is a scratch of the effect..
+
+70
+00:04:50.840 --> 00:04:52.080
+Just to be clear.
+
+71
+00:04:52.080 --> 00:04:57.964
+In this example, the input to the learning
+algorithm is images like that on the left,
+
+72
+00:04:57.964 --> 00:05:01.340
+not the stretched length
+like that on the right.
+
+73
+00:05:01.340 --> 00:05:06.002
+But the point is, if you can get
+inspectors to agree what is a scratch and
+
+74
+00:05:06.002 --> 00:05:07.580
+what is in the scratch.
+
+75
+00:05:07.580 --> 00:05:12.158
+And to define The task as
+putting bounding boxes around
+
+76
+00:05:12.158 --> 00:05:15.351
+defects are over 0.3 mm in length.
+
+77
+00:05:16.440 --> 00:05:19.932
+Then that will cause your images to
+be labeled more consistently and
+
+78
+00:05:19.932 --> 00:05:22.821
+allow your learning album
+to achieve higher accuracy.
+
+79
+00:05:22.821 --> 00:05:25.340
+Even when your data set isn't that big.
+
+80
+00:05:25.340 --> 00:05:28.776
+So you see the couple
+examples now of how label
+
+81
+00:05:28.776 --> 00:05:32.050
+consistency helps a learning algorithm.
+
+82
+00:05:32.050 --> 00:05:36.419
+I want to wrap up this video
+with one more thought,
+
+83
+00:05:36.419 --> 00:05:42.365
+which is that big data problems can
+have small data challenges too.
+
+84
+00:05:42.365 --> 00:05:47.589
+Specifically problems of the large
+data set, but where there's a long
+
+85
+00:05:47.589 --> 00:05:53.240
+tail of rare events in the input
+will have small data challenges too.
+
+86
+00:05:53.240 --> 00:05:58.134
+For example, the large web search engine
+companies all have very large data
+
+87
+00:05:58.134 --> 00:06:03.440
+sets of web search queries, but
+many web queries actually very rare.
+
+88
+00:06:03.440 --> 00:06:06.219
+And so the amount of click stream data for
+
+89
+00:06:06.219 --> 00:06:10.655
+the rare queries is actually small or
+take self-driving cars.
+
+90
+00:06:10.655 --> 00:06:15.018
+Self-driving car companies tend
+to have very large data sets,
+
+91
+00:06:15.018 --> 00:06:20.209
+collected from driving hundreds of
+thousands or millions of hours or more.
+
+92
+00:06:20.209 --> 00:06:24.585
+But there are rare occurrences that
+are critical to get right to make sure
+
+93
+00:06:24.585 --> 00:06:26.390
+a self-driving car is safe.
+
+94
+00:06:26.390 --> 00:06:32.275
+Such as that very rare occurrence of
+a young child running across the highway,
+
+95
+00:06:32.275 --> 00:06:37.290
+or that very rare occurrence of
+a truck parked across the highway.
+
+96
+00:06:37.290 --> 00:06:40.694
+So even if a self driving car
+has a very large data set,
+
+97
+00:06:40.694 --> 00:06:46.340
+the number of examples that may have of
+these rare events is actually very small.
+
+98
+00:06:46.340 --> 00:06:51.207
+And so ensuring label consistency
+in terms of how these rare
+
+99
+00:06:51.207 --> 00:06:55.880
+events are detective and
+labels is still very helpful for
+
+100
+00:06:55.880 --> 00:07:01.840
+improving self-driving cars or
+product recommended systems.
+
+101
+00:07:01.840 --> 00:07:06.195
+If you have a catalog of hundreds
+of thousands, or millions or
+
+102
+00:07:06.195 --> 00:07:09.645
+more items or
+product recommendation systems.
+
+103
+00:07:09.645 --> 00:07:14.850
+If you have an online catalog of anywhere
+from thousands to hundreds of thousands
+
+104
+00:07:14.850 --> 00:07:19.841
+to sometimes even millions of catalogs
+to sometimes even millions of items.
+
+105
+00:07:19.841 --> 00:07:24.808
+Then you will have a lot of
+products where the number sold
+
+106
+00:07:24.808 --> 00:07:27.940
+of that item is quite small.
+
+107
+00:07:27.940 --> 00:07:32.827
+And so the amount of data you
+have of users interacting with
+
+108
+00:07:32.827 --> 00:07:36.640
+the items in the long
+tail is actually small.
+
+109
+00:07:36.640 --> 00:07:41.231
+And if there's a way which is not easy,
+but there's a way to make sure that data
+
+110
+00:07:41.231 --> 00:07:45.630
+is clean and consistent, then that
+too will help you learning algorithm.
+
+111
+00:07:45.630 --> 00:07:49.065
+In terms of how it recommends or
+doesn't recommend items
+
+112
+00:07:49.065 --> 00:07:53.840
+in the long tail where the amount of
+data per item will tend to be low.
+
+113
+00:07:53.840 --> 00:07:58.300
+So when you have a small dataset
+label consistency is critical.
+
+114
+00:07:58.300 --> 00:08:03.240
+Even when you have a big data set,
+label consistency can be very important.
+
+115
+00:08:03.240 --> 00:08:05.411
+It's just that found it easier,
+
+116
+00:08:05.411 --> 00:08:11.540
+on average to get to label consistency on
+smaller data sets than on very large ones.
+
+117
+00:08:11.540 --> 00:08:16.276
+In the next video, we'll look at some
+concrete ideas and best practices for
+
+118
+00:08:16.276 --> 00:08:19.330
+improving your data,
+says label consistency.
+
+119
+00:08:19.330 --> 00:08:21.161
+Let's go on to the next video.

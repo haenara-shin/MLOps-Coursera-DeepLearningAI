@@ -1,0 +1,40 @@
+Say you've identified
+the problem, found a worthy solution, finish diligence for
+technical feasibility and value and you think
+this is worth doing. Let's take a look at
+the last steps of the scoping process of
+milestones and resourcing. Determining milestones
+and resourcing involves writing out the key
+specifications for your project. This will include
+machine learning metrics such as accuracy or
+precision-recall. For some applications,
+this may also include fairness
+types of metrics. The specification will
+often also include software metrics regarding the software system
+such as latency, throughput, queries per second, and so on given the computational resources
+available, and if possible, you might also write
+out estimates of the business metrics you hope to move for the project
+you're scoping, such as how much
+incremental revenue if you have a way
+of estimating that? In addition, writing out the resources needed,
+how much data? From which teams? Personnel, any help you need from
+cross-functional teams. What software integrations, data leaving support or other support you need from other teams. Finally, the timeline on which you hope to achieve certain milestones
+or deliverables. Now, if you're looking at a machine learning project and you find that you're having a very hard time writing on some of these
+key specifications, then you might also
+consider carrying out a bench-marking exercise
+to compare it to other similar projects that others may have worked on before, or building a proof
+of concept first in order to get a better sense
+of what accuracy, precision, or latency throughput or other
+metrics might be feasible, and only after you've done
+that POC, proof of concept, to then use that
+information to more confidently scope out
+the milestones and resources needed for a
+larger scale execution of the project you have in mind. That's it. Congratulations
+on making it to the end of this
+section on scoping. I hope that these
+ideas will help you to pick valuable and meaningful
+projects to work on. Thank you also for sticking
+with me from deployment, through modeling,
+through training, all the way back to scoping, and I hope this framework of the full cycle of machine
+learning project will also be useful for all the projects I hope
+you will build and deploy.

@@ -1,0 +1,918 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.010
+Data augmentation can be
+
+2
+00:00:02.010 --> 00:00:05.025
+a very efficient way
+to get more data,
+
+3
+00:00:05.025 --> 00:00:08.070
+especially for
+unstructured data problems
+
+4
+00:00:08.070 --> 00:00:11.175
+such as images,
+audio, maybe text.
+
+5
+00:00:11.175 --> 00:00:13.800
+But when carrying out
+data augmentation,
+
+6
+00:00:13.800 --> 00:00:16.545
+there're a lot of choices
+you have to make.
+
+7
+00:00:16.545 --> 00:00:18.105
+What are the parameters?
+
+8
+00:00:18.105 --> 00:00:21.330
+How do you design the
+data augmentation setup?
+
+9
+00:00:21.330 --> 00:00:24.630
+Let's dive into this to look
+at some best practices.
+
+10
+00:00:24.630 --> 00:00:26.055
+Take speech recognition.
+
+11
+00:00:26.055 --> 00:00:28.710
+Given an audio clip like this,
+
+12
+00:00:28.710 --> 00:00:30.690
+''AI is the new electricity''.
+
+13
+00:00:30.690 --> 00:00:35.790
+If you take background cafe
+noise that sounds like this
+
+14
+00:00:35.790 --> 00:00:43.900
+[NOISE] and add these two
+audio clips together.
+
+15
+00:00:43.900 --> 00:00:47.485
+Literally, take the two
+waveforms and sum them up,
+
+16
+00:00:47.485 --> 00:00:48.730
+then you can create
+
+17
+00:00:48.730 --> 00:00:51.365
+a synthetic example
+that sounds like this,
+
+18
+00:00:51.365 --> 00:00:55.350
+''AI is the new electricity''.
+
+19
+00:00:55.350 --> 00:00:57.330
+Sounds like someone saying,
+
+20
+00:00:57.330 --> 00:01:01.390
+AI is the new electricity
+in a noisy cafe.
+
+21
+00:01:01.390 --> 00:01:03.940
+This is one form of
+data augmentation that
+
+22
+00:01:03.940 --> 00:01:06.130
+lets you efficiently
+create a lot of
+
+23
+00:01:06.130 --> 00:01:10.840
+data that sounds like data
+collected in the cafe.
+
+24
+00:01:10.840 --> 00:01:12.970
+Or if you take the
+same audio clip,
+
+25
+00:01:12.970 --> 00:01:14.725
+''AI is the new electricity'',
+
+26
+00:01:14.725 --> 00:01:19.560
+and add it to background
+music [MUSIC],
+
+27
+00:01:19.560 --> 00:01:21.510
+that it sounds like
+someone saying it
+
+28
+00:01:21.510 --> 00:01:24.045
+with maybe the radio
+on in the background.
+
+29
+00:01:24.045 --> 00:01:25.755
+''AI Is the new electricity''.
+
+30
+00:01:25.755 --> 00:01:28.890
+Now when carrying out
+data augmentation,
+
+31
+00:01:28.890 --> 00:01:32.405
+there're a few decisions
+you need to make such
+
+32
+00:01:32.405 --> 00:01:37.170
+as what is the type of
+background noise and how loud
+
+33
+00:01:49.220 --> 00:01:54.225
+should the background noise
+be relative to the speech.
+
+34
+00:01:54.225 --> 00:01:56.360
+Let's take a look at some ways of
+
+35
+00:01:56.360 --> 00:01:58.895
+making these decisions
+systematically.
+
+36
+00:01:58.895 --> 00:02:00.890
+The goal of data augmentation,
+
+37
+00:02:00.890 --> 00:02:02.870
+is to create examples
+
+38
+00:02:02.870 --> 00:02:04.805
+that your learning
+algorithm can learn from.
+
+39
+00:02:04.805 --> 00:02:07.340
+As a framework for doing that,
+
+40
+00:02:07.340 --> 00:02:10.280
+I encourage you to think
+of how you can create
+
+41
+00:02:10.280 --> 00:02:14.900
+realistic examples that the
+algorithm does poorly on,
+
+42
+00:02:14.900 --> 00:02:16.700
+because if the algorithm already
+
+43
+00:02:16.700 --> 00:02:18.290
+does well in those examples,
+
+44
+00:02:18.290 --> 00:02:20.860
+then there's less for
+it to learn from.
+
+45
+00:02:20.860 --> 00:02:23.120
+But you want the
+examples to still
+
+46
+00:02:23.120 --> 00:02:25.400
+be ones that a human or
+
+47
+00:02:25.400 --> 00:02:27.620
+maybe some other baseline can do
+
+48
+00:02:27.620 --> 00:02:30.290
+well on, because otherwise,
+
+49
+00:02:30.290 --> 00:02:31.340
+one way to generate
+
+50
+00:02:31.340 --> 00:02:33.770
+examples that the
+algorithm does poorly on,
+
+51
+00:02:33.770 --> 00:02:36.500
+would be to just create
+examples that are so
+
+52
+00:02:36.500 --> 00:02:40.925
+noisy that no one can
+hear what anyone said,
+
+53
+00:02:40.925 --> 00:02:42.635
+but that's not helpful.
+
+54
+00:02:42.635 --> 00:02:45.185
+You want examples that
+
+55
+00:02:45.185 --> 00:02:48.275
+are hard enough to
+challenge the algorithm,
+
+56
+00:02:48.275 --> 00:02:50.960
+but not so hard that they're
+
+57
+00:02:50.960 --> 00:02:52.730
+impossible for any human or
+
+58
+00:02:52.730 --> 00:02:54.820
+any algorithm to ever do well on.
+
+59
+00:02:54.820 --> 00:02:56.670
+That's why when I'm
+
+60
+00:02:56.670 --> 00:03:00.425
+generating new examples
+using data augmentation,
+
+61
+00:03:00.425 --> 00:03:02.270
+I try to generate
+
+62
+00:03:02.270 --> 00:03:05.215
+examples that meets
+both of these criteria.
+
+63
+00:03:05.215 --> 00:03:07.550
+Now, one way that some people do
+
+64
+00:03:07.550 --> 00:03:11.120
+data augmentation is to
+generate an augmented data set,
+
+65
+00:03:11.120 --> 00:03:13.310
+and then train the
+learning algorithm and
+
+66
+00:03:13.310 --> 00:03:15.830
+see if the algorithm does
+better on the data set.
+
+67
+00:03:15.830 --> 00:03:18.680
+Then fiddle around with
+the parameters for
+
+68
+00:03:18.680 --> 00:03:20.540
+data augmentation and change
+
+69
+00:03:20.540 --> 00:03:22.825
+the learning algorithm
+again and so on.
+
+70
+00:03:22.825 --> 00:03:25.790
+This turns out to be quite
+inefficient because every
+
+71
+00:03:25.790 --> 00:03:28.865
+time you change your data
+augmentation parameters,
+
+72
+00:03:28.865 --> 00:03:30.080
+you need to train
+
+73
+00:03:30.080 --> 00:03:32.285
+your new network or change
+your learning algorithm
+
+74
+00:03:32.285 --> 00:03:35.805
+all over and this can
+take a long time.
+
+75
+00:03:35.805 --> 00:03:38.670
+Instead, I found that
+using these principles,
+
+76
+00:03:38.670 --> 00:03:41.150
+allows you to sanity check that
+
+77
+00:03:41.150 --> 00:03:44.480
+your new data generated
+using data augmentation is
+
+78
+00:03:44.480 --> 00:03:47.180
+useful without actually having to
+
+79
+00:03:47.180 --> 00:03:50.090
+spend maybe hours or
+sometimes days of
+
+80
+00:03:50.090 --> 00:03:52.700
+training or learning
+algorithm on that data to
+
+81
+00:03:52.700 --> 00:03:54.110
+verify that it will
+
+82
+00:03:54.110 --> 00:03:56.155
+result in the
+performance improvement.
+
+83
+00:03:56.155 --> 00:03:59.120
+Specifically, here's a
+checklist you might go
+
+84
+00:03:59.120 --> 00:04:02.455
+through when you are
+generating new data.
+
+85
+00:04:02.455 --> 00:04:05.030
+One, doesn't sound realistic.
+
+86
+00:04:05.030 --> 00:04:07.215
+You want your audio to
+actually sound like
+
+87
+00:04:07.215 --> 00:04:08.930
+realistic audio of the sort
+
+88
+00:04:08.930 --> 00:04:10.990
+that you want your
+algorithm to perform on.
+
+89
+00:04:10.990 --> 00:04:13.965
+Two, is the X to Y mapping clear?
+
+90
+00:04:13.965 --> 00:04:17.735
+In other words, can humans
+still recognize what was said?
+
+91
+00:04:17.735 --> 00:04:20.540
+This is to verify point two here.
+
+92
+00:04:20.540 --> 00:04:22.800
+Three, is the algorithm
+
+93
+00:04:22.800 --> 00:04:26.205
+currently doing poorly
+on this new data.
+
+94
+00:04:26.205 --> 00:04:29.595
+That helps you verify point one.
+
+95
+00:04:29.595 --> 00:04:31.310
+If you can generate data
+
+96
+00:04:31.310 --> 00:04:33.305
+that meets all of these criteria,
+
+97
+00:04:33.305 --> 00:04:35.000
+then that would give you
+
+98
+00:04:35.000 --> 00:04:37.190
+a higher chance that when you put
+
+99
+00:04:37.190 --> 00:04:38.510
+this data into your training
+
+100
+00:04:38.510 --> 00:04:41.250
+set and retrain the algorithm,
+
+101
+00:04:41.250 --> 00:04:43.880
+then that will result
+in you successfully
+
+102
+00:04:43.880 --> 00:04:46.460
+pulling up part of
+this rubber sheet.
+
+103
+00:04:46.460 --> 00:04:48.605
+Let's look at one more example,
+
+104
+00:04:48.605 --> 00:04:50.360
+using images this time.
+
+105
+00:04:50.360 --> 00:04:53.090
+Let's say that you
+have a very small set
+
+106
+00:04:53.090 --> 00:04:55.965
+of images of smartphones
+with scratches.
+
+107
+00:04:55.965 --> 00:04:59.105
+Here's how you may be able
+to use data augmentation.
+
+108
+00:04:59.105 --> 00:05:02.100
+You can take the image
+and flip it horizontally.
+
+109
+00:05:02.100 --> 00:05:04.800
+This results in a
+pretty realistic image.
+
+110
+00:05:04.800 --> 00:05:06.810
+The phone buttons are
+now on the other side,
+
+111
+00:05:06.810 --> 00:05:09.094
+but this could be
+a useful example
+
+112
+00:05:09.094 --> 00:05:11.045
+to add to your training set.
+
+113
+00:05:11.045 --> 00:05:14.965
+Or you could implement
+contrast changes
+
+114
+00:05:14.965 --> 00:05:17.150
+or actually brighten up the image
+
+115
+00:05:17.150 --> 00:05:20.330
+here so the scratch is a
+little bit more visible.
+
+116
+00:05:20.330 --> 00:05:24.015
+Or you could try
+darkening the image,
+
+117
+00:05:24.015 --> 00:05:25.760
+but in this example,
+
+118
+00:05:25.760 --> 00:05:28.400
+the image is now so
+dark that even I as
+
+119
+00:05:28.400 --> 00:05:29.930
+a person can't really tell
+
+120
+00:05:29.930 --> 00:05:32.200
+if there's a scratch
+there or not.
+
+121
+00:05:32.200 --> 00:05:35.450
+Whereas these two
+examples on top would
+
+122
+00:05:35.450 --> 00:05:38.180
+pass the checklist
+we had earlier,
+
+123
+00:05:38.180 --> 00:05:40.885
+that the human can still
+detect the scratch well,
+
+124
+00:05:40.885 --> 00:05:43.080
+this example is too dark,
+
+125
+00:05:43.080 --> 00:05:45.290
+it would fail that checklists.
+
+126
+00:05:45.290 --> 00:05:46.980
+I would try to choose
+
+127
+00:05:46.980 --> 00:05:50.719
+the data augmentation scheme
+that generates more examples
+
+128
+00:05:50.719 --> 00:05:53.010
+that look like the
+ones on top and fill
+
+129
+00:05:53.010 --> 00:05:56.140
+the ones that look like the
+ones here at the bottom.
+
+130
+00:05:56.140 --> 00:05:58.940
+In fact, going off
+the principle that we
+
+131
+00:05:58.940 --> 00:06:01.820
+want images that look realistic,
+
+132
+00:06:01.820 --> 00:06:03.380
+that humans can do well on
+
+133
+00:06:03.380 --> 00:06:05.705
+and hopefully the
+algorithm does poorly on,
+
+134
+00:06:05.705 --> 00:06:06.950
+you can also use
+
+135
+00:06:06.950 --> 00:06:09.050
+more sophisticated
+techniques such
+
+136
+00:06:09.050 --> 00:06:10.940
+as take a picture of a phone with
+
+137
+00:06:10.940 --> 00:06:14.600
+no scratches and use Photoshop in
+
+138
+00:06:14.600 --> 00:06:18.875
+order to artificially
+draw a scratch.
+
+139
+00:06:18.875 --> 00:06:22.265
+This technique, literally
+using Photoshop,
+
+140
+00:06:22.265 --> 00:06:26.165
+can also be an effective way
+to generate more examples,
+
+141
+00:06:26.165 --> 00:06:29.255
+because this example
+of a scratch here,
+
+142
+00:06:29.255 --> 00:06:31.995
+you may or may not be able
+to see it depending on
+
+143
+00:06:31.995 --> 00:06:34.120
+the video compression and image
+
+144
+00:06:34.120 --> 00:06:36.190
+contrast where you're
+watching this video,
+
+145
+00:06:36.190 --> 00:06:38.200
+but with a scratch here,
+
+146
+00:06:38.200 --> 00:06:40.945
+this looks like a pretty
+realistic scratch
+
+147
+00:06:40.945 --> 00:06:43.195
+that's actually generated
+with Photoshop.
+
+148
+00:06:43.195 --> 00:06:46.450
+I as a person can
+recognize the scratch
+
+149
+00:06:46.450 --> 00:06:48.130
+and so if the learning algorithm
+
+150
+00:06:48.130 --> 00:06:49.765
+isn't detecting this right now,
+
+151
+00:06:49.765 --> 00:06:52.160
+this would be a great
+example to add.
+
+152
+00:06:52.160 --> 00:06:55.675
+I've also used more advanced
+techniques like GANs,
+
+153
+00:06:55.675 --> 00:06:57.580
+Generative Adversarial
+Networks to
+
+154
+00:06:57.580 --> 00:06:59.950
+synthesize scratches like
+these automatically,
+
+155
+00:06:59.950 --> 00:07:01.600
+although I found that techniques
+
+156
+00:07:01.600 --> 00:07:03.640
+like that can also be overkill,
+
+157
+00:07:03.640 --> 00:07:05.825
+meaning that there're simpler
+techniques that are much
+
+158
+00:07:05.825 --> 00:07:08.185
+faster to implement that work
+
+159
+00:07:08.185 --> 00:07:10.360
+just fine without
+the complexity of
+
+160
+00:07:10.360 --> 00:07:14.045
+building again to
+synthesize scratches.
+
+161
+00:07:14.045 --> 00:07:19.900
+You may have heard of the
+term model iteration,
+
+162
+00:07:19.900 --> 00:07:23.960
+which refers to iteratively
+training a model using
+
+163
+00:07:23.960 --> 00:07:25.760
+error analysis and then trying to
+
+164
+00:07:25.760 --> 00:07:28.370
+decide how to improve the model.
+
+165
+00:07:28.370 --> 00:07:31.985
+Taking a data-centric
+approach AI developments,
+
+166
+00:07:31.985 --> 00:07:35.355
+sometimes it's useful
+to instead use
+
+167
+00:07:35.355 --> 00:07:37.700
+a data iteration loop where you
+
+168
+00:07:37.700 --> 00:07:40.625
+repeatedly take the
+data and the model,
+
+169
+00:07:40.625 --> 00:07:44.055
+train your learning
+algorithm, do error analysis,
+
+170
+00:07:44.055 --> 00:07:46.100
+and as you go through this loop,
+
+171
+00:07:46.100 --> 00:07:47.960
+focus on how to add
+
+172
+00:07:47.960 --> 00:07:51.500
+data or improve the
+quality of the data.
+
+173
+00:07:51.500 --> 00:07:54.020
+For many practical applications,
+
+174
+00:07:54.020 --> 00:07:57.370
+taking this data
+iteration loop approach,
+
+175
+00:07:57.370 --> 00:08:01.485
+with a robust [inaudible]
+search, that's important too.
+
+176
+00:08:01.485 --> 00:08:03.980
+Taking of data iteration
+loop approach,
+
+177
+00:08:03.980 --> 00:08:05.824
+results in faster improvements
+
+178
+00:08:05.824 --> 00:08:07.960
+to your learning
+algorithm performance,
+
+179
+00:08:07.960 --> 00:08:09.660
+depending on your problem.
+
+180
+00:08:09.660 --> 00:08:13.460
+When you're working on an
+unstructured data problem,
+
+181
+00:08:13.460 --> 00:08:15.530
+data augmentation, if you can
+
+182
+00:08:15.530 --> 00:08:18.290
+create new data that
+seems realistic,
+
+183
+00:08:18.290 --> 00:08:20.450
+that humans can do quite well on,
+
+184
+00:08:20.450 --> 00:08:22.570
+but the algorithm struggles on,
+
+185
+00:08:22.570 --> 00:08:24.790
+that can be an efficient way to
+
+186
+00:08:24.790 --> 00:08:27.550
+improve your learning
+algorithm performance.
+
+187
+00:08:27.550 --> 00:08:30.190
+If you fall through
+error analysis,
+
+188
+00:08:30.190 --> 00:08:31.510
+that you're learning
+algorithm does
+
+189
+00:08:31.510 --> 00:08:34.135
+poorly on speech with cafe noise,
+
+190
+00:08:34.135 --> 00:08:37.300
+data augmentation to
+generate more data with
+
+191
+00:08:37.300 --> 00:08:38.530
+cafe noise could be
+
+192
+00:08:38.530 --> 00:08:39.790
+an efficient way to
+
+193
+00:08:39.790 --> 00:08:42.015
+improve your learning
+algorithm performance.
+
+194
+00:08:42.015 --> 00:08:44.800
+Now, when you add
+data to your system,
+
+195
+00:08:44.800 --> 00:08:47.080
+the question I've
+often been asked is,
+
+196
+00:08:47.080 --> 00:08:51.740
+can adding data hurt your
+learning algorithm performance?
+
+197
+00:08:51.740 --> 00:08:53.190
+Usually, for
+
+198
+00:08:53.190 --> 00:08:55.875
+unstructured data performance,
+the answer is no,
+
+199
+00:08:55.875 --> 00:08:57.820
+with some caveats, but let's dive
+
+200
+00:08:57.820 --> 00:09:00.890
+more deeply into this
+in the next video.

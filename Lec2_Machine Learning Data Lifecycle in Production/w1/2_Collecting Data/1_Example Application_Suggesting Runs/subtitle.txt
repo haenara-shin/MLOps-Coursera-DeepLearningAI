@@ -1,0 +1,106 @@
+Now let's talk about
+collecting data and look at an
+example application. For this example, we're
+going to be looking at an application that
+suggests runs to runners. There's different runners with different level of fitness. The first step is
+really to try to understand the users
+as we've discussed. This system is going to
+suggest runs based on the user's behavior and by leveraging observed
+patterns and preferences. The goal is to improve the
+consistency of running and for runners to complete those runs and to really
+be happy about that. Some key considerations.
+First of all, you need to consider data
+quality and data collection. What kind of data and how
+much data do you need? How often do you need new data? When do you expect
+things to change? Is that data annotated? You also need to translate the user needs into data needs. Understand the user's grade
+but at the end of the day we do need features and data. We need to first understand
+the user because otherwise we run the risk of collecting a bunch of data
+that is really just garbage. But once we understand the user, then we need to translate the
+user needs into data needs. We're going to do that with
+identifying what the data is, what the features are
+and what the labels are. Here's an example data set. We've got three different
+examples here for three different kinds of runs and we've got some features. The examples here are
+the Boston Marathon, the Seattle Oktoberfest 5K and
+the Houston Half-marathon. The 5K sounds good to me, I'm that kind of a runner. The features well,
+the Run itself, the Runner Time
+and the Elevation, which is also important. Then the labels here are just
+going to be how the runner rates the fun level
+of those runs. It looks like they
+agree with me that the 5K sounds like it'd be a lot of fun. Get
+to know your data. You need to identify the data sources that
+you're going to use, where are you going to get
+this data and not just the first time but on
+an ongoing basis? It's not just the training but you need to collect
+that same data, for you not to do inference when you want to
+create a prediction. You need to think about, how often do I need to
+refresh my trainings at? Along the way when you're
+working with your data, you need to make
+sure that there's actually predictive
+value, in your data. Anyone trying to make
+sure that you've eliminated features and data that does not have
+predictive value. But there's also some
+more basic things like, is the data consistent? When you're expecting,
+say a float do you always get a
+floater or is it mixed? Looking for things like
+outliers too or just errors. Because remember, you're
+dealing with systems you could have a sensor that goes bad and then you got an error. There could be data issues coming from different measurements, different types and
+also simple things like the difference between
+an end to the float or how missing value is encoded, that can all cause problems. In this example data set, if the elevation is zero feet, does that really mean
+that we're at sea level or does it mean
+that we don't have any elevation data
+for that record? If the output is coming from other ML models maybe if
+you're using an ensemble. If there's errors in those, then you can compound those errors when you try to use it in a downstream model. You also want to make
+sure that you're looking for errors
+and issues early in the process and monitoring the data sources for
+system issues and outages. Because remember, we're
+operating this thing, could be 24-7 easily, a lot of things are. Also, you need to expect to have system issues and outages. What if the app was
+offline for a while and the recorded runner time is wrong for some number of users, do you have ways
+to deal with that? Measuring the data effectiveness, you need some intuition
+about the data value, but your intuition
+can be misleading. You really need to make
+sure that you're looking at which data is really giving
+you the most information. Feature selection and feature
+engineering are really critical to shaping your data to be what you need it to be. The feature engineering
+will help you maximize the predictive signals once you've really identified
+where those are. Feature selection,
+that helps you measure where that predictive
+information is and really focus in on those features that give you the most value and help
+your model the most. Again, user needs. You need to understand
+the user and the application and in this case, we're looking at running
+data from an app. We can get demographic data when the user fills out
+their profile and we also probably can
+get some GPS data to give us some local
+geographic information. At high level that helps
+us understand the user. Then we need to translate
+that into features. The runner demographics,
+we need to express that as a feature or
+probably several features. Things like the time of day, how long it takes them
+to complete a run, their pace during the run, the distance and so forth, the elevation and if we're working with an app that has some sensors like a
+heart rate monitor, that's great information to have to really feed
+into this app, probably has some
+predictive information. But again, we need to test that. What our labels going to be? Runner acceptance in this case is a label that we
+want to focus on. Runners that take our
+suggestions and use them. That tells us that the app
+successfully gave them a run that they wanted
+to do and conversely, if they rejected it. User-generated feedback. You need to think
+about, first of all, how they're going to give
+you that feedback in a structured way that you can use to help with
+training your model. Then you know things
+like user rating. In this case of the enjoyment
+of the recommended runs. Again, it needs to be in
+a form that we can use. It can't just be free form
+unless you're going to do NLP to try to understand their paragraph of feedback but typically
+you're not going to do that. But anyway, the point here is
+that you need to understand the data and your user and how you're going
+to apply the labels. Key points: understand your
+user or your application, if there is no user, translate their needs
+into data problems and well-defined features that give you predictive information. What kind of data can you
+get? What's available? What are the details and
+issues for your data? Things like sensors. How reliable are they? Where's the predictive
+information in your data? It may not be where you think
+it is, it sometimes isn't. What are the labels? We
+need to make sure that we're training a model to
+predict the right thing. We need to make sure our labels are the correct
+ones for our goals. That's going to get
+to the metrics. What are the metrics that
+we're going to use to measure the performance of our model?

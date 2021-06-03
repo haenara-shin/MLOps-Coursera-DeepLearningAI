@@ -1,0 +1,152 @@
+Data sets where the ratio of positive to negative examples is very far from 50-50 are
+called skewed data sets. Let's look at some special
+techniques for handling them. Let me start with a
+manufacturing example. If a manufacturing company
+makes smartphones, hopefully, the vast majority
+of them are not defective. If 99.7 percent have no
+defect and are labeled y equals 0 and only a small fraction
+is labeled y equals 1, then print 0, which is not a very impressive
+learning algorithm. We achieve 99.7 percent accuracy. For medical diagnosis, which was the example we went through
+in an earlier video, if 99 percent of patients
+don't have a disease, then an algorithm that predicts
+no one ever has a disease will have 99 percent accuracy
+or speech recognition. If you're building a system
+for wake word detection, sometimes also called
+trigger word detection, these are systems that
+listen and see if you say a special word like Alexa
+or Okay Google or Hey Zoe, most of the time that special
+wake word or trigger word is not being spoken by anyone
+at that moment in time. When I had built wake
+word detection systems, the data sets were actually quite
+skewed. One of the data sets I used had 96.7 percent negative examples and 3.3 percent positive examples. When you have a very
+skewed data set like this, low accuracy is not
+that useful a metric to look at because print zero
+can get very high accuracy. Instead, it's more useful to build something called
+the confusion matrix. A confusion matrix
+is a matrix where one axis is labeled
+with the actual label, is the ground truth label, y equals 0 or y equals 1 and whose other axis is
+labeled with the prediction. Was your learning
+algorithms prediction y equals 0 or y equals 1? If you're building
+a confusion matrix, you fill in with each
+of these four cells, the total number of examples say the
+number of examples in your dev set in
+your development set to fell into each
+of these four buckets. Let's say that 905 examples
+in your development set had a drought-proof
+label of y equals 0 and then you might
+write 905 there. These examples are called true negatives because they were actually negative
+and your algorithm predicted they was negative. Next, lets fill in
+the true positives, which are the examples where
+the actual structure of labels one and the
+prediction is one, maybe there are 68 of
+them, true positives. The false negatives are the examples where your
+algorithm father was negative, but it was wrong. The actual label is positive, these are false negatives. The 18 of that and lastly, false positives
+are the ones where your algorithm
+father was positive, but that turned out to be
+false, nine false positives. The precision of
+learning algorithm, if I sum up over the columns, 905 plus 9 is 914 and
+18 plus 68 is 86. This is indeed a pretty
+skewed data set where out of 1000 examples there were 940 negative examples and
+just 86 positive examples, 8.6 percent positive,
+91.4 percent negative. The precision of your
+learning algorithm is defined as follows, it asks of all the examples that the algorithm thought
+were positive examples, what fraction did they get? Precision as is defined
+as true positives divided by true positives
+plus false positives. In other words, it
+looks at this row. Of all the examples that your average thoughts
+had a label of one, which is 68 plus 9 of them, 68 of them were actually right. The precision is
+68 over 68 plus 9, which is 88.3 percent. In contrast there we call
+as of all the examples, there were actually positive, what fraction did your
+algorithm get right? Recall is defined
+as true positives divided by true positives
+plus false negatives, which in this case is
+68 over 68 plus 18, which is 79.1 percent. The metrics are precision and
+recall are more useful than law accuracy when it
+comes to evaluating the performance of
+learning algorithms on very skewed data sets. Let's see what happens if your learning algorithm
+outputs zero all the time. It turns out it won't
+do very well on recall. Taking this example
+of where we had 914 negative examples and
+86 positive examples, if the algorithm outputs
+zero all the time. This is what the confusion
+matrix will look like, 914 times it'll output zero
+with a grand total of zero, and 86 times it'll output zero with a ground truth of one. Precision is true
+positives divided by true positives
+plus false positives, which in this case
+turns out to be zero over zero plus zero, which is not defined, and unless your
+algorithm actually outputs no positive
+labels at all, you get some of the number that hopefully isn't zero over zero. But more importantly,
+if you look at recall, which is true positives over true positives plus
+false negatives, this turns out to be
+zero over zero plus 86, which is zero percent, and so the 0.0 algorithm
+achieves zero percent recall, which gives you an easy way
+to flag that this is not detecting any useful,
+positive examples. The learning algorithm
+with some precision, even the high value of
+precision is not that useful usually if this
+recall is so low. The standard metrics when
+I look at when comparing different models on
+skewed data sets are precision and recall. Where looking at these
+numbers helps you figure out and of all the examples that
+are truly positive examples, what fraction did the
+algorithm manage to catch? Sometimes you have one model with a better recall and a different model with
+a better precision. How do you compare
+two different models? There's a common way of combining precision and recall
+using this formula, which is called the F_1 score. One intuition behind
+the F_1 score is that you want an algorithm to do well on both
+precision and recall, and if it does worse on either precision or
+recall, that's pretty bad. F_1 is a way of combining
+precision and recall that emphasizes whichever of P or R precision or recall is worse. In mathematics, this is
+technically called a harmonic mean between
+precision and recall, which is like taking
+the average but placing more emphasis on whichever
+is the lower number. If you compute the F_1
+score of these two models, it turns out to be 83.4 percent using the
+formula below here. Model 2 has a very bad recall, so its F_1 score is actually quite low as well
+and this lets us tell, maybe more clearly
+that Model 1 appears to be a superior
+model than Model 2. For your application,
+you may have a different weighting
+between position and recall, and so F_1 isn't the only way to combine
+precision and recall, it's just one metric
+that's commonly used for many applications. Let me step through
+one more example where precision and recall is useful. So far, we've talked about the binary classification
+problem with skewed data sets. It turns out to also
+frequently be useful for multi-class
+classification problems. If you are detecting
+defects in smartphones, you may want to
+detect scratches on them or dents or pit marks. This is what it looks
+like if someone took a screwdriver and
+poked their cell phone, or discoloration of the cell phone's LCD
+screen or other material. Maybe all four of these defects
+are actually quite rare that you might want to develop an algorithm that can
+detect all four of them. One way to evaluate
+how your algorithm is doing on all four
+of these defects, each of which can be quite rare, would be to look at precision
+and recall of each of these four types of
+defects individually. In this example, the
+learning algorithm has 82.1 percent precision on finding scratches and 99.2
+percent recall. You find in manufacturing that many factories will
+want high recall because you really
+don't want to let the phone go out
+that is defective. But if an algorithm has slightly lower
+precision, that's okay, because through a human
+re-examining the phone, they will hopefully figure out that the phone
+is actually okay, so many factories will
+emphasize high recall. By combining precision and
+recall using F_1 as follows, this gives you a single number
+evaluation metric for how well your algorithm is doing on the four different types of defects and can also
+help you benchmark to human-level performance and also prioritize what to work on next. Instead of accuracy on scratches, dents, pit marks,
+and discolorations, using F_1 score can help you to prioritize the most fruitful type of defect to try to work on. The reason we use F_1 is because, maybe all four defects are
+very rare and so accuracy would be very high even if the algorithm was missing
+a lot of these defects. I hope that these tools
+will help you both evaluate your algorithm as well as
+prioritize what to work on, both in problems with
+skewed data sets and for problems with
+multiple rare classes. Now, to wrap up the
+section on Error Analysis, there's one final concept I
+hope to go over with you, which is Performance Auditing. I found for many projects this
+is a key step to make sure the learning algorithm
+is working well enough before you push it out to
+a production deployment. Let's take a look at
+Performance Auditing.

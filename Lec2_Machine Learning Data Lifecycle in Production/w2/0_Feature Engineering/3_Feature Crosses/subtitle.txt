@@ -1,0 +1,44 @@
+Now let's take a look
+at Feature Crosses. Feature Crosses is the main thing that we're going to be talking
+about in this section. We're also going to
+take a quick look at encoding features. What are Feature crosses? Well, they combine
+multiple features together into a new feature. That's fundamentally
+what a feature across. It encodes non-linearity
+in the feature space, or encodes the same information
+and fewer features. We can create many
+different kinds of feature crosses and it
+really depends on our data. It requires a little bit of imagination to look for
+ways to try to do that, to combine the
+features that we have. For example, if we have
+numerical features, we could multiply two
+features and produce one feature that has an
+expression of those two features. X number of features, we could multiply
+them all together if there are numerical features and then end up with
+one feature instead of say five. That's great. We can also take
+categorical features or even numerical features and combine them in ways that
+make a semantic sense. Taking the day of
+the week and hour, if those are two different
+features that we have, putting those together, we
+can express that as the hour of the week and we have the same information
+in one feature. To encode features, well, let's look at some examples. Suppose we have a
+data-set that's looking at healthy trees and sick tree. We're going to use a
+scatter-plot to try to understand our data. We're looking at the
+scatter plot and we use some visualization tools, and we ask ourselves, can we draw a line to separate these two groups,
+these two clusters? If we can use a line to
+create the decision boundary, then we know that we can use a linear model. That's great. In this case, looking at this, we could use a line to
+do that separation. That's great. Linear
+models are very efficient. We love that, but let's suppose
+the data looks like this. Not so easy anymore. This becomes a
+non-linear program. Then the question is, can we project this data into a linear space and use
+it with a linear model, or do we have to use
+a non-linear model to work with this data? Because if we try to draw just a linear classification
+boundary with a data as is, it doesn't really work too great. Again, we can use
+visualization tools to help us understand this. Looking at our data
+really helps inform us and guide the choices that we make as developers
+about what kind of models we choose and what
+feature engineering we apply. Key points here,
+Feature Crossing as a way to create
+synthetic features, often encoding non-linearity
+in the features space. We're going to transform both
+categorical and numerical. We could do that in, into either continuous variables
+or the other way around.

@@ -1,0 +1,1127 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.930
+Hey, and welcome to collecting,
+
+2
+00:00:03.930 --> 00:00:06.555
+labeling, and validating data.
+
+3
+00:00:06.555 --> 00:00:10.575
+This course is all about
+data and not just data,
+
+4
+00:00:10.575 --> 00:00:14.220
+but data in a production
+machine learning setting,
+
+5
+00:00:14.220 --> 00:00:16.080
+you'll discover that there are
+
+6
+00:00:16.080 --> 00:00:17.640
+quite a few differences between
+
+7
+00:00:17.640 --> 00:00:19.920
+production data and data
+
+8
+00:00:19.920 --> 00:00:21.765
+that you might have
+been using in,
+
+9
+00:00:21.765 --> 00:00:24.315
+an academic or
+research environment
+
+10
+00:00:24.315 --> 00:00:26.895
+and that's what this
+course is all about.
+
+11
+00:00:26.895 --> 00:00:28.845
+I'm really excited
+to get started,
+
+12
+00:00:28.845 --> 00:00:30.380
+so let's get going.
+
+13
+00:00:30.380 --> 00:00:32.060
+We've got some really
+important stuff
+
+14
+00:00:32.060 --> 00:00:33.455
+to talk about this week.
+
+15
+00:00:33.455 --> 00:00:35.900
+This week is all about data,
+
+16
+00:00:35.900 --> 00:00:40.100
+collecting our data, labeling
+it, and validating it.
+
+17
+00:00:40.100 --> 00:00:42.815
+Let's get started
+before we jump in.
+
+18
+00:00:42.815 --> 00:00:45.500
+I know there maybe some of
+you who are coming from
+
+19
+00:00:45.500 --> 00:00:48.680
+a more academic or
+research setting
+
+20
+00:00:48.680 --> 00:00:51.190
+who might be thinking data?
+
+21
+00:00:51.190 --> 00:00:52.820
+I already know all about
+
+22
+00:00:52.820 --> 00:00:55.280
+data what am I going
+to learn here?
+
+23
+00:00:55.280 --> 00:00:57.080
+Well, in production environments,
+
+24
+00:00:57.080 --> 00:00:58.820
+you discover some
+interesting things
+
+25
+00:00:58.820 --> 00:01:00.955
+about the importance of data.
+
+26
+00:01:00.955 --> 00:01:04.730
+Hear two quotes from
+ML practitioners
+
+27
+00:01:04.730 --> 00:01:08.990
+had businesses where Data
+and ML is mission-critical.
+
+28
+00:01:08.990 --> 00:01:13.095
+Talking about how they view
+the importance of data.
+
+29
+00:01:13.095 --> 00:01:16.490
+First, from Uber, Data is
+
+30
+00:01:16.490 --> 00:01:17.990
+the hardest part of ML and
+
+31
+00:01:17.990 --> 00:01:20.705
+the most important
+piece to get right.
+
+32
+00:01:20.705 --> 00:01:24.920
+Broken data is the most
+common cause of problems in
+
+33
+00:01:24.920 --> 00:01:29.920
+production ML Systems
+and next from Gojek,
+
+34
+00:01:29.920 --> 00:01:34.340
+no other activity in the
+machine learning lifecycle has
+
+35
+00:01:34.340 --> 00:01:37.280
+a higher return on
+investment than
+
+36
+00:01:37.280 --> 00:01:41.480
+improving the data a
+model has access to.
+
+37
+00:01:41.480 --> 00:01:44.570
+The truth is that if
+you go to just about
+
+38
+00:01:44.570 --> 00:01:46.460
+any production ML team
+
+39
+00:01:46.460 --> 00:01:48.620
+and ask them about the
+importance of data.
+
+40
+00:01:48.620 --> 00:01:51.070
+You'll get similar answers.
+
+41
+00:01:51.070 --> 00:01:53.040
+So that's why we're talking about
+
+42
+00:01:53.040 --> 00:01:55.795
+data because it's
+incredibly important to
+
+43
+00:01:55.795 --> 00:01:58.100
+success and the issues for
+
+44
+00:01:58.100 --> 00:02:00.830
+data in production
+environments are
+
+45
+00:02:00.830 --> 00:02:04.595
+very different from the academic
+or research environments
+
+46
+00:02:04.595 --> 00:02:06.685
+that you might be familiar with.
+
+47
+00:02:06.685 --> 00:02:08.840
+Okay, now that we've got
+
+48
+00:02:08.840 --> 00:02:11.825
+that out of the
+way, let's dive in.
+
+49
+00:02:11.825 --> 00:02:14.675
+So this is our Introduction to
+
+50
+00:02:14.675 --> 00:02:17.059
+Machine Learning for production
+
+51
+00:02:17.059 --> 00:02:19.710
+and we're going to
+start with an overview.
+
+52
+00:02:20.140 --> 00:02:23.375
+Let's get started by
+establishing what
+
+53
+00:02:23.375 --> 00:02:26.000
+Machine Learning
+and Production is?
+
+54
+00:02:26.000 --> 00:02:29.720
+And how you can view
+Production ML really as
+
+55
+00:02:29.720 --> 00:02:32.465
+a combination of ML development
+
+56
+00:02:32.465 --> 00:02:35.705
+and modern software
+development practices?
+
+57
+00:02:35.705 --> 00:02:38.300
+We'll also discuss
+some of the challenges
+
+58
+00:02:38.300 --> 00:02:41.910
+that are unique to Production ML.
+
+59
+00:02:42.190 --> 00:02:45.860
+In an academic or
+research setting,
+
+60
+00:02:45.860 --> 00:02:48.575
+modeling is really fairly simple.
+
+61
+00:02:48.575 --> 00:02:51.545
+Well, maybe not simple,
+
+62
+00:02:51.545 --> 00:02:53.845
+but perhaps less complicated.
+
+63
+00:02:53.845 --> 00:02:57.725
+Anyway, typically you
+have some dataset,
+
+64
+00:02:57.725 --> 00:03:00.245
+often standard dataset that
+
+65
+00:03:00.245 --> 00:03:02.930
+supplied to you and
+already cleaned and
+
+66
+00:03:02.930 --> 00:03:05.390
+labeled and you're
+going to use that to
+
+67
+00:03:05.390 --> 00:03:08.960
+train your model and
+evaluate the results.
+
+68
+00:03:08.960 --> 00:03:12.785
+The end result is a model
+that makes good predictions.
+
+69
+00:03:12.785 --> 00:03:14.570
+So you'll probably go through
+
+70
+00:03:14.570 --> 00:03:17.525
+a few iterations to fully
+optimize the model.
+
+71
+00:03:17.525 --> 00:03:19.880
+Once you're satisfied
+with the results,
+
+72
+00:03:19.880 --> 00:03:21.680
+then typically you're done.
+
+73
+00:03:21.680 --> 00:03:25.790
+Production ML requires a
+lot more than just a model.
+
+74
+00:03:25.790 --> 00:03:29.720
+We found that the model is
+typically about 5 percent of
+
+75
+00:03:29.720 --> 00:03:31.280
+the code required to put
+
+76
+00:03:31.280 --> 00:03:34.940
+an ML application
+into production.
+
+77
+00:03:34.940 --> 00:03:37.370
+Take a look at all
+the other boxes
+
+78
+00:03:37.370 --> 00:03:38.870
+that are in this
+diagram and you'll
+
+79
+00:03:38.870 --> 00:03:42.410
+get some idea about what we're
+going to be talking about.
+
+80
+00:03:42.410 --> 00:03:44.630
+Fundamentally, we're not just
+
+81
+00:03:44.630 --> 00:03:46.760
+talking about machine
+learning and modeling.
+
+82
+00:03:46.760 --> 00:03:50.255
+We're talking about
+Production ML applications
+
+83
+00:03:50.255 --> 00:03:52.370
+and what it takes to create them,
+
+84
+00:03:52.370 --> 00:03:54.860
+deploy them, maintain them,
+
+85
+00:03:54.860 --> 00:03:56.870
+and improve them so that
+
+86
+00:03:56.870 --> 00:03:59.540
+you can make them
+available to your users
+
+87
+00:03:59.540 --> 00:04:01.340
+and your business or
+
+88
+00:04:01.340 --> 00:04:02.690
+your organization if you're
+
+89
+00:04:02.690 --> 00:04:05.310
+doing something
+like a non-profit.
+
+90
+00:04:05.860 --> 00:04:08.420
+Let's compare some of
+
+91
+00:04:08.420 --> 00:04:11.419
+the differences between ML
+modeling in a researcher,
+
+92
+00:04:11.419 --> 00:04:15.335
+academic setting and
+real production ML.
+
+93
+00:04:15.335 --> 00:04:19.835
+To start with, in an academic
+or research environment,
+
+94
+00:04:19.835 --> 00:04:23.195
+you're typically using
+a static dataset
+
+95
+00:04:23.195 --> 00:04:27.710
+for Production ML
+real-world data is used,
+
+96
+00:04:27.710 --> 00:04:31.085
+which is dynamic and
+usually shifting.
+
+97
+00:04:31.085 --> 00:04:33.170
+The design priority for
+
+98
+00:04:33.170 --> 00:04:35.870
+academic or research
+ML is usually
+
+99
+00:04:35.870 --> 00:04:41.130
+the highest accuracy over
+the entire training set but
+
+100
+00:04:41.130 --> 00:04:42.350
+the design priority for
+
+101
+00:04:42.350 --> 00:04:46.010
+Production ML is
+fast inference and
+
+102
+00:04:46.010 --> 00:04:52.525
+good interpretability and of
+course, accuracy and cost.
+
+103
+00:04:52.525 --> 00:04:56.910
+Model training for
+research ML is based on
+
+104
+00:04:56.910 --> 00:04:59.450
+a single optimal result and
+
+105
+00:04:59.450 --> 00:05:02.510
+the tuning and training
+necessary to achieve it.
+
+106
+00:05:02.510 --> 00:05:06.560
+Production ML requires
+continuous monitoring,
+
+107
+00:05:06.560 --> 00:05:09.500
+assessment, and retraining.
+
+108
+00:05:09.500 --> 00:05:12.680
+Interpretability and fairness is
+
+109
+00:05:12.680 --> 00:05:15.320
+very important for
+any ML modeling,
+
+110
+00:05:15.320 --> 00:05:20.155
+but it's absolutely
+crucial for Production ML.
+
+111
+00:05:20.155 --> 00:05:24.980
+Finally, while, the main
+challenge of academic and
+
+112
+00:05:24.980 --> 00:05:29.300
+research ML is finding intuiting,
+a high-accuracy model.
+
+113
+00:05:29.300 --> 00:05:32.660
+For production ML the
+challenge is that
+
+114
+00:05:32.660 --> 00:05:37.500
+plus everything else,
+the entire system.
+
+115
+00:05:38.680 --> 00:05:42.050
+It would be fair to
+say that you can look
+
+116
+00:05:42.050 --> 00:05:45.230
+at Production Machine Learning
+as both machine learning
+
+117
+00:05:45.230 --> 00:05:48.410
+itself and the
+knowledge and skillset
+
+118
+00:05:48.410 --> 00:05:52.635
+required and modern
+software development.
+
+119
+00:05:52.635 --> 00:05:55.120
+It really requires expertise in
+
+120
+00:05:55.120 --> 00:05:57.039
+both areas to be successful,
+
+121
+00:05:57.039 --> 00:06:00.429
+because you're not just
+producing a single result,
+
+122
+00:06:00.429 --> 00:06:03.580
+you're developing a
+product or service that
+
+123
+00:06:03.580 --> 00:06:07.255
+is often a mission critical
+part of your offering.
+
+124
+00:06:07.255 --> 00:06:10.724
+ML development itself
+focuses on specific issues
+
+125
+00:06:10.724 --> 00:06:14.905
+related with the data and
+the quality of predictions.
+
+126
+00:06:14.905 --> 00:06:16.630
+For example, assuming that
+
+127
+00:06:16.630 --> 00:06:18.025
+you're doing supervised learning,
+
+128
+00:06:18.025 --> 00:06:21.460
+then you need to make sure
+that your labels are accurate,
+
+129
+00:06:21.460 --> 00:06:23.170
+and you also need
+to make sure that
+
+130
+00:06:23.170 --> 00:06:25.875
+your training dataset
+has examples which cover
+
+131
+00:06:25.875 --> 00:06:27.940
+the same feature space as
+
+132
+00:06:27.940 --> 00:06:30.774
+the request that your
+model will receive.
+
+133
+00:06:30.774 --> 00:06:34.090
+You also want to reduce
+the dimensionality of
+
+134
+00:06:34.090 --> 00:06:37.500
+your feature vector to optimize
+your system performance,
+
+135
+00:06:37.500 --> 00:06:39.940
+while retaining or enhancing
+
+136
+00:06:39.940 --> 00:06:43.200
+the predictive
+information on your data.
+
+137
+00:06:43.200 --> 00:06:45.225
+Throughout all of this,
+
+138
+00:06:45.225 --> 00:06:47.039
+you need to consider and measure
+
+139
+00:06:47.039 --> 00:06:49.600
+the fairness of your
+data and model,
+
+140
+00:06:49.600 --> 00:06:52.030
+especially for rare conditions,
+
+141
+00:06:52.030 --> 00:06:55.555
+for example, in domains
+such as health care,
+
+142
+00:06:55.555 --> 00:06:59.020
+where rare but
+important conditions
+
+143
+00:06:59.020 --> 00:07:02.365
+may be absolutely
+critical to success.
+
+144
+00:07:02.365 --> 00:07:04.930
+But on top of all of that,
+
+145
+00:07:04.930 --> 00:07:07.270
+you're putting a piece
+of software into
+
+146
+00:07:07.270 --> 00:07:10.869
+production that requires
+a system design,
+
+147
+00:07:10.869 --> 00:07:13.555
+that includes all of the
+things that are required for
+
+148
+00:07:13.555 --> 00:07:16.380
+any production
+software deployment.
+
+149
+00:07:16.380 --> 00:07:18.580
+Of course, this
+deployment has to be
+
+150
+00:07:18.580 --> 00:07:22.075
+focused on ML and
+your application.
+
+151
+00:07:22.075 --> 00:07:24.820
+Is your system scalable?
+
+152
+00:07:24.820 --> 00:07:28.150
+Can you scale it
+both up and down?
+
+153
+00:07:28.150 --> 00:07:30.040
+Can you extend it
+
+154
+00:07:30.040 --> 00:07:33.580
+cleanly to add new
+stuff when you need to?
+
+155
+00:07:33.580 --> 00:07:37.465
+Does it have a clear,
+well-defined configuration?
+
+156
+00:07:37.465 --> 00:07:39.135
+Is it consistent?
+
+157
+00:07:39.135 --> 00:07:42.025
+Can you reliably
+reproduce results?
+
+158
+00:07:42.025 --> 00:07:44.935
+Is it hardened against attacks?
+
+159
+00:07:44.935 --> 00:07:47.295
+Is the design modular?
+
+160
+00:07:47.295 --> 00:07:50.200
+Following modern software
+development principles.
+
+161
+00:07:50.200 --> 00:07:53.515
+Can you test individual units?
+
+162
+00:07:53.515 --> 00:07:56.380
+Can you do end-to-end testing?
+
+163
+00:07:56.380 --> 00:08:00.915
+Can you continuously monitor
+the health and performance
+
+164
+00:08:00.915 --> 00:08:05.025
+of your system and be alerted
+when there are problems?
+
+165
+00:08:05.025 --> 00:08:08.820
+Have you adopted
+industry best practices?
+
+166
+00:08:08.820 --> 00:08:12.735
+Using a model in real-world
+applications requires
+
+167
+00:08:12.735 --> 00:08:14.800
+much more than just
+an understanding
+
+168
+00:08:14.800 --> 00:08:16.860
+of machine learning algorithms.
+
+169
+00:08:16.860 --> 00:08:18.715
+The first step is scoping,
+
+170
+00:08:18.715 --> 00:08:21.970
+which focuses on defining
+the project needs and
+
+171
+00:08:21.970 --> 00:08:25.615
+goals and the resources
+required to achieve them.
+
+172
+00:08:25.615 --> 00:08:28.290
+Next, you start
+working on your data,
+
+173
+00:08:28.290 --> 00:08:31.735
+which defining the
+features that you're
+
+174
+00:08:31.735 --> 00:08:35.935
+going to use well as organizing
+and labeling your data.
+
+175
+00:08:35.935 --> 00:08:38.500
+That may sometimes
+include measuring
+
+176
+00:08:38.500 --> 00:08:43.019
+human level performance to set
+a baseline for comparison.
+
+177
+00:08:43.020 --> 00:08:46.360
+Then you design
+and train a model.
+
+178
+00:08:46.360 --> 00:08:49.620
+In this phase, error
+analysis will help you
+
+179
+00:08:49.620 --> 00:08:53.730
+refine your model to suit
+your project's needs.
+
+180
+00:08:53.730 --> 00:08:55.780
+After training your model,
+
+181
+00:08:55.780 --> 00:08:57.585
+you deploy it so that it can be
+
+182
+00:08:57.585 --> 00:09:00.165
+used to serve
+prediction requests.
+
+183
+00:09:00.165 --> 00:09:01.900
+You might deploy your model on
+
+184
+00:09:01.900 --> 00:09:04.164
+mobile devices, on a Cloud,
+
+185
+00:09:04.164 --> 00:09:06.405
+or in IoT devices,
+
+186
+00:09:06.405 --> 00:09:08.670
+or even in a web browser.
+
+187
+00:09:08.670 --> 00:09:12.940
+Over time, real-world data
+continuously changes,
+
+188
+00:09:12.940 --> 00:09:14.150
+which can result in
+
+189
+00:09:14.150 --> 00:09:16.845
+a degradation of your
+model performance.
+
+190
+00:09:16.845 --> 00:09:18.800
+You need to continuously
+
+191
+00:09:18.800 --> 00:09:21.280
+monitor the performance
+of your model,
+
+192
+00:09:21.280 --> 00:09:23.745
+and if you measure a
+drop in performance,
+
+193
+00:09:23.745 --> 00:09:26.935
+you need to go back to model
+retraining and tuning,
+
+194
+00:09:26.935 --> 00:09:28.820
+or revise your data.
+
+195
+00:09:28.820 --> 00:09:31.910
+During deployment,
+new data may affect
+
+196
+00:09:31.910 --> 00:09:34.750
+your project design
+either positively or
+
+197
+00:09:34.750 --> 00:09:38.640
+negatively and risk coping
+might be necessary.
+
+198
+00:09:38.640 --> 00:09:41.500
+Ultimately, all these steps
+
+199
+00:09:41.500 --> 00:09:44.595
+create your production ML system,
+
+200
+00:09:44.595 --> 00:09:47.990
+which needs to run
+automatically such that
+
+201
+00:09:47.990 --> 00:09:51.375
+you're continuously monitoring
+your model performance,
+
+202
+00:09:51.375 --> 00:09:55.495
+ingesting new data, and
+retraining as needed,
+
+203
+00:09:55.495 --> 00:09:57.615
+and then redeploying to
+
+204
+00:09:57.615 --> 00:10:00.585
+maintain or improve
+your performance.
+
+205
+00:10:00.585 --> 00:10:03.470
+The challenges when
+doing production ML are
+
+206
+00:10:03.470 --> 00:10:07.285
+very different than
+academic or research ML,
+
+207
+00:10:07.285 --> 00:10:10.845
+or in some sense they're the
+same but include a lot more.
+
+208
+00:10:10.845 --> 00:10:13.575
+You're going to be building
+an integrated system
+
+209
+00:10:13.575 --> 00:10:16.420
+specifically focused
+on ML use cases.
+
+210
+00:10:16.420 --> 00:10:18.140
+You need to think about operating
+
+211
+00:10:18.140 --> 00:10:20.334
+it continuously in production,
+
+212
+00:10:20.334 --> 00:10:22.040
+and for online use cases,
+
+213
+00:10:22.040 --> 00:10:25.140
+that means it has to
+stay available 24/7.
+
+214
+00:10:25.140 --> 00:10:28.885
+You've got to think about
+and put systems in place,
+
+215
+00:10:28.885 --> 00:10:31.280
+to handle a changing world and
+
+216
+00:10:31.280 --> 00:10:33.640
+changing data, and of course,
+
+217
+00:10:33.640 --> 00:10:35.440
+like any production system,
+
+218
+00:10:35.440 --> 00:10:37.875
+you need to try to
+do all of this at
+
+219
+00:10:37.875 --> 00:10:43.230
+the minimum cost while producing
+the maximum performance.
+
+220
+00:10:43.230 --> 00:10:45.955
+It might seem daunting,
+
+221
+00:10:45.955 --> 00:10:48.130
+but the good news
+is that there are
+
+222
+00:10:48.130 --> 00:10:51.825
+well-established tools and
+methodologies for doing this,
+
+223
+00:10:51.825 --> 00:10:55.555
+and we'll be covering many
+of those in this course.
+
+224
+00:10:55.555 --> 00:10:58.565
+The challenges when
+doing production ML are
+
+225
+00:10:58.565 --> 00:11:02.045
+very different than
+academic or research ML,
+
+226
+00:11:02.045 --> 00:11:06.995
+or in some sense they're the
+same but include a lot more.
+
+227
+00:11:06.995 --> 00:11:09.800
+You're going to be building
+an integrated system
+
+228
+00:11:09.800 --> 00:11:13.495
+specifically focused
+on ML use cases.
+
+229
+00:11:13.495 --> 00:11:15.305
+You need to think about operating
+
+230
+00:11:15.305 --> 00:11:17.590
+it continuously in production,
+
+231
+00:11:17.590 --> 00:11:19.260
+and for online use cases,
+
+232
+00:11:19.260 --> 00:11:22.960
+that means it has to
+stay available 24/7.
+
+233
+00:11:22.960 --> 00:11:26.799
+You've got to think about
+and put systems in place,
+
+234
+00:11:26.799 --> 00:11:29.270
+to handle a changing world and
+
+235
+00:11:29.270 --> 00:11:32.170
+changing data, and of course,
+
+236
+00:11:32.170 --> 00:11:34.635
+like any production system,
+
+237
+00:11:34.635 --> 00:11:37.120
+you need to try to
+do all of this at
+
+238
+00:11:37.120 --> 00:11:42.070
+the minimum cost while producing
+the maximum performance.
+
+239
+00:11:42.070 --> 00:11:44.500
+It might seem daunting,
+
+240
+00:11:44.500 --> 00:11:46.700
+but the good news
+is that there are
+
+241
+00:11:46.700 --> 00:11:49.490
+well-established tools
+and methodologies for
+
+242
+00:11:49.490 --> 00:11:51.590
+doing all of this and you'll
+
+243
+00:11:51.590 --> 00:11:55.020
+learn a lot about
+them in this course.

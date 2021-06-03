@@ -1,0 +1,80 @@
+Now let's put this all together and look at a Hello world example
+with tensorflow Transform. So here's what we're going to do. We're going to collect some raw data and we're going to define
+the metadata around that data. Then we're going to run transform to
+transform the that raw data into features and that's going to produce a graph and
+we're going to in the background, we're going to be running analyzers and
+using tf.Transform. So we start with collecting our raw
+data which in this case is very simple, it's just some static data that
+we've created for the example. So we have three different features here,
+x, y and s. So we express the types of those features
+and information about them as metadata. So we're going to import the metadata
+module with intensive transform and we're going to express that
+metadata using a feature spe. So we can create a feature spec that expresses some information
+about our our feature. So this is telling us that,
+why is afloat feature first of all, and then it's a fixed length feature. So this is not a for
+example a sparse feature or ragged tensor, it's fixed length feature. So both y and x, or
+fixed length float features and then s,
+is a string feature also fixed length. So now we go this is our
+preprocessing function. This is where our user
+code is going to go. It's the entry point for
+our user code anyway, so you can see here we're pulling
+the values for x y and s from our inputs and then we're
+going to do some transformations. These are very simple transformation. So going to center x and
+that's going to require the mean. So that in the background without us
+thinking about it really is going to make a pass over the data or
+as it makes the pass, it's going to collect that means so
+we can use it here. We're also going to do a normalization
+using very simple scale to between zero and one. So that's our y normalize again going to
+need a pass over the data to do that. That's going to be the same pass,
+it only does one pass. And then we're going to take that
+string feature that we have s and we're going to create a vocabulary for
+it and apply it so that we get an integer value for
+for s, a vocabulary. And then we create a feature cross,
+so this is purely synthetic feature. So we're using our value for x, that we've centered in our value for
+y that we've normalized. And we're creating a synthetic
+feature called appropriately x centered times y normalized
+which is verbose but accurate. Okay, and then that's going to return
+well, the values that we just created so that's our feature engineering. We took in raw data and here are
+transformed features that we've created. We've engineered these features. So again we took tensors in, so for x we took integer values and
+for s we took strings and for y we also took integer values. Those passed through the code that we
+wrote to express our feature engineering. The entry point of that was
+the pre processing function. And coming out of that we
+get our engineered features including the vocabulary
+version of our string feature that we have created vocabulary for. So now we're going to run our code
+to do the processing that requires us to create a main in this case
+because we're just using pure tensorflow transform as a library
+to run our feature engineering. I want to point out though typically
+you would often be doing this in a TFX pipeline using
+a transform component. The code is really the same in
+the preprocessing function that we just looked at. But here it's a little bit
+different because we're running in tensorflow transform and not in
+a transform component in a TFX pipeline. So this is one of the ways
+that you can run transform. I just want to make you aware that this
+part that we're looking at here is not how it looks, when you run it in TFX. So here we're using we're just
+running it inside a main function and we're going to do that using Apache beam. That's going to require us to
+establish a context for Apache beam. And then we're going to define a beam
+pipeline using the beam python syntax, which is a little bit different
+than you might expect. One of the things to get used
+to here is the pipe operator. So what that says is I'm
+going to run tft beam. I've established that in the context,
+I'm going to use the analyze and transform data set to run
+my preprocessing function. That's going to return a result actually
+in this case is a tuple result. So it's going to return both the raw
+data and the raw data metadata. So this python syntax is a little
+bit different than what you might be used to for
+python that is specific to Apache be. So we have our transformed data,
+we have our transform metadata and we get that from our transformed data set. So we can print out the raw data and
+the transform data and run our main so before we ran
+transform we had features like this. After running transform we
+have features like this. So that's our transformation, we've we've transformed between our
+raw data and our engineer data. Yeah so, key points on this Hello
+world example of using tensorflow transform actually outside of tfx, although you would often be running this
+as part of the tfx transform component, it allows preprocessing on the input
+data and creating the features. Well, that's what transform is for. It's the feature engineering
+that we're going to do. It allows defining preprocessing
+pipelines that are going to run and and do their execution on large scale data
+processing frameworks using Apache beam. Apache beam runs on top of other
+frameworks like spark or flank or google cloud data flow or
+actually just on your laptop, using what's called the direct runner. In a tfx pipeline the transform
+component implements feature engineering using tensorflow transform. So the transform component is built
+using the transformed library, the tensorflow transformed library.

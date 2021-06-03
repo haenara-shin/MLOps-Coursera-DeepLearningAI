@@ -1,0 +1,1083 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.070
+The job of a machine
+learning engineer
+
+2
+00:00:02.070 --> 00:00:03.450
+would be much simpler if
+
+3
+00:00:03.450 --> 00:00:05.400
+the only thing we
+ever had to do was
+
+4
+00:00:05.400 --> 00:00:07.665
+do well on the holdout test set.
+
+5
+00:00:07.665 --> 00:00:10.995
+As hard as it is to do well
+in the holdout test set,
+
+6
+00:00:10.995 --> 00:00:13.875
+unfortunately, sometimes
+that isn't enough.
+
+7
+00:00:13.875 --> 00:00:15.120
+Let's take a look at some of
+
+8
+00:00:15.120 --> 00:00:16.950
+the other things we
+sometimes need to
+
+9
+00:00:16.950 --> 00:00:20.340
+accomplish in order to
+make a project successful.
+
+10
+00:00:20.340 --> 00:00:21.810
+We've already talked about
+
+11
+00:00:21.810 --> 00:00:24.180
+concept drift and
+data drift last week,
+
+12
+00:00:24.180 --> 00:00:27.870
+but here are some additional
+challenges we may have to
+
+13
+00:00:27.870 --> 00:00:32.255
+address for a production
+machine learning project.
+
+14
+00:00:32.255 --> 00:00:34.530
+First, a machine learning system
+
+15
+00:00:34.530 --> 00:00:37.515
+may have low average
+test set error,
+
+16
+00:00:37.515 --> 00:00:40.440
+but if its performance
+on a set of
+
+17
+00:00:40.440 --> 00:00:43.575
+disproportionately important
+examples isn't good enough,
+
+18
+00:00:43.575 --> 00:00:46.140
+then the machine learning
+system will still
+
+19
+00:00:46.140 --> 00:00:49.500
+not be acceptable for
+production deployment.
+
+20
+00:00:49.500 --> 00:00:52.275
+Let me use an example
+from Web search.
+
+21
+00:00:52.275 --> 00:00:54.600
+There are a lot of
+web search queries
+
+22
+00:00:54.600 --> 00:00:56.760
+like these: Apple pie recipe,
+
+23
+00:00:56.760 --> 00:00:58.875
+latest movies,
+wireless data plan,
+
+24
+00:00:58.875 --> 00:01:01.155
+I want to learn about
+the Diwali Festival.
+
+25
+00:01:01.155 --> 00:01:03.450
+These types of queries
+are sometimes called
+
+26
+00:01:03.450 --> 00:01:05.790
+informational or
+transactional queries,
+
+27
+00:01:05.790 --> 00:01:09.000
+where I want to learn
+about apple pies or
+
+28
+00:01:09.000 --> 00:01:12.330
+maybe I want to buy a new
+wireless data plan and you
+
+29
+00:01:12.330 --> 00:01:13.860
+might be willing to forgive
+
+30
+00:01:13.860 --> 00:01:16.485
+a web search engine
+that doesn't give you
+
+31
+00:01:16.485 --> 00:01:18.600
+the best apple pie recipe
+
+32
+00:01:18.600 --> 00:01:19.860
+because there are a
+lot of good apple
+
+33
+00:01:19.860 --> 00:01:21.765
+pie recipes on the Internet.
+
+34
+00:01:21.765 --> 00:01:24.645
+For informational and
+transactional queries,
+
+35
+00:01:24.645 --> 00:01:26.100
+a web search engine wants to
+
+36
+00:01:26.100 --> 00:01:27.945
+return the most relevant results,
+
+37
+00:01:27.945 --> 00:01:30.105
+but users are willing to forgive
+
+38
+00:01:30.105 --> 00:01:32.460
+maybe ranking the best result,
+
+39
+00:01:32.460 --> 00:01:34.245
+Number two or Number three.
+
+40
+00:01:34.245 --> 00:01:35.925
+There's a different type of
+
+41
+00:01:35.925 --> 00:01:38.925
+web search query
+such as Stanford,
+
+42
+00:01:38.925 --> 00:01:40.955
+or Reddit, or YouTube.
+
+43
+00:01:40.955 --> 00:01:43.380
+These are called
+navigational queries,
+
+44
+00:01:43.380 --> 00:01:45.480
+where the user has a
+very clear intent,
+
+45
+00:01:45.480 --> 00:01:48.660
+very clear desire to
+go to Stanford.edu,
+
+46
+00:01:48.660 --> 00:01:51.075
+or Reddit.com, or YouTube.com.
+
+47
+00:01:51.075 --> 00:01:55.065
+When a user has a very
+clear navigational intent,
+
+48
+00:01:55.065 --> 00:01:56.850
+they will tend to be very
+
+49
+00:01:56.850 --> 00:01:58.830
+unforgiving if a
+web search engine
+
+50
+00:01:58.830 --> 00:02:00.060
+does anything other than
+
+51
+00:02:00.060 --> 00:02:04.500
+return Stanford.edu as the
+Number one ranked results and
+
+52
+00:02:04.500 --> 00:02:06.090
+the search engine
+that doesn't give
+
+53
+00:02:06.090 --> 00:02:08.010
+the right results will quickly
+
+54
+00:02:08.010 --> 00:02:10.725
+lose the trust of its users.
+
+55
+00:02:10.725 --> 00:02:13.560
+Navigational queries
+in this context are
+
+56
+00:02:13.560 --> 00:02:15.690
+a disproportionately
+important set of
+
+57
+00:02:15.690 --> 00:02:18.510
+examples and if you have
+a learning algorithm
+
+58
+00:02:18.510 --> 00:02:21.540
+that improves your average
+test set accuracy for
+
+59
+00:02:21.540 --> 00:02:23.565
+web search but messes up
+
+60
+00:02:23.565 --> 00:02:26.400
+just a small handful of
+navigational queries,
+
+61
+00:02:26.400 --> 00:02:29.970
+that may not be acceptable
+for deployment.
+
+62
+00:02:29.970 --> 00:02:31.770
+The challenge, of course,
+
+63
+00:02:31.770 --> 00:02:34.439
+is that average test set accuracy
+
+64
+00:02:34.439 --> 00:02:37.290
+tends to weight all
+examples equally,
+
+65
+00:02:37.290 --> 00:02:39.450
+whereas, in web search,
+
+66
+00:02:39.450 --> 00:02:44.100
+some queries are
+disproportionately important.
+
+67
+00:02:44.100 --> 00:02:46.470
+Now one thing you
+could do is try to
+
+68
+00:02:46.470 --> 00:02:48.660
+give these examples
+a higher weight.
+
+69
+00:02:48.660 --> 00:02:50.895
+That could work for
+some applications,
+
+70
+00:02:50.895 --> 00:02:52.500
+but in my experience,
+
+71
+00:02:52.500 --> 00:02:54.540
+just changing the weights
+of different examples
+
+72
+00:02:54.540 --> 00:02:57.030
+doesn't always solve
+the entire problem.
+
+73
+00:02:57.030 --> 00:03:00.780
+Closely related to this
+is the question of
+
+74
+00:03:00.780 --> 00:03:04.490
+performance on key
+slices of the data set.
+
+75
+00:03:04.490 --> 00:03:06.180
+For example, let's
+say you've built
+
+76
+00:03:06.180 --> 00:03:07.890
+a machine learning algorithm for
+
+77
+00:03:07.890 --> 00:03:09.690
+loan approval to decide who is
+
+78
+00:03:09.690 --> 00:03:12.150
+likely to repay a
+loan and thus to
+
+79
+00:03:12.150 --> 00:03:15.165
+recommend approving certain
+loans for approval.
+
+80
+00:03:15.165 --> 00:03:16.530
+For such a system,
+
+81
+00:03:16.530 --> 00:03:18.480
+you will probably want to make
+
+82
+00:03:18.480 --> 00:03:20.910
+sure that your system does not
+
+83
+00:03:20.910 --> 00:03:23.969
+unfairly discriminate
+against loan applicants
+
+84
+00:03:23.969 --> 00:03:25.710
+according to their ethnicity,
+
+85
+00:03:25.710 --> 00:03:28.365
+gender, maybe their location,
+
+86
+00:03:28.365 --> 00:03:31.805
+their language, or other
+protected attributes.
+
+87
+00:03:31.805 --> 00:03:33.930
+Many countries also have laws or
+
+88
+00:03:33.930 --> 00:03:38.460
+regulations that mandates
+that financial systems
+
+89
+00:03:38.460 --> 00:03:40.590
+and loan approval processes not
+
+90
+00:03:40.590 --> 00:03:45.075
+discriminate on the basis of
+a certain set of attributes,
+
+91
+00:03:45.075 --> 00:03:47.730
+sometimes called
+protected attributes.
+
+92
+00:03:47.730 --> 00:03:50.190
+Even if a learning algorithm for
+
+93
+00:03:50.190 --> 00:03:53.940
+loan approval achieves high
+average test set accuracy,
+
+94
+00:03:53.940 --> 00:03:55.890
+it would not be acceptable for
+
+95
+00:03:55.890 --> 00:03:58.170
+production deployment if it
+
+96
+00:03:58.170 --> 00:04:03.495
+exhibits an unacceptable level
+of bias or discrimination.
+
+97
+00:04:03.495 --> 00:04:06.360
+Whereas the A.I. community
+has had a lot of
+
+98
+00:04:06.360 --> 00:04:09.180
+discussion about
+fairness to individuals,
+
+99
+00:04:09.180 --> 00:04:10.770
+and rightly so because this is
+
+100
+00:04:10.770 --> 00:04:14.625
+an important topic we have
+to address and do well on,
+
+101
+00:04:14.625 --> 00:04:17.580
+the issue of fairness or
+
+102
+00:04:17.580 --> 00:04:21.250
+performance of key slices also
+occurs in other settings.
+
+103
+00:04:21.250 --> 00:04:23.820
+Let's say you run an
+online shopping website,
+
+104
+00:04:23.820 --> 00:04:27.480
+so an e-commerce website
+where you advocate and sell
+
+105
+00:04:27.480 --> 00:04:29.660
+products from many
+different manufacturers
+
+106
+00:04:29.660 --> 00:04:31.620
+and many different
+brands of retailers.
+
+107
+00:04:31.620 --> 00:04:33.480
+You might want to make sure that
+
+108
+00:04:33.480 --> 00:04:37.200
+your system treats
+fairly all major user,
+
+109
+00:04:37.200 --> 00:04:39.615
+retailer, and product categories.
+
+110
+00:04:39.615 --> 00:04:41.460
+For example, even if
+
+111
+00:04:41.460 --> 00:04:42.750
+a machine learning system
+
+112
+00:04:42.750 --> 00:04:44.820
+has high average
+test set accuracy,
+
+113
+00:04:44.820 --> 00:04:47.370
+maybe it recommends better
+products on average.
+
+114
+00:04:47.370 --> 00:04:51.300
+If it gives really
+irrelevant recommendations
+
+115
+00:04:51.300 --> 00:04:53.745
+to all users of one ethnicity,
+
+116
+00:04:53.745 --> 00:04:55.740
+that may be unacceptable,
+
+117
+00:04:55.740 --> 00:04:59.910
+or if it always pushes products
+
+118
+00:04:59.910 --> 00:05:04.120
+from large retailers and
+ignores the smaller brands,
+
+119
+00:05:04.120 --> 00:05:05.950
+that could also be harmful
+
+120
+00:05:05.950 --> 00:05:07.870
+to the business because
+you may then lose
+
+121
+00:05:07.870 --> 00:05:09.940
+all the small
+retailers and it would
+
+122
+00:05:09.940 --> 00:05:12.430
+also feel unfair to build
+a recommender system
+
+123
+00:05:12.430 --> 00:05:13.960
+that only ever recommends
+
+124
+00:05:13.960 --> 00:05:16.090
+products from the large
+brands and ignores
+
+125
+00:05:16.090 --> 00:05:18.490
+the smaller businesses or it had
+
+126
+00:05:18.490 --> 00:05:20.260
+a product recommender that
+
+127
+00:05:20.260 --> 00:05:23.045
+gave highly relevant
+recommendations,
+
+128
+00:05:23.045 --> 00:05:24.520
+but for some reason would
+
+129
+00:05:24.520 --> 00:05:27.020
+never recommend
+electronics products,
+
+130
+00:05:27.020 --> 00:05:29.560
+then maybe the retailers
+
+131
+00:05:29.560 --> 00:05:31.720
+that sell electronics
+would be quite
+
+132
+00:05:31.720 --> 00:05:34.510
+reasonably upset
+and this may not be
+
+133
+00:05:34.510 --> 00:05:38.200
+the right thing for the retailers
+on your platform or for
+
+134
+00:05:38.200 --> 00:05:42.450
+the long term health of your
+business even if the average
+
+135
+00:05:42.450 --> 00:05:44.410
+test set accuracy shows that by
+
+136
+00:05:44.410 --> 00:05:46.990
+not recommending
+electronics products,
+
+137
+00:05:46.990 --> 00:05:49.330
+you're showing slightly
+more relevant results
+
+138
+00:05:49.330 --> 00:05:51.645
+to your users for some reason.
+
+139
+00:05:51.645 --> 00:05:55.060
+One thing you learn
+later this week
+
+140
+00:05:55.060 --> 00:05:58.660
+is how to carry out analysis on
+
+141
+00:05:58.660 --> 00:06:02.290
+key slices of the data
+to make sure that
+
+142
+00:06:02.290 --> 00:06:06.140
+you spot and address potential
+problems like these.
+
+143
+00:06:06.140 --> 00:06:09.670
+Next is the issue of rare classes
+
+144
+00:06:09.670 --> 00:06:13.950
+and specifically of skewed
+data distributions.
+
+145
+00:06:13.950 --> 00:06:17.170
+In medical diagnosis,
+it's not uncommon
+
+146
+00:06:17.170 --> 00:06:21.385
+for many patients not to
+have a certain disease,
+
+147
+00:06:21.385 --> 00:06:25.730
+and so if you have
+a data set which is
+
+148
+00:06:25.730 --> 00:06:30.220
+99 percent negative examples
+because 99 percent of
+
+149
+00:06:30.220 --> 00:06:31.750
+the population doesn't have
+
+150
+00:06:31.750 --> 00:06:36.260
+a certain disease but
+one percent positive.
+
+151
+00:06:36.260 --> 00:06:38.415
+Then you can achieve
+
+152
+00:06:38.415 --> 00:06:41.190
+very good tested accuracy by
+
+153
+00:06:41.190 --> 00:06:44.115
+writing a program that
+just says print "0",
+
+154
+00:06:44.115 --> 00:06:46.620
+don't even [inaudible] just
+write this one line of
+
+155
+00:06:46.620 --> 00:06:50.175
+code and you have 99 percent
+accuracy on your dataset.
+
+156
+00:06:50.175 --> 00:06:52.260
+But clearly, print "0" is not
+
+157
+00:06:52.260 --> 00:06:57.300
+a very useful algorithm
+for disease diagnosis.
+
+158
+00:06:57.300 --> 00:06:59.310
+By the way, this
+actually did happen
+
+159
+00:06:59.310 --> 00:07:01.080
+to me once where my
+team had trained
+
+160
+00:07:01.080 --> 00:07:03.300
+a huge neural
+network found we had
+
+161
+00:07:03.300 --> 00:07:06.150
+99 percent average
+accuracy and we found and
+
+162
+00:07:06.150 --> 00:07:09.180
+achieved it by printing
+"0" all the time,
+
+163
+00:07:09.180 --> 00:07:11.655
+so we basically trained a giant neural
+network that did
+
+164
+00:07:11.655 --> 00:07:14.460
+exactly the same
+thing as print "0",
+
+165
+00:07:14.460 --> 00:07:15.810
+and of course, when
+we discovered,
+
+166
+00:07:15.810 --> 00:07:18.420
+we then went back
+to fix the problem.
+
+167
+00:07:18.420 --> 00:07:20.835
+Hopefully this won't
+happen to you.
+
+168
+00:07:20.835 --> 00:07:23.040
+Closely related to the issue of
+
+169
+00:07:23.040 --> 00:07:25.410
+skew data distributions
+which is often
+
+170
+00:07:25.410 --> 00:07:27.840
+a discussion of
+positive and negatives
+
+171
+00:07:27.840 --> 00:07:30.600
+is accuracy on rare causes.
+
+172
+00:07:30.600 --> 00:07:34.500
+I was working with my friend
+Pranav Ross Baker and
+
+173
+00:07:34.500 --> 00:07:38.415
+others on diagnosis
+from chest X-rays
+
+174
+00:07:38.415 --> 00:07:42.405
+and we were diagnosing
+causes and we were
+
+175
+00:07:42.405 --> 00:07:46.995
+working on deep learning to
+spot different conditions.
+
+176
+00:07:46.995 --> 00:07:50.640
+There were some relatively
+common conditions,
+
+177
+00:07:50.640 --> 00:07:53.430
+these are technical
+medical terminology,
+
+178
+00:07:53.430 --> 00:07:56.685
+but for a medical
+condition called effusion,
+
+179
+00:07:56.685 --> 00:08:00.465
+we had about 10,000 images and so
+
+180
+00:08:00.465 --> 00:08:04.980
+we were able to achieve a
+high level of performance,
+
+181
+00:08:04.980 --> 00:08:08.250
+whereas for much rarer
+condition hernia,
+
+182
+00:08:08.250 --> 00:08:10.890
+we had about a hundred images and
+
+183
+00:08:10.890 --> 00:08:13.905
+so performance was much worse.
+
+184
+00:08:13.905 --> 00:08:19.545
+It turns out that from a
+medical standpoint is not
+
+185
+00:08:19.545 --> 00:08:22.845
+acceptable for diagnosis system
+
+186
+00:08:22.845 --> 00:08:26.865
+to ignore obvious
+cases of hernia.
+
+187
+00:08:26.865 --> 00:08:28.560
+If a patient shows up and
+
+188
+00:08:28.560 --> 00:08:30.975
+an X-ray clearly shows
+they have hernia,
+
+189
+00:08:30.975 --> 00:08:33.495
+a learning algorithm
+that misses that
+
+190
+00:08:33.495 --> 00:08:36.915
+diagnosis would be problematic,
+
+191
+00:08:36.915 --> 00:08:40.215
+but because this was a
+relatively rare class,
+
+192
+00:08:40.215 --> 00:08:43.200
+the overall average
+tested accuracy
+
+193
+00:08:43.200 --> 00:08:45.690
+of the algorithm
+was not that bad,
+
+194
+00:08:45.690 --> 00:08:47.880
+and in fact the algorithm
+could have completely
+
+195
+00:08:47.880 --> 00:08:50.190
+ignored all cases of hernia and
+
+196
+00:08:50.190 --> 00:08:52.350
+it would have had only
+a modest impact on
+
+197
+00:08:52.350 --> 00:08:55.395
+this average test accuracy,
+
+198
+00:08:55.395 --> 00:08:57.630
+because cases of hernia were
+
+199
+00:08:57.630 --> 00:09:01.125
+rare and the Avrum could
+pretty much ignore it
+
+200
+00:09:01.125 --> 00:09:05.310
+without hurting this average
+tested accuracy that much if
+
+201
+00:09:05.310 --> 00:09:07.365
+average tested accuracy gives
+
+202
+00:09:07.365 --> 00:09:11.205
+equal weight to every single
+example in the test set.
+
+203
+00:09:11.205 --> 00:09:15.960
+I have heard pretty much this
+exact same conversation too
+
+204
+00:09:15.960 --> 00:09:18.284
+many times in too many companies
+
+205
+00:09:18.284 --> 00:09:20.445
+and the conversation
+goes like this,
+
+206
+00:09:20.445 --> 00:09:22.410
+a machine learning engineer says,
+
+207
+00:09:22.410 --> 00:09:24.165
+"I did well in the test set!",
+
+208
+00:09:24.165 --> 00:09:27.315
+this works, let's use it,
+
+209
+00:09:27.315 --> 00:09:30.870
+and a private owner or
+business owner says,
+
+210
+00:09:30.870 --> 00:09:32.730
+"but this doesn't work for my
+
+211
+00:09:32.730 --> 00:09:36.870
+application" and the machine
+that the engineer replies,
+
+212
+00:09:36.870 --> 00:09:39.885
+"but I did well on the test set!"
+
+213
+00:09:39.885 --> 00:09:41.505
+my advice to you,
+
+214
+00:09:41.505 --> 00:09:44.025
+if you ever find yourself
+in this conversation,
+
+215
+00:09:44.025 --> 00:09:46.230
+is don't get defensive.
+
+216
+00:09:46.230 --> 00:09:49.200
+We as a community have built
+
+217
+00:09:49.200 --> 00:09:52.050
+lots of tools for doing
+well on the test set,
+
+218
+00:09:52.050 --> 00:09:53.640
+and that's to be celebrated.
+
+219
+00:09:53.640 --> 00:09:55.980
+I think it's great,
+but we often need to
+
+220
+00:09:55.980 --> 00:09:58.410
+go beyond that because just doing
+
+221
+00:09:58.410 --> 00:10:00.675
+well on the test set isn't enough
+
+222
+00:10:00.675 --> 00:10:03.495
+for many production applications.
+
+223
+00:10:03.495 --> 00:10:06.000
+When I'm building a
+machine learning system,
+
+224
+00:10:06.000 --> 00:10:10.200
+I view it as my job not just
+to do well on the test set,
+
+225
+00:10:10.200 --> 00:10:13.230
+but to produce a machine
+learning system that
+
+226
+00:10:13.230 --> 00:10:16.200
+solves the actual business
+or application needs,
+
+227
+00:10:16.200 --> 00:10:18.720
+and I hope you take a
+similar view as well.
+
+228
+00:10:18.720 --> 00:10:21.480
+Later this week, we'll go
+through some techniques,
+
+229
+00:10:21.480 --> 00:10:23.655
+usually involving error analysis,
+
+230
+00:10:23.655 --> 00:10:25.470
+maybe air analysis on slices of
+
+231
+00:10:25.470 --> 00:10:28.680
+the data that will allow
+you to spot some of
+
+232
+00:10:28.680 --> 00:10:31.410
+these issues that
+require going beyond
+
+233
+00:10:31.410 --> 00:10:34.380
+average tested accuracy
+and help you with
+
+234
+00:10:34.380 --> 00:10:39.280
+tools to tackle these
+broader challenges as well.

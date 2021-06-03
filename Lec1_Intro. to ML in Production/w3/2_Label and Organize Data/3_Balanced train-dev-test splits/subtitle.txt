@@ -1,0 +1,48 @@
+Many of us are used to
+taking a data set and randomly splitting it into train dev and
+tests. It turns out when your data set is
+small having balanced train dev and test set can significantly improve your
+machine learning development process. Let's take a look. Let's use our manufacturing
+visual inspection example. Say your training set has 100 images,
+so pretty small data set and with 30 positive examples, so
+30 defective phones and 70 non defective. If you were to use a train dev test split
+of 60% of the data in the training set, 20% in the dev or a validation set and
+20% in the test set say. Then if you were to use
+a random split just by chance is not inconceivable that
+you may end up with 21 positive examples in train,
+2 in dev and 7 in tests. This would be quite likely
+just by random chance. And this means the training
+set is 35% positive, not that far from 30% positive
+in the overall dataset, but your dev set is 10% positive and your test set is 35% positive. So 2 out of 20 is 10%, 7 out of 20 is 35%. And this makes your dev set
+quite non representative because in your dev set you have only 2 or 10% positive examples rather
+than 30% positive examples. But when your data set is small than
+all of your 20 dev set examples, it's just a higher chance of this,
+slightly less representative split. So what we would really want is for
+the training set to have exactly 18 positive examples, dev set to have exactly
+6 positive examples and the test set to have exactly
+6 positive examples. And this would be 30%, 30% 30%. And if you could get this type of split,
+this would be called a balanced split. Where each of your train, dev and tests
+has exactly 30% positive examples and this makes your data set more representative
+of the true data distribution. There's no need to worry about this
+effect when you have a large data set. If you have a very large data set, a random split will very likely
+be representative, meaning that the percentage of positive examples will
+be quite close to your overall data set. But when you have a small data set
+with just 20 dev set examples and 20 test set examples,
+then explicitly making sure you have a balanced split can
+make your dev set and test set more reliable measures of
+your learning algorithms performance. This is one of those little techniques
+that turns out to make a big difference to your performance when you're
+working on a small data problem, but that you don't really need to worry
+about if you have a very large data set. So when you have a smaller data set,
+I hope you consider using a balanced train dev test split as well in terms
+of how you set up your data set. So when you're working on a smaller data
+problem I hope that using a balanced change test split will help you
+with your learning algorithm. And so that's it. Congratulations on getting to
+this point in this course. You've finished the data
+section of videos and in the last two weeks you also
+learned about modeling and deployment. There's just one last optional section
+that you can watch if you want on scoping. I hope you come with me to watch
+the optional scoping videos as well. We'll talk about how to
+select a project to work on. But either way congrats on finishing
+all the required videos of this course. I hope you learned a lot and
+that these ideas will be useful for all the machine learning projects.

@@ -1,0 +1,147 @@
+Let's look at some ways to
+generate labels for your data. We're going to focus on two
+of the most common methods. That's process feedback or direct labeling and
+human labeling. There's a variety of methods, process feedback
+or direct labeling is great and we'll
+talk about that. Human labeling as well as a very common method is
+applied to create labels. But you should also be aware
+and we'll talk about later some other more advanced methods, semi-supervised labeling, where we label part
+of our data set, active learning where
+we really try to focus on the part that
+is most important. Weak supervision which is a programmatic way
+of creating labels. But we won't be talking
+about that in this module. We'll really focus
+on the first two, which are the most common, process feedback or direct
+labeling and human labeling. You need labels if you're going to do supervised learning, you need labels for your data. Two simple ways of doing that are processed feedback
+and human labeling. But what does that mean?
+Let's look at some examples, for process feedback, a very typical example
+is click-through rates. Actual versus predicted
+click-through rates. Suppose you have recommendations that you are giving to a user, did they actually click on the
+things that you recommend? If they did, you can
+label it positive, if they didn't you can
+label it negative. Human labeling, you
+can have humans look at data and
+apply labels to them. For example, you can ask
+cardiologists to look at MRI images and apply
+labels to them. Why is labeling important
+in production ML? Most businesses and organizations
+have a bunch of data, but if it's not labeled, you can't use it for
+supervised learning. If you can apply unsupervised techniques and get good results, that's great. But in many cases you really
+need to provide learning to solve the problems that
+you're trying to solve. What that means is that in most domains you're
+going to need to retrain at some point. It will depend as
+we've talked about on the domain that you're working in and the
+type of problem. Some you will just need to retrain on a very
+infrequent basis, and some, you might need to retrain several times per day. Labeling is an ongoing and
+often critical process in your application
+and your business. But at the end of the day, creating a training data set for supervised learning
+requires labels, you need to think about how
+you're going to do that. Direct labeling, which
+we'll talk about first or process feedback, is a way of continuously creating new training data that you're going to use to
+retrain your model. You're taking the features
+themselves from the inference requests that
+your model is getting. The predictions that your
+model is being asked to make and the features
+that are provided for that. You get labels for those
+inference requests by monitoring systems and using the feedback from those
+systems to label that data. One of the things that
+you need to solve there is to join the results that you get from monitoring
+those systems with the original inference request which could be hours
+or days apart. You might've run batches on Monday and you're getting
+feedback on Friday. You need to make
+sure that you can do those joins to
+apply those labels. In some ways you can
+think about this as similar to
+reinforcement learning, where instead of
+applying rewards based on action you're applying
+labels based on a prediction. It's a similar feedback loop. The advantages, well
+process feedback or direct labeling is great. If your system and your domain is set up in a
+way that you can do that. It's often the best answer because you have labels
+you are monitoring, constantly getting
+new training data. The signals that you get from your labels are really strong. You're getting for
+click-throughs, if the user clicked
+or didn't click, it's a very strong signal. Disadvantages, unfortunately, in many domains
+for many problems, it's just isn't possible. Personally, in the problems
+I've been asked to solve, I found very few or I've
+been able to do that, so that's an issue. The other big thing is that it tends to be very custom-designed. Your systems will be unique. Your problem is unique, and you're doing custom design, which isn't the end of the world, but it'd be great if it was a little bit more off the shelf. One of the tools that you can apply is log analysis tools. Because often when you're
+doing process feedback, the data is coming
+from the log files. You're monitoring systems
+and populating log files. One good open source tool
+for doing that is Logstash. You can ingest from
+multiple sources for collecting and parsing
+and storing logs. You can index them
+in Elasticsearch. You can push them to storage, it takes inputs from a variety of different sources and
+databases and so forth. Great tool and it's
+open source too. Fluentd is another
+good open source tool you can use to collect and parse. Fluentd comes from the Cloud
+Native Computing Foundation and it connects to a lot
+of different platforms. Again, another great tool. When you're working on the Cloud, there's Cloud tools that
+are available, as well. If you're working on
+the Google Cloud, Google Cloud logging
+is a great tool to be able to log your data, either coming from Google
+Cloud or from AWS. Bind plane is great for applying on-premise
+or hybrid cloud systems. It's a very powerful
+service that's available. For AWS, their version of
+Elasticsearch is available, so you can apply that. It's not really strictly a log analytics tool but you can apply it
+for login analytics. For Azure, you have
+Azure monitors, so regardless of which
+Cloud you're working on, there's probably log analytics tooling that you can
+use to do log analysis. Now, let's turn to
+human labeling. In human labeling,
+you have people, humans and we refer
+to those as raters. We ask them to examine data
+and assign labels to it. It sounds simple, it sounds
+like it might be painful but it's the way that a lot of
+data is generated and labeled. You start with raw data
+and you give it to people and you ask them
+to apply labels to it. That's the way that you
+create a training data set that you're going to use to
+train or retrain your model. You started with unlabeled
+data and then you need to recruit human raters or there are several services that you can
+go to where they have pools of human raters that have
+already been recruited. You need to provide
+them with instructions. Even if it's very simple, you need to still tell them
+what labels they should apply and what to look for to
+decide which label to apply. The data's then divided among different
+raters in the pool. Often you send the same
+examples to multiple raters, so that when there's
+disagreements you're aware of that and you can
+work to resolve them. Then you collect
+the data and any of those conflicts that
+you have are resolved. Advantages of the human labeling. Well, they're labels which, it's what you're trying to do. You're trying to
+generate labels which you need for supervised learning. It's a way to do that and it's actually a very
+common way to do that. One disadvantage, one issue here is that depending
+on the data that you have it can be very
+complex for a human to look at it and decide
+what the label should be. Something like this we might
+need a radiologist to look at this and tell us what
+the right labels should be which can be very expensive. But if you're also talking about situations where you have
+high dimensional data, it's very difficult for
+humans to look at say, 100 different features and
+decide with the label is. There's some disadvantages
+to human labeling. You can have quality
+problems where different humans disagree on
+what the label should be. It can be very slow. You're asking people to look at each individual example and it can take a while to do that. In cases where the
+data's changing quickly, it is often just
+simply not feasible. Again, it can be very
+expensive even if you're using generalists to look
+at very simple data, you're still employing people but in cases where you're asking experts to look at data then
+it gets very expensive. Often what that means
+is that you end up with small data sets because the cost and the time involved results in difficult to
+get a very large data set. It can be slow, it
+can be difficult, it can be expensive. If you're doing something
+like an MRI and you've got a specialist looking at
+it again, a problem. A single rater can only do a certain number
+of examples per day, so you need to have
+a fairly large pool compared to the number
+of examples that you're trying to label and that means that recruitment can
+be slow and expensive. Unfortunately, there are
+several disadvantages. Key points here, there's
+various methods of doing labeling and you
+really need to think about the problem that
+you're trying to solve, the data that you have and
+how frequently you need retraining data and how much data you need and
+the costs involved. There are advantages
+and disadvantages to both process feedback in human labeling and
+there's other techniques, as well that we'll
+talk about later.

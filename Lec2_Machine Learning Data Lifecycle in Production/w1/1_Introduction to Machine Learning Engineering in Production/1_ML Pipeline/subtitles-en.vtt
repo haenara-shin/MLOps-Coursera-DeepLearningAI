@@ -1,0 +1,631 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.685
+Welcome back. This next section
+
+2
+00:00:02.685 --> 00:00:05.310
+is all about ML Pipelines.
+
+3
+00:00:05.310 --> 00:00:08.100
+No, not those kind of pipelines.
+
+4
+00:00:08.100 --> 00:00:10.455
+Machine Learning Pipelines.
+
+5
+00:00:10.455 --> 00:00:15.270
+ML Pipelines are the heart
+of any Production ML system.
+
+6
+00:00:15.270 --> 00:00:18.480
+You're going to learn all
+about them right now.
+
+7
+00:00:18.480 --> 00:00:21.030
+In this lesson, we'll
+begin to introduce
+
+8
+00:00:21.030 --> 00:00:24.735
+ML Pipelines and the
+concept of MLOps.
+
+9
+00:00:24.735 --> 00:00:27.480
+Now allow us to see how
+pipeline orchestrators
+
+10
+00:00:27.480 --> 00:00:30.510
+sequence and schedule ML tasks
+
+11
+00:00:30.510 --> 00:00:33.945
+to implement the entire
+ML training process.
+
+12
+00:00:33.945 --> 00:00:36.435
+We'll then look at the example of
+
+13
+00:00:36.435 --> 00:00:39.310
+TensorFlow Extended or TFX,
+
+14
+00:00:39.310 --> 00:00:41.480
+which is a widely
+adopted framework
+
+15
+00:00:41.480 --> 00:00:43.970
+for creating ML Pipelines.
+
+16
+00:00:43.970 --> 00:00:47.000
+What do we mean by the
+phrase ML Pipeline?
+
+17
+00:00:47.000 --> 00:00:50.870
+Well, remember the
+iterative ML workflow
+
+18
+00:00:50.870 --> 00:00:53.095
+that we talked about previously.
+
+19
+00:00:53.095 --> 00:00:56.630
+ML Pipeline is a
+software architecture
+
+20
+00:00:56.630 --> 00:00:59.240
+to implement exactly that.
+
+21
+00:00:59.240 --> 00:01:02.570
+Automating, monitoring,
+and maintaining
+
+22
+00:01:02.570 --> 00:01:07.270
+this ML workflow from
+data to a trained model.
+
+23
+00:01:07.270 --> 00:01:12.935
+ML Pipelines form a key component
+of MLOps architectures.
+
+24
+00:01:12.935 --> 00:01:15.364
+This slide shows one version
+
+25
+00:01:15.364 --> 00:01:17.795
+of what an ML
+Pipeline looks like,
+
+26
+00:01:17.795 --> 00:01:19.250
+which was put together by
+
+27
+00:01:19.250 --> 00:01:22.175
+an industry group,
+the CD Foundation.
+
+28
+00:01:22.175 --> 00:01:23.809
+There are some differences
+
+29
+00:01:23.809 --> 00:01:26.120
+between different
+pipeline architectures,
+
+30
+00:01:26.120 --> 00:01:29.495
+but in general they look
+something like this.
+
+31
+00:01:29.495 --> 00:01:31.820
+You'll notice that they basically
+
+32
+00:01:31.820 --> 00:01:34.790
+mirror the ML
+development process.
+
+33
+00:01:34.790 --> 00:01:37.265
+Starting with data ingestion
+
+34
+00:01:37.265 --> 00:01:39.710
+and ending with a trained model.
+
+35
+00:01:39.710 --> 00:01:42.740
+That's by design
+since they need to
+
+36
+00:01:42.740 --> 00:01:46.210
+encapsulate and
+formalize that process.
+
+37
+00:01:46.210 --> 00:01:49.370
+ML Pipelines are almost always
+
+38
+00:01:49.370 --> 00:01:52.595
+directed cyclic graph or DAGs.
+
+39
+00:01:52.595 --> 00:01:54.920
+Although in some
+advanced cases they
+
+40
+00:01:54.920 --> 00:01:57.320
+can sometimes includes cycles.
+
+41
+00:01:57.320 --> 00:02:01.775
+A DAG is a collection of all
+the tasks you want to run
+
+42
+00:02:01.775 --> 00:02:04.100
+sequenced in a way that reflects
+
+43
+00:02:04.100 --> 00:02:07.040
+their relationships
+and dependencies.
+
+44
+00:02:07.040 --> 00:02:09.800
+Notice that in this graph
+
+45
+00:02:09.800 --> 00:02:13.710
+the edges are directed
+and there are no cycles.
+
+46
+00:02:13.710 --> 00:02:17.015
+That makes this graph a DAG.
+
+47
+00:02:17.015 --> 00:02:19.790
+Orchestrators are responsible for
+
+48
+00:02:19.790 --> 00:02:22.160
+scheduling the
+various components in
+
+49
+00:02:22.160 --> 00:02:27.520
+an ML Pipeline based on
+dependencies defined by a DAG.
+
+50
+00:02:27.520 --> 00:02:31.800
+Orchestrators help with
+pipeline automation.
+
+51
+00:02:31.800 --> 00:02:36.810
+Examples include
+Argo and Airflow,
+
+52
+00:02:36.810 --> 00:02:40.480
+and Celery and
+Luigi and Kubeflow.
+
+53
+00:02:40.480 --> 00:02:43.750
+TFX is an open-source end
+
+54
+00:02:43.750 --> 00:02:45.955
+to end Machine Learning platform,
+
+55
+00:02:45.955 --> 00:02:48.025
+and it's what we use at Google.
+
+56
+00:02:48.025 --> 00:02:51.010
+A TFX Pipeline is a sequence of
+
+57
+00:02:51.010 --> 00:02:52.600
+scalable components that can
+
+58
+00:02:52.600 --> 00:02:55.015
+handle large volumes of data.
+
+59
+00:02:55.015 --> 00:02:56.905
+Starting on the left,
+
+60
+00:02:56.905 --> 00:03:00.160
+we ingest data and then we move
+
+61
+00:03:00.160 --> 00:03:04.330
+to Data Validation and we do
+some feature engineering.
+
+62
+00:03:04.330 --> 00:03:07.210
+We train a model, we validate it.
+
+63
+00:03:07.210 --> 00:03:10.540
+If it's better than what we
+already have in production,
+
+64
+00:03:10.540 --> 00:03:12.685
+we're going to push
+it to production.
+
+65
+00:03:12.685 --> 00:03:15.685
+Finally, we're
+serving predictions.
+
+66
+00:03:15.685 --> 00:03:19.150
+The sequence of components
+are designed for
+
+67
+00:03:19.150 --> 00:03:23.840
+scalable high performance
+Machine Learning tasks.
+
+68
+00:03:23.840 --> 00:03:28.355
+In this course, you'll be
+using TFX to implement
+
+69
+00:03:28.355 --> 00:03:31.280
+real ML Pipelines exactly
+
+70
+00:03:31.280 --> 00:03:34.165
+as you would for
+Production Systems.
+
+71
+00:03:34.165 --> 00:03:36.710
+TFX in production
+components are built
+
+72
+00:03:36.710 --> 00:03:39.155
+on top of open-source libraries,
+
+73
+00:03:39.155 --> 00:03:41.660
+such as Tensorflow
+Data Validation,
+
+74
+00:03:41.660 --> 00:03:44.560
+which you'll also learn
+about later this week.
+
+75
+00:03:44.560 --> 00:03:47.115
+Tensorflow Transform.
+
+76
+00:03:47.115 --> 00:03:49.490
+We shall also be working
+with extensively
+
+77
+00:03:49.490 --> 00:03:52.120
+later in this course and others,
+
+78
+00:03:52.120 --> 00:03:54.765
+like Tensorflow Model Analysis.
+
+79
+00:03:54.765 --> 00:03:58.265
+Components in the orange here,
+
+80
+00:03:58.265 --> 00:04:01.280
+leverage those Libraries and form
+
+81
+00:04:01.280 --> 00:04:03.500
+your DAG as you sequence
+
+82
+00:04:03.500 --> 00:04:06.740
+these components and set up
+the dependency between them,
+
+83
+00:04:06.740 --> 00:04:08.435
+you create your DAG,
+
+84
+00:04:08.435 --> 00:04:11.180
+which is your ML Pipeline.
+
+85
+00:04:11.180 --> 00:04:16.085
+This is what we refer to
+as the Hello World of TFX.
+
+86
+00:04:16.085 --> 00:04:20.780
+We start on the left
+with our data and we're
+
+87
+00:04:20.780 --> 00:04:22.250
+going to ingest our data with
+
+88
+00:04:22.250 --> 00:04:25.425
+a TFX component
+called ExampleGen.
+
+89
+00:04:25.425 --> 00:04:27.470
+All the boxes in orange that you
+
+90
+00:04:27.470 --> 00:04:29.840
+see here are TFX components.
+
+91
+00:04:29.840 --> 00:04:31.970
+In fact, these are
+components that come
+
+92
+00:04:31.970 --> 00:04:35.715
+with TFX when you just
+do a PIP install.
+
+93
+00:04:35.715 --> 00:04:38.810
+Next, we generate
+statistics for our data.
+
+94
+00:04:38.810 --> 00:04:41.330
+We want to know the
+ranges of our features,
+
+95
+00:04:41.330 --> 00:04:42.815
+if they're numerical features,
+
+96
+00:04:42.815 --> 00:04:44.570
+if they're categorical features,
+
+97
+00:04:44.570 --> 00:04:46.040
+we want to know what are
+
+98
+00:04:46.040 --> 00:04:48.110
+the valid categories
+and so forth.
+
+99
+00:04:48.110 --> 00:04:50.365
+What are the types
+of our features?
+
+100
+00:04:50.365 --> 00:04:53.300
+Example Validator is used to
+
+101
+00:04:53.300 --> 00:04:55.805
+look for problems in our data.
+
+102
+00:04:55.805 --> 00:04:58.370
+SchemaGen is used to generate
+
+103
+00:04:58.370 --> 00:05:02.185
+a schema for our data
+across our feature vector.
+
+104
+00:05:02.185 --> 00:05:05.700
+Transform will do
+feature engineering.
+
+105
+00:05:05.700 --> 00:05:09.080
+Tuner and Trainer
+are used to train
+
+106
+00:05:09.080 --> 00:05:12.850
+a model and to tune the
+hyper-parameters for that model.
+
+107
+00:05:12.850 --> 00:05:15.320
+Evaluator is used to do
+
+108
+00:05:15.320 --> 00:05:18.200
+deep analysis of the
+performance of our model.
+
+109
+00:05:18.200 --> 00:05:20.090
+We'll talk about what we mean
+
+110
+00:05:20.090 --> 00:05:22.705
+by deep analysis a
+little bit later.
+
+111
+00:05:22.705 --> 00:05:26.120
+Infra Validator is used to
+make sure that we can actually
+
+112
+00:05:26.120 --> 00:05:29.060
+run predictions using our model
+
+113
+00:05:29.060 --> 00:05:31.415
+on the infrastructure
+that we have.
+
+114
+00:05:31.415 --> 00:05:34.585
+For example, do we
+have enough memory?
+
+115
+00:05:34.585 --> 00:05:38.450
+If all of that passes
+and the model actually
+
+116
+00:05:38.450 --> 00:05:40.160
+performs better than what we
+
+117
+00:05:40.160 --> 00:05:42.365
+might already have in production.
+
+118
+00:05:42.365 --> 00:05:46.025
+Then Pusher pushes the
+model to Production.
+
+119
+00:05:46.025 --> 00:05:47.965
+What does that mean?
+
+120
+00:05:47.965 --> 00:05:51.920
+Well, we might be pushing
+to a repository like
+
+121
+00:05:51.920 --> 00:05:54.170
+Tensorflow HUB and
+then using our model
+
+122
+00:05:54.170 --> 00:05:56.690
+later for maybe
+transfer learning.
+
+123
+00:05:56.690 --> 00:05:58.295
+We're generating Embeddings.
+
+124
+00:05:58.295 --> 00:06:00.890
+We could be pushing
+to TensorFlow JS.
+
+125
+00:06:00.890 --> 00:06:02.720
+If we're going to be
+using our model in
+
+126
+00:06:02.720 --> 00:06:06.665
+a web browser or a
+Node.js application.
+
+127
+00:06:06.665 --> 00:06:10.490
+We could push to
+TensorFlow Lite and use
+
+128
+00:06:10.490 --> 00:06:14.935
+our model in a mobile
+application or on an IOT device.
+
+129
+00:06:14.935 --> 00:06:18.110
+Or we could push to
+TensorFlow Serving and
+
+130
+00:06:18.110 --> 00:06:21.080
+UserModel on a server or
+maybe a serving cluster.
+
+131
+00:06:21.080 --> 00:06:24.020
+The key points
+here, first of all,
+
+132
+00:06:24.020 --> 00:06:28.615
+Production ML Pipelines are
+more than just ML code.
+
+133
+00:06:28.615 --> 00:06:32.150
+They're ML development and
+software development and
+
+134
+00:06:32.150 --> 00:06:33.800
+a formalized process for
+
+135
+00:06:33.800 --> 00:06:37.595
+running that sequence
+of tasks end to end,
+
+136
+00:06:37.595 --> 00:06:41.260
+in a maintainable
+and scalable way.
+
+137
+00:06:41.260 --> 00:06:45.350
+TFX is an open-sourced end to
+
+138
+00:06:45.350 --> 00:06:50.250
+end ML platform that we'll
+be using in this course.

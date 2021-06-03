@@ -1,0 +1,827 @@
+WEBVTT
+
+1
+00:00:00.340 --> 00:00:04.320
+One of the successes of deep learning
+has been speech recognition.
+
+2
+00:00:04.320 --> 00:00:08.566
+Deep learning has made speech recognition
+much more accurate than maybe
+
+3
+00:00:08.566 --> 00:00:09.420
+a decade ago.
+
+4
+00:00:09.420 --> 00:00:13.963
+And this is allowing many of us to
+use speech recognition in our smart
+
+5
+00:00:13.963 --> 00:00:18.370
+speakers on our smartphones for
+voice search and in other context.
+
+6
+00:00:18.370 --> 00:00:21.855
+You may have heard occasionally
+about the research
+
+7
+00:00:21.855 --> 00:00:25.440
+work that goes into building
+better speech models.
+
+8
+00:00:25.440 --> 00:00:30.216
+But what else is needed to actually
+build a valuable production deployment
+
+9
+00:00:30.216 --> 00:00:32.130
+speech recognition system.
+
+10
+00:00:32.130 --> 00:00:36.417
+Let's use the machine learning project
+life cycle to set through a speech
+
+11
+00:00:36.417 --> 00:00:41.327
+recognition example so you can understand
+all the steps needed to actually build and
+
+12
+00:00:41.327 --> 00:00:43.240
+deploy such a system.
+
+13
+00:00:43.240 --> 00:00:48.332
+I've worked on speech recognition systems
+in a commercial context before and
+
+14
+00:00:48.332 --> 00:00:52.957
+so the first step of that was scoping
+have to first define the project and
+
+15
+00:00:52.957 --> 00:00:56.349
+just make a decision to
+work on speech recognition,
+
+16
+00:00:56.349 --> 00:00:59.761
+say for voice search as part
+of defining the project.
+
+17
+00:00:59.761 --> 00:01:02.887
+That also encourage you
+to try to estimate or
+
+18
+00:01:02.887 --> 00:01:06.140
+maybe at least estimate the key metrics.
+
+19
+00:01:06.140 --> 00:01:08.460
+This will be very problem dependence.
+
+20
+00:01:08.460 --> 00:01:12.760
+Almost every application will have his
+own unique set of goals and metrics.
+
+21
+00:01:12.760 --> 00:01:17.261
+But the case of speech recognition,
+some things I cared about where how
+
+22
+00:01:17.261 --> 00:01:20.280
+accurate is the speech
+system was the latency?
+
+23
+00:01:20.280 --> 00:01:23.340
+How long does the system take
+to transcribe speech and
+
+24
+00:01:23.340 --> 00:01:24.780
+what is the throughput?
+
+25
+00:01:24.780 --> 00:01:27.740
+How many queries per second we handle.
+
+26
+00:01:27.740 --> 00:01:33.110
+And then if possible, you might also
+try to estimate the resources needed.
+
+27
+00:01:33.110 --> 00:01:37.451
+So how much time, how much compute
+how much budget as well as timeline.
+
+28
+00:01:37.451 --> 00:01:40.440
+How long will it take to
+carry out this project?
+
+29
+00:01:40.440 --> 00:01:45.660
+I'll have a lot more to say on
+scoping in week three of this course.
+
+30
+00:01:45.660 --> 00:01:51.340
+So we'll come back to this topic and
+describe this in greater detail as well.
+
+31
+00:01:51.340 --> 00:01:55.214
+The next step is the data stage where
+you have to define the data and
+
+32
+00:01:55.214 --> 00:01:59.140
+establish a baseline and
+also label and organize the data.
+
+33
+00:01:59.140 --> 00:02:00.650
+What's hard about this?
+
+34
+00:02:00.650 --> 00:02:05.328
+One of the challenges of practical
+speech recognition systems is is
+
+35
+00:02:05.328 --> 00:02:10.251
+the data label consistently,
+here's an audio clip of a fairly typical
+
+36
+00:02:10.251 --> 00:02:15.011
+recording you might get if you're
+working on speech recognition for
+
+37
+00:02:15.011 --> 00:02:20.040
+voice search, let me play this audio clip,
+today's weather.
+
+38
+00:02:20.040 --> 00:02:24.031
+And the question is given this
+audio clip that you just heard
+
+39
+00:02:24.031 --> 00:02:28.340
+today's whether would you want
+to transcribe it like that?
+
+40
+00:02:28.340 --> 00:02:30.781
+Which if you have
+transcriptionist label the data,
+
+41
+00:02:30.781 --> 00:02:33.350
+this would be a perfectly
+reasonable transcription.
+
+42
+00:02:33.350 --> 00:02:36.590
+Or would you want to
+transcribe it like that?
+
+43
+00:02:36.590 --> 00:02:39.938
+Which is also a completely
+reasonable transcription or
+
+44
+00:02:39.938 --> 00:02:44.777
+should the transcriptionist say, well
+there's often a lot of noise and audio,
+
+45
+00:02:44.777 --> 00:02:49.119
+you know, maybe there's a sound of
+a conclave, something fell down and
+
+46
+00:02:49.119 --> 00:02:51.421
+you don't want to transcribe noise.
+
+47
+00:02:51.421 --> 00:02:56.030
+So maybe it's just noise and
+you should transcribe it like that.
+
+48
+00:02:56.030 --> 00:03:01.600
+It turns out that any of these three ways
+of transcribing the audio is just fine.
+
+49
+00:03:01.600 --> 00:03:04.525
+I would probably prefer either
+the first or the second, not the third.
+
+50
+00:03:04.525 --> 00:03:08.526
+But what what hurts your learning
+algorithm's performance is if one third of
+
+51
+00:03:08.526 --> 00:03:12.070
+the transcription is used the first,
+one third, the second and
+
+52
+00:03:12.070 --> 00:03:14.183
+one third third way of trans driving.
+
+53
+00:03:14.183 --> 00:03:18.644
+Because then your data is inconsistent and
+confusing for the learning
+
+54
+00:03:18.644 --> 00:03:23.710
+algorithm because how is the learning
+algorithm supposed to guess which one of these
+
+55
+00:03:23.710 --> 00:03:29.040
+conventions specific transcription has
+happened to use for an audio clip.
+
+56
+00:03:29.040 --> 00:03:32.640
+So Spotting correcting
+consistencies like that.
+
+57
+00:03:32.640 --> 00:03:37.489
+Maybe just asking everyone to standardize
+on this first convention that
+
+58
+00:03:37.489 --> 00:03:42.120
+can have a significant impact on
+your learning albums performance.
+
+59
+00:03:42.120 --> 00:03:46.800
+So we'll come back later in this course
+to dive into some best practices for
+
+60
+00:03:46.800 --> 00:03:50.940
+how to spot inconsistencies and
+how to address them.
+
+61
+00:03:50.940 --> 00:03:54.861
+Other examples of data
+definition questions for
+
+62
+00:03:54.861 --> 00:04:00.978
+an audio clip like today's whether,
+how much silence do you want before and
+
+63
+00:04:00.978 --> 00:04:05.391
+after each clip after a speaker
+has stopped speaking.
+
+64
+00:04:05.391 --> 00:04:09.370
+Do you want to include another 100
+milliseconds of silence after that?
+
+65
+00:04:09.370 --> 00:04:15.540
+Or 300 milliseconds or
+500 milliseconds, half a second?
+
+66
+00:04:15.540 --> 00:04:19.740
+Or how do you perform
+volume normalization?
+
+67
+00:04:19.740 --> 00:04:24.550
+Some speakers speak loudly, some are less
+loud and then there's actually a tricky
+
+68
+00:04:24.550 --> 00:04:28.534
+case of if you have a single audio
+clip with some really loud volume and
+
+69
+00:04:28.534 --> 00:04:31.930
+some really soft volume,
+all within the same audio clip.
+
+70
+00:04:31.930 --> 00:04:36.647
+So how do you perform volume
+normalization questions
+
+71
+00:04:36.647 --> 00:04:41.440
+like all of these are data
+definition questions.
+
+72
+00:04:41.440 --> 00:04:43.760
+A lot of progress in machine learning.
+
+73
+00:04:43.760 --> 00:04:45.271
+That is a lot of machine learning.
+
+74
+00:04:45.271 --> 00:04:50.109
+Research was driven by researchers
+working to improve performance on
+
+75
+00:04:50.109 --> 00:04:51.600
+benchmark data set.
+
+76
+00:04:51.600 --> 00:04:56.122
+In that model, researchers
+might download the data set and
+
+77
+00:04:56.122 --> 00:04:58.740
+just work on that fixed data set.
+
+78
+00:04:58.740 --> 00:05:03.325
+And this mindset has led to tremendous
+progress in machine learning so
+
+79
+00:05:03.325 --> 00:05:07.598
+no complaints at all about this mindset,
+but if you are working on
+
+80
+00:05:07.598 --> 00:05:11.900
+a production system then you don't
+have to keep the data set fix.
+
+81
+00:05:11.900 --> 00:05:16.850
+I often edit the training set or even at
+the test set if that's what's needed in
+
+82
+00:05:16.850 --> 00:05:22.140
+order to improve the data quality to
+get a production system to work better.
+
+83
+00:05:22.140 --> 00:05:27.013
+So what are practical ways to do this
+effectively not an ad hoc way, but
+
+84
+00:05:27.013 --> 00:05:31.740
+systematic frameworks for
+making sure you have high quality data.
+
+85
+00:05:31.740 --> 00:05:34.213
+You learn more about this
+later in this course and
+
+86
+00:05:34.213 --> 00:05:36.151
+later in the specialization as well.
+
+87
+00:05:37.240 --> 00:05:42.266
+After you've collected your data set,
+the next step is modeling,
+
+88
+00:05:42.266 --> 00:05:47.840
+in which you have to select and train
+the model and perform error analysis.
+
+89
+00:05:47.840 --> 00:05:54.140
+The three key inputs that go into training
+a machine learning model are the code that
+
+90
+00:05:54.140 --> 00:06:00.740
+is the algorithm or the neural network
+model architecture that you might choose.
+
+91
+00:06:00.740 --> 00:06:05.226
+You also have to pick hyper parameters and
+then there's the data and
+
+92
+00:06:05.226 --> 00:06:09.100
+running the code with your
+hyper parameters on your data.
+
+93
+00:06:09.100 --> 00:06:14.873
+Gives you the machine learning model the
+celebrate, a machine learning model for
+
+94
+00:06:14.873 --> 00:06:18.910
+learning from, say,
+audio clips to text transcripts.
+
+95
+00:06:18.910 --> 00:06:22.356
+I found that in a lot of research work or
+
+96
+00:06:22.356 --> 00:06:28.174
+academic work you tend to hold
+the data fixed and vary the code and
+
+97
+00:06:28.174 --> 00:06:34.661
+may be vary the hyper parameters in
+order to try to get good performance.
+
+98
+00:06:35.740 --> 00:06:40.837
+In contrast, I found that for
+a lot of product teams, if your main
+
+99
+00:06:40.837 --> 00:06:46.862
+goal is to just build and deploy a working
+valuable machine learning system,
+
+100
+00:06:46.862 --> 00:06:51.961
+I found that it can be even more
+effective to hold the code fixed and
+
+101
+00:06:51.961 --> 00:06:57.810
+to instead focus on optimizing the data
+and maybe the hyper parameters.
+
+102
+00:06:57.810 --> 00:07:01.891
+In order to get a high performing model,
+
+103
+00:07:01.891 --> 00:07:06.933
+A machine learning system
+includes both codes and
+
+104
+00:07:06.933 --> 00:07:11.734
+data and
+also hyper parameters that there maybe
+
+105
+00:07:11.734 --> 00:07:16.440
+a bit easier to optimize than the code or
+data.
+
+106
+00:07:16.440 --> 00:07:21.400
+And I found that rather than taking
+a model centric view of trying to
+
+107
+00:07:21.400 --> 00:07:25.829
+optimize the code to your fixed
+data set for many problems,
+
+108
+00:07:25.829 --> 00:07:31.856
+you can use an open source implementation
+of something you download of GIT hub and
+
+109
+00:07:31.856 --> 00:07:35.160
+instead just focus on optimizing the data.
+
+110
+00:07:35.160 --> 00:07:40.160
+So during modeling, do you have to select
+and train some model architecture?
+
+111
+00:07:40.160 --> 00:07:45.073
+Maybe some neural network architecture
+error analysis can then tell
+
+112
+00:07:45.073 --> 00:07:48.540
+you where your model still falls short.
+
+113
+00:07:48.540 --> 00:07:53.440
+And if you can use that error analysis
+to tell you how to systematically
+
+114
+00:07:53.440 --> 00:07:57.700
+improve your data,
+maybe improve the code too. That's okay.
+
+115
+00:07:57.700 --> 00:08:03.560
+But often if error analysis can tell you
+how to systematically improve the data,
+
+116
+00:08:03.560 --> 00:08:08.740
+that can be a very efficient way for
+you to get to a high accuracy model.
+
+117
+00:08:08.740 --> 00:08:13.497
+And part of the trick is you don't want
+to just feel like you need to collect
+
+118
+00:08:13.497 --> 00:08:17.290
+more data all the time because
+we can always use more data.
+
+119
+00:08:17.290 --> 00:08:20.293
+But rather than just
+trying to collect more and
+
+120
+00:08:20.293 --> 00:08:25.145
+more and more data, which is helpful but
+can be expensive if their analysis
+
+121
+00:08:25.145 --> 00:08:29.842
+can help you be more targeted in exactly
+what data to collect that can help
+
+122
+00:08:29.842 --> 00:08:33.880
+you'd be much more efficient
+in building an accurate model.
+
+123
+00:08:33.880 --> 00:08:36.911
+Finally, when you have
+trained the model and
+
+124
+00:08:36.911 --> 00:08:40.899
+when error analysis seems to
+suggest is working well enough,
+
+125
+00:08:40.899 --> 00:08:45.710
+you're then ready to go into deployment,
+Check speech recognition.
+
+126
+00:08:45.710 --> 00:08:50.340
+This is how you might
+deploy a speech system.
+
+127
+00:08:50.340 --> 00:08:52.130
+You have a mobile phone.
+
+128
+00:08:52.130 --> 00:08:57.720
+This would be an edge device with software
+running locally on your phone.
+
+129
+00:08:57.720 --> 00:09:02.310
+That software taps into the microphone
+to record what someone is saying.
+
+130
+00:09:02.310 --> 00:09:06.811
+Maybe for voice search and
+in a typical implementation of
+
+131
+00:09:06.811 --> 00:09:11.440
+speech recognition,
+you would use a V A D module.
+
+132
+00:09:11.440 --> 00:09:14.461
+V D stands for a voice activity detection.
+
+133
+00:09:15.540 --> 00:09:16.640
+Yeah.
+
+134
+00:09:16.640 --> 00:09:20.460
+And it's usually a relatively
+simple algorithm.
+
+135
+00:09:20.460 --> 00:09:25.991
+Maybe a learning algorithm and
+the job of the V A D allows the smartphone
+
+136
+00:09:25.991 --> 00:09:31.713
+to select out just the audio that
+contains hopefully someone speaking so
+
+137
+00:09:31.713 --> 00:09:36.910
+that you can send only that audio
+clip to your prediction server.
+
+138
+00:09:36.910 --> 00:09:41.370
+And in this case maybe the prediction
+server lives into cloud.
+
+139
+00:09:41.370 --> 00:09:43.740
+This would be a common deployment pattern.
+
+140
+00:09:43.740 --> 00:09:48.544
+The prediction server then
+returns both the transcript so
+
+141
+00:09:48.544 --> 00:09:53.440
+the user so you can see what
+the system thinks you said.
+
+142
+00:09:53.440 --> 00:09:55.960
+And it also returns to search results.
+
+143
+00:09:55.960 --> 00:09:59.928
+If you're doing voice search and
+the transcript and search results are then
+
+144
+00:09:59.928 --> 00:10:04.140
+displayed in the front and
+code running on your mobile phone.
+
+145
+00:10:04.140 --> 00:10:09.029
+So implementing this type of
+system would be the work needed to
+
+146
+00:10:09.029 --> 00:10:13.825
+deploy a speech model in
+production even after it's running
+
+147
+00:10:13.825 --> 00:10:19.340
+though you still have to monitor and
+maintain the system.
+
+148
+00:10:19.340 --> 00:10:24.029
+So here's something that happened to
+me once my team had built a speech
+
+149
+00:10:24.029 --> 00:10:28.740
+recognition system and
+it was trained mainly on adult voices.
+
+150
+00:10:28.740 --> 00:10:31.764
+We pushed into production,
+random production and
+
+151
+00:10:31.764 --> 00:10:36.334
+we found that over time more and
+more young individuals, kind of teenagers,
+
+152
+00:10:36.334 --> 00:10:41.328
+you know, sometimes even younger seem to
+be using our speech recognition system and
+
+153
+00:10:41.328 --> 00:10:45.030
+the voices are very young
+individuals just sound different.
+
+154
+00:10:45.030 --> 00:10:48.781
+And so my speech systems
+performance started to degrade.
+
+155
+00:10:48.781 --> 00:10:54.770
+We just were not that good at recognizing
+speech as spoken by younger voices.
+
+156
+00:10:54.770 --> 00:10:56.202
+And so he had to go back and
+
+157
+00:10:56.202 --> 00:10:59.828
+find a way to collect more data
+are the things in order to fix it.
+
+158
+00:10:59.828 --> 00:11:06.729
+So one of the key challenges when it
+comes to deployment is concept drift or
+
+159
+00:11:06.729 --> 00:11:11.181
+data drift,
+which is what happens when the data
+
+160
+00:11:11.181 --> 00:11:15.857
+distribution changes,
+such as there are more and
+
+161
+00:11:15.857 --> 00:11:21.791
+more young voices being fed to
+the speech recognition system.
+
+162
+00:11:21.791 --> 00:11:26.584
+And knowing how to put in place
+appropriate monitors to spot such
+
+163
+00:11:26.584 --> 00:11:31.374
+problems and then also how to fix
+them in a timely way is a key skill
+
+164
+00:11:31.374 --> 00:11:36.281
+needed to make sure your production
+deployment creates a value.
+
+165
+00:11:36.281 --> 00:11:40.321
+You hope it will to recap in this video.
+
+166
+00:11:40.321 --> 00:11:45.320
+You saw the full life cycle of a machine
+learning project using speech recognition
+
+167
+00:11:45.320 --> 00:11:47.240
+as the running example.
+
+168
+00:11:47.240 --> 00:11:52.940
+So from scoping to data to
+modeling to deployment.
+
+169
+00:11:52.940 --> 00:11:57.333
+Next I want to briefly share
+review the major concepts and
+
+170
+00:11:57.333 --> 00:12:00.740
+sequencing you learn about in this course.
+
+171
+00:12:00.740 --> 00:12:02.961
+So come with me to the next video.

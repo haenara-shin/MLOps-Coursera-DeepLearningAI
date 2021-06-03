@@ -1,0 +1,41 @@
+Welcome to the second
+course in the machine learning engine for production,
+and MLOps specialization. In the first course, we looked at the entire machine learning
+project lifecycle. As part of that, we also
+went over data topics, like the consistency
+of the labels, practical approaches
+to data augmentation. We also briefly touched on
+some of the challenges of building and maintaining
+data pipelines. This second course will dive much deeper into the issue of data, and how you can build
+data pipelines. I'm thrilled to reintroduce this course instructor,
+Robert Growe, who's TensorFlow, developer
+engineer at Google, and one of the world's
+experts on MLOps. In this course, you'll explore the data journey over a
+production systems lifecycle. You'll implement
+feature engineering, transformation, and selection,
+with a TFX framework. Look at responsible
+data collection for building a fair
+ML production system, and get an understanding of deep model performance analysis. You'll also look at ways
+to improve your data, for better training
+and generalization. Along the way, you'll become fairly familiar
+with a TFX library, and learn to create a healthy and fully operational data pipeline. By encoding structured and
+unstructured data types, and addressing class imbalances, and by leveraging ML metadata
+and enterprise schemas, to address quickly evolving data. Remember that production ML, often becomes an
+important part of what a business does
+for its customers. Treating people fairly, and serving different kinds
+of customers well, requires you to understand your model performance
+at a deeper level, which is something
+you'll learn about more in this course. You'll also learn about
+some specialized scenarios like anomaly detection. But the main focus of
+this course is on data. Machine learning relies on data. The quality of your data has a huge impact on the success
+of your product or service. Because of that, the skills and tools that
+you'll learn about, are becoming
+increasingly prominent in the current job market. Thanks, Robert. I'm
+excited about this. Anyone that masters
+these techniques will be much more effective
+at building robust, deployable machine
+learning systems. Thanks, Andrew. I'm
+excited about this. Anyone that masters these
+techniques will be much more effective at building robust,
+deployable ML systems. Let's dive into building
+data pipelines.

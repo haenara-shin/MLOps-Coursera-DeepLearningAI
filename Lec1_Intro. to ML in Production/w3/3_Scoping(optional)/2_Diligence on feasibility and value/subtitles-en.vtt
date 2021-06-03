@@ -1,0 +1,1460 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.500
+In the last video,
+
+2
+00:00:01.500 --> 00:00:04.140
+you heard about the
+step of assessing
+
+3
+00:00:04.140 --> 00:00:08.205
+a project for technical
+feasibility and for value.
+
+4
+00:00:08.205 --> 00:00:10.260
+Let's take a deeper
+look at how you can
+
+5
+00:00:10.260 --> 00:00:12.930
+carry out this diligence step to
+
+6
+00:00:12.930 --> 00:00:15.299
+figure out if a project
+really is feasible
+
+7
+00:00:15.299 --> 00:00:17.925
+and also how valuable
+it really is.
+
+8
+00:00:17.925 --> 00:00:19.865
+Let's start with feasibility.
+
+9
+00:00:19.865 --> 00:00:23.085
+Is this project idea
+technically feasible?
+
+10
+00:00:23.085 --> 00:00:25.875
+Before you've started on the
+Machine Learning Project,
+
+11
+00:00:25.875 --> 00:00:29.750
+how do you know if this
+thing can even be built?
+
+12
+00:00:29.750 --> 00:00:33.880
+One way to get a quick
+sense of feasibility is to
+
+13
+00:00:33.880 --> 00:00:37.750
+use an external benchmark
+such as the research,
+
+14
+00:00:37.750 --> 00:00:40.540
+literature or other
+forms of publications,
+
+15
+00:00:40.540 --> 00:00:42.970
+or if different company
+
+16
+00:00:42.970 --> 00:00:45.100
+or even a competitor
+has managed to
+
+17
+00:00:45.100 --> 00:00:49.860
+build a certain type of
+online search system before,
+
+18
+00:00:49.860 --> 00:00:53.130
+or recommendation system
+or, inventory management.
+
+19
+00:00:53.130 --> 00:00:55.614
+But if there's some
+external benchmark
+
+20
+00:00:55.614 --> 00:00:57.250
+that might help give you
+
+21
+00:00:57.250 --> 00:01:02.120
+a sense that this project
+may be technically feasible,
+
+22
+00:01:02.120 --> 00:01:05.150
+because someone else has managed
+to do something similar.
+
+23
+00:01:05.150 --> 00:01:07.210
+Either to complement this type of
+
+24
+00:01:07.210 --> 00:01:08.650
+external benchmark or in
+
+25
+00:01:08.650 --> 00:01:11.244
+the absence of this other
+external benchmark,
+
+26
+00:01:11.244 --> 00:01:14.755
+here are some other ways
+to assess feasibility.
+
+27
+00:01:14.755 --> 00:01:15.970
+I'm going to build a two by
+
+28
+00:01:15.970 --> 00:01:19.180
+two matrix that looks
+at different cases,
+
+29
+00:01:19.180 --> 00:01:20.470
+depending on whether your
+
+30
+00:01:20.470 --> 00:01:23.200
+problem has
+unstructured data like
+
+31
+00:01:23.200 --> 00:01:25.150
+speech images or
+
+32
+00:01:25.150 --> 00:01:28.180
+structured data like
+transaction records.
+
+33
+00:01:28.180 --> 00:01:29.710
+On the other axis,
+
+34
+00:01:29.710 --> 00:01:32.820
+I'm going to put new
+versus existing.
+
+35
+00:01:32.820 --> 00:01:34.180
+Whereby new I mean,
+
+36
+00:01:34.180 --> 00:01:35.890
+you're trying to
+build a system to
+
+37
+00:01:35.890 --> 00:01:37.840
+do a task for the first time,
+
+38
+00:01:37.840 --> 00:01:40.240
+such as if you've
+never done demand
+
+39
+00:01:40.240 --> 00:01:43.285
+forecasting before and you're
+thinking of building one,
+
+40
+00:01:43.285 --> 00:01:46.510
+whereas existing refers to
+
+41
+00:01:46.510 --> 00:01:50.380
+if you already have
+some existing system,
+
+42
+00:01:50.380 --> 00:01:52.885
+maybe a machine learning
+one, maybe not,
+
+43
+00:01:52.885 --> 00:01:56.230
+that is carrying out this
+task and you're thinking
+
+44
+00:01:56.230 --> 00:02:00.140
+of scoping out an improvement
+to an existing system.
+
+45
+00:02:00.140 --> 00:02:01.960
+New means you are delivering
+
+46
+00:02:01.960 --> 00:02:04.150
+a brand new capability
+and the existing
+
+47
+00:02:04.150 --> 00:02:06.405
+means you're scoping
+out the project
+
+48
+00:02:06.405 --> 00:02:09.190
+to improve on an
+existing capability.
+
+49
+00:02:09.190 --> 00:02:11.905
+In the upper left hand quadrant,
+
+50
+00:02:11.905 --> 00:02:15.655
+to see if a project is
+technically feasible,
+
+51
+00:02:15.655 --> 00:02:17.770
+I find Human Level Performance,
+
+52
+00:02:17.770 --> 00:02:20.440
+HLP to be very
+useful and give you
+
+53
+00:02:20.440 --> 00:02:25.210
+an initial sense of whether
+a project is doable.
+
+54
+00:02:25.210 --> 00:02:28.870
+When evaluating HLP, I
+would give a human to
+
+55
+00:02:28.870 --> 00:02:30.690
+same data as would be fed to
+
+56
+00:02:30.690 --> 00:02:33.295
+a learning algorithm
+and just ask,
+
+57
+00:02:33.295 --> 00:02:35.410
+can a human given the same data,
+
+58
+00:02:35.410 --> 00:02:37.420
+perform the tasks such as can the
+
+59
+00:02:37.420 --> 00:02:40.450
+human given a picture of
+a scratch smartphone,
+
+60
+00:02:40.450 --> 00:02:43.940
+perform the task of detecting
+scratches reliably?
+
+61
+00:02:43.940 --> 00:02:45.700
+If a human can do it,
+
+62
+00:02:45.700 --> 00:02:48.370
+then that significantly
+increases the hope
+
+63
+00:02:48.370 --> 00:02:51.280
+they can also get the
+learning algorithm to do it.
+
+64
+00:02:51.280 --> 00:02:53.680
+For existing projects, I would
+
+65
+00:02:53.680 --> 00:02:56.635
+use HLP as a reference as well.
+
+66
+00:02:56.635 --> 00:03:01.090
+Where if you have
+
+67
+00:03:01.090 --> 00:03:03.490
+a visual [inaudible]
+inspection system
+
+68
+00:03:03.490 --> 00:03:05.110
+and you're hoping
+to improve it to
+
+69
+00:03:05.110 --> 00:03:06.600
+a certain level of performance.
+
+70
+00:03:06.600 --> 00:03:09.865
+If humans can achieve the
+level you're hoping to get to,
+
+71
+00:03:09.865 --> 00:03:11.155
+then that might give you
+
+72
+00:03:11.155 --> 00:03:13.900
+more hope that it is
+technically feasible.
+
+73
+00:03:13.900 --> 00:03:16.300
+Whereas if you're
+hoping to increase
+
+74
+00:03:16.300 --> 00:03:19.210
+performance well beyond
+human level performance,
+
+75
+00:03:19.210 --> 00:03:21.640
+then that suggests the project
+
+76
+00:03:21.640 --> 00:03:24.530
+might be harder or
+may not be possible.
+
+77
+00:03:24.530 --> 00:03:26.530
+In addition to HLP,
+
+78
+00:03:26.530 --> 00:03:31.630
+I often also use the history of
+
+79
+00:03:31.630 --> 00:03:36.705
+the project as a predictor
+for future progress.
+
+80
+00:03:36.705 --> 00:03:39.820
+I will say more
+about both HLP and
+
+81
+00:03:39.820 --> 00:03:43.780
+history of project in
+the next few slides,
+
+82
+00:03:43.780 --> 00:03:48.280
+but the previous rate of
+progress on the project can be
+
+83
+00:03:48.280 --> 00:03:50.890
+a reasonable predictor for
+
+84
+00:03:50.890 --> 00:03:53.330
+the future rate of
+progress on a project.
+
+85
+00:03:53.330 --> 00:03:56.150
+You see more of this
+later in this video.
+
+86
+00:03:56.150 --> 00:03:58.475
+Moving over to the right column.
+
+87
+00:03:58.475 --> 00:03:59.710
+If you're working on
+
+88
+00:03:59.710 --> 00:04:03.080
+a brand new project
+with structure data,
+
+89
+00:04:03.080 --> 00:04:06.460
+the question I would ask is,
+
+90
+00:04:06.460 --> 00:04:13.610
+are predictive
+features available?
+
+91
+00:04:13.610 --> 00:04:16.980
+Do you have reason to think
+that the data you have,
+
+92
+00:04:16.980 --> 00:04:18.915
+the inputs X are
+
+93
+00:04:18.915 --> 00:04:21.030
+strongly predictive
+or sufficiently
+
+94
+00:04:21.030 --> 00:04:24.075
+predictive of the
+target outputs Y?
+
+95
+00:04:24.075 --> 00:04:27.180
+In this box on the lower right,
+
+96
+00:04:27.180 --> 00:04:29.190
+for structured data problem,
+
+97
+00:04:29.190 --> 00:04:32.080
+if you're trying to improve
+an existing system,
+
+98
+00:04:32.080 --> 00:04:35.580
+one thing that will
+help a lot is if you
+
+99
+00:04:35.580 --> 00:04:38.865
+can identify new
+predictive features.
+
+100
+00:04:38.865 --> 00:04:40.890
+Are there features that you
+
+101
+00:04:40.890 --> 00:04:43.050
+aren't yet using but
+you can identify that
+
+102
+00:04:43.050 --> 00:04:48.535
+could really help predict
+Y and also by looking at?
+
+103
+00:04:48.535 --> 00:04:52.470
+The history, of the project.
+
+104
+00:04:52.470 --> 00:04:56.925
+On this slide, you heard
+about three concepts.
+
+105
+00:04:56.925 --> 00:04:59.430
+Human-level performance,
+the question
+
+106
+00:04:59.430 --> 00:05:01.544
+of whether predictive
+features are available,
+
+107
+00:05:01.544 --> 00:05:03.555
+and also the history
+of a project.
+
+108
+00:05:03.555 --> 00:05:06.660
+Let's take a deeper look
+at these three concepts.
+
+109
+00:05:06.660 --> 00:05:13.170
+Let's start with using HLP
+on unstructured data images.
+
+110
+00:05:13.170 --> 00:05:17.325
+I use HLP to benchmark
+what might be durable for
+
+111
+00:05:17.325 --> 00:05:19.980
+unstructured data
+because people are
+
+112
+00:05:19.980 --> 00:05:23.505
+very good on
+unstructured data tasks.
+
+113
+00:05:23.505 --> 00:05:27.990
+The key criteria for assessing
+project feasibility is,
+
+114
+00:05:27.990 --> 00:05:29.790
+can a human given
+
+115
+00:05:29.790 --> 00:05:32.340
+the exact same data as would be
+
+116
+00:05:32.340 --> 00:05:35.265
+given to a learning
+algorithm, perform the task?
+
+117
+00:05:35.265 --> 00:05:36.840
+Let's look at an example.
+
+118
+00:05:36.840 --> 00:05:38.670
+Let's say you're building
+a self-driving car,
+
+119
+00:05:38.670 --> 00:05:41.835
+and you want an
+algorithm to classify
+
+120
+00:05:41.835 --> 00:05:43.890
+whether a traffic
+light is currently
+
+121
+00:05:43.890 --> 00:05:46.260
+red, yellow, or green.
+
+122
+00:05:46.260 --> 00:05:49.170
+I will take pictures from
+
+123
+00:05:49.170 --> 00:05:50.880
+your self-driving car and
+
+124
+00:05:50.880 --> 00:05:52.935
+ask a person to look
+at an image like this,
+
+125
+00:05:52.935 --> 00:05:56.055
+and see if the person
+looking only at the image
+
+126
+00:05:56.055 --> 00:05:59.550
+can tell which lamp is
+illuminated and in this example,
+
+127
+00:05:59.550 --> 00:06:01.440
+it's pretty clear it's green.
+
+128
+00:06:01.440 --> 00:06:04.335
+But if you find that you also
+have pictures like these,
+
+129
+00:06:04.335 --> 00:06:05.880
+then I can't tell
+
+130
+00:06:05.880 --> 00:06:08.370
+which lamp is illuminated
+in this example.
+
+131
+00:06:08.370 --> 00:06:10.050
+This is why it's important for
+
+132
+00:06:10.050 --> 00:06:12.240
+this HLP benchmark
+to make sure that
+
+133
+00:06:12.240 --> 00:06:14.940
+human is given only the same data
+
+134
+00:06:14.940 --> 00:06:16.695
+as your learning algorithm.
+
+135
+00:06:16.695 --> 00:06:19.410
+It turns out maybe
+a human sitting in
+
+136
+00:06:19.410 --> 00:06:22.275
+the car and seeing the traffic
+light with their own eye,
+
+137
+00:06:22.275 --> 00:06:24.060
+could have told
+you which lamp was
+
+138
+00:06:24.060 --> 00:06:26.610
+illuminated in this
+example on the right,
+
+139
+00:06:26.610 --> 00:06:29.460
+but that's because
+the human eye has
+
+140
+00:06:29.460 --> 00:06:33.510
+superior contrast to
+most digital cameras.
+
+141
+00:06:33.510 --> 00:06:36.720
+But the useful test
+is not whether
+
+142
+00:06:36.720 --> 00:06:41.865
+the human eye can recognize
+which lamp is illuminated,
+
+143
+00:06:41.865 --> 00:06:45.870
+the useful test is
+if the person was
+
+144
+00:06:45.870 --> 00:06:47.970
+sitting back in the
+office and they can only
+
+145
+00:06:47.970 --> 00:06:50.175
+see the image from the camera,
+
+146
+00:06:50.175 --> 00:06:51.840
+can they still do the task?
+
+147
+00:06:51.840 --> 00:06:55.020
+That gives you a better
+read on feasibility.
+
+148
+00:06:55.020 --> 00:06:57.540
+Specifically, it helps you make
+
+149
+00:06:57.540 --> 00:07:00.030
+a better guess at whether
+a learning algorithm,
+
+150
+00:07:00.030 --> 00:07:02.295
+which will only have
+access to this image,
+
+151
+00:07:02.295 --> 00:07:04.320
+can also accurately detect
+
+152
+00:07:04.320 --> 00:07:07.250
+which lamp in a traffic
+light is illuminated.
+
+153
+00:07:07.250 --> 00:07:09.095
+Making sure that a human sees
+
+154
+00:07:09.095 --> 00:07:11.120
+only the same data as
+a learning algorithm
+
+155
+00:07:11.120 --> 00:07:13.130
+will see is really important.
+
+156
+00:07:13.130 --> 00:07:15.290
+I've seen a lot of
+projects where for
+
+157
+00:07:15.290 --> 00:07:16.640
+a long time a team was
+
+158
+00:07:16.640 --> 00:07:19.030
+working on a computer
+vision system, say,
+
+159
+00:07:19.030 --> 00:07:22.350
+and they thought they could
+do it because a human
+
+160
+00:07:22.350 --> 00:07:24.600
+physically inspecting
+the cell phone
+
+161
+00:07:24.600 --> 00:07:26.670
+or something could
+detect the defect.
+
+162
+00:07:26.670 --> 00:07:29.070
+But it took a long
+time to realize that
+
+163
+00:07:29.070 --> 00:07:31.260
+even a human looking
+only at the image,
+
+164
+00:07:31.260 --> 00:07:33.180
+couldn't figure out
+what was going on.
+
+165
+00:07:33.180 --> 00:07:35.085
+If you can realize that earlier,
+
+166
+00:07:35.085 --> 00:07:36.660
+then you can figure much
+
+167
+00:07:36.660 --> 00:07:39.240
+earlier that with the
+current camera set up,
+
+168
+00:07:39.240 --> 00:07:41.100
+it just wasn't visible.
+
+169
+00:07:41.100 --> 00:07:45.195
+The more efficient thing to
+do would have been to invest
+
+170
+00:07:45.195 --> 00:07:47.370
+early on in a better camera
+
+171
+00:07:47.370 --> 00:07:49.545
+or better lighting
+setup or something,
+
+172
+00:07:49.545 --> 00:07:52.245
+rather than keep working on
+a machine learning algorithm
+
+173
+00:07:52.245 --> 00:07:54.900
+on the problem that I
+think just wasn't durable,
+
+174
+00:07:54.900 --> 00:07:57.150
+with the imaging setup
+available at a time.
+
+175
+00:07:57.150 --> 00:07:59.175
+Next, for structured
+data problems,
+
+176
+00:07:59.175 --> 00:08:01.290
+one of the key criteria
+
+177
+00:08:01.290 --> 00:08:03.825
+to assess for technical
+feasibility is,
+
+178
+00:08:03.825 --> 00:08:07.140
+do we have input features
+X that seem to be
+
+179
+00:08:07.140 --> 00:08:10.470
+predictive whenever we're
+trying to predict Y.
+
+180
+00:08:10.470 --> 00:08:12.270
+Let's look at a few examples.
+
+181
+00:08:12.270 --> 00:08:15.540
+In a Ecom example,
+
+182
+00:08:15.540 --> 00:08:18.990
+if you have features
+that show what are
+
+183
+00:08:18.990 --> 00:08:20.310
+the past purchases of
+
+184
+00:08:20.310 --> 00:08:23.805
+a user and you like to
+predict future purchases.
+
+185
+00:08:23.805 --> 00:08:27.555
+That seems possible to
+me because most people's
+
+186
+00:08:27.555 --> 00:08:31.740
+previous purchases are
+predictive of future purchases.
+
+187
+00:08:31.740 --> 00:08:34.185
+If you have past purchase data,
+
+188
+00:08:34.185 --> 00:08:37.200
+you do have features
+that seem predictive of
+
+189
+00:08:37.200 --> 00:08:40.680
+future purchases and this
+project might be worth a try.
+
+190
+00:08:40.680 --> 00:08:45.225
+Or if you work with
+a physical store,
+
+191
+00:08:45.225 --> 00:08:47.640
+given data on whether if
+
+192
+00:08:47.640 --> 00:08:50.280
+you want to predict
+shopping mall foot traffic.
+
+193
+00:08:50.280 --> 00:08:52.200
+How many people will
+go to the mall?
+
+194
+00:08:52.200 --> 00:08:53.805
+While we know that,
+
+195
+00:08:53.805 --> 00:08:55.395
+when it rains a lot,
+
+196
+00:08:55.395 --> 00:08:57.300
+fewer people leave their house,
+
+197
+00:08:57.300 --> 00:08:59.250
+so weather is predictive of
+
+198
+00:08:59.250 --> 00:09:01.725
+foot traffic in
+shopping malls and so,
+
+199
+00:09:01.725 --> 00:09:04.590
+I will say you do have
+predictive features.
+
+200
+00:09:04.590 --> 00:09:06.660
+Let's look at some more examples.
+
+201
+00:09:06.660 --> 00:09:09.405
+Given DNA of an individual,
+
+202
+00:09:09.405 --> 00:09:11.010
+let's try to predict if
+
+203
+00:09:11.010 --> 00:09:13.920
+this individual will
+have heart disease.
+
+204
+00:09:13.920 --> 00:09:16.680
+This one, I don't know,
+
+205
+00:09:16.680 --> 00:09:20.040
+the mapping from your DNA
+to whether or not you
+
+206
+00:09:20.040 --> 00:09:23.235
+get heart disease is
+a very noisy mapping.
+
+207
+00:09:23.235 --> 00:09:25.320
+In biology, this is referred
+
+208
+00:09:25.320 --> 00:09:27.494
+to the genotype and phenotype,
+
+209
+00:09:27.494 --> 00:09:30.150
+but the mapping from
+genotype to phenotype or
+
+210
+00:09:30.150 --> 00:09:32.250
+your genetics to your
+health condition
+
+211
+00:09:32.250 --> 00:09:34.950
+is a very noisy mapping.
+
+212
+00:09:34.950 --> 00:09:39.615
+I would have mixed feelings
+about this project,
+
+213
+00:09:39.615 --> 00:09:40.875
+because it turns out
+
+214
+00:09:40.875 --> 00:09:44.175
+your genetic sequence
+is only slightly,
+
+215
+00:09:44.175 --> 00:09:47.985
+maybe mildly predictive of
+whether you get heart disease.
+
+216
+00:09:47.985 --> 00:09:50.625
+I'm going to put a
+question mark there.
+
+217
+00:09:50.625 --> 00:09:53.365
+Given social media chatter,
+
+218
+00:09:53.365 --> 00:09:56.520
+can you predict demand
+for a clothing style?
+
+219
+00:09:56.520 --> 00:09:58.460
+This is another iffy one.
+
+220
+00:09:58.460 --> 00:10:00.130
+I think you may be
+able to predict
+
+221
+00:10:00.130 --> 00:10:02.975
+demand for clothing
+style right now,
+
+222
+00:10:02.975 --> 00:10:05.620
+but given social media chatter,
+
+223
+00:10:05.620 --> 00:10:07.960
+can you predict what
+will be the hot,
+
+224
+00:10:07.960 --> 00:10:09.955
+fashionable trend
+six months from now?
+
+225
+00:10:09.955 --> 00:10:12.795
+That actually seems
+very difficult.
+
+226
+00:10:12.795 --> 00:10:17.225
+One of the ways I've seen
+AI projects go poorly,
+
+227
+00:10:17.225 --> 00:10:18.800
+is if there's an idea
+
+228
+00:10:18.800 --> 00:10:21.500
+like let's use social
+media to figure out what
+
+229
+00:10:21.500 --> 00:10:24.075
+people are chatting
+about in fashion
+
+230
+00:10:24.075 --> 00:10:25.640
+and then we'll
+manufacture the clothing
+
+231
+00:10:25.640 --> 00:10:26.950
+and sell it in six months.
+
+232
+00:10:26.950 --> 00:10:31.115
+Sometimes the data just
+is not that predictive,
+
+233
+00:10:31.115 --> 00:10:33.950
+and you end up with a
+learning algorithm that
+
+234
+00:10:33.950 --> 00:10:37.455
+does barely better
+than random guessing.
+
+235
+00:10:37.455 --> 00:10:39.650
+That's why looking at whether you
+
+236
+00:10:39.650 --> 00:10:42.094
+have features that you
+believe are predictive,
+
+237
+00:10:42.094 --> 00:10:43.910
+is an important step of
+
+238
+00:10:43.910 --> 00:10:45.710
+diligence for assessing
+
+239
+00:10:45.710 --> 00:10:47.865
+technical feasibility
+of a project.
+
+240
+00:10:47.865 --> 00:10:50.960
+One last example that
+may be even clearer,
+
+241
+00:10:50.960 --> 00:10:53.100
+which is given a history of
+
+242
+00:10:53.100 --> 00:10:55.635
+a particular stock
+market shares price.
+
+243
+00:10:55.635 --> 00:10:58.340
+Let's try to predict the
+future price of that stock.
+
+244
+00:10:58.340 --> 00:11:00.740
+All of the evidence I've seen is
+
+245
+00:11:00.740 --> 00:11:03.290
+that this is not
+doable unless you
+
+246
+00:11:03.290 --> 00:11:05.420
+get some other clever set of
+
+247
+00:11:05.420 --> 00:11:08.090
+features looking at a single
+shares historical price,
+
+248
+00:11:08.090 --> 00:11:09.290
+to predict the future price of
+
+249
+00:11:09.290 --> 00:11:12.495
+that stock is
+exceedingly difficult.
+
+250
+00:11:12.495 --> 00:11:15.830
+I would say if those are
+the only futures you have,
+
+251
+00:11:15.830 --> 00:11:17.835
+those features are
+not predictive of
+
+252
+00:11:17.835 --> 00:11:19.400
+the future price of that stock
+
+253
+00:11:19.400 --> 00:11:21.245
+based on the evidence I've seen.
+
+254
+00:11:21.245 --> 00:11:23.390
+Even leaving aside
+the question of how
+
+255
+00:11:23.390 --> 00:11:25.545
+much predicting share
+prices are trading,
+
+256
+00:11:25.545 --> 00:11:27.354
+if there's any social value,
+
+257
+00:11:27.354 --> 00:11:29.660
+I have some questions
+about that sometimes.
+
+258
+00:11:29.660 --> 00:11:31.110
+I think this project is
+
+259
+00:11:31.110 --> 00:11:33.710
+also just not
+technically feasible.
+
+260
+00:11:33.710 --> 00:11:37.155
+Finally, on this diagram,
+
+261
+00:11:37.155 --> 00:11:40.670
+one last criteria I
+mentioned a couple of
+
+262
+00:11:40.670 --> 00:11:43.970
+times is the history
+of a project.
+
+263
+00:11:43.970 --> 00:11:45.525
+Let's take a look at that.
+
+264
+00:11:45.525 --> 00:11:46.730
+When I've worked on
+
+265
+00:11:46.730 --> 00:11:50.865
+a machine learning
+application for many months,
+
+266
+00:11:50.865 --> 00:11:54.975
+I found that the rates of
+previous improvements can be
+
+267
+00:11:54.975 --> 00:11:56.990
+maybe a surprisingly
+good predictor for
+
+268
+00:11:56.990 --> 00:11:59.415
+the rate of future improvement.
+
+269
+00:11:59.415 --> 00:12:01.985
+Here's a simple
+model you can use.
+
+270
+00:12:01.985 --> 00:12:05.119
+Let's see a speech
+recognition as the example,
+
+271
+00:12:05.119 --> 00:12:11.120
+and let's say that this is
+human level performance.
+
+272
+00:12:11.120 --> 00:12:13.475
+I'm going to use human
+level performance
+
+273
+00:12:13.475 --> 00:12:14.960
+as our estimate for
+
+274
+00:12:14.960 --> 00:12:17.120
+B0 or the irreducible level
+
+275
+00:12:17.120 --> 00:12:18.765
+of error that we hope to get to.
+
+276
+00:12:18.765 --> 00:12:21.110
+Let's say that when
+you started a project,
+
+277
+00:12:21.110 --> 00:12:24.555
+you'll see in the first
+quarter or Q1 of some year,
+
+278
+00:12:24.555 --> 00:12:29.610
+the system had 10
+percent error rate.
+
+279
+00:12:29.610 --> 00:12:32.270
+Over time, in
+subsequent quarters,
+
+280
+00:12:32.270 --> 00:12:37.390
+the error went down like,
+
+281
+00:12:37.390 --> 00:12:42.780
+Q2, Q3, Q4 and so on.
+
+282
+00:12:42.780 --> 00:12:45.980
+It turns out that it's not
+
+283
+00:12:45.980 --> 00:12:51.425
+a terrible model to
+estimate this curve.
+
+284
+00:12:51.425 --> 00:12:54.545
+If you want to estimate how well
+
+285
+00:12:54.545 --> 00:12:58.294
+the team could do in the future,
+
+286
+00:12:58.294 --> 00:13:00.240
+one simple model I've used,
+
+287
+00:13:00.240 --> 00:13:02.540
+is to estimate the rate of
+
+288
+00:13:02.540 --> 00:13:06.365
+progress as for every
+fixed period of time,
+
+289
+00:13:06.365 --> 00:13:10.935
+say every quarter,
+the team will reduce
+
+290
+00:13:10.935 --> 00:13:12.855
+the error rate by
+
+291
+00:13:12.855 --> 00:13:17.900
+some percentage relative to
+human level performance.
+
+292
+00:13:17.900 --> 00:13:20.255
+In this case, it looks like
+
+293
+00:13:20.255 --> 00:13:23.360
+this gap between the current
+level of performance and
+
+294
+00:13:23.360 --> 00:13:25.130
+human level performance is
+
+295
+00:13:25.130 --> 00:13:28.730
+shrinking by maybe 30
+percent every quarter,
+
+296
+00:13:28.730 --> 00:13:31.460
+which is why you get
+this curve that is
+
+297
+00:13:31.460 --> 00:13:34.580
+exponentially
+decaying to what HRP.
+
+298
+00:13:34.580 --> 00:13:36.975
+By estimating this
+rate of progress,
+
+299
+00:13:36.975 --> 00:13:38.270
+you may project into
+
+300
+00:13:38.270 --> 00:13:41.525
+the future that hopefully
+in future quarters,
+
+301
+00:13:41.525 --> 00:13:43.430
+you continue to reduce
+
+302
+00:13:43.430 --> 00:13:46.065
+the error by 30 percent
+relative to HRP.
+
+303
+00:13:46.065 --> 00:13:47.840
+This will give you a
+sense of what might be
+
+304
+00:13:47.840 --> 00:13:49.910
+reasonable for the future rate
+
+305
+00:13:49.910 --> 00:13:51.420
+of progress on this project.
+
+306
+00:13:51.420 --> 00:13:56.300
+This gives you a sense of
+what may be feasible for
+
+307
+00:13:56.300 --> 00:13:59.750
+an existing project for which
+you already have this type
+
+308
+00:13:59.750 --> 00:14:03.770
+of history and can try to
+extrapolate into the future.
+
+309
+00:14:03.770 --> 00:14:05.930
+In this video, you saw how
+
+310
+00:14:05.930 --> 00:14:08.315
+to use human level performance,
+
+311
+00:14:08.315 --> 00:14:12.345
+the question of whether you
+have predictive features and
+
+312
+00:14:12.345 --> 00:14:14.180
+the history of a project in
+
+313
+00:14:14.180 --> 00:14:17.235
+order to assess
+technical feasibility.
+
+314
+00:14:17.235 --> 00:14:20.045
+Next, let's dive more deeply into
+
+315
+00:14:20.045 --> 00:14:22.910
+assessing the value of a project.
+
+316
+00:14:22.910 --> 00:14:26.090
+We'll do that in the next video.

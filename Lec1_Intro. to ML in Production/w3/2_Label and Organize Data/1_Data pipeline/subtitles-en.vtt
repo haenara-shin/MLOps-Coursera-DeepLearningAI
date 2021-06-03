@@ -1,0 +1,562 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.580
+Data pipelines, sometimes also
+
+2
+00:00:02.580 --> 00:00:05.175
+called Data Cascais refers to
+
+3
+00:00:05.175 --> 00:00:07.590
+when your data has
+multiple steps of
+
+4
+00:00:07.590 --> 00:00:10.945
+processing before getting
+to the final output.
+
+5
+00:00:10.945 --> 00:00:12.630
+There's some best practices
+
+6
+00:00:12.630 --> 00:00:15.810
+relevant for managing
+such data pipelines.
+
+7
+00:00:15.810 --> 00:00:17.430
+Let's start with an example.
+
+8
+00:00:17.430 --> 00:00:21.570
+Let's say that given
+some user information
+
+9
+00:00:21.570 --> 00:00:23.190
+you would like to predict
+
+10
+00:00:23.190 --> 00:00:26.730
+if a given user is
+looking for a job,
+
+11
+00:00:26.730 --> 00:00:28.200
+because if they're
+looking for a job
+
+12
+00:00:28.200 --> 00:00:29.460
+at this moment in time,
+
+13
+00:00:29.460 --> 00:00:31.920
+you may want to surface job ads
+
+14
+00:00:31.920 --> 00:00:36.090
+or other pieces of perfectly
+useful information to them.
+
+15
+00:00:36.090 --> 00:00:40.785
+Given raw data such
+as the data on top,
+
+16
+00:00:40.785 --> 00:00:46.350
+there's often some pre-processing
+or data cleaning before
+
+17
+00:00:46.350 --> 00:00:49.590
+the data is fed to
+learning algorithm that
+
+18
+00:00:49.590 --> 00:00:53.805
+then tries to predict, why?
+
+19
+00:00:53.805 --> 00:00:55.935
+Are they looking for a job?
+
+20
+00:00:55.935 --> 00:00:59.795
+The data cleaning may include
+things like spam cleanup,
+
+21
+00:00:59.795 --> 00:01:02.330
+such as removing
+the spam accounts,
+
+22
+00:01:02.330 --> 00:01:05.090
+and maybe also user ID merge
+
+23
+00:01:05.090 --> 00:01:07.685
+which we talked about
+in an earlier video.
+
+24
+00:01:07.685 --> 00:01:10.820
+For the sake of this example,
+
+25
+00:01:10.820 --> 00:01:12.800
+let's say that spam clean-up and
+
+26
+00:01:12.800 --> 00:01:17.220
+user ID merge are done
+with just scripting.
+
+27
+00:01:17.590 --> 00:01:22.849
+Explicit sequences of
+instructions that tells your code
+
+28
+00:01:22.849 --> 00:01:24.590
+when is an account
+to be considered
+
+29
+00:01:24.590 --> 00:01:28.025
+spammy and when should
+two user IDs be merged.
+
+30
+00:01:28.025 --> 00:01:29.870
+These systems could be built
+
+31
+00:01:29.870 --> 00:01:31.550
+using machine learning
+algorithms as
+
+32
+00:01:31.550 --> 00:01:33.350
+well which makes them even
+
+33
+00:01:33.350 --> 00:01:35.315
+a little bit more
+complex to manage.
+
+34
+00:01:35.315 --> 00:01:39.245
+Now, when you have strips
+for the data cleaning,
+
+35
+00:01:39.245 --> 00:01:42.905
+one of the issues you run into is
+
+36
+00:01:42.905 --> 00:01:45.440
+replicability when you take
+
+37
+00:01:45.440 --> 00:01:48.745
+these systems into
+production deployment.
+
+38
+00:01:48.745 --> 00:01:51.410
+Let's say during the
+development of the system,
+
+39
+00:01:51.410 --> 00:01:55.864
+you have input data fed through
+pre-processing scripts,
+
+40
+00:01:55.864 --> 00:01:57.890
+and the pre-processed data
+
+41
+00:01:57.890 --> 00:02:01.144
+is fed to a machine
+learning algorithm,
+
+42
+00:02:01.144 --> 00:02:04.280
+and after some amount of work,
+
+43
+00:02:04.280 --> 00:02:07.990
+your learning algorithm
+does well on the test set.
+
+44
+00:02:07.990 --> 00:02:10.815
+Printed development
+phase, you may have seen
+
+45
+00:02:10.815 --> 00:02:13.590
+that pre-processing scripts
+can be quite messy.
+
+46
+00:02:13.590 --> 00:02:16.175
+It may be you hacking
+something up,
+
+47
+00:02:16.175 --> 00:02:17.570
+processing data,
+
+48
+00:02:17.570 --> 00:02:20.480
+mailing a file to a different
+member of your team,
+
+49
+00:02:20.480 --> 00:02:24.530
+having them have a few
+incantations in Python or
+
+50
+00:02:24.530 --> 00:02:26.390
+some scripting language to
+
+51
+00:02:26.390 --> 00:02:28.700
+process the data and having them,
+
+52
+00:02:28.700 --> 00:02:30.950
+mail the process
+data back to you.
+
+53
+00:02:30.950 --> 00:02:34.370
+When you take this
+system to production,
+
+54
+00:02:34.370 --> 00:02:37.055
+you then have new data
+
+55
+00:02:37.055 --> 00:02:40.010
+which has to be fed
+through a similar set of
+
+56
+00:02:40.010 --> 00:02:42.980
+scripts because this data is
+
+57
+00:02:42.980 --> 00:02:47.050
+going to be fed to the same
+machine learning algorithm.
+
+58
+00:02:47.050 --> 00:02:49.550
+Your machine-learning
+algorithm on
+
+59
+00:02:49.550 --> 00:02:52.700
+this data is what will
+run in your product.
+
+60
+00:02:52.700 --> 00:02:55.120
+The key question is,
+
+61
+00:02:55.120 --> 00:03:00.179
+if you're pre-processing was
+done with a bunch of strips,
+
+62
+00:03:00.179 --> 00:03:01.440
+spread out on a bunch of
+
+63
+00:03:01.440 --> 00:03:03.795
+different people's
+computers and laptops,
+
+64
+00:03:03.795 --> 00:03:06.180
+how do you replicate
+the strips to
+
+65
+00:03:06.180 --> 00:03:08.640
+make sure that the
+input distribution to
+
+66
+00:03:08.640 --> 00:03:10.770
+a machine learning
+algorithm was the
+
+67
+00:03:10.770 --> 00:03:14.715
+same for the development data
+and the production data?
+
+68
+00:03:14.715 --> 00:03:17.130
+I find that the amount of effort
+
+69
+00:03:17.130 --> 00:03:19.680
+that you should
+invest to make sure
+
+70
+00:03:19.680 --> 00:03:22.740
+that the pre-processing
+scripts are highly
+
+71
+00:03:22.740 --> 00:03:24.900
+replicable can depend a little
+
+72
+00:03:24.900 --> 00:03:27.645
+bit on the face of the project.
+
+73
+00:03:27.645 --> 00:03:30.450
+I know that it may be
+fashionable to say that
+
+74
+00:03:30.450 --> 00:03:32.984
+everything you do should
+be 100 percent replicable,
+
+75
+00:03:32.984 --> 00:03:35.310
+and I'll probably
+get some criticism
+
+76
+00:03:35.310 --> 00:03:38.420
+for not hewing to that line,
+
+77
+00:03:38.420 --> 00:03:40.860
+but I find it a
+lot of projects do
+
+78
+00:03:40.860 --> 00:03:43.800
+go through a proof of
+concept or POC phase,
+
+79
+00:03:43.800 --> 00:03:45.525
+and then a production phase
+
+80
+00:03:45.525 --> 00:03:47.775
+where during the proof
+of concept phase,
+
+81
+00:03:47.775 --> 00:03:51.090
+the primary goal is
+just to decide if
+
+82
+00:03:51.090 --> 00:03:53.144
+the application is workable
+
+83
+00:03:53.144 --> 00:03:55.655
+and worth building and deploying.
+
+84
+00:03:55.655 --> 00:03:58.860
+My advice to most teams
+is during the proof of
+
+85
+00:03:58.860 --> 00:04:03.240
+concept phase focus on getting
+the prototype to work.
+
+86
+00:04:03.240 --> 00:04:08.910
+It's okay if some of the data
+pre-processing is manual.
+
+87
+00:04:08.910 --> 00:04:10.709
+If the project succeeds,
+
+88
+00:04:10.709 --> 00:04:14.160
+you need to replicate all of
+this pre-processing later.
+
+89
+00:04:14.160 --> 00:04:17.010
+My advice would be
+take extensive notes,
+
+90
+00:04:17.010 --> 00:04:19.560
+write extensive
+comments to increase
+
+91
+00:04:19.560 --> 00:04:21.270
+the odds that you can replicate
+
+92
+00:04:21.270 --> 00:04:23.395
+all this pre-processing later,
+
+93
+00:04:23.395 --> 00:04:26.070
+but this is also not
+the time to get bogged
+
+94
+00:04:26.070 --> 00:04:28.740
+down in tons of process just to
+
+95
+00:04:28.740 --> 00:04:32.040
+ensure replicability
+when the focus
+
+96
+00:04:32.040 --> 00:04:34.020
+is really to just decide
+
+97
+00:04:34.020 --> 00:04:36.845
+if the application is
+
+98
+00:04:36.845 --> 00:04:40.160
+workable and is worth
+taking to the next phase.
+
+99
+00:04:40.160 --> 00:04:41.660
+Once you decided that
+
+100
+00:04:41.660 --> 00:04:44.430
+this project is worth
+taking to production,
+
+101
+00:04:44.430 --> 00:04:46.910
+then you know it's
+going to be really
+
+102
+00:04:46.910 --> 00:04:51.075
+important to do the replica
+any pre-processing strips.
+
+103
+00:04:51.075 --> 00:04:54.530
+In this phase, that's
+when I would use
+
+104
+00:04:54.530 --> 00:04:56.750
+more sophisticated
+tools to make sure
+
+105
+00:04:56.750 --> 00:04:59.825
+the entire data
+pipeline is replicable.
+
+106
+00:04:59.825 --> 00:05:02.195
+This is when tools
+
+107
+00:05:02.195 --> 00:05:04.339
+which can be a little
+bit more heavyweight,
+
+108
+00:05:04.339 --> 00:05:07.445
+but tools like TensorFlow
+Transform, Apache beam,
+
+109
+00:05:07.445 --> 00:05:10.925
+Airflow, and so on
+become very valuable.
+
+110
+00:05:10.925 --> 00:05:13.050
+In fact, you will
+learn more about
+
+111
+00:05:13.050 --> 00:05:16.835
+TensorFlow Transform later
+into specialization as well.
+
+112
+00:05:16.835 --> 00:05:20.000
+In this video, you learned
+about data pipelines,
+
+113
+00:05:20.000 --> 00:05:23.435
+and when to invest in
+their replicability.
+
+114
+00:05:23.435 --> 00:05:25.970
+It turns out many
+applications have
+
+115
+00:05:25.970 --> 00:05:28.610
+significantly more
+complex data pipelines
+
+116
+00:05:28.610 --> 00:05:30.830
+than what we saw in this video.
+
+117
+00:05:30.830 --> 00:05:33.170
+For those settings, you also have
+
+118
+00:05:33.170 --> 00:05:35.450
+to think about what metadata you
+
+119
+00:05:35.450 --> 00:05:38.120
+want and perhaps also keep track
+
+120
+00:05:38.120 --> 00:05:41.565
+and take care of data
+provenance and lineage.
+
+121
+00:05:41.565 --> 00:05:45.810
+Let's go on to the next video
+to look at these topics.

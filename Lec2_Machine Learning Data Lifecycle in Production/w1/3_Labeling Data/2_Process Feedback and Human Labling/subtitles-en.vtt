@@ -1,0 +1,1083 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.780
+Let's look at some ways to
+generate labels for your data.
+
+2
+00:00:04.780 --> 00:00:08.875
+We're going to focus on two
+of the most common methods.
+
+3
+00:00:08.875 --> 00:00:11.440
+That's process feedback or
+
+4
+00:00:11.440 --> 00:00:14.465
+direct labeling and
+human labeling.
+
+5
+00:00:14.465 --> 00:00:16.710
+There's a variety of methods,
+
+6
+00:00:16.710 --> 00:00:19.450
+process feedback
+or direct labeling
+
+7
+00:00:19.450 --> 00:00:22.330
+is great and we'll
+talk about that.
+
+8
+00:00:22.330 --> 00:00:24.070
+Human labeling as well as
+
+9
+00:00:24.070 --> 00:00:28.060
+a very common method is
+applied to create labels.
+
+10
+00:00:28.060 --> 00:00:30.850
+But you should also be aware
+and we'll talk about later
+
+11
+00:00:30.850 --> 00:00:33.025
+some other more advanced methods,
+
+12
+00:00:33.025 --> 00:00:34.570
+semi-supervised labeling,
+
+13
+00:00:34.570 --> 00:00:37.275
+where we label part
+of our data set,
+
+14
+00:00:37.275 --> 00:00:39.790
+active learning where
+we really try to focus
+
+15
+00:00:39.790 --> 00:00:42.520
+on the part that
+is most important.
+
+16
+00:00:42.520 --> 00:00:44.195
+Weak supervision which is
+
+17
+00:00:44.195 --> 00:00:47.270
+a programmatic way
+of creating labels.
+
+18
+00:00:47.270 --> 00:00:49.660
+But we won't be talking
+about that in this module.
+
+19
+00:00:49.660 --> 00:00:51.755
+We'll really focus
+on the first two,
+
+20
+00:00:51.755 --> 00:00:53.285
+which are the most common,
+
+21
+00:00:53.285 --> 00:00:58.180
+process feedback or direct
+labeling and human labeling.
+
+22
+00:00:58.180 --> 00:00:59.970
+You need labels if you're going
+
+23
+00:00:59.970 --> 00:01:01.295
+to do supervised learning,
+
+24
+00:01:01.295 --> 00:01:03.590
+you need labels for your data.
+
+25
+00:01:03.590 --> 00:01:06.260
+Two simple ways of doing that are
+
+26
+00:01:06.260 --> 00:01:08.960
+processed feedback
+and human labeling.
+
+27
+00:01:08.960 --> 00:01:12.305
+But what does that mean?
+Let's look at some examples,
+
+28
+00:01:12.305 --> 00:01:14.000
+for process feedback,
+
+29
+00:01:14.000 --> 00:01:17.075
+a very typical example
+is click-through rates.
+
+30
+00:01:17.075 --> 00:01:20.545
+Actual versus predicted
+click-through rates.
+
+31
+00:01:20.545 --> 00:01:23.430
+Suppose you have recommendations
+
+32
+00:01:23.430 --> 00:01:25.245
+that you are giving to a user,
+
+33
+00:01:25.245 --> 00:01:28.675
+did they actually click on the
+things that you recommend?
+
+34
+00:01:28.675 --> 00:01:31.050
+If they did, you can
+label it positive,
+
+35
+00:01:31.050 --> 00:01:33.705
+if they didn't you can
+label it negative.
+
+36
+00:01:33.705 --> 00:01:36.635
+Human labeling, you
+can have humans
+
+37
+00:01:36.635 --> 00:01:39.855
+look at data and
+apply labels to them.
+
+38
+00:01:39.855 --> 00:01:42.740
+For example, you can ask
+cardiologists to look at
+
+39
+00:01:42.740 --> 00:01:46.015
+MRI images and apply
+labels to them.
+
+40
+00:01:46.015 --> 00:01:50.400
+Why is labeling important
+in production ML?
+
+41
+00:01:50.400 --> 00:01:54.290
+Most businesses and organizations
+have a bunch of data,
+
+42
+00:01:54.290 --> 00:01:55.820
+but if it's not labeled,
+
+43
+00:01:55.820 --> 00:01:59.050
+you can't use it for
+supervised learning.
+
+44
+00:01:59.050 --> 00:02:01.430
+If you can apply
+
+45
+00:02:01.430 --> 00:02:03.320
+unsupervised techniques and get
+
+46
+00:02:03.320 --> 00:02:04.820
+good results, that's great.
+
+47
+00:02:04.820 --> 00:02:07.940
+But in many cases you really
+need to provide learning
+
+48
+00:02:07.940 --> 00:02:12.475
+to solve the problems that
+you're trying to solve.
+
+49
+00:02:12.475 --> 00:02:15.665
+What that means is that in
+
+50
+00:02:15.665 --> 00:02:17.630
+most domains you're
+going to need to
+
+51
+00:02:17.630 --> 00:02:20.180
+retrain at some point.
+
+52
+00:02:20.180 --> 00:02:22.730
+It will depend as
+we've talked about
+
+53
+00:02:22.730 --> 00:02:24.230
+on the domain that you're
+
+54
+00:02:24.230 --> 00:02:25.900
+working in and the
+type of problem.
+
+55
+00:02:25.900 --> 00:02:27.950
+Some you will just need
+
+56
+00:02:27.950 --> 00:02:30.775
+to retrain on a very
+infrequent basis,
+
+57
+00:02:30.775 --> 00:02:32.810
+and some, you might need to
+
+58
+00:02:32.810 --> 00:02:35.105
+retrain several times per day.
+
+59
+00:02:35.105 --> 00:02:41.675
+Labeling is an ongoing and
+often critical process
+
+60
+00:02:41.675 --> 00:02:44.495
+in your application
+and your business.
+
+61
+00:02:44.495 --> 00:02:46.190
+But at the end of the day,
+
+62
+00:02:46.190 --> 00:02:48.740
+creating a training data set for
+
+63
+00:02:48.740 --> 00:02:51.460
+supervised learning
+requires labels,
+
+64
+00:02:51.460 --> 00:02:55.405
+you need to think about how
+you're going to do that.
+
+65
+00:02:55.405 --> 00:02:58.000
+Direct labeling, which
+we'll talk about
+
+66
+00:02:58.000 --> 00:03:00.295
+first or process feedback,
+
+67
+00:03:00.295 --> 00:03:04.375
+is a way of continuously creating
+
+68
+00:03:04.375 --> 00:03:06.370
+new training data that you're
+
+69
+00:03:06.370 --> 00:03:09.215
+going to use to
+retrain your model.
+
+70
+00:03:09.215 --> 00:03:13.000
+You're taking the features
+themselves from the
+
+71
+00:03:13.000 --> 00:03:16.525
+inference requests that
+your model is getting.
+
+72
+00:03:16.525 --> 00:03:19.480
+The predictions that your
+model is being asked
+
+73
+00:03:19.480 --> 00:03:23.215
+to make and the features
+that are provided for that.
+
+74
+00:03:23.215 --> 00:03:28.990
+You get labels for those
+inference requests by
+
+75
+00:03:28.990 --> 00:03:31.300
+monitoring systems and using
+
+76
+00:03:31.300 --> 00:03:34.895
+the feedback from those
+systems to label that data.
+
+77
+00:03:34.895 --> 00:03:37.730
+One of the things that
+you need to solve there
+
+78
+00:03:37.730 --> 00:03:41.190
+is to join the results that you
+
+79
+00:03:41.190 --> 00:03:44.270
+get from monitoring
+those systems with
+
+80
+00:03:44.270 --> 00:03:46.580
+the original inference request
+
+81
+00:03:46.580 --> 00:03:49.895
+which could be hours
+or days apart.
+
+82
+00:03:49.895 --> 00:03:52.640
+You might've run batches on
+
+83
+00:03:52.640 --> 00:03:56.225
+Monday and you're getting
+feedback on Friday.
+
+84
+00:03:56.225 --> 00:03:58.520
+You need to make
+sure that you can do
+
+85
+00:03:58.520 --> 00:04:01.735
+those joins to
+apply those labels.
+
+86
+00:04:01.735 --> 00:04:03.920
+In some ways you can
+think about this as
+
+87
+00:04:03.920 --> 00:04:05.510
+similar to
+reinforcement learning,
+
+88
+00:04:05.510 --> 00:04:09.200
+where instead of
+applying rewards based
+
+89
+00:04:09.200 --> 00:04:13.190
+on action you're applying
+labels based on a prediction.
+
+90
+00:04:13.190 --> 00:04:16.760
+It's a similar feedback loop.
+
+91
+00:04:16.760 --> 00:04:19.700
+The advantages, well
+process feedback
+
+92
+00:04:19.700 --> 00:04:21.295
+or direct labeling is great.
+
+93
+00:04:21.295 --> 00:04:24.560
+If your system and
+
+94
+00:04:24.560 --> 00:04:27.680
+your domain is set up in a
+way that you can do that.
+
+95
+00:04:27.680 --> 00:04:29.660
+It's often the best answer
+
+96
+00:04:29.660 --> 00:04:33.379
+because you have labels
+you are monitoring,
+
+97
+00:04:33.379 --> 00:04:36.065
+constantly getting
+new training data.
+
+98
+00:04:36.065 --> 00:04:38.210
+The signals that you get from
+
+99
+00:04:38.210 --> 00:04:40.430
+your labels are really strong.
+
+100
+00:04:40.430 --> 00:04:43.024
+You're getting for
+click-throughs,
+
+101
+00:04:43.024 --> 00:04:46.070
+if the user clicked
+or didn't click,
+
+102
+00:04:46.070 --> 00:04:48.395
+it's a very strong signal.
+
+103
+00:04:48.395 --> 00:04:52.445
+Disadvantages, unfortunately,
+
+104
+00:04:52.445 --> 00:04:55.055
+in many domains
+for many problems,
+
+105
+00:04:55.055 --> 00:04:57.215
+it's just isn't possible.
+
+106
+00:04:57.215 --> 00:05:01.240
+Personally, in the problems
+I've been asked to solve,
+
+107
+00:05:01.240 --> 00:05:03.830
+I found very few or I've
+been able to do that,
+
+108
+00:05:03.830 --> 00:05:07.510
+so that's an issue.
+
+109
+00:05:07.730 --> 00:05:10.360
+The other big thing is that it
+
+110
+00:05:10.360 --> 00:05:12.535
+tends to be very custom-designed.
+
+111
+00:05:12.535 --> 00:05:14.515
+Your systems will be unique.
+
+112
+00:05:14.515 --> 00:05:16.525
+Your problem is unique,
+
+113
+00:05:16.525 --> 00:05:19.270
+and you're doing custom design,
+
+114
+00:05:19.270 --> 00:05:21.040
+which isn't the end of the world,
+
+115
+00:05:21.040 --> 00:05:22.990
+but it'd be great if it was a
+
+116
+00:05:22.990 --> 00:05:25.895
+little bit more off the shelf.
+
+117
+00:05:25.895 --> 00:05:28.540
+One of the tools that you can
+
+118
+00:05:28.540 --> 00:05:31.000
+apply is log analysis tools.
+
+119
+00:05:31.000 --> 00:05:34.225
+Because often when you're
+doing process feedback,
+
+120
+00:05:34.225 --> 00:05:38.410
+the data is coming
+from the log files.
+
+121
+00:05:38.410 --> 00:05:43.790
+You're monitoring systems
+and populating log files.
+
+122
+00:05:43.790 --> 00:05:48.260
+One good open source tool
+for doing that is Logstash.
+
+123
+00:05:48.260 --> 00:05:50.690
+You can ingest from
+multiple sources for
+
+124
+00:05:50.690 --> 00:05:53.705
+collecting and parsing
+and storing logs.
+
+125
+00:05:53.705 --> 00:05:57.230
+You can index them
+in Elasticsearch.
+
+126
+00:05:57.230 --> 00:05:59.105
+You can push them to storage,
+
+127
+00:05:59.105 --> 00:06:00.980
+it takes inputs from a variety of
+
+128
+00:06:00.980 --> 00:06:04.070
+different sources and
+databases and so forth.
+
+129
+00:06:04.070 --> 00:06:06.875
+Great tool and it's
+open source too.
+
+130
+00:06:06.875 --> 00:06:10.010
+Fluentd is another
+good open source tool
+
+131
+00:06:10.010 --> 00:06:12.500
+you can use to collect and parse.
+
+132
+00:06:12.500 --> 00:06:16.640
+Fluentd comes from the Cloud
+Native Computing Foundation
+
+133
+00:06:16.640 --> 00:06:19.505
+and it connects to a lot
+of different platforms.
+
+134
+00:06:19.505 --> 00:06:22.040
+Again, another great tool.
+
+135
+00:06:22.040 --> 00:06:23.855
+When you're working on the Cloud,
+
+136
+00:06:23.855 --> 00:06:26.600
+there's Cloud tools that
+are available, as well.
+
+137
+00:06:26.600 --> 00:06:28.940
+If you're working on
+the Google Cloud,
+
+138
+00:06:28.940 --> 00:06:31.910
+Google Cloud logging
+is a great tool to
+
+139
+00:06:31.910 --> 00:06:34.970
+be able to log your data,
+
+140
+00:06:34.970 --> 00:06:39.125
+either coming from Google
+Cloud or from AWS.
+
+141
+00:06:39.125 --> 00:06:42.470
+Bind plane is great
+
+142
+00:06:42.470 --> 00:06:46.820
+for applying on-premise
+or hybrid cloud systems.
+
+143
+00:06:46.820 --> 00:06:50.930
+It's a very powerful
+service that's available.
+
+144
+00:06:50.930 --> 00:06:55.340
+For AWS, their version of
+Elasticsearch is available,
+
+145
+00:06:55.340 --> 00:06:56.780
+so you can apply that.
+
+146
+00:06:56.780 --> 00:06:58.460
+It's not really strictly
+
+147
+00:06:58.460 --> 00:07:01.550
+a log analytics tool
+
+148
+00:07:01.550 --> 00:07:04.565
+but you can apply it
+for login analytics.
+
+149
+00:07:04.565 --> 00:07:07.280
+For Azure, you have
+Azure monitors,
+
+150
+00:07:07.280 --> 00:07:10.220
+so regardless of which
+Cloud you're working on,
+
+151
+00:07:10.220 --> 00:07:13.025
+there's probably log analytics
+
+152
+00:07:13.025 --> 00:07:16.835
+tooling that you can
+use to do log analysis.
+
+153
+00:07:16.835 --> 00:07:20.315
+Now, let's turn to
+human labeling.
+
+154
+00:07:20.315 --> 00:07:23.660
+In human labeling,
+you have people,
+
+155
+00:07:23.660 --> 00:07:27.500
+humans and we refer
+to those as raters.
+
+156
+00:07:27.500 --> 00:07:31.985
+We ask them to examine data
+and assign labels to it.
+
+157
+00:07:31.985 --> 00:07:35.495
+It sounds simple, it sounds
+like it might be painful but
+
+158
+00:07:35.495 --> 00:07:40.235
+it's the way that a lot of
+data is generated and labeled.
+
+159
+00:07:40.235 --> 00:07:43.850
+You start with raw data
+and you give it to
+
+160
+00:07:43.850 --> 00:07:48.755
+people and you ask them
+to apply labels to it.
+
+161
+00:07:48.755 --> 00:07:52.550
+That's the way that you
+create a training data set
+
+162
+00:07:52.550 --> 00:07:56.760
+that you're going to use to
+train or retrain your model.
+
+163
+00:07:57.310 --> 00:08:01.640
+You started with unlabeled
+data and then you need to
+
+164
+00:08:01.640 --> 00:08:05.090
+recruit human raters or there are
+
+165
+00:08:05.090 --> 00:08:08.660
+several services that you can
+go to where they have pools
+
+166
+00:08:08.660 --> 00:08:12.635
+of human raters that have
+already been recruited.
+
+167
+00:08:12.635 --> 00:08:15.635
+You need to provide
+them with instructions.
+
+168
+00:08:15.635 --> 00:08:17.210
+Even if it's very simple,
+
+169
+00:08:17.210 --> 00:08:20.405
+you need to still tell them
+what labels they should apply
+
+170
+00:08:20.405 --> 00:08:24.875
+and what to look for to
+decide which label to apply.
+
+171
+00:08:24.875 --> 00:08:26.735
+The data's then divided
+
+172
+00:08:26.735 --> 00:08:29.780
+among different
+raters in the pool.
+
+173
+00:08:29.780 --> 00:08:34.955
+Often you send the same
+examples to multiple raters,
+
+174
+00:08:34.955 --> 00:08:37.520
+so that when there's
+disagreements you're
+
+175
+00:08:37.520 --> 00:08:40.595
+aware of that and you can
+work to resolve them.
+
+176
+00:08:40.595 --> 00:08:42.920
+Then you collect
+the data and any of
+
+177
+00:08:42.920 --> 00:08:46.310
+those conflicts that
+you have are resolved.
+
+178
+00:08:46.310 --> 00:08:48.620
+Advantages of the human labeling.
+
+179
+00:08:48.620 --> 00:08:51.560
+Well, they're labels which,
+
+180
+00:08:51.560 --> 00:08:53.690
+it's what you're trying to do.
+
+181
+00:08:53.690 --> 00:08:55.310
+You're trying to
+generate labels which
+
+182
+00:08:55.310 --> 00:08:58.050
+you need for supervised learning.
+
+183
+00:08:58.060 --> 00:09:01.010
+It's a way to do that and
+
+184
+00:09:01.010 --> 00:09:03.830
+it's actually a very
+common way to do that.
+
+185
+00:09:03.830 --> 00:09:06.350
+One disadvantage, one issue
+
+186
+00:09:06.350 --> 00:09:08.810
+here is that depending
+on the data that
+
+187
+00:09:08.810 --> 00:09:12.290
+you have it can be very
+complex for a human to
+
+188
+00:09:12.290 --> 00:09:16.520
+look at it and decide
+what the label should be.
+
+189
+00:09:16.520 --> 00:09:21.680
+Something like this we might
+need a radiologist to look
+
+190
+00:09:21.680 --> 00:09:23.690
+at this and tell us what
+the right labels should
+
+191
+00:09:23.690 --> 00:09:26.945
+be which can be very expensive.
+
+192
+00:09:26.945 --> 00:09:28.790
+But if you're also talking about
+
+193
+00:09:28.790 --> 00:09:31.490
+situations where you have
+high dimensional data,
+
+194
+00:09:31.490 --> 00:09:34.895
+it's very difficult for
+humans to look at say,
+
+195
+00:09:34.895 --> 00:09:39.230
+100 different features and
+decide with the label is.
+
+196
+00:09:39.230 --> 00:09:42.185
+There's some disadvantages
+to human labeling.
+
+197
+00:09:42.185 --> 00:09:44.330
+You can have quality
+problems where
+
+198
+00:09:44.330 --> 00:09:48.440
+different humans disagree on
+what the label should be.
+
+199
+00:09:48.440 --> 00:09:50.120
+It can be very slow.
+
+200
+00:09:50.120 --> 00:09:51.845
+You're asking people to look at
+
+201
+00:09:51.845 --> 00:09:53.750
+each individual example and it
+
+202
+00:09:53.750 --> 00:09:56.150
+can take a while to do that.
+
+203
+00:09:56.150 --> 00:09:58.955
+In cases where the
+data's changing quickly,
+
+204
+00:09:58.955 --> 00:10:02.285
+it is often just
+simply not feasible.
+
+205
+00:10:02.285 --> 00:10:05.255
+Again, it can be very
+expensive even if you're
+
+206
+00:10:05.255 --> 00:10:08.615
+using generalists to look
+at very simple data,
+
+207
+00:10:08.615 --> 00:10:10.130
+you're still employing people
+
+208
+00:10:10.130 --> 00:10:11.675
+but in cases where you're asking
+
+209
+00:10:11.675 --> 00:10:16.700
+experts to look at data then
+it gets very expensive.
+
+210
+00:10:16.700 --> 00:10:19.430
+Often what that means
+is that you end
+
+211
+00:10:19.430 --> 00:10:21.619
+up with small data sets because
+
+212
+00:10:21.619 --> 00:10:24.425
+the cost and the time involved
+
+213
+00:10:24.425 --> 00:10:28.880
+results in difficult to
+get a very large data set.
+
+214
+00:10:28.880 --> 00:10:31.760
+It can be slow, it
+can be difficult,
+
+215
+00:10:31.760 --> 00:10:33.800
+it can be expensive.
+
+216
+00:10:33.800 --> 00:10:36.470
+If you're doing something
+like an MRI and you've got
+
+217
+00:10:36.470 --> 00:10:39.650
+a specialist looking at
+it again, a problem.
+
+218
+00:10:39.650 --> 00:10:42.230
+A single rater can
+
+219
+00:10:42.230 --> 00:10:44.960
+only do a certain number
+of examples per day,
+
+220
+00:10:44.960 --> 00:10:48.020
+so you need to have
+a fairly large pool
+
+221
+00:10:48.020 --> 00:10:50.255
+compared to the number
+of examples that you're
+
+222
+00:10:50.255 --> 00:10:53.120
+trying to label and that means
+
+223
+00:10:53.120 --> 00:10:56.810
+that recruitment can
+be slow and expensive.
+
+224
+00:10:56.810 --> 00:11:00.905
+Unfortunately, there are
+several disadvantages.
+
+225
+00:11:00.905 --> 00:11:04.610
+Key points here, there's
+various methods of doing
+
+226
+00:11:04.610 --> 00:11:06.350
+labeling and you
+really need to think
+
+227
+00:11:06.350 --> 00:11:08.240
+about the problem that
+you're trying to solve,
+
+228
+00:11:08.240 --> 00:11:11.990
+the data that you have and
+how frequently you need
+
+229
+00:11:11.990 --> 00:11:14.540
+retraining data and how much
+
+230
+00:11:14.540 --> 00:11:17.480
+data you need and
+the costs involved.
+
+231
+00:11:17.480 --> 00:11:20.750
+There are advantages
+and disadvantages to
+
+232
+00:11:20.750 --> 00:11:22.100
+both process feedback in
+
+233
+00:11:22.100 --> 00:11:24.500
+human labeling and
+there's other techniques,
+
+234
+00:11:24.500 --> 00:11:27.210
+as well that we'll
+talk about later.

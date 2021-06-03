@@ -1,0 +1,378 @@
+WEBVTT
+
+1
+00:00:00.340 --> 00:00:03.539
+In the last video,
+you learned about brainstorming and
+
+2
+00:00:03.539 --> 00:00:06.280
+tagging your data with
+different attributes.
+
+3
+00:00:06.280 --> 00:00:10.660
+Let's see how you can use this to
+prioritize where to focus your attention.
+
+4
+00:00:10.660 --> 00:00:14.052
+Here is the example we had
+previously with four tags and
+
+5
+00:00:14.052 --> 00:00:17.814
+the accuracy of the algorithm,
+human level performance and
+
+6
+00:00:17.814 --> 00:00:22.556
+what's the gap between the current
+accuracy and human level performance.
+
+7
+00:00:22.556 --> 00:00:28.633
+Rather than deciding to work on car noise
+because the gap to HLP is biggest, one
+
+8
+00:00:28.633 --> 00:00:34.740
+other useful factor to look at is what's
+the percentage of data with that tag.
+
+9
+00:00:34.740 --> 00:00:40.384
+Let's say that 60% of your
+data is clean speech,
+
+10
+00:00:40.384 --> 00:00:46.414
+4% is data with car noise,
+30% has people noise and
+
+11
+00:00:46.414 --> 00:00:49.640
+6% is low bandwidth audio.
+
+12
+00:00:49.640 --> 00:00:53.469
+This tells us that if we
+could take clean speech and
+
+13
+00:00:53.469 --> 00:00:58.300
+raise our accuracy from 94 to
+95% on all the clean speech,
+
+14
+00:00:58.300 --> 00:01:03.315
+then multiplying 1% with 60%,
+this tells us that if we could
+
+15
+00:01:03.315 --> 00:01:08.966
+improve our performance on clean speech,
+the human level performance,
+
+16
+00:01:08.966 --> 00:01:13.616
+our overall speech system
+would be 0.6% more accurate,
+
+17
+00:01:13.616 --> 00:01:17.760
+because we would do 1%
+better on 60% of the data.
+
+18
+00:01:17.760 --> 00:01:21.973
+So this will raise
+average accuracy by 0.6%.
+
+19
+00:01:21.973 --> 00:01:26.967
+On the car noise,
+if we can improve the performance
+
+20
+00:01:26.967 --> 00:01:31.962
+by 4% on 4% of the data,
+multiplying that out,
+
+21
+00:01:31.962 --> 00:01:36.048
+that gives us a 0.16% improvement.
+
+22
+00:01:36.048 --> 00:01:41.514
+And multiplying results as well,
+we get 0.6% and, well,
+
+23
+00:01:41.514 --> 00:01:46.580
+essentially 0% because we
+can't make that any better.
+
+24
+00:01:46.580 --> 00:01:51.338
+And so whereas previously we had
+said there's a lot of room for
+
+25
+00:01:51.338 --> 00:01:56.190
+improvement in car noise,
+in this slightly richer analysis,
+
+26
+00:01:56.190 --> 00:02:02.322
+we see that because people noise accounts
+for such a large fraction of the data,
+
+27
+00:02:02.322 --> 00:02:06.715
+it may be more worthwhile to
+work on either people noise or
+
+28
+00:02:06.715 --> 00:02:12.117
+maybe on clean speech because there's
+actually larger potential for
+
+29
+00:02:12.117 --> 00:02:16.920
+improvements in both of those than for
+speech with car noise.
+
+30
+00:02:16.920 --> 00:02:20.385
+So to summarize,
+when prioritizing what to work on,
+
+31
+00:02:20.385 --> 00:02:24.928
+you might decide on the most important
+categories to work on based on,
+
+32
+00:02:24.928 --> 00:02:29.548
+how much room for improvement there is,
+such as compared to human level
+
+33
+00:02:29.548 --> 00:02:33.247
+performance or
+according to some baseline comparison.
+
+34
+00:02:33.247 --> 00:02:35.720
+How frequently does that category appear?
+
+35
+00:02:35.720 --> 00:02:40.820
+You can also take into account how easy it
+is to improve accuracy in that category.
+
+36
+00:02:40.820 --> 00:02:43.179
+For example, if you have some ideas for
+
+37
+00:02:43.179 --> 00:02:48.113
+how to improve the accuracy of speech with
+car noise, maybe a data augmentation,
+
+38
+00:02:48.113 --> 00:02:52.691
+that might cause you to prioritize that
+category more highly than some other
+
+39
+00:02:52.691 --> 00:02:57.507
+category where you just don't have as
+many ideas for how to improve the system.
+
+40
+00:02:57.507 --> 00:03:02.780
+And then finally, how important it is to
+improve performance on that category.
+
+41
+00:03:02.780 --> 00:03:08.687
+For example, you may decide that improving
+performance with car noise is especially
+
+42
+00:03:08.687 --> 00:03:14.428
+important because when you're driving,
+you have a stronger desire to do search,
+
+43
+00:03:14.428 --> 00:03:19.104
+especially search on maps and
+find addresses without needing to use
+
+44
+00:03:19.104 --> 00:03:24.048
+your hands if your hands are supposed
+to be holding the steering wheel.
+
+45
+00:03:24.048 --> 00:03:28.833
+There is no mathematical formula that
+will tell you what to work on, but
+
+46
+00:03:28.833 --> 00:03:34.602
+by looking at these factors, I hope you'll
+be able to make more fruitful decisions.
+
+47
+00:03:34.602 --> 00:03:39.247
+Once you've decided that you want to
+work on one category of data, say,
+
+48
+00:03:39.247 --> 00:03:43.742
+data with car noise, once you've
+decided that there's a category or
+
+49
+00:03:43.742 --> 00:03:48.540
+maybe a few categories where you want
+to improve the average performance,
+
+50
+00:03:48.540 --> 00:03:53.415
+one fruitful approach is to consider
+adding data or improving the quality of
+
+51
+00:03:53.415 --> 00:03:57.410
+that data for that one or
+maybe a small handful of categories.
+
+52
+00:03:57.410 --> 00:04:03.540
+So for example, if you want to improve
+performance on speech with car noise,
+
+53
+00:04:03.540 --> 00:04:07.810
+you might go out and
+collect more data with car noise.
+
+54
+00:04:07.810 --> 00:04:12.179
+Or if you have a way of using data
+augmentation to get more data from that
+
+55
+00:04:12.179 --> 00:04:16.950
+category, that would be another way
+to improve your average performance.
+
+56
+00:04:16.950 --> 00:04:20.537
+One topic that we'll discuss next week is
+
+57
+00:04:20.537 --> 00:04:24.643
+how to improve label accuracy or
+data quality.
+
+58
+00:04:24.643 --> 00:04:28.963
+You'll learn more about this when
+we talk about the data phase of
+
+59
+00:04:28.963 --> 00:04:31.855
+the machine learning project lifecycle.
+
+60
+00:04:31.855 --> 00:04:35.744
+In machine learning, we always
+would like to have more data, but
+
+61
+00:04:35.744 --> 00:04:40.852
+going out to collect more data generically
+can be very time consuming and expensive.
+
+62
+00:04:40.852 --> 00:04:45.785
+By carrying out an analysis like this,
+when you are then going through this
+
+63
+00:04:45.785 --> 00:04:49.780
+initiative process of improving
+your learning algorithm,
+
+64
+00:04:49.780 --> 00:04:54.422
+you can be much more focused in exactly
+what types of data you collect.
+
+65
+00:04:54.422 --> 00:04:59.447
+Because if you decide to collect more data
+with car noise or maybe people noise,
+
+66
+00:04:59.447 --> 00:05:04.172
+you can be much more specific in going
+out to collect more of just that data or
+
+67
+00:05:04.172 --> 00:05:07.697
+using data augmentation
+without wasting time trying to
+
+68
+00:05:07.697 --> 00:05:11.690
+collect more data from a low
+bandwidth cell phone connection.
+
+69
+00:05:11.690 --> 00:05:16.917
+And this focus on improving your data
+on the tags that you have determined
+
+70
+00:05:16.917 --> 00:05:21.630
+are most fruitful for you to work on,
+that can help you be much more
+
+71
+00:05:21.630 --> 00:05:26.450
+efficient in how you improve your
+learning average performance.
+
+72
+00:05:26.450 --> 00:05:30.264
+I found this type of error
+analysis procedure very useful for
+
+73
+00:05:30.264 --> 00:05:31.833
+many of my projects, and
+
+74
+00:05:31.833 --> 00:05:37.240
+I hope it will help you too in building
+production-ready machine learning systems.
+
+75
+00:05:37.240 --> 00:05:43.770
+Nicks, one of the most common challenges
+you run into is skewed data sets.
+
+76
+00:05:43.770 --> 00:05:47.684
+Let's go on to the Nicks' video
+to go through some techniques for
+
+77
+00:05:47.684 --> 00:05:49.261
+managing skewed data sets

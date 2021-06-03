@@ -1,0 +1,229 @@
+WEBVTT
+
+1
+00:00:00.540 --> 00:00:07.331
+You've learned about taking a data
+centric approach to AI development.
+
+2
+00:00:07.331 --> 00:00:09.920
+In this last video for this week,
+
+3
+00:00:09.920 --> 00:00:16.239
+I'd like to leave you with a thought
+on shifting from big data to good data.
+
+4
+00:00:16.239 --> 00:00:19.915
+Here's what I mean,
+a lot of modern AI had grown up in
+
+5
+00:00:19.915 --> 00:00:24.680
+large consumer internet companies
+with maybe a billion users, and
+
+6
+00:00:24.680 --> 00:00:28.800
+does companies like that have
+a lot of data on their users.
+
+7
+00:00:28.800 --> 00:00:31.106
+If you have big data like that,
+
+8
+00:00:31.106 --> 00:00:36.740
+by all means it could help the performance
+of your room tremendously.
+
+9
+00:00:36.740 --> 00:00:41.676
+But both software consumer internet but
+equally importantly for
+
+10
+00:00:41.676 --> 00:00:47.100
+many other industries,
+there's just isn't a billion data points.
+
+11
+00:00:47.100 --> 00:00:50.521
+And I think it may be
+even more important for
+
+12
+00:00:50.521 --> 00:00:56.140
+those applications to focus not
+just on big data but on good data.
+
+13
+00:00:56.140 --> 00:01:01.379
+I found that if you are able to ensure
+consistently high quality data in all
+
+14
+00:01:01.379 --> 00:01:06.873
+phases in the machine learning project
+life cycle, that is key to making sure
+
+15
+00:01:06.873 --> 00:01:12.400
+that you have a high performance and
+reliable machine learning deployment.
+
+16
+00:01:12.400 --> 00:01:18.101
+What I mean by good data, I think
+good data covers the important cases,
+
+17
+00:01:18.101 --> 00:01:22.590
+so you should have good
+coverage of different inputs x.
+
+18
+00:01:22.590 --> 00:01:27.421
+And if you find out that you don't
+have enough data with speech,
+
+19
+00:01:27.421 --> 00:01:32.610
+with caffeine, noise data augmentation
+can help you get more data,
+
+20
+00:01:32.610 --> 00:01:36.750
+get more diverse inputs x,
+to give you that coverage.
+
+21
+00:01:36.750 --> 00:01:42.840
+So, we spent quite a bit of time talking
+about this in this week's material.
+
+22
+00:01:42.840 --> 00:01:47.704
+Good data is also defined
+consistently with definition
+
+23
+00:01:47.704 --> 00:01:50.720
+of labels y that's unambiguous.
+
+24
+00:01:50.720 --> 00:01:53.312
+We haven't talked about this yet but
+
+25
+00:01:53.312 --> 00:01:57.010
+we'll go into much greater
+depth on this next week.
+
+26
+00:01:57.010 --> 00:02:02.040
+Good data also has timely
+feedback from production data.
+
+27
+00:02:02.040 --> 00:02:06.309
+We actually talked about
+this last week when we were
+
+28
+00:02:06.309 --> 00:02:10.581
+covering the deployment
+section in terms of having
+
+29
+00:02:10.581 --> 00:02:15.580
+monitoring systems to track
+concept drift and data drift.
+
+30
+00:02:15.580 --> 00:02:20.240
+And finally,
+you do need a reasonable size data set.
+
+31
+00:02:20.240 --> 00:02:25.415
+So to summarize during the machine
+learning project lifecycle,
+
+32
+00:02:25.415 --> 00:02:30.398
+we've talked about drink
+the deployment phase last week how to
+
+33
+00:02:30.398 --> 00:02:34.081
+make sure you have timely
+feedback this week.
+
+34
+00:02:34.081 --> 00:02:38.778
+As we talked about modeling,
+we also included in our discussion how to
+
+35
+00:02:38.778 --> 00:02:43.740
+make sure you have, hopefully
+good coverage of important cases.
+
+36
+00:02:43.740 --> 00:02:48.787
+Next week, when we dive into data
+definition, we'll spend much more
+
+37
+00:02:48.787 --> 00:02:53.851
+time to talk about how to make sure
+your data is defined consistently.
+
+38
+00:02:53.851 --> 00:02:58.307
+And I hope that with the ideas
+conveyed last week, this week, and
+
+39
+00:02:58.307 --> 00:03:03.817
+next week you'll be armed with the tools
+you need to give your learning algorithm
+
+40
+00:03:03.817 --> 00:03:09.340
+good data through all phases of
+the machine learning project life cycle.
+
+41
+00:03:09.340 --> 00:03:10.710
+So, that's it.
+
+42
+00:03:10.710 --> 00:03:15.510
+Congratulations on getting to the end
+of this week's videos on modeling.
+
+43
+00:03:15.510 --> 00:03:20.586
+I look forward to diving more
+deeply with you into the data
+
+44
+00:03:20.586 --> 00:03:25.540
+part of the full cycle of
+a machine learning project.
+
+45
+00:03:25.540 --> 00:03:26.508
+And next week,
+
+46
+00:03:26.508 --> 00:03:31.670
+we'll also have a short optional section
+on scoping machine learning projects.
+
+47
+00:03:31.670 --> 00:03:33.960
+I look forward to see you next week.
