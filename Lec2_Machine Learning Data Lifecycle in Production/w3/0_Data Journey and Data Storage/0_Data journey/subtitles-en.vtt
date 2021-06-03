@@ -1,0 +1,626 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:04.110
+Hello, and welcome to our
+continuing saga of data.
+
+2
+00:00:04.110 --> 00:00:06.300
+This week, we'll be talking about
+
+3
+00:00:06.300 --> 00:00:08.460
+several data related topics,
+
+4
+00:00:08.460 --> 00:00:11.805
+including metadata, which is
+important for understanding
+
+5
+00:00:11.805 --> 00:00:15.360
+our data over time and
+are training runs.
+
+6
+00:00:15.360 --> 00:00:17.295
+Will also talk about schemas
+
+7
+00:00:17.295 --> 00:00:19.410
+which helped describe our Data.
+
+8
+00:00:19.410 --> 00:00:21.660
+We'll look at some places
+where we might want to
+
+9
+00:00:21.660 --> 00:00:25.080
+store our data to make
+it easier to work with.
+
+10
+00:00:25.080 --> 00:00:28.095
+It's a lot to cover.
+Let's get started.
+
+11
+00:00:28.095 --> 00:00:32.145
+Welcome to Data journey
+and Data Storage.
+
+12
+00:00:32.145 --> 00:00:35.610
+Let's begin with the
+Data journey and all it
+
+13
+00:00:35.610 --> 00:00:39.040
+takes to understand
+this important process.
+
+14
+00:00:39.040 --> 00:00:42.830
+Understanding data provenance
+requires understanding
+
+15
+00:00:42.830 --> 00:00:44.720
+the Data journey throughout
+
+16
+00:00:44.720 --> 00:00:47.495
+the life cycle of the
+production pipeline.
+
+17
+00:00:47.495 --> 00:00:50.645
+More specifically,
+accounting for the evolution
+
+18
+00:00:50.645 --> 00:00:54.565
+of data and models
+throughout the process.
+
+19
+00:00:54.565 --> 00:00:57.530
+ML metadata is a
+versatile library
+
+20
+00:00:57.530 --> 00:00:59.480
+to address these challenges,
+
+21
+00:00:59.480 --> 00:01:02.885
+which helps with debugging
+and reproducibility.
+
+22
+00:01:02.885 --> 00:01:06.770
+Concretely, it allows us
+to revisit and track data
+
+23
+00:01:06.770 --> 00:01:10.939
+and model changes as they
+occur during training.
+
+24
+00:01:10.939 --> 00:01:13.430
+Trying to understand
+data provenance
+
+25
+00:01:13.430 --> 00:01:15.605
+begins with the Data journey.
+
+26
+00:01:15.605 --> 00:01:18.140
+The journey starts
+with raw features and
+
+27
+00:01:18.140 --> 00:01:21.590
+labels from whatever
+sources that we have.
+
+28
+00:01:21.590 --> 00:01:26.000
+The Data describes a function
+that maps the input in
+
+29
+00:01:26.000 --> 00:01:28.115
+the training set to
+
+30
+00:01:28.115 --> 00:01:31.550
+the labels that we're
+trying to predict.
+
+31
+00:01:31.550 --> 00:01:36.785
+During training, the model
+learns the functional mapping
+
+32
+00:01:36.785 --> 00:01:38.630
+from the input to
+
+33
+00:01:38.630 --> 00:01:42.550
+the labels so as to be
+as accurate as possible.
+
+34
+00:01:42.550 --> 00:01:44.480
+The Data transforms and
+
+35
+00:01:44.480 --> 00:01:47.605
+changes as part of
+this training process.
+
+36
+00:01:47.605 --> 00:01:51.810
+As the Data flows through
+the process it transforms.
+
+37
+00:01:51.810 --> 00:01:53.180
+Examples of this are,
+
+38
+00:01:53.180 --> 00:01:54.769
+are changing data formats,
+
+39
+00:01:54.769 --> 00:01:57.290
+applying feature engineering and
+
+40
+00:01:57.290 --> 00:02:00.035
+training the model
+to make predictions.
+
+41
+00:02:00.035 --> 00:02:03.380
+There's a dual connection
+between understanding
+
+42
+00:02:03.380 --> 00:02:05.360
+these data transformations and
+
+43
+00:02:05.360 --> 00:02:07.520
+interpreting the model's results.
+
+44
+00:02:07.520 --> 00:02:09.725
+Therefore, it's important to
+
+45
+00:02:09.725 --> 00:02:13.070
+track and document
+these changes closely.
+
+46
+00:02:13.070 --> 00:02:15.545
+Data artifacts are created
+
+47
+00:02:15.545 --> 00:02:18.925
+as pipeline components execute.
+
+48
+00:02:18.925 --> 00:02:22.345
+What exactly is an artifact?
+
+49
+00:02:22.345 --> 00:02:25.235
+Each time a component
+produces a result,
+
+50
+00:02:25.235 --> 00:02:27.740
+it generates an artifact.
+
+51
+00:02:27.740 --> 00:02:30.680
+This includes
+basically everything
+
+52
+00:02:30.680 --> 00:02:32.720
+that is produced by the pipeline,
+
+53
+00:02:32.720 --> 00:02:36.590
+including the data in different
+stages of transformation,
+
+54
+00:02:36.590 --> 00:02:39.770
+often as a result of
+feature engineering
+
+55
+00:02:39.770 --> 00:02:43.340
+and the model itself and
+things like the schema,
+
+56
+00:02:43.340 --> 00:02:45.710
+and metrics and so forth.
+
+57
+00:02:45.710 --> 00:02:48.500
+Basically, everything
+that's produced,
+
+58
+00:02:48.500 --> 00:02:51.800
+every result that is
+produced as an artifact.
+
+59
+00:02:51.800 --> 00:02:54.980
+The terms data provenance and
+
+60
+00:02:54.980 --> 00:02:57.590
+data lineage are basically
+
+61
+00:02:57.590 --> 00:03:00.725
+synonyms and they're
+used interchangeably.
+
+62
+00:03:00.725 --> 00:03:04.610
+Data provenance or
+lineage is a sequence
+
+63
+00:03:04.610 --> 00:03:05.810
+of the artifacts that are
+
+64
+00:03:05.810 --> 00:03:08.015
+created as we move
+through the pipeline.
+
+65
+00:03:08.015 --> 00:03:10.460
+Those artifacts are
+associated with
+
+66
+00:03:10.460 --> 00:03:14.095
+a code and components
+that we create.
+
+67
+00:03:14.095 --> 00:03:19.955
+Tracking those sequences is
+really key for debugging and
+
+68
+00:03:19.955 --> 00:03:23.089
+understanding the training
+process and comparing
+
+69
+00:03:23.089 --> 00:03:27.050
+different training runs that
+may happen months apart.
+
+70
+00:03:27.050 --> 00:03:31.040
+Data provenance matters a
+great deal and it helps us
+
+71
+00:03:31.040 --> 00:03:35.015
+to understand the pipeline
+and to perform debugging.
+
+72
+00:03:35.015 --> 00:03:37.879
+Debugging and understanding
+requires inspecting
+
+73
+00:03:37.879 --> 00:03:41.165
+those artifacts at each point
+in the training process,
+
+74
+00:03:41.165 --> 00:03:44.330
+which can help us understand
+how those artifacts were
+
+75
+00:03:44.330 --> 00:03:48.325
+created and what the
+results actually mean.
+
+76
+00:03:48.325 --> 00:03:51.920
+Provenance will also allow
+you to track back through
+
+77
+00:03:51.920 --> 00:03:55.540
+a training run from any
+point in the process.
+
+78
+00:03:55.540 --> 00:03:58.205
+Also, provenance makes it
+
+79
+00:03:58.205 --> 00:04:00.890
+possible to compare
+training runs,
+
+80
+00:04:00.890 --> 00:04:04.960
+and understand why they
+produce different results.
+
+81
+00:04:04.960 --> 00:04:10.910
+Under GDPR or the general
+data protection regulation,
+
+82
+00:04:10.910 --> 00:04:14.300
+organizations are
+accountable for the origin,
+
+83
+00:04:14.300 --> 00:04:18.095
+changes and location
+of personal data.
+
+84
+00:04:18.095 --> 00:04:20.359
+Personal data is
+highly sensitive,
+
+85
+00:04:20.359 --> 00:04:23.030
+so tracking the origins
+and changes along
+
+86
+00:04:23.030 --> 00:04:26.720
+the pipeline are
+key for compliance.
+
+87
+00:04:26.720 --> 00:04:28.760
+Data lineage is a great way for
+
+88
+00:04:28.760 --> 00:04:30.740
+businesses and
+organizations to quickly
+
+89
+00:04:30.740 --> 00:04:34.010
+determined how the
+Data has been used and
+
+90
+00:04:34.010 --> 00:04:36.305
+which Transformations
+were performed
+
+91
+00:04:36.305 --> 00:04:39.835
+as the Data moved
+through the pipeline.
+
+92
+00:04:39.835 --> 00:04:44.485
+Data provenance is key to
+interpreting model results.
+
+93
+00:04:44.485 --> 00:04:47.345
+Model understanding
+is related to this,
+
+94
+00:04:47.345 --> 00:04:49.910
+but it's only part
+of the picture.
+
+95
+00:04:49.910 --> 00:04:51.725
+The model itself is
+
+96
+00:04:51.725 --> 00:04:54.920
+an expression of the data
+in the training set.
+
+97
+00:04:54.920 --> 00:04:56.750
+In some sense, we can look at
+
+98
+00:04:56.750 --> 00:04:59.585
+the model as a
+transformation of the Data.
+
+99
+00:04:59.585 --> 00:05:03.380
+Provenance also helps us
+understand how the model
+
+100
+00:05:03.380 --> 00:05:08.460
+evolves as it is trained
+and perhaps optimized.
+
+101
+00:05:08.480 --> 00:05:11.330
+Let's add an important
+ingredient here,
+
+102
+00:05:11.330 --> 00:05:14.030
+tracking different Data versions.
+
+103
+00:05:14.030 --> 00:05:17.390
+Managing a data pipelines
+is a big challenge as
+
+104
+00:05:17.390 --> 00:05:21.080
+data evolves through the natural
+life cycle of a project,
+
+105
+00:05:21.080 --> 00:05:23.420
+over many different
+training runs.
+
+106
+00:05:23.420 --> 00:05:26.090
+A Machine learning when
+it's done properly,
+
+107
+00:05:26.090 --> 00:05:27.620
+should produce results that can
+
+108
+00:05:27.620 --> 00:05:30.220
+be reproduced fairly
+consistently.
+
+109
+00:05:30.220 --> 00:05:32.945
+There will naturally
+be some variance,
+
+110
+00:05:32.945 --> 00:05:35.315
+but the results should be closed.
+
+111
+00:05:35.315 --> 00:05:37.520
+Code version control is
+
+112
+00:05:37.520 --> 00:05:39.365
+probably something
+you're familiar with.
+
+113
+00:05:39.365 --> 00:05:40.880
+GitHub is one of the most
+
+114
+00:05:40.880 --> 00:05:43.400
+popular cloud-based
+code repositories,
+
+115
+00:05:43.400 --> 00:05:45.170
+and there are others as well.
+
+116
+00:05:45.170 --> 00:05:48.335
+Environment versioning
+is also important.
+
+117
+00:05:48.335 --> 00:05:52.100
+Tools like Docker and
+terraform help us
+
+118
+00:05:52.100 --> 00:05:55.925
+create repeatable environments
+and configuration.
+
+119
+00:05:55.925 --> 00:05:58.520
+However, data versioning
+is also important,
+
+120
+00:05:58.520 --> 00:06:00.800
+and plays a significant
+role for tracking
+
+121
+00:06:00.800 --> 00:06:04.235
+provenance and lineage
+data versioning.
+
+122
+00:06:04.235 --> 00:06:05.930
+It's essentially
+version control for
+
+123
+00:06:05.930 --> 00:06:08.210
+data files so that you can trace
+
+124
+00:06:08.210 --> 00:06:13.115
+changes over time and restore
+previous versions early.
+
+125
+00:06:13.115 --> 00:06:15.515
+But the tools are
+somewhat different.
+
+126
+00:06:15.515 --> 00:06:17.090
+For one thing, because of
+
+127
+00:06:17.090 --> 00:06:19.520
+the size of files
+that we deal with,
+
+128
+00:06:19.520 --> 00:06:22.385
+which are typically
+or can be any way,
+
+129
+00:06:22.385 --> 00:06:26.300
+much larger than a code
+file would ever be.
+
+130
+00:06:26.300 --> 00:06:28.490
+Tools for data versioning are
+
+131
+00:06:28.490 --> 00:06:30.875
+just starting to
+become available.
+
+132
+00:06:30.875 --> 00:06:35.300
+These include DVC and Git LFS.
+
+133
+00:06:35.300 --> 00:06:38.970
+LFS for large files Storage.

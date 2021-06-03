@@ -1,0 +1,62 @@
+Now, let's take a look at using ML Metadata with
+a coding example. Besides data lineage and
+provenance tracking, you get several other
+benefits through ML Metadata. This includes the
+ability to construct a directed acyclic graph or DAG, of the component executions
+occurring in a pipeline, which can be useful for
+debugging purposes. Through this, you can verify which inputs have been
+used in an execution. You can also summarize all
+the artifacts belonging to a specific type generated
+after a series of experiments. For example, you can list all of the models that
+have been trained. You can then compare them to evaluate your various
+training runs. Now, let's get started with
+writing code for ML Metadata. You may have to
+install ML Metadata, which you can do using
+PIP as shown here. Then there are two imports from ML Metadata which
+are used frequently, the ML Metadata store itself and the ML
+Metadata store PB2, which is a protocol
+buffer or protobuf. Start by setting up
+the storage backend. ML Metadata store is
+the database where ML Metadata registers all of the metadata associated
+with your project. ML Metadata provides
+APIs to connect with a fake database for quick
+prototyping, SQLite and MySQL. We also need a block
+store or file system where ML Metadata stores
+large objects like datasets. Let's quickly explore
+the first three options. For any storage backend, you'll need to create a connection config object using the metadata
+store PB2 protobuf. Then, based on your choice
+of storage backend, you need to configure
+this connection object. Here you're signaling that your fake database is in parent, which is the primary memory of the system on
+which it's running. Finally, you create
+the store object passing in the connection config. Regardless of what storage
+or database you use, the store object is a key part of how you
+interact with ML Metadata. To use SQLite, you start by creating a
+connection config again then you configure
+the connection config object with the location
+of your SQLite file. Make sure to provide that
+with the relevant read and write permissions based
+on your application. Finally, you create
+the store object passing in the connection config. As you might imagine, using
+MySQL is very similar, you start by creating
+a connection config. Your connection config
+object should be configured with the relevant host
+name, the port number, the database location, username, and password of your
+MySQL database user and that's shown here. Finally, you create
+the store object passing in the connection config. Now, that the storage
+backend is configured, it's time to use ML Metadata
+to solve a problem. Let's go over a
+workflow using TFTV. We're going to use that in
+conjunction with ML Metadata. The choice here is a tabular dataset
+containing many features. In the lab, ML
+Metadata is explicitly programmed because in a
+full-fledged ML Pipeline, ML Metadata is intrinsically capable enough to
+understand the flow of data between various components and perform its necessary duties. To help you better
+understand ML Metadata, you'll be using it
+outside of a pipeline. The lab also shows ML Metadata integration with TensorFlow Data
+Validation or TFTP. By the end of the lab, you should have some intuition about how ML Metadata
+can keep track of progress and how you can use ML Metadata to track your
+training process and pipeline. Let's review the key points which we covered in this lesson. First, you learned about data
+lineage and provenance to address data evolution over
+the ML Pipeline lifecycle. Then you went over metadata for tracking those data changes. Then you inspected
+the architecture of the ML Metadata library. Finally, in the ungraded lab, you read an example to register artifacts, executions,
+and contexts.

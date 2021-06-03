@@ -1,0 +1,92 @@
+Now we're going to discuss metadata. Something to think about as we
+discuss this topic are the legal and regulatory considerations. As machine learning becomes increasingly
+used to make important business decisions, healthcare decisions and
+financial decisions, legal liability becomes a factor. Being able to interpret a model and
+being able to trace back the lineage or provenance of the data that was
+used to train the model become increasingly important
+to limiting exposure. Okay, let's go ahead and get started. Now let's start exploring
+how ML metadata or MLMD can help you with
+tracking artifacts and pipeline changes during
+a production life cycle. Every run of a production ML
+pipeline generates metadata containing information about
+the various pipeline components and their executions or training runs and
+the resulting artifacts. For example, trained models. In the event of unexpected
+pipeline behavior or errors, this metadata can be leveraged to
+analyze the lineage of pipeline components and to help you debug issues. Think of this metadata as the equivalent
+of logging in software development. MLMD helps you understand and
+analyze all the interconnected parts of your ML pipeline,
+instead of analyzing them in isolation. Now consider the two stages in ML
+engineering that you've seen so far. First you've done data validation, then you've passed the results onto data
+transformation or feature engineering. This is the first part of
+any model training process. But what if you had a centralized
+repository where every time you run a component,
+you store the result or the update or any other output of that
+stage into a repository. So whenever any changes made,
+which causes a different result, you don't need to worry about the progress
+you've made so far getting lost. You can examine your previous results
+to try to understand what happened and make corrections or
+take advantage of improvements. Let's take a closer look. In addition to the executor where
+your code runs, each component also includes two additional parts,
+the driver and publisher. The executor is where the work
+of the component is done and that's what makes different
+components different. Whatever input is needed for
+the executor, is provided by the driver, which gets it from the metadata store. Finally, the publisher will
+push the results of running the executor back into the metadata store. Most of the time, you won't need to
+customize the driver or publisher. Creating custom components is almost
+always done by creating a custom executor. Now, let's look specifically
+at ML Metadata or MLMD. MLMD is a library for
+tracking and retrieving metadata associated with ML developer and
+data scientist workflows. MLMD can be used as an integral
+part of an ML pipeline or it can be used independently. However, when integrated
+with an ML pipeline, you may not even explicitly
+interact with MLMD. Objects which are stored in MLMD
+are referred to as artifacts. MLMD stores the properties of each
+artifact in a relational database and stores large objects like data sets on
+disc or in a file system or block store. When you're working with ML metadata, you need to know how data flows between
+different successive components. Each step in this data flow is described
+through an entity that you need to be familiar with. At the highest level of MLMD, there are some data entities
+that can be considered as units. First, there are artifacts. An artifact is an elementary
+unit of data that gets fed into the ML metadata store and
+as the data is consumed as input or generated as output of each component. Next there are executions. Each execution is a record of any
+component run during the ML pipeline workflow, along with its
+associated runtime parameters. Any artifact or execution will be associated
+with only one type of component. Artifacts and
+executions can be clustered together for each type of component separately. This grouping is referred
+to as the context. A context may hold the metadata
+of the projects being run, experiments being conducted,
+details about pipelines, etc. Each of these units can hold
+additional data describing it in more detail using properties. Next there are types, previously, you've seen several types of units that
+get stored inside the ML metadata. Each type includes
+the properties of that type. Lastly, we have relationships. Relationships store the various
+units getting generated or consumed when interacting
+with other units. For example,
+an event is the record of a relationship between an artifact and an execution. So, ML metadata stores a wide range
+of information about the results of the components and
+execution runs of a pipeline. It stores artifacts and it stores the executions of
+each component in the pipeline. It also stores the lineage information for
+each artifact that is generated. All of this information is
+represented in metadata objects and this metadata is stored in
+a back end storage solution. Let's take a look at the architecture
+of ML metadata or MLMD. On the top are the various components
+present in any ML pipeline. All of these components are individually
+connected to a centralized metadata store of ML metadata,
+so that each component can independently access the metadata
+at any stage of the pipeline. An ML pipeline may optionally have
+a gooey console that can access the data from the metadata store directly to
+track the progress of each component. At the heart of the metadata
+store is the artifact which is described by its
+corresponding artifact type. Artifacts become the inputs to any
+pipeline components which depend on them. And the corresponding use of artifacts
+by components is recorded in executions. The input of an artifact into a component
+is described by an input event and the corresponding output of a new artifact from the component is
+described by an output event. This interaction between artifacts and
+executions is represented by context through the relationships
+of attribution and association. Lastly, all of the data generated
+by the metadata store is stored in various types of back
+end storage like sequel light and my sequel and large objects are stored
+in a file system or block store. Let's review. You learned a lot about the architecture
+and nomenclature of ML metadata or MLMD and the artifacts and
+entities which it contains. This should give you some idea of how you
+can leverage MLMD to track metadata and the results flowing through your
+pipeline to better understand your training process, both now and in
+previous training runs of your pipeline.

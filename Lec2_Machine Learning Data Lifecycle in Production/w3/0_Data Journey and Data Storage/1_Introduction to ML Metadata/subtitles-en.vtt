@@ -1,0 +1,560 @@
+WEBVTT
+
+1
+00:00:00.740 --> 00:00:03.105
+Now we're going to discuss metadata.
+
+2
+00:00:03.105 --> 00:00:07.891
+Something to think about as we
+discuss this topic are the legal and
+
+3
+00:00:07.891 --> 00:00:10.540
+regulatory considerations.
+
+4
+00:00:10.540 --> 00:00:16.172
+As machine learning becomes increasingly
+used to make important business decisions,
+
+5
+00:00:16.172 --> 00:00:19.368
+healthcare decisions and
+financial decisions,
+
+6
+00:00:19.368 --> 00:00:22.240
+legal liability becomes a factor.
+
+7
+00:00:22.240 --> 00:00:27.425
+Being able to interpret a model and
+being able to trace back the lineage or
+
+8
+00:00:27.425 --> 00:00:31.761
+provenance of the data that was
+used to train the model become
+
+9
+00:00:31.761 --> 00:00:35.840
+increasingly important
+to limiting exposure.
+
+10
+00:00:35.840 --> 00:00:37.761
+Okay, let's go ahead and get started.
+
+11
+00:00:40.040 --> 00:00:43.940
+Now let's start exploring
+how ML metadata or
+
+12
+00:00:43.940 --> 00:00:47.839
+MLMD can help you with
+tracking artifacts and
+
+13
+00:00:47.839 --> 00:00:52.840
+pipeline changes during
+a production life cycle.
+
+14
+00:00:52.840 --> 00:00:57.164
+Every run of a production ML
+pipeline generates metadata
+
+15
+00:00:57.164 --> 00:01:02.298
+containing information about
+the various pipeline components and
+
+16
+00:01:02.298 --> 00:01:07.261
+their executions or training runs and
+the resulting artifacts.
+
+17
+00:01:07.261 --> 00:01:09.639
+For example, trained models.
+
+18
+00:01:09.639 --> 00:01:13.982
+In the event of unexpected
+pipeline behavior or errors,
+
+19
+00:01:13.982 --> 00:01:18.960
+this metadata can be leveraged to
+analyze the lineage of pipeline
+
+20
+00:01:18.960 --> 00:01:22.140
+components and to help you debug issues.
+
+21
+00:01:22.140 --> 00:01:27.740
+Think of this metadata as the equivalent
+of logging in software development.
+
+22
+00:01:27.740 --> 00:01:32.519
+MLMD helps you understand and
+analyze all the interconnected parts of
+
+23
+00:01:32.519 --> 00:01:37.140
+your ML pipeline,
+instead of analyzing them in isolation.
+
+24
+00:01:37.140 --> 00:01:43.540
+Now consider the two stages in ML
+engineering that you've seen so far.
+
+25
+00:01:43.540 --> 00:01:46.214
+First you've done data validation,
+
+26
+00:01:46.214 --> 00:01:52.840
+then you've passed the results onto data
+transformation or feature engineering.
+
+27
+00:01:52.840 --> 00:01:56.161
+This is the first part of
+any model training process.
+
+28
+00:01:57.440 --> 00:02:01.954
+But what if you had a centralized
+repository where every
+
+29
+00:02:01.954 --> 00:02:06.946
+time you run a component,
+you store the result or the update or
+
+30
+00:02:06.946 --> 00:02:11.000
+any other output of that
+stage into a repository.
+
+31
+00:02:11.000 --> 00:02:15.055
+So whenever any changes made,
+which causes a different result,
+
+32
+00:02:15.055 --> 00:02:20.140
+you don't need to worry about the progress
+you've made so far getting lost.
+
+33
+00:02:20.140 --> 00:02:24.858
+You can examine your previous results
+to try to understand what happened and
+
+34
+00:02:24.858 --> 00:02:28.940
+make corrections or
+take advantage of improvements.
+
+35
+00:02:28.940 --> 00:02:30.760
+Let's take a closer look.
+
+36
+00:02:30.760 --> 00:02:35.501
+In addition to the executor where
+your code runs, each component
+
+37
+00:02:35.501 --> 00:02:40.940
+also includes two additional parts,
+the driver and publisher.
+
+38
+00:02:40.940 --> 00:02:43.753
+The executor is where the work
+of the component is done and
+
+39
+00:02:43.753 --> 00:02:47.140
+that's what makes different
+components different.
+
+40
+00:02:47.140 --> 00:02:51.983
+Whatever input is needed for
+the executor, is provided by the driver,
+
+41
+00:02:51.983 --> 00:02:55.340
+which gets it from the metadata store.
+
+42
+00:02:55.340 --> 00:02:58.905
+Finally, the publisher will
+push the results of running
+
+43
+00:02:58.905 --> 00:03:02.340
+the executor back into the metadata store.
+
+44
+00:03:02.340 --> 00:03:06.600
+Most of the time, you won't need to
+customize the driver or publisher.
+
+45
+00:03:06.600 --> 00:03:13.240
+Creating custom components is almost
+always done by creating a custom executor.
+
+46
+00:03:13.240 --> 00:03:18.240
+Now, let's look specifically
+at ML Metadata or MLMD.
+
+47
+00:03:18.240 --> 00:03:22.480
+MLMD is a library for
+tracking and retrieving metadata
+
+48
+00:03:22.480 --> 00:03:27.470
+associated with ML developer and
+data scientist workflows.
+
+49
+00:03:27.470 --> 00:03:32.337
+MLMD can be used as an integral
+part of an ML pipeline or
+
+50
+00:03:32.337 --> 00:03:35.740
+it can be used independently.
+
+51
+00:03:35.740 --> 00:03:39.275
+However, when integrated
+with an ML pipeline,
+
+52
+00:03:39.275 --> 00:03:42.817
+you may not even explicitly
+interact with MLMD.
+
+53
+00:03:42.817 --> 00:03:47.810
+Objects which are stored in MLMD
+are referred to as artifacts.
+
+54
+00:03:47.810 --> 00:03:53.320
+MLMD stores the properties of each
+artifact in a relational database and
+
+55
+00:03:53.320 --> 00:03:59.210
+stores large objects like data sets on
+disc or in a file system or block store.
+
+56
+00:03:59.210 --> 00:04:01.768
+When you're working with ML metadata,
+
+57
+00:04:01.768 --> 00:04:07.340
+you need to know how data flows between
+different successive components.
+
+58
+00:04:07.340 --> 00:04:12.207
+Each step in this data flow is described
+through an entity that you need
+
+59
+00:04:12.207 --> 00:04:13.697
+to be familiar with.
+
+60
+00:04:13.697 --> 00:04:16.083
+At the highest level of MLMD,
+
+61
+00:04:16.083 --> 00:04:21.051
+there are some data entities
+that can be considered as units.
+
+62
+00:04:22.640 --> 00:04:25.140
+First, there are artifacts.
+
+63
+00:04:25.140 --> 00:04:29.853
+An artifact is an elementary
+unit of data that gets fed into
+
+64
+00:04:29.853 --> 00:04:34.564
+the ML metadata store and
+as the data is consumed as input or
+
+65
+00:04:34.564 --> 00:04:38.240
+generated as output of each component.
+
+66
+00:04:38.240 --> 00:04:40.410
+Next there are executions.
+
+67
+00:04:40.410 --> 00:04:45.697
+Each execution is a record of any
+component run during the ML pipeline
+
+68
+00:04:45.697 --> 00:04:50.740
+workflow, along with its
+associated runtime parameters.
+
+69
+00:04:50.740 --> 00:04:51.952
+Any artifact or
+
+70
+00:04:51.952 --> 00:04:56.901
+execution will be associated
+with only one type of component.
+
+71
+00:04:56.901 --> 00:05:00.550
+Artifacts and
+executions can be clustered together for
+
+72
+00:05:00.550 --> 00:05:03.440
+each type of component separately.
+
+73
+00:05:03.440 --> 00:05:07.440
+This grouping is referred
+to as the context.
+
+74
+00:05:07.440 --> 00:05:11.773
+A context may hold the metadata
+of the projects being run,
+
+75
+00:05:11.773 --> 00:05:17.040
+experiments being conducted,
+details about pipelines, etc.
+
+76
+00:05:17.040 --> 00:05:21.562
+Each of these units can hold
+additional data describing it in more
+
+77
+00:05:21.562 --> 00:05:24.240
+detail using properties.
+
+78
+00:05:24.240 --> 00:05:26.579
+Next there are types, previously,
+
+79
+00:05:26.579 --> 00:05:31.430
+you've seen several types of units that
+get stored inside the ML metadata.
+
+80
+00:05:31.430 --> 00:05:35.240
+Each type includes
+the properties of that type.
+
+81
+00:05:35.240 --> 00:05:37.802
+Lastly, we have relationships.
+
+82
+00:05:37.802 --> 00:05:42.333
+Relationships store the various
+units getting generated or
+
+83
+00:05:42.333 --> 00:05:45.820
+consumed when interacting
+with other units.
+
+84
+00:05:45.820 --> 00:05:50.280
+For example,
+an event is the record of a relationship
+
+85
+00:05:50.280 --> 00:05:54.540
+between an artifact and an execution.
+
+86
+00:05:54.540 --> 00:05:59.369
+So, ML metadata stores a wide range
+of information about the results of
+
+87
+00:05:59.369 --> 00:06:03.340
+the components and
+execution runs of a pipeline.
+
+88
+00:06:03.340 --> 00:06:05.093
+It stores artifacts and
+
+89
+00:06:05.093 --> 00:06:09.660
+it stores the executions of
+each component in the pipeline.
+
+90
+00:06:09.660 --> 00:06:14.640
+It also stores the lineage information for
+each artifact that is generated.
+
+91
+00:06:14.640 --> 00:06:19.416
+All of this information is
+represented in metadata objects and
+
+92
+00:06:19.416 --> 00:06:24.140
+this metadata is stored in
+a back end storage solution.
+
+93
+00:06:24.140 --> 00:06:29.575
+Let's take a look at the architecture
+of ML metadata or MLMD.
+
+94
+00:06:29.575 --> 00:06:35.140
+On the top are the various components
+present in any ML pipeline.
+
+95
+00:06:35.140 --> 00:06:39.869
+All of these components are individually
+connected to a centralized
+
+96
+00:06:39.869 --> 00:06:43.863
+metadata store of ML metadata,
+so that each component can
+
+97
+00:06:43.863 --> 00:06:48.361
+independently access the metadata
+at any stage of the pipeline.
+
+98
+00:06:49.740 --> 00:06:54.852
+An ML pipeline may optionally have
+a gooey console that can access the data
+
+99
+00:06:54.852 --> 00:07:00.840
+from the metadata store directly to
+track the progress of each component.
+
+100
+00:07:00.840 --> 00:07:05.138
+At the heart of the metadata
+store is the artifact which is
+
+101
+00:07:05.138 --> 00:07:08.817
+described by its
+corresponding artifact type.
+
+102
+00:07:08.817 --> 00:07:14.660
+Artifacts become the inputs to any
+pipeline components which depend on them.
+
+103
+00:07:14.660 --> 00:07:21.740
+And the corresponding use of artifacts
+by components is recorded in executions.
+
+104
+00:07:21.740 --> 00:07:27.896
+The input of an artifact into a component
+is described by an input event and
+
+105
+00:07:27.896 --> 00:07:31.472
+the corresponding output of a new artifact
+
+106
+00:07:31.472 --> 00:07:36.240
+from the component is
+described by an output event.
+
+107
+00:07:36.240 --> 00:07:41.116
+This interaction between artifacts and
+executions is represented by
+
+108
+00:07:41.116 --> 00:07:46.220
+context through the relationships
+of attribution and association.
+
+109
+00:07:46.220 --> 00:07:50.912
+Lastly, all of the data generated
+by the metadata store is
+
+110
+00:07:50.912 --> 00:07:56.084
+stored in various types of back
+end storage like sequel light and
+
+111
+00:07:56.084 --> 00:08:01.761
+my sequel and large objects are stored
+in a file system or block store.
+
+112
+00:08:02.840 --> 00:08:03.902
+Let's review.
+
+113
+00:08:03.902 --> 00:08:09.890
+You learned a lot about the architecture
+and nomenclature of ML metadata or
+
+114
+00:08:09.890 --> 00:08:14.367
+MLMD and the artifacts and
+entities which it contains.
+
+115
+00:08:14.367 --> 00:08:20.258
+This should give you some idea of how you
+can leverage MLMD to track metadata and
+
+116
+00:08:20.258 --> 00:08:25.436
+the results flowing through your
+pipeline to better understand your
+
+117
+00:08:25.436 --> 00:08:31.251
+training process, both now and in
+previous training runs of your pipeline.
