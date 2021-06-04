@@ -1,0 +1,468 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:03.135
+Now let's discuss
+schema development.
+
+2
+00:00:03.135 --> 00:00:06.090
+In this lesson on evolving data,
+
+3
+00:00:06.090 --> 00:00:08.234
+you'll learn about developing
+
+4
+00:00:08.234 --> 00:00:11.670
+enterprise schema
+environments and how
+
+5
+00:00:11.670 --> 00:00:13.620
+to iteratively create and
+
+6
+00:00:13.620 --> 00:00:17.370
+maintain enterprise data schemas.
+
+7
+00:00:17.370 --> 00:00:20.895
+You'll be using schemas
+quite extensively.
+
+8
+00:00:20.895 --> 00:00:24.600
+Let's quickly review
+what a schema is and
+
+9
+00:00:24.600 --> 00:00:28.575
+how helpful they are in the
+context of production ML.
+
+10
+00:00:28.575 --> 00:00:31.879
+Schemas are relational
+objects summarizing
+
+11
+00:00:31.879 --> 00:00:35.375
+the features in a given
+dataset or project.
+
+12
+00:00:35.375 --> 00:00:38.300
+They include the feature name,
+
+13
+00:00:38.300 --> 00:00:40.435
+the feature of variable type.
+
+14
+00:00:40.435 --> 00:00:42.915
+For example, an integer, float,
+
+15
+00:00:42.915 --> 00:00:46.110
+string or categorical variable.
+
+16
+00:00:46.110 --> 00:00:49.320
+Whether or not the
+feature is required.
+
+17
+00:00:49.320 --> 00:00:51.935
+The valency of the feature,
+
+18
+00:00:51.935 --> 00:00:54.050
+which applies to features with
+
+19
+00:00:54.050 --> 00:00:58.595
+multiple values like
+lists or array features,
+
+20
+00:00:58.595 --> 00:01:03.730
+and expresses the minimum and
+maximum number of values.
+
+21
+00:01:03.730 --> 00:01:06.620
+Information about the range and
+
+22
+00:01:06.620 --> 00:01:11.635
+categories and feature
+default values.
+
+23
+00:01:11.635 --> 00:01:14.410
+Schemas are important,
+as your data
+
+24
+00:01:14.410 --> 00:01:17.170
+and feature set
+evolves over time.
+
+25
+00:01:17.170 --> 00:01:20.380
+From your experience,
+you know that data keeps
+
+26
+00:01:20.380 --> 00:01:22.615
+changing and this change
+
+27
+00:01:22.615 --> 00:01:25.485
+often results in
+change distributions.
+
+28
+00:01:25.485 --> 00:01:28.150
+Let's focus on how to
+observe data that has
+
+29
+00:01:28.150 --> 00:01:31.299
+changed as it keeps evolving.
+
+30
+00:01:31.299 --> 00:01:33.850
+Changing data often results
+
+31
+00:01:33.850 --> 00:01:36.595
+in a new schema being generated.
+
+32
+00:01:36.595 --> 00:01:39.860
+However, there are some
+special use cases.
+
+33
+00:01:39.860 --> 00:01:43.555
+Imagine that even before
+you assess the dataset,
+
+34
+00:01:43.555 --> 00:01:45.520
+you have an idea or
+
+35
+00:01:45.520 --> 00:01:48.070
+information about
+the expected range
+
+36
+00:01:48.070 --> 00:01:50.125
+of values for your features.
+
+37
+00:01:50.125 --> 00:01:52.870
+The initial dataset that you've
+
+38
+00:01:52.870 --> 00:01:57.795
+received is covering only a
+small range of those values.
+
+39
+00:01:57.795 --> 00:02:02.480
+In that case, it makes
+sense to adjust or create
+
+40
+00:02:02.480 --> 00:02:04.550
+your schema to reflect
+
+41
+00:02:04.550 --> 00:02:07.610
+the expected range of
+values for your features.
+
+42
+00:02:07.610 --> 00:02:09.830
+A similar situation may exist for
+
+43
+00:02:09.830 --> 00:02:13.400
+the expected values of
+categorical features.
+
+44
+00:02:13.400 --> 00:02:16.340
+Besides that, your
+schema can help you
+
+45
+00:02:16.340 --> 00:02:19.475
+find problems or anomalies
+in your dataset,
+
+46
+00:02:19.475 --> 00:02:22.325
+such as missing required values
+
+47
+00:02:22.325 --> 00:02:24.485
+or values of the wrong type.
+
+48
+00:02:24.485 --> 00:02:27.470
+All these factors have to
+be considered when you're
+
+49
+00:02:27.470 --> 00:02:31.115
+designing the schema
+of your ML pipeline.
+
+50
+00:02:31.115 --> 00:02:33.080
+As data keeps evolving,
+
+51
+00:02:33.080 --> 00:02:34.880
+there are some
+requirements which must be
+
+52
+00:02:34.880 --> 00:02:37.475
+met in production deployments.
+
+53
+00:02:37.475 --> 00:02:39.890
+Let's consider some
+important ones.
+
+54
+00:02:39.890 --> 00:02:42.685
+The first factor is reliability.
+
+55
+00:02:42.685 --> 00:02:44.840
+The ML platform of
+your choice should be
+
+56
+00:02:44.840 --> 00:02:48.545
+resilient to disruptions
+from inconsistent data.
+
+57
+00:02:48.545 --> 00:02:50.960
+There's no guarantee
+that you'll receive
+
+58
+00:02:50.960 --> 00:02:54.125
+clean and consistent
+data every time.
+
+59
+00:02:54.125 --> 00:02:57.500
+In fact, I can almost
+guarantee you that you won't.
+
+60
+00:02:57.500 --> 00:02:59.330
+Your system needs to be designed
+
+61
+00:02:59.330 --> 00:03:01.475
+to handle that efficiently.
+
+62
+00:03:01.475 --> 00:03:03.935
+Also, your software
+might generate
+
+63
+00:03:03.935 --> 00:03:06.530
+unexpected runtime errors and
+
+64
+00:03:06.530 --> 00:03:10.900
+your pipeline needs to
+gracefully handle that also.
+
+65
+00:03:10.900 --> 00:03:13.760
+Problems with
+misconfiguration should be
+
+66
+00:03:13.760 --> 00:03:16.145
+detected and handled gracefully.
+
+67
+00:03:16.145 --> 00:03:20.120
+Above all, the orchestration
+of execution among
+
+68
+00:03:20.120 --> 00:03:22.430
+different components
+in the pipeline
+
+69
+00:03:22.430 --> 00:03:25.954
+should happen smoothly
+and efficiently.
+
+70
+00:03:25.954 --> 00:03:28.250
+Another factor to consider in
+
+71
+00:03:28.250 --> 00:03:30.920
+your ML pipeline platform is
+
+72
+00:03:30.920 --> 00:03:34.105
+scalability during
+data evolution.
+
+73
+00:03:34.105 --> 00:03:36.920
+During training, your
+pipeline may need to
+
+74
+00:03:36.920 --> 00:03:39.890
+handle a large amount
+of training data well,
+
+75
+00:03:39.890 --> 00:03:42.470
+including keeping
+expensive accelerators
+
+76
+00:03:42.470 --> 00:03:45.700
+like GPUs and TPUs busy.
+
+77
+00:03:45.700 --> 00:03:47.615
+When you serve your model,
+
+78
+00:03:47.615 --> 00:03:49.910
+especially in online scenarios
+
+79
+00:03:49.910 --> 00:03:51.710
+such as running on a server,
+
+80
+00:03:51.710 --> 00:03:53.510
+you'll almost always have
+
+81
+00:03:53.510 --> 00:03:55.955
+varying levels of
+request traffic.
+
+82
+00:03:55.955 --> 00:03:59.510
+Your infrastructure needs
+to scale up and down to
+
+83
+00:03:59.510 --> 00:04:01.745
+meet those latency requirements
+
+84
+00:04:01.745 --> 00:04:04.399
+while minimizing the cost.
+
+85
+00:04:04.399 --> 00:04:08.555
+If your system isn't designed
+to handle data evolution,
+
+86
+00:04:08.555 --> 00:04:11.750
+it will quickly
+run into problems.
+
+87
+00:04:11.750 --> 00:04:13.610
+These include the introduction of
+
+88
+00:04:13.610 --> 00:04:15.620
+anomalies in your dataset.
+
+89
+00:04:15.620 --> 00:04:19.055
+Will your system detect
+those anomalies?
+
+90
+00:04:19.055 --> 00:04:22.190
+Your system and your
+development process
+
+91
+00:04:22.190 --> 00:04:24.620
+should be designed to
+treat data errors as
+
+92
+00:04:24.620 --> 00:04:27.410
+first-class citizens
+in the same way
+
+93
+00:04:27.410 --> 00:04:30.155
+that bugs in your
+code are treated.
+
+94
+00:04:30.155 --> 00:04:32.554
+In some cases, those anomalies
+
+95
+00:04:32.554 --> 00:04:34.655
+are alerting you that you need to
+
+96
+00:04:34.655 --> 00:04:36.380
+update the schema and
+
+97
+00:04:36.380 --> 00:04:39.890
+accommodate valid
+changes in your data.
+
+98
+00:04:39.890 --> 00:04:43.460
+The evolution of your schemas
+can be a useful tool to
+
+99
+00:04:43.460 --> 00:04:47.135
+understand and track the
+evolution of your data.
+
+100
+00:04:47.135 --> 00:04:50.450
+Also, schemas can be
+used as key inputs into
+
+101
+00:04:50.450 --> 00:04:52.460
+automated processes
+that work with
+
+102
+00:04:52.460 --> 00:04:56.670
+your data like automatic
+feature engineering.

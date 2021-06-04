@@ -1,0 +1,60 @@
+Now let's discuss
+schema development. In this lesson on evolving data, you'll learn about developing enterprise schema
+environments and how to iteratively create and maintain enterprise data schemas. You'll be using schemas
+quite extensively. Let's quickly review
+what a schema is and how helpful they are in the
+context of production ML. Schemas are relational
+objects summarizing the features in a given
+dataset or project. They include the feature name, the feature of variable type. For example, an integer, float, string or categorical variable. Whether or not the
+feature is required. The valency of the feature, which applies to features with multiple values like
+lists or array features, and expresses the minimum and
+maximum number of values. Information about the range and categories and feature
+default values. Schemas are important,
+as your data and feature set
+evolves over time. From your experience,
+you know that data keeps changing and this change often results in
+change distributions. Let's focus on how to
+observe data that has changed as it keeps evolving. Changing data often results in a new schema being generated. However, there are some
+special use cases. Imagine that even before
+you assess the dataset, you have an idea or information about
+the expected range of values for your features. The initial dataset that you've received is covering only a
+small range of those values. In that case, it makes
+sense to adjust or create your schema to reflect the expected range of
+values for your features. A similar situation may exist for the expected values of
+categorical features. Besides that, your
+schema can help you find problems or anomalies
+in your dataset, such as missing required values or values of the wrong type. All these factors have to
+be considered when you're designing the schema
+of your ML pipeline. As data keeps evolving, there are some
+requirements which must be met in production deployments. Let's consider some
+important ones. The first factor is reliability. The ML platform of
+your choice should be resilient to disruptions
+from inconsistent data. There's no guarantee
+that you'll receive clean and consistent
+data every time. In fact, I can almost
+guarantee you that you won't. Your system needs to be designed to handle that efficiently. Also, your software
+might generate unexpected runtime errors and your pipeline needs to
+gracefully handle that also. Problems with
+misconfiguration should be detected and handled gracefully. Above all, the orchestration
+of execution among different components
+in the pipeline should happen smoothly
+and efficiently. Another factor to consider in your ML pipeline platform is scalability during
+data evolution. During training, your
+pipeline may need to handle a large amount
+of training data well, including keeping
+expensive accelerators like GPUs and TPUs busy. When you serve your model, especially in online scenarios such as running on a server, you'll almost always have varying levels of
+request traffic. Your infrastructure needs
+to scale up and down to meet those latency requirements while minimizing the cost. If your system isn't designed
+to handle data evolution, it will quickly
+run into problems. These include the introduction of anomalies in your dataset. Will your system detect
+those anomalies? Your system and your
+development process should be designed to
+treat data errors as first-class citizens
+in the same way that bugs in your
+code are treated. In some cases, those anomalies are alerting you that you need to update the schema and accommodate valid
+changes in your data. The evolution of your schemas
+can be a useful tool to understand and track the
+evolution of your data. Also, schemas can be
+used as key inputs into automated processes
+that work with your data like automatic
+feature engineering.

@@ -1,0 +1,461 @@
+WEBVTT
+
+1
+00:00:00.640 --> 00:00:04.498
+In these next three topics will
+be talking about data storage.
+
+2
+00:00:04.498 --> 00:00:09.459
+Now there are no assignments for
+you to turn in for these three segments,
+
+3
+00:00:09.459 --> 00:00:12.319
+but I highly encourage you to take a look.
+
+4
+00:00:12.319 --> 00:00:16.792
+There's some great information here and
+it's becoming increasingly important,
+
+5
+00:00:16.792 --> 00:00:19.124
+especially the part about feature stores.
+
+6
+00:00:19.124 --> 00:00:22.995
+But depending upon where you are and
+what you already have,
+
+7
+00:00:22.995 --> 00:00:27.422
+you may have a data warehouse or
+data lake that you want to leverage.
+
+8
+00:00:27.422 --> 00:00:29.907
+So understanding those becomes important.
+
+9
+00:00:29.907 --> 00:00:32.135
+Okay, let's get started.
+
+10
+00:00:32.135 --> 00:00:37.388
+Now let's turn to the question of
+where we should store our data.
+
+11
+00:00:37.388 --> 00:00:41.404
+We'll start with a discussion
+of feature stores.
+
+12
+00:00:41.404 --> 00:00:47.258
+A feature store is a central
+repository for storing documented,
+
+13
+00:00:47.258 --> 00:00:51.098
+curated and access controlled features.
+
+14
+00:00:51.098 --> 00:00:55.527
+Using a feature store
+enables teams to share,
+
+15
+00:00:55.527 --> 00:00:59.739
+discover and use highly curated features.
+
+16
+00:00:59.739 --> 00:01:05.253
+A feature store makes it easy to
+discover and consume that feature and
+
+17
+00:01:05.253 --> 00:01:10.492
+that can be both online or offline for
+both serving and training.
+
+18
+00:01:10.492 --> 00:01:15.501
+But people often discover is that many
+modeling problems use identical or
+
+19
+00:01:15.501 --> 00:01:16.882
+similar features.
+
+20
+00:01:16.882 --> 00:01:21.767
+So often the same data is used
+in multiple modeling scenarios.
+
+21
+00:01:21.767 --> 00:01:26.618
+In many cases, a feature store can be
+seen as the interface between feature
+
+22
+00:01:26.618 --> 00:01:29.089
+engineering and model development.
+
+23
+00:01:29.089 --> 00:01:33.640
+Feature stores are valuable
+centralized feature repositories that
+
+24
+00:01:33.640 --> 00:01:35.292
+reduce redundant work.
+
+25
+00:01:35.292 --> 00:01:39.735
+They are also valuable because they
+enable teams to share data and
+
+26
+00:01:39.735 --> 00:01:42.662
+discover data that is already available.
+
+27
+00:01:42.662 --> 00:01:46.265
+You may have different teams in
+an organization with different business
+
+28
+00:01:46.265 --> 00:01:48.338
+problems that they're trying to solve.
+
+29
+00:01:48.338 --> 00:01:52.744
+But they're using identical data or
+data that's very similar.
+
+30
+00:01:52.744 --> 00:01:57.210
+For these reasons, feature stores
+are becoming the predominant choice for
+
+31
+00:01:57.210 --> 00:01:58.822
+enterprise data storage.
+
+32
+00:01:58.822 --> 00:02:03.664
+For machine learning, for
+large projects and organizations.
+
+33
+00:02:03.664 --> 00:02:08.853
+Feature stores often allow transformations
+of data so that you can avoid
+
+34
+00:02:08.853 --> 00:02:13.717
+duplicating that processing in
+different individual pipelines.
+
+35
+00:02:13.717 --> 00:02:18.360
+The access to the data in feature
+stores can be controlled based on role
+
+36
+00:02:18.360 --> 00:02:19.787
+based permissions.
+
+37
+00:02:19.787 --> 00:02:24.850
+The data in the feature stores can
+be aggregated to form new features.
+
+38
+00:02:24.850 --> 00:02:29.734
+It can also be anonymous sized and
+even purged for things like wipeouts For
+
+39
+00:02:29.734 --> 00:02:32.113
+GDP our compliance, for example.
+
+40
+00:02:32.113 --> 00:02:36.965
+Feature stores typically allow for
+feature processing offline
+
+41
+00:02:36.965 --> 00:02:41.918
+that can be on a regular basis,
+maybe on a cron job, for example.
+
+42
+00:02:41.918 --> 00:02:45.466
+Imagine that you're going to
+run a job to ingest data.
+
+43
+00:02:45.466 --> 00:02:48.853
+And then maybe do some
+feature engineering on it and
+
+44
+00:02:48.853 --> 00:02:51.466
+produce additional features from it.
+
+45
+00:02:51.466 --> 00:02:54.427
+Maybe for feature crosses, for example,
+
+46
+00:02:54.427 --> 00:02:58.876
+these new features will also be
+published to the Feature store.
+
+47
+00:02:58.876 --> 00:03:03.239
+You can also integrate that with
+monitoring tools as your processing and
+
+48
+00:03:03.239 --> 00:03:04.608
+adjusting your data.
+
+49
+00:03:04.608 --> 00:03:08.504
+You could be running
+monitoring again offline.
+
+50
+00:03:08.504 --> 00:03:12.104
+Those processed features are stored for
+offline use.
+
+51
+00:03:12.104 --> 00:03:14.823
+They can also be part of
+a prediction request.
+
+52
+00:03:14.823 --> 00:03:19.541
+But doing a join with the data
+provided in the prediction request to
+
+53
+00:03:19.541 --> 00:03:21.992
+pull in additional information.
+
+54
+00:03:21.992 --> 00:03:26.750
+Feature metadata allows you to
+discover the features that you need.
+
+55
+00:03:26.750 --> 00:03:31.761
+The metadata that describes the data
+that you are keeping is a tool.
+
+56
+00:03:31.761 --> 00:03:37.333
+And often the main tool for trying to
+discover the data that you're looking for.
+
+57
+00:03:37.333 --> 00:03:43.403
+For online feature usage where predictions
+must be returned in real time.
+
+58
+00:03:43.403 --> 00:03:46.501
+The latency requirements
+are typically fairly strict.
+
+59
+00:03:46.501 --> 00:03:51.001
+You're going to need to make sure that
+you have fast access to that data.
+
+60
+00:03:51.001 --> 00:03:53.881
+If you're going to do a join, for example,
+
+61
+00:03:53.881 --> 00:03:58.838
+maybe with user account information
+along with individual requests.
+
+62
+00:03:58.838 --> 00:04:01.225
+That join has to happen quickly.
+
+63
+00:04:01.225 --> 00:04:06.039
+That's good, but it's often difficult
+to compute some of those features in
+
+64
+00:04:06.039 --> 00:04:07.899
+a performant manner online.
+
+65
+00:04:07.899 --> 00:04:12.421
+So having pre computed
+features is often a good idea.
+
+66
+00:04:12.421 --> 00:04:17.327
+If you pre compute and store those
+features then you can use them later.
+
+67
+00:04:17.327 --> 00:04:20.608
+And typically that's
+at fairly low latency.
+
+68
+00:04:20.608 --> 00:04:23.157
+You can also do this in
+a batch environment.
+
+69
+00:04:23.157 --> 00:04:26.778
+Again, you don't want
+the latency to be too long, but
+
+70
+00:04:26.778 --> 00:04:30.178
+it probably isn't as strict
+as an online request.
+
+71
+00:04:30.178 --> 00:04:35.136
+For pre computing and loading, especially
+things like historical features,
+
+72
+00:04:35.136 --> 00:04:36.986
+it tends to be fairly simple.
+
+73
+00:04:36.986 --> 00:04:39.747
+For historical features
+in a badger environment,
+
+74
+00:04:39.747 --> 00:04:41.873
+it's also usually straightforward.
+
+75
+00:04:41.873 --> 00:04:47.351
+However, when you're training your model,
+you need to make sure that you only
+
+76
+00:04:47.351 --> 00:04:52.769
+include data that will be available at
+the time that a serving request is made.
+
+77
+00:04:52.769 --> 00:04:57.281
+Including data that is only
+available at some time after
+
+78
+00:04:57.281 --> 00:05:01.221
+a serving request is
+referred to as time travel.
+
+79
+00:05:01.221 --> 00:05:05.001
+And many feature stores include
+safeguards to avoid that.
+
+80
+00:05:05.001 --> 00:05:10.219
+Besides it violates the laws of
+physics and we don't want to do that.
+
+81
+00:05:10.219 --> 00:05:16.041
+You might do pre computing on a clock
+every few hours or once a day.
+
+82
+00:05:16.041 --> 00:05:20.835
+You're going to use of course,
+that same data for both training and
+
+83
+00:05:20.835 --> 00:05:24.681
+serving in order to avoid training,
+serving skew.
+
+84
+00:05:24.681 --> 00:05:28.237
+The goals of most feature
+stores are providing
+
+85
+00:05:28.237 --> 00:05:31.621
+a unified means of managing featured data.
+
+86
+00:05:31.621 --> 00:05:35.884
+They can scale from a single
+person up to large enterprises.
+
+87
+00:05:35.884 --> 00:05:40.323
+It needs to be performant and
+you want to try to use that same data,
+
+88
+00:05:40.323 --> 00:05:43.974
+both when you're training and
+serving your models.
+
+89
+00:05:43.974 --> 00:05:50.071
+You want consistency and also point in
+time correct access to feature data.
+
+90
+00:05:50.071 --> 00:05:53.166
+You want to avoid making a prediction,
+for example,
+
+91
+00:05:53.166 --> 00:05:58.246
+using data that will only be available in
+the future when you're serving your model.
+
+92
+00:05:58.246 --> 00:05:59.156
+In other words,
+
+93
+00:05:59.156 --> 00:06:02.866
+if you're trying to predict
+something that will happen tomorrow.
+
+94
+00:06:02.866 --> 00:06:07.286
+You want to make sure that you
+are not including data from tomorrow.
+
+95
+00:06:07.286 --> 00:06:11.238
+It should only be data
+from before tomorrow.
+
+96
+00:06:11.238 --> 00:06:16.005
+Most feature stores provide
+tools to enable discovery and
+
+97
+00:06:16.005 --> 00:06:21.461
+to allow you to document and
+provide insights into your features.

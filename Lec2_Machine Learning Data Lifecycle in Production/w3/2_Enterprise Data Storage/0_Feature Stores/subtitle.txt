@@ -1,0 +1,73 @@
+In these next three topics will
+be talking about data storage. Now there are no assignments for
+you to turn in for these three segments, but I highly encourage you to take a look. There's some great information here and
+it's becoming increasingly important, especially the part about feature stores. But depending upon where you are and
+what you already have, you may have a data warehouse or
+data lake that you want to leverage. So understanding those becomes important. Okay, let's get started. Now let's turn to the question of
+where we should store our data. We'll start with a discussion
+of feature stores. A feature store is a central
+repository for storing documented, curated and access controlled features. Using a feature store
+enables teams to share, discover and use highly curated features. A feature store makes it easy to
+discover and consume that feature and that can be both online or offline for
+both serving and training. But people often discover is that many
+modeling problems use identical or similar features. So often the same data is used
+in multiple modeling scenarios. In many cases, a feature store can be
+seen as the interface between feature engineering and model development. Feature stores are valuable
+centralized feature repositories that reduce redundant work. They are also valuable because they
+enable teams to share data and discover data that is already available. You may have different teams in
+an organization with different business problems that they're trying to solve. But they're using identical data or
+data that's very similar. For these reasons, feature stores
+are becoming the predominant choice for enterprise data storage. For machine learning, for
+large projects and organizations. Feature stores often allow transformations
+of data so that you can avoid duplicating that processing in
+different individual pipelines. The access to the data in feature
+stores can be controlled based on role based permissions. The data in the feature stores can
+be aggregated to form new features. It can also be anonymous sized and
+even purged for things like wipeouts For GDP our compliance, for example. Feature stores typically allow for
+feature processing offline that can be on a regular basis,
+maybe on a cron job, for example. Imagine that you're going to
+run a job to ingest data. And then maybe do some
+feature engineering on it and produce additional features from it. Maybe for feature crosses, for example, these new features will also be
+published to the Feature store. You can also integrate that with
+monitoring tools as your processing and adjusting your data. You could be running
+monitoring again offline. Those processed features are stored for
+offline use. They can also be part of
+a prediction request. But doing a join with the data
+provided in the prediction request to pull in additional information. Feature metadata allows you to
+discover the features that you need. The metadata that describes the data
+that you are keeping is a tool. And often the main tool for trying to
+discover the data that you're looking for. For online feature usage where predictions
+must be returned in real time. The latency requirements
+are typically fairly strict. You're going to need to make sure that
+you have fast access to that data. If you're going to do a join, for example, maybe with user account information
+along with individual requests. That join has to happen quickly. That's good, but it's often difficult
+to compute some of those features in a performant manner online. So having pre computed
+features is often a good idea. If you pre compute and store those
+features then you can use them later. And typically that's
+at fairly low latency. You can also do this in
+a batch environment. Again, you don't want
+the latency to be too long, but it probably isn't as strict
+as an online request. For pre computing and loading, especially
+things like historical features, it tends to be fairly simple. For historical features
+in a badger environment, it's also usually straightforward. However, when you're training your model,
+you need to make sure that you only include data that will be available at
+the time that a serving request is made. Including data that is only
+available at some time after a serving request is
+referred to as time travel. And many feature stores include
+safeguards to avoid that. Besides it violates the laws of
+physics and we don't want to do that. You might do pre computing on a clock
+every few hours or once a day. You're going to use of course,
+that same data for both training and serving in order to avoid training,
+serving skew. The goals of most feature
+stores are providing a unified means of managing featured data. They can scale from a single
+person up to large enterprises. It needs to be performant and
+you want to try to use that same data, both when you're training and
+serving your models. You want consistency and also point in
+time correct access to feature data. You want to avoid making a prediction,
+for example, using data that will only be available in
+the future when you're serving your model. In other words, if you're trying to predict
+something that will happen tomorrow. You want to make sure that you
+are not including data from tomorrow. It should only be data
+from before tomorrow. Most feature stores provide
+tools to enable discovery and to allow you to document and
+provide insights into your features.

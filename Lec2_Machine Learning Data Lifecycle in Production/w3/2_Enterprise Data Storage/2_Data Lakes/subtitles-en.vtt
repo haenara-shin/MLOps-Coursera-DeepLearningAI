@@ -1,0 +1,237 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:01.605
+Now, let's discuss
+
+2
+00:00:01.605 --> 00:00:06.390
+another popular enterprise
+storage solution, data lakes.
+
+3
+00:00:06.390 --> 00:00:10.350
+A data lake is a
+system or repository
+
+4
+00:00:10.350 --> 00:00:14.235
+of data stored in its
+natural and raw format,
+
+5
+00:00:14.235 --> 00:00:18.120
+which is usually in the
+form of blobs or files.
+
+6
+00:00:18.120 --> 00:00:21.015
+A data lake, like
+a data warehouse,
+
+7
+00:00:21.015 --> 00:00:25.280
+aggregates data from various
+sources of enterprise data.
+
+8
+00:00:25.280 --> 00:00:27.930
+A data lake can include
+structured data like
+
+9
+00:00:27.930 --> 00:00:33.355
+racial databases or semi-structured
+data like CSV files,
+
+10
+00:00:33.355 --> 00:00:35.780
+or unstructured data like
+
+11
+00:00:35.780 --> 00:00:39.620
+a collection of images or
+documents, and so forth.
+
+12
+00:00:39.620 --> 00:00:43.115
+Since data lake store
+data in its raw format,
+
+13
+00:00:43.115 --> 00:00:45.425
+they don't do any processing,
+
+14
+00:00:45.425 --> 00:00:48.760
+and they usually don't
+follow a schema.
+
+15
+00:00:48.760 --> 00:00:53.640
+How does a data lake differ
+from a data warehouse?
+
+16
+00:00:53.640 --> 00:00:55.590
+Let's compare the two.
+
+17
+00:00:55.590 --> 00:00:57.830
+The primary difference
+between them
+
+18
+00:00:57.830 --> 00:01:00.065
+is that in a data warehouse,
+
+19
+00:01:00.065 --> 00:01:01.400
+data is stored in
+
+20
+00:01:01.400 --> 00:01:04.430
+a consistent format
+which follows a schema,
+
+21
+00:01:04.430 --> 00:01:06.275
+whereas in data lakes,
+
+22
+00:01:06.275 --> 00:01:09.200
+the data is usually
+in its raw format.
+
+23
+00:01:09.200 --> 00:01:12.260
+In data lakes, the
+reason for storing
+
+24
+00:01:12.260 --> 00:01:15.635
+the data is often not
+determined ahead of time.
+
+25
+00:01:15.635 --> 00:01:19.835
+This is usually not the
+case for a data warehouse,
+
+26
+00:01:19.835 --> 00:01:23.225
+where it's usually stored
+for a particular purpose.
+
+27
+00:01:23.225 --> 00:01:25.910
+Data warehouses are often used
+
+28
+00:01:25.910 --> 00:01:28.610
+by business
+professionals as well,
+
+29
+00:01:28.610 --> 00:01:31.640
+whereas data lakes are typically
+
+30
+00:01:31.640 --> 00:01:36.320
+used only by data professionals
+such as data scientists.
+
+31
+00:01:36.320 --> 00:01:38.480
+Since the data in
+
+32
+00:01:38.480 --> 00:01:42.109
+data warehouses is stored
+in a consistent format,
+
+33
+00:01:42.109 --> 00:01:46.250
+changes to the data can
+be complex and costly.
+
+34
+00:01:46.250 --> 00:01:49.219
+Data lakes however
+are more flexible,
+
+35
+00:01:49.219 --> 00:01:52.580
+and make it easier to
+make changes to the data.
+
+36
+00:01:52.580 --> 00:01:57.094
+Let's review our discussion
+of enterprise data storage.
+
+37
+00:01:57.094 --> 00:01:59.780
+First, you learned
+about feature stores,
+
+38
+00:01:59.780 --> 00:02:04.040
+which are repositories for
+highly curated feature data,
+
+39
+00:02:04.040 --> 00:02:06.905
+specifically for use
+in machine learning.
+
+40
+00:02:06.905 --> 00:02:09.335
+You learned about
+subject-oriented
+
+41
+00:02:09.335 --> 00:02:12.395
+read-optimized data repositories,
+
+42
+00:02:12.395 --> 00:02:14.875
+known as data warehouses.
+
+43
+00:02:14.875 --> 00:02:17.575
+Finally, you explored data lakes,
+
+44
+00:02:17.575 --> 00:02:22.205
+which are repositories for
+raw and unprocessed data.
+
+45
+00:02:22.205 --> 00:02:24.920
+We've come to the end
+of another week and
+
+46
+00:02:24.920 --> 00:02:27.305
+we talked about a lot of
+great stuff this week.
+
+47
+00:02:27.305 --> 00:02:31.550
+ML metadata, working with
+storage for features stores,
+
+48
+00:02:31.550 --> 00:02:35.135
+schemas, data lakes,
+and data warehouses.
+
+49
+00:02:35.135 --> 00:02:36.365
+I hope you had fun.
+
+50
+00:02:36.365 --> 00:02:39.420
+I sure did. We'll
+see you next time.
